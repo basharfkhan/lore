@@ -16,7 +16,8 @@ before the failure.
 
 ## Status
 
-Milestone 0 (data) is done. Retrieval, the eval set and the agent are next.
+Milestone 0 (data) is done, and report text extraction with OCR is done. Chunking, retrieval,
+the eval set and the agent are next.
 
 ## Data
 
@@ -35,8 +36,26 @@ Notes from building it:
   queries rather than lessons; `is_lesson` drops them.
 - Lessons cluster in 1992 to 2011 and thin out after 2012, so the corpus says little about the
   commercial era.
-- Every report has a text layer, but the older scans (Apollo 1 especially, where 39% of pages
-  carry almost no text) will need OCR on their image-only pages.
+
+## Reading the reports
+
+`python -m lore.ingest.pages` writes one record per page to `data/processed/pages.jsonl`,
+choosing per page between the PDF's own text and Tesseract OCR:
+
+| Page kind | Example | Treatment |
+|---|---|---|
+| Born-digital | Genesis, MCO, DART | text layer as is |
+| Old scan whose embedded OCR is one word per line | Apollo 1, Apollo 13, Mars Polar Lander, SOHO | whole report re-OCR'd at 300 dpi |
+| Image-only page in a good document | NOAA N-Prime endorsement letter, where NASA's safety chief disputes some findings | that page OCR'd |
+
+Of 1,925 pages, 1,193 use the text layer and 623 are OCR'd (mean word confidence 79 to 94 per
+report). Pages that OCR poorly get Tesseract's orientation detection and a second pass, which
+recovered 15 rotated pages, including the Mars Polar Lander touchdown-sensor logic at the heart
+of that board's probable cause. 28 pages still below 50% confidence are photos read as text;
+they are kept as `illegible` and never indexed.
+
+OCR needs the Tesseract binary (`winget install UB-Mannheim.TesseractOCR` on Windows, or set
+`TESSERACT_CMD`). Results are cached per page, so reruns take seconds.
 
 ## Setup
 
