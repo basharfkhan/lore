@@ -16,8 +16,7 @@ before the failure.
 
 ## Status
 
-Milestone 0 (data) is done, and report text extraction with OCR is done. Chunking, retrieval,
-the eval set and the agent are next.
+Data, OCR and chunking are done. Retrieval, the eval set and the agent are next.
 
 ## Data
 
@@ -56,6 +55,24 @@ they are kept as `illegible` and never indexed.
 
 OCR needs the Tesseract binary (`winget install UB-Mannheim.TesseractOCR` on Windows, or set
 `TESSERACT_CMD`). Results are cached per page, so reruns take seconds.
+
+## Chunking
+
+`python -m lore.ingest.chunks` writes `data/processed/chunks.jsonl`: 6,486 chunks, 4,133 from
+lessons and 2,353 from reports, median ~1,750 characters (~450 tokens), capped at 3,200.
+
+- **Lessons stay whole when they fit.** A lesson is one argument (what happened, what it taught,
+  what to do), so 1,508 of 2,117 are a single chunk; only the long ones are split, at their
+  Driving event / Lesson / Recommendation boundaries.
+- **Reports are streamed page by page.** Running headers and footers are detected per report
+  and removed (including Genesis, which alternates its footer between facing pages), wrapped
+  lines and hyphenation are rejoined, and paragraphs are packed into chunks that break at
+  section headings. Chunks that are mostly non-words (OCR'd timing tables, contents pages) are
+  dropped.
+- **Every chunk carries `available_from`**, the date it first became readable (a lesson's date,
+  a report's release date), plus the report's `mishap_date` and a citation URL with `#page=N`.
+  The historical eval filters on `available_from`, so a pre-mortem for a mission can never
+  retrieve the investigation written after it failed.
 
 ## Setup
 
