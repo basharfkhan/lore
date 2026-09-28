@@ -75,7 +75,14 @@ def test_weighted_kappa_and_precision_recall():
 def test_names_in_guess_catches_hedged_recognition_only():
     from lore.eval.mine_cases import names_in_guess
 
-    source = "During the ULYSSES mission a controller sent a command twice."
-    assert names_in_guess(source, "Possibly Helios, Ulysses or ISEE-3") == ["ULYSSES"]
-    sensor = "Failure of the Earth Sensor Assembly aboard the satellite."
-    assert names_in_guess(sensor, "a horizon sensor on some LEO satellite") == []
+    assert names_in_guess(["ULYSSES"], "Possibly Helios, Ulysses or ISEE-3") == ["ULYSSES"]
+    assert names_in_guess(["UARS", "TOPEX"], "a horizon sensor on some LEO satellite") == []
+    assert names_in_guess(["MER"], "a Mars rover such as Spirit (MER-A)") == ["MER"]
+
+
+def test_leak_check_matches_whole_words_only():
+    from lore.eval.mine_cases import leaked_terms, names_in_guess
+
+    assert leaked_terms("after the spacecraft was shipped", ["AFT"]) == []
+    assert leaked_terms("its AFT limits were narrow", ["AFT"]) == ["AFT"]
+    assert names_in_guess(["ATLO", "MER"], "an ATLO campaign for a Mars rover (MER)") == ["MER"]

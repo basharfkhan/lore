@@ -32,7 +32,7 @@ from lore.eval.contamination import SYSTEM as PROBE_SYSTEM
 from lore.llm import MODEL, RefusalError, TruncatedError, json_call
 
 HELDOUT_DIR = EVAL_DIR / "heldout"
-WORKERS = 3  # independent requests; the SDK retries on 429/529 with backoff
+WORKERS = 4  # independent requests; the SDK retries on 429/529 with backoff
 EARLIEST_YEAR = 1993  # LLIS is thin before 1992, so earlier cases would have no precursors
 
 # Missions already covered by the dev cases, or famous enough to be recognised on sight.
@@ -58,19 +58,26 @@ You turn a NASA lessons-learned incident report into a test case for a pre-morte
 First decide whether the report describes one specific incident (something that happened to \
 particular hardware, software, a test or an operation) rather than general guidance.
 
-If it does, write the pre-mortem request an engineer would have written BEFORE the incident: \
-a description of the system or operation as it stood, how it was designed, built, verified or \
-run, and the constraints it was under, in 80 to 150 words. Rules for that description:
+If it does, write the pre-mortem request an engineer would have written BEFORE the incident, \
+in 80 to 150 words, at the level of a design-review summary: what the system or operation is, \
+its main elements, how it will be built, verified and operated, and the programme constraints. \
+Rules for that description:
 - Never state or hint at what went wrong, its cause, or the corrective action.
-- Include only facts that were true beforehand; a design choice that later proved to be the \
-cause may appear as a neutral fact only if the team would naturally have mentioned it.
-- Anonymise: no mission, spacecraft, program, contractor or centre names, and no dates. Use \
-generic descriptions such as "an outer-planet orbiter" or "a vacuum test facility".
+- Leave out the specific design detail, configuration, parameter or procedure step that \
+caused the failure. The subsystem involved may be mentioned, but only as one of several \
+elements given equal weight.
+- Include at least four other concrete, true-to-type details of the same prominence, so a \
+reader could list many plausible failure modes and the real one is not the obvious first guess.
+- Anonymise: no mission, spacecraft, program, contractor, instrument or centre names, and no \
+dates. Use generic descriptions such as "an outer-planet orbiter" or "a vacuum test facility".
 
-Also give: the failure mechanism in one sentence (kept hidden from the tool, used for grading), \
+Also give: the failure mechanism in one sentence (kept hidden from the tool, used for grading); \
 three to five short generic search queries a reliability engineer who knew the cause would use \
-to find earlier lessons about the same mechanism, and the words or phrases that would give the \
-cause away if they appeared in the description."""
+to find earlier lessons about the same mechanism; the words or phrases that would give the \
+cause away if they appeared in the description; and every proper name in the report that \
+identifies it (missions, spacecraft, instruments, programs, facilities, contractors), exactly \
+as written, excluding generic organisations such as NASA or JPL and generic engineering \
+acronyms such as GSE or EMI."""
 
 REWRITE_SCHEMA = {
     "type": "object",
@@ -80,6 +87,7 @@ REWRITE_SCHEMA = {
         "failure_mechanism": {"type": "string"},
         "hindsight_queries": {"type": "array", "items": {"type": "string"}},
         "giveaway_terms": {"type": "array", "items": {"type": "string"}},
+        "identifying_names": {"type": "array", "items": {"type": "string"}},
     },
     "required": [
         "is_specific_incident",
@@ -87,6 +95,7 @@ REWRITE_SCHEMA = {
         "failure_mechanism",
         "hindsight_queries",
         "giveaway_terms",
+        "identifying_names",
     ],
     "additionalProperties": False,
 }
@@ -115,34 +124,37 @@ MATCH_SCHEMA = {
     "additionalProperties": False,
 }
 
-# Organisations and generic words that appear in source reports and guesses without identifying
-# the mission.
-_NAME_STOPLIST = {
-    "nasa", "jpl", "esa", "gsfc", "ksc", "jsc", "msfc", "arc", "the", "this", "during", "after",
-    "following", "mission", "spacecraft", "flight", "test", "project", "program", "earth", "mars",
-    "sun", "solar", "space", "shuttle", "orbiter", "lesson", "lessons", "learned", "however",
-}  # fmt: skip
+
+def same_mechanism(actual: str, predicted: str) -> bool:
+    out = json_call(
+        MATCH_SYSTEM,
+        f"Actual mechanism:\n{actual}\n\nPrediction:\n{predicted}",
+        MATCH_SCHEMA,
+        max_tokens=2000,
+    )
+    return out["same_mechanism"]
 
 
-def names_in_guess(source: str, guess: str) -> list[str]:
-    """Proper names and acronyms from the source report that also appear in the probe's guess."""
-    acronyms = set(re.findall(r"\b[A-Z][A-Z0-9-]{2,}\b", source))
-    # A capitalised word is a name only if it never appears lowercase: "Sensor" in "Earth
-    # Sensor Assembly" is an ordinary word the guess also uses ("horizon sensor").
-    text = f"{source} {guess}"
-    titled = {
-        w
-        for w in re.findall(r"\b[A-Z][a-z]{3,}\b", source)
-        if not re.search(rf"\b{w.lower()}\b", text)
-    }
-    names = acronyms | titled
+def names_in_guess(names: list[str], guess: str) -> list[str]:
+    """Identifying names from the source report that the probe's guess mentions.
+
+    The names come from the rewrite call, which lists the report's missions, spacecraft and
+    instruments. A regex over the report flagged generic acronyms (GSE, ATLO) and ordinary
+    capitalised words ("Global", "Module") and rejected most cases.
+    """
     guess_lower = guess.lower()
     return sorted(
         n
         for n in names
-        if n.lower() not in _NAME_STOPLIST
+        if n.strip()
+        and n.lower() not in _GENERIC_NAMES
         and re.search(rf"\b{re.escape(n.lower())}\b", guess_lower)
     )
+
+
+# Names the extractor sometimes lists despite being told not to: agencies, planets and generic
+# engineering acronyms. None of them identifies an incident.
+_GENERIC_NAMES = {"nasa", "jpl", "esa", "atlo", "gse", "mars", "earth", "saturn", "web", "dsn"}
 
 
 def candidates(lessons: list[dict]) -> list[tuple[int, dict]]:
@@ -166,8 +178,11 @@ def candidates(lessons: list[dict]) -> list[tuple[int, dict]]:
 
 
 def leaked_terms(description: str, terms: list[str]) -> list[str]:
+    # Whole words only: the giveaway "AFT" must not match "after" or "spacecraft".
     text = description.lower()
-    return [t for t in terms if t.strip() and t.lower() in text]
+    return [
+        t for t in terms if t.strip() and re.search(rf"(?<!\w){re.escape(t.lower())}(?!\w)", text)
+    ]
 
 
 def build_case(year: int, lesson: dict) -> tuple[str, dict]:
@@ -184,19 +199,18 @@ def build_case(year: int, lesson: dict) -> tuple[str, dict]:
     if leaks:
         return "reject", {"id": case_id, "reason": f"description leaks {leaks}"}
     probe = json_call(PROBE_SYSTEM, rewrite["description"], PROBE_SCHEMA, max_tokens=4000)
-    if probe["recognised"] and probe["confidence"] in ("medium", "high"):
-        return "reject", {"id": case_id, "reason": f"recognised as {probe['mission_guess']!r}"}
-    # A hedged "not sure, possibly Ulysses" that names the real mission is still recognition.
-    named = names_in_guess(f"{lesson['title']} {lesson['driving_event']}", probe["mission_guess"])
+    # Contamination means the model knows how this incident ended. Naming the real mission
+    # counts even when hedged ("possibly Ulysses"); a confident but wrong identification
+    # (a 1995 incident taken for a 2005 mission) does not, unless the outcome it recalls
+    # matches what actually happened.
+    guess = f"{probe['mission_guess']} {probe['what_happened']}"
+    named = names_in_guess(rewrite["identifying_names"], guess)
     if named:
         return "reject", {"id": case_id, "reason": f"probe named the real mission {named}"}
+    if probe["recognised"] and same_mechanism(rewrite["failure_mechanism"], probe["what_happened"]):
+        return "reject", {"id": case_id, "reason": "probe recalled the actual outcome"}
     blind = json_call(BLIND_SYSTEM, rewrite["description"], BLIND_SCHEMA, max_tokens=4000)
-    match = json_call(
-        MATCH_SYSTEM,
-        f"Actual mechanism:\n{rewrite['failure_mechanism']}\n\nPrediction:\n{blind['failure']}",
-        MATCH_SCHEMA,
-        max_tokens=2000,
-    )
+    easy = same_mechanism(rewrite["failure_mechanism"], blind["failure"])
     return "keep", {
         "id": case_id,
         "source_lesson": lesson["id"],
@@ -207,7 +221,7 @@ def build_case(year: int, lesson: dict) -> tuple[str, dict]:
         "hindsight_queries": rewrite["hindsight_queries"],
         # "easy" when a single blind guess already names the mechanism: the description gives
         # it away, or the failure is the obvious one. Results are reported separately.
-        "difficulty": "easy" if match["same_mechanism"] else "hard",
+        "difficulty": "easy" if easy else "hard",
         "blind_guess": blind["failure"],
         "contamination": {
             "recognised": probe["recognised"],

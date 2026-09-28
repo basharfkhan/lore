@@ -92,7 +92,7 @@ def json_call(system: str, user: str, schema: dict, *, max_tokens: int = 16000) 
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     record = {
         "model": response.model,
-        "request_id": response._request_id,
+        "id": response.id,  # streamed messages carry no _request_id
         "usage": response.usage.to_dict(),
         "output": output,
     }
