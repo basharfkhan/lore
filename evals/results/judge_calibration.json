@@ -1,0 +1,859 @@
+{
+  "model": "claude-opus-5",
+  "pairs": 683,
+  "exact_agreement": 0.8243045387994143,
+  "weighted_kappa": 0.5732472468824035,
+  "relevant_precision": 0.4652777777777778,
+  "relevant_recall": 0.7204301075268817,
+  "direct_precision": 0.42424242424242425,
+  "direct_recall": 0.7,
+  "per_case_kappa": {
+    "mco": 0.5956824002927186,
+    "genesis": 0.5537110005813578,
+    "noaa_n_prime": 0.5471537807986406,
+    "columbia": 0.5979381443298969,
+    "mpl": 0.5435164283922749
+  },
+  "disagreements": [
+    {
+      "case": "mco",
+      "doc_id": "llis-1098",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights undocumented, inconsistent conventions across multiple organizations causing confusion, a practice fix (pre-established documented interface standards) that could have helped, though not the units/data-interface mechanism itself."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-196",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents how excessive workload and thin staffing of key skills degrade operations, a contributing factor to the lean, shared navigation team's missed checks, though not the failure mechanism."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-202",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes anomalous measurements taken with a misunderstood instrument and, critically, discrepancies not reported to the responsible team\u2014the same escalation failure that contributed here, but not the unit-conversion mechanism."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-207",
+      "human": 0,
+      "judge": 1,
+      "reason": "Warns that data produced by one organization and passed to using organizations becomes untraceable in provenance and calibration when no single owner is assigned, a practice failure closely paralleling the unverified contractor-to-navigation data delivery."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-377",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents a real case where inadequate pre-flight modeling of thruster force effects caused a large trajectory/velocity-change discrepancy, highlighting the small-force modeling vulnerability that contributed here, though not the unit-conversion interface error itself."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-572",
+      "human": 0,
+      "judge": 1,
+      "reason": "Contractor test data not properly transmitted to or used by the customer led to a mis-modelled parameter and mission-shortening burn error, a contributing-factor analogue but not a unit-conversion interface failure."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-577",
+      "human": 1,
+      "judge": 2,
+      "reason": "Describes data files exchanged between organizations using incompatible software conventions producing silent, undetected errors, and urges inter-organizational data-format verification\u2014the same mechanism as the unit-mismatched thruster data files."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-578",
+      "human": 0,
+      "judge": 1,
+      "reason": "Cross-partner miscommunication of a flow-rate configuration (with the parameter quoted in both metric and English units) caused hardware damage, a related interface-communication lapse but not a unit-conversion modelling error."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-584",
+      "human": 1,
+      "judge": 0,
+      "reason": "Same mission phase (aerobraking trim maneuvers) but the failure was an unintended onboard sequence repetition, not a mis-modelled small-force data interface."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-585",
+      "human": 1,
+      "judge": 0,
+      "reason": "General staffing-continuity benefits for lean projects; no discussion of interface verification or anomaly escalation."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-586",
+      "human": 0,
+      "judge": 1,
+      "reason": "Shows the hazard of trusting a supplier's stated convention without independent verification and of dismissing anomalous indications, a preventive practice relevant to the unverified data delivery but not the mechanism itself."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-597",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights inadequate continuous monitoring and failure to promptly resolve anomalies during a critical mission phase with under-resourced operations, a contributing factor akin to unescalated trajectory discrepancies, though not the units-interface mechanism."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-723",
+      "human": 1,
+      "judge": 0,
+      "reason": "Generic IV&V advice for embedded flight software; it does not address ground software data product units or contractor/navigation interface verification."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-726",
+      "human": 0,
+      "judge": 1,
+      "reason": "Advocates interface and end-to-end data-flow testing of the ground system with end users, a practice that could have exposed the unverified contractor-to-navigation data interface, though it does not describe the units mis-modelling mechanism."
+    },
+    {
+      "case": "mco",
+      "doc_id": "llis-995",
+      "human": 0,
+      "judge": 1,
+      "reason": "Warns that reduced NASA presence at contractor interfaces erodes the ability to assess and verify contractor work, a contributing factor to the unverified contractor/navigation data interface, though not the unit-mismatch mechanism itself."
+    },
+    {
+      "case": "mco",
+      "doc_id": "report-hubble_optics",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights how a contractor metrology/measurement error went undetected because quality assurance and independent verification of test data failed \u2014 a preventive practice relevant here, but a different mechanism (optical fabrication, not unit conversion across an operations interface)."
+    },
+    {
+      "case": "mco",
+      "doc_id": "report-soho",
+      "human": 1,
+      "judge": 0,
+      "reason": "The excerpt only describes ESA/NASA roles and mission background, not the ground-operations error or any interface verification lesson."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1197",
+      "human": 0,
+      "judge": 2,
+      "reason": "Documents a planned subsystem test being deleted for schedule reasons, allowing a design/logic error to escape\u2014precisely the mechanism of replacing the planned functional test with inspection."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1227",
+      "human": 0,
+      "judge": 1,
+      "reason": "Shows that layered design review and inspection buyoffs can all fail to catch a hardware discrepancy, a contributing factor to relying on drawing inspection instead of test."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1268",
+      "human": 0,
+      "judge": 1,
+      "reason": "Advocates an end-to-end post-environmental functional test including a polarity check, a practice that would have caught the inverted switches, though it does not describe the failure itself."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1335",
+      "human": 1,
+      "judge": 0,
+      "reason": "Concerns test chamber RF reflections causing a test-facility false failure, not an undetected design error escaping because a functional test was omitted."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1370",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents that reusing proven off-the-shelf/heritage units in a different application requires full re-verification rather than trusting heritage, a contributing factor here but not the specific mechanism."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1390",
+      "human": 0,
+      "judge": 1,
+      "reason": "Shows a mission-critical design error escaping the pre-launch verification process and only being revealed by an end-to-end functional test, the preventive practice missing on this capsule, though the design error itself is unrelated."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-1398",
+      "human": 0,
+      "judge": 2,
+      "reason": "Same root cause pattern: a reversed/inverted wiring error survived because documentation review and the planned safe-to-mate functional verification were shortcut for schedule rather than performed."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-16",
+      "human": 1,
+      "judge": 2,
+      "reason": "Describes exactly the same class of failure\u2014a critical component installed/oriented backwards that escaped detection until a dedicated inspection/test point was added."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-267",
+      "human": 0,
+      "judge": 1,
+      "reason": "Reinforces that inherited/reused hardware must be re-analyzed for the new application, a practice that could have countered the heritage-based verification shortfall, but the incident itself is a lifting mishap."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-271",
+      "human": 0,
+      "judge": 2,
+      "reason": "Directly describes an inherited flight-proven design accepted on heritage without in-depth verification, where the original design analysis itself was flawed\u2014the same root cause as the inherited inverted g-switch."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-286",
+      "human": 0,
+      "judge": 1,
+      "reason": "Illustrates that untested flight configurations produce unexpected failures, supporting the need for the omitted functional test, but the mechanism (thermal distortion of a cover) differs."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-289",
+      "human": 1,
+      "judge": 0,
+      "reason": "Magellan's microswitch failure stemmed from marginal actuation stroke and zero-g hinge effects, a different mechanism than an inverted-by-design sensor missed by inspection-only verification."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-296",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents a latent flaw carried forward in an inherited (Voyager-derived) electronics design and warns that heritage designs still require in-depth analysis, a contributing factor but not the orientation/test-omission mechanism."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-304",
+      "human": 0,
+      "judge": 1,
+      "reason": "Shows a defect found only because functional/end-to-end testing in the true operating mode was eventually performed, the practice that would have caught the inverted switches, though the mechanism differs."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-310",
+      "human": 0,
+      "judge": 1,
+      "reason": "Inherited flight software carried an undetected algorithm error from a predecessor program, illustrating heritage-error propagation but not a sensor orientation error or substitution of inspection for test."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-311",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights that no complete end-to-end test was performed on a flight data path, reinforcing the functional-test practice that was skipped, but the failure itself is unrelated."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-312",
+      "human": 1,
+      "judge": 2,
+      "reason": "An embedded pyrotechnic-initiation circuit design error survived comprehensive design reviews and verification because the tests validated the erroneous design rather than the end function \u2014 essentially the same root cause as the inverted acceleration switches."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-342",
+      "human": 1,
+      "judge": 2,
+      "reason": "States directly that safety-critical pyro deployment hardware must undergo rigorous end-to-end functional verification rather than review-based acceptance, addressing the exact verification gap that hid the inverted switch design."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-346",
+      "human": 2,
+      "judge": 1,
+      "reason": "Warns that heritage subsystems reused without requalification for a new multi-year mission can be inappropriate, a contributing factor but focused on environmental mismatch rather than an undetected inherited design error missed by inspection."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-492",
+      "human": 0,
+      "judge": 2,
+      "reason": "Same root cause pattern: a deployment mechanism inherited from an earlier program where inheritance and design reviews failed to reveal a latent design flaw that was never verified by adequate testing, leading to deployment failure."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-517",
+      "human": 0,
+      "judge": 1,
+      "reason": "Parachute recovery system failed because a design change was accepted without confirming functional/strip-out testing, a verification-gap practice that would have helped prevent the Genesis failure, though the mechanism (cloth jamming) differs."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-521",
+      "human": 0,
+      "judge": 1,
+      "reason": "Demonstrates that repeated visual inspection can miss an obvious hardware defect, the contributing weakness in substituting inspection for a functional test, but the defect and system are different."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-582",
+      "human": 0,
+      "judge": 1,
+      "reason": "Argues that formal reviews lack technical penetration and that in-depth peer reviews catch detailed design errors before launch, a practice that could have exposed the inverted switch orientation."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-609",
+      "human": 0,
+      "judge": 1,
+      "reason": "Reversed SAFE/ARM logic states in documentation went undetected because the planned functional alarm testing was never performed \u2014 same theme of a polarity/sense inversion escaping paper verification, though only a launch delay."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-634",
+      "human": 1,
+      "judge": 2,
+      "reason": "Pyrotechnic initiation electronics contained a design error that subsystem/system functional verification failed to catch because there was no end-to-end test in as-flown configuration \u2014 the same root cause as the unverified parachute-firing g-switch."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-637",
+      "human": 1,
+      "judge": 2,
+      "reason": "The WIRE board report attributes loss to a pyro-firing logic design error that escaped verification, the same class of inadequately tested parachute/pyro initiation avionics design flaw."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-743",
+      "human": 0,
+      "judge": 1,
+      "reason": "A parafoil deployment failure traced to design reviews and configuration control that missed design problems\u2014a contributing-factor analogue, though the mechanism (line entanglement) differs."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-875",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes a miswiring that reversed fan rotation and was missed because quality inspection failed to verify the wiring, a close analogue of inspection failing to catch a reversed-orientation error, though the hardware and consequence differ."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-938",
+      "human": 1,
+      "judge": 2,
+      "reason": "Same mechanism class: an entry/landing-critical sensor with a wiring error and an untested failure mode, where the full functional deployment test that would have exposed it was not run, causing mission loss."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-944",
+      "human": 1,
+      "judge": 0,
+      "reason": "Pyrovalve blow-by and propellant ignition is a different pyrotechnic failure mechanism unrelated to the initiation-sensing switch orientation."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "llis-981",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents polarized parts being installed backwards due to design/artwork errors that escape detection, an analogous inverted-orientation design error though the failure effect and part type differ."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "report-contour",
+      "human": 1,
+      "judge": 2,
+      "reason": "Names 'Project Reliance on Analysis by Similarity' (heritage) without verification as a mishap root cause, the same root cause that let the inverted inherited acceleration switches escape detection."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "report-hubble_optics",
+      "human": 0,
+      "judge": 1,
+      "reason": "Illustrates a fabrication/assembly orientation error hunt and reliance on inadequate verification of an optical system, a closely analogous verification-practice warning but not the acceleration-switch mechanism."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "report-mco_phase2",
+      "human": 1,
+      "judge": 0,
+      "reason": "Same descriptive MPL EDL text, sharing only parachute/entry vocabulary with the failure."
+    },
+    {
+      "case": "genesis",
+      "doc_id": "report-mpl_ds2",
+      "human": 1,
+      "judge": 0,
+      "reason": "Assesses mortar/parachute deployment reliability on heritage hardware but does not address sensor orientation errors or substituting inspection for functional test."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1047",
+      "human": 1,
+      "judge": 0,
+      "reason": "Generic workforce/inspection-point staffing issue, not a description of an unverified hardware configuration failure."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1089",
+      "human": 2,
+      "judge": 1,
+      "reason": "Spacecraft handling mishap with a test-support fixture during a routine move, highlighting handling-fixture adequacy and procedural discipline, but the cause was lift/CG instability rather than unverified shared-cart configuration."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-119",
+      "human": 1,
+      "judge": 2,
+      "reason": "Nearly identical precursor: bolts were removed from the segment handling/lifting fixture without work authorization or record, and the segment was hoisted and rotated to horizontal before anyone noticed the missing hardware."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1211",
+      "human": 1,
+      "judge": 0,
+      "reason": "Packaging and shipping process deficiencies share only the theme of unfollowed instructions, not the shared-fixture configuration failure."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1212",
+      "human": 0,
+      "judge": 1,
+      "reason": "Operators proceeded on an assumed hardware/test-equipment configuration without verifying it, which is the same class of error though in a test console setting rather than shared handling GSE."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1213",
+      "human": 2,
+      "judge": 1,
+      "reason": "Highlights undocumented/uncommunicated hardware changes escaping configuration control, a contributing factor to the unrecorded bolt removal, but the mechanism described is an EVA checklist mismatch."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1215",
+      "human": 1,
+      "judge": 0,
+      "reason": "Crane operator human-factors command error during a lift is a different failure mode from unverified cart configuration."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1272",
+      "human": 1,
+      "judge": 0,
+      "reason": "A tool slipping off a dolly during shipment is a different handling/shipping process failure, not an unverified shared-fixture configuration."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1338",
+      "human": 0,
+      "judge": 1,
+      "reason": "A GSE handling near-miss where a work platform reconfigured from another test program was moved without verifying its secured configuration, closely paralleling the contributing practice of moving shared GSE without configuration verification."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1340",
+      "human": 0,
+      "judge": 1,
+      "reason": "A missing mechanical coupling component left out during hardware buildup and not caught before test is an analogous configuration-verification lapse, though the mechanism is engine assembly rather than shared handling GSE."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1368",
+      "human": 0,
+      "judge": 1,
+      "reason": "Stresses that workers must personally verify the hazardous configuration before starting rather than assume someone else's prior action, and notes QA inspectors failing to challenge it \u2014 the preventive practice missing here, though the mechanism is electrical."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1374",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights inadequate configuration management and undocumented changes to shared facility hardware as a mishap contributor, which is the documentation-of-change gap behind this failure, though in an electrical/facility context."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1375",
+      "human": 0,
+      "judge": 1,
+      "reason": "Points to weak government/contractor QA oversight, lack of independent verification points, and no task readiness review \u2014 contributing factors mirroring the QA oversight lapse here, but not the mechanism itself."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1378",
+      "human": 0,
+      "judge": 1,
+      "reason": "Duplicate lockout/tagout lesson emphasizing personal re-verification of a system's state before work and QA inspectors' failure to question assumptions, a preventive practice directly applicable."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-1427",
+      "human": 1,
+      "judge": 0,
+      "reason": "It is generic advice about keeping SOPs current and following checklists in an unrelated ordnance/aircraft context, with no discussion of shared hardware configuration control or verifying equipment configuration before use."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-240",
+      "human": 0,
+      "judge": 2,
+      "reason": "Nearly identical mechanism: bolts removed during other work and not replaced or recorded, and the next crew operated the hardware without verifying assembly completeness."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-267",
+      "human": 2,
+      "judge": 1,
+      "reason": "Warns that handling fixtures inherited from another program must be re-verified for the current configuration and load, a preventive practice for shared GSE but a different (stability/CG) mechanism."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-332",
+      "human": 1,
+      "judge": 0,
+      "reason": "Concerns waived QA oversight of optical test equipment design verification on HST, not verification of shared handling hardware configuration before a move."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-385",
+      "human": 0,
+      "judge": 1,
+      "reason": "Directly addresses spacecraft lifting/handling hazards including use of the wrong handling equipment, and urges review of handling procedures and QA before major handling operations, but not unrecorded configuration changes to shared equipment."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-4",
+      "human": 0,
+      "judge": 1,
+      "reason": "Flight hardware damaged because ground test equipment was in an unverified/non-standard configuration, a contributing theme, though the specific issue is test-stand fidelity rather than shared-equipment configuration control."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-435",
+      "human": 1,
+      "judge": 0,
+      "reason": "GSE relay failure damaging a transmitter shares only the general 'GSE hurt flight hardware' topic, not unverified mechanical configuration."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-499",
+      "human": 0,
+      "judge": 1,
+      "reason": "Teaches never to assume a system's configuration/status is safe without explicit verification and checking configuration documents before a hazardous operation, the preventive practice that was skipped, but the mechanism is pressure system maintenance."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-521",
+      "human": 0,
+      "judge": 2,
+      "reason": "Describes the same mechanism\u2014required fasteners missing from hardware and multiple inspections failing to detect the missing fasteners before use, leading to failure."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-564",
+      "human": 0,
+      "judge": 1,
+      "reason": "Contains the key contributing factors of undocumented configuration changes made by others and an operator acting without verifying actual configuration, though the mishap itself is an electrical arc injury."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-649",
+      "human": 1,
+      "judge": 0,
+      "reason": "Generic GSE critical items/FMEA reliability practice with no connection to verifying fixture configuration before a move."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-865",
+      "human": 0,
+      "judge": 1,
+      "reason": "Rigging mishap whose key recommendation is critical inspection of the load/fixture configuration before any move, a practice that would have caught the missing cart bolts, though the mechanism (towbar rotation/CG) differs."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-918",
+      "human": 1,
+      "judge": 2,
+      "reason": "Same mechanism: flight hardware dropped from shared ground handling fixture that was in an unassessed configuration (a securing pin removed) with procedures that failed to require verification of fixture configuration."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "llis-991",
+      "human": 0,
+      "judge": 2,
+      "reason": "Directly parallel: ground support equipment at a contractor I&T facility was disassembled/reinstalled and maintained without records or verification, and crews deviated from the formal procedure, causing hardware damage."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "report-columbia_caib_v1",
+      "human": 0,
+      "judge": 1,
+      "reason": "Warns about erosion of hands-on quality assurance oversight and infrequently performed procedures, a contributing factor to unverified configurations, but not the mechanism itself."
+    },
+    {
+      "case": "noaa_n_prime",
+      "doc_id": "report-soho",
+      "human": 0,
+      "judge": 1,
+      "reason": "Addresses failures in ground procedure content, change control and procedure implementation discipline \u2014 a contributing factor/preventive practice for the unverified-configuration handling error, but not the shared-hardware configuration-change mechanism itself."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-1092",
+      "human": 1,
+      "judge": 0,
+      "reason": "Generic project-management advice on reporting schedule/performance slips, not about escalating technical safety concerns or debris risk."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-1266",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes a team accepting a known exceedance of an allowable limit and continuing to operate without analysis\u2014the same normalization-of-deviance practice that let repeated foam strikes be deemed in-family."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-1381",
+      "human": 0,
+      "judge": 1,
+      "reason": "Flags that without a formal channel for documenting concerns they 'slip through the cracks' and that operational decision makers need critical performance information, a contributing factor to concerns not reaching Shuttle managers, though it does not address debris strikes."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-272",
+      "human": 0,
+      "judge": 1,
+      "reason": "Concerns accepting flight with a known, repeatedly observed but unexplained anomaly and a workaround, the same risk-acceptance/normalization practice that let recurring foam loss be treated as in-family."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-495",
+      "human": 1,
+      "judge": 0,
+      "reason": "Wind tunnel vane collapse lessons are generic safety-organization advice applicable to any project."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-523",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents the root-cause pattern of declaring a debris-liberation failure mode (blade loss) non-credible and never analyzing its consequences, a practice that mirrors the acceptance of foam shedding, though the mechanism and hardware differ."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-6",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes an orbiter panel liberated in flight creating hazardous debris with explicit concern for TPS damage, raising awareness of in-flight debris threats to the TPS though the causal mechanism (installation error) differs."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-691",
+      "human": 0,
+      "judge": 1,
+      "reason": "Advocates formal anomaly reporting, trending, and closure of corrective actions before flight readiness reviews\u2014a practice that could have countered the acceptance of recurring foam-strike anomalies, though it does not describe the mechanism."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "llis-733",
+      "human": 1,
+      "judge": 0,
+      "reason": "Generic ground-test problem/failure reporting procedure at GSFC; does not address accepted recurring in-flight anomalies or debris strikes, and is generic process advice."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "report-challenger_rogers_v1",
+      "human": 2,
+      "judge": 1,
+      "reason": "Describes how critically the orbiter depends on its thermal protection, with leading-edge entry temperatures near 2,750\u00b0F, underscoring the consequence of a breached leading edge without describing the foam-strike mechanism or the flawed acceptance process."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "report-hubble_optics",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents how data indicating a flaw was discounted and closed-door communication kept problems from review\u2014the same organizational contributing factor as engineering concerns failing to reach shuttle decision makers\u2014but not the debris mechanism itself."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "report-lewis",
+      "human": 0,
+      "judge": 1,
+      "reason": "Warns of reliance on an analysis/simulation tool validated for a different, simpler heritage configuration, a contributing factor mirroring the misapplied damage-assessment tooling, though not the foam-strike breach itself."
+    },
+    {
+      "case": "columbia",
+      "doc_id": "report-mco_phase2",
+      "human": 0,
+      "judge": 1,
+      "reason": "Identifies inadequate reviews, poor risk management, and inadequate communications as recurring cross-mission failure themes\u2014practices that would have helped surface the foam-strike concerns\u2014but does not describe the mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-1021",
+      "human": 0,
+      "judge": 1,
+      "reason": "Calls for formal and independent V&V of safety-critical software, explicitly stating testing alone does not suffice \u2014 a practice that would likely have caught the unverified touchdown-sensor logic, though it does not describe the transient-latching mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-1104",
+      "human": 0,
+      "judge": 1,
+      "reason": "Warns that hardware/software changes after system-level testing invalidate earlier results and require regression testing with validated software \u2014 the kind of test-discipline gap that let the touchdown-sensor behavior go unverified, but not the mechanism itself."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-194",
+      "human": 0,
+      "judge": 1,
+      "reason": "Urges full end-to-end certification testing of an automatic landing system through touchdown, a practice that would have helped catch the untested touchdown-shutdown logic, but it does not describe the spurious-signal mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-281",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes a spurious electrical transient being sensed and triggering an unintended reset that was hard to reproduce in test, a closely analogous transient-triggering concern though the cause is ground-loop noise rather than a software latch of a leg-deploy signal."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-345",
+      "human": 0,
+      "judge": 1,
+      "reason": "Highlights fault-protection design lacking top-down system engineering and software fault logic never tested on the flight vehicle, a practice gap that would have helped catch the untested touchdown logic."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-369",
+      "human": 0,
+      "judge": 1,
+      "reason": "Recommends that no single parameter error or malfunction lead to an unrecoverable software state plus rigorous system-level software failure-mode verification, a preventive practice for this logic flaw, but describes a different (looping) defect."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-4",
+      "human": 1,
+      "judge": 0,
+      "reason": "Concerns ground test stand fidelity causing tire blowouts; only generic overlap with 'testing didn't catch it' and no relation to transient sensor latching."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-403",
+      "human": 2,
+      "judge": 1,
+      "reason": "Flight software logic active during a phase where it should have been inhibited caused unintended propulsion actuation, a closely related practice (phase-constrained enabling) though not the transient-latching mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-411",
+      "human": 1,
+      "judge": 0,
+      "reason": "Relay transmitter power-level checkout limitation on Viking; same mission type but unrelated failure."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-559",
+      "human": 0,
+      "judge": 1,
+      "reason": "Software defect plus a protective feature dropped for resource reasons led to an uncommanded propulsion outcome \u2014 a related software-verification/resource-constraint contributor, but a different (numeric overflow) mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-560",
+      "human": 0,
+      "judge": 1,
+      "reason": "Describes a spurious/transient signal being interpreted by onboard fault logic and causing an unintended hardware shutdown with little telemetry insight, which is analogous but not the same latched touchdown-sensor mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-569",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents how out-of-date/incomplete interface documentation on a cost-capped Mars project let requirement changes fail to reach implementers, the same requirement-flowdown breakdown that contributed to the failure, though not the mechanism itself."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-590",
+      "human": 0,
+      "judge": 1,
+      "reason": "Recommends early hardware-software integration and a flight-like test set run by the software team, a practice that would plausibly have exposed the deployment-induced sensor transient, but it does not describe the failure mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-594",
+      "human": 1,
+      "judge": 0,
+      "reason": "COTS micro-valve on-orbit failure on an instrument shares no mechanism or cause with the landing-leg sensor latch."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-596",
+      "human": 1,
+      "judge": 0,
+      "reason": "Broad programmatic commentary on faster-better-cheaper agreements; generic and applicable to any project."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-609",
+      "human": 0,
+      "judge": 1,
+      "reason": "Shows how erroneous signal-state documentation combined with late, untested critical-event procedures produced a mis-set logic condition, a contributing pattern (late system testing of critical-event logic) but not the latched-transient mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-625",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents a fatal, technically flawed and inadequately tested flight-control software mode on a faster-better-cheaper mission with no health monitoring during the critical phase\u2014closely related contributing conditions, but a different failure mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-626",
+      "human": 1,
+      "judge": 0,
+      "reason": "Describes inadvertent powering of probes through ground paths during ground assembly, a different mechanism from a flight-software-latched spurious touchdown signal, sharing only the Mars 98 program context."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-637",
+      "human": 0,
+      "judge": 2,
+      "reason": "The WIRE board report documents inadvertent actuation caused by unconsidered transient signals latching control logic into a false state and undetected by subsystem/system testing \u2014 the same failure pattern as the touchdown-sensor transient."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-638",
+      "human": 0,
+      "judge": 1,
+      "reason": "Involves the same architecture of landing-leg deployment and weight-on-gear sensing commanding engine shutdown on a vertical lander, but the failure was a leg that did not deploy rather than a spurious sensor transient latched in software."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-756",
+      "human": 0,
+      "judge": 1,
+      "reason": "Sneak circuit/sneak path analysis is aimed at finding unintended signals and latent logic conditions, including in software, a technique that plausibly would have exposed the deployment-induced spurious touchdown indication."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "llis-837",
+      "human": 0,
+      "judge": 1,
+      "reason": "Discusses designing test/monitoring logic to tolerate transient anomalies and reject false alarms rather than latching them as failures, a practice that would have helped prevent the latched spurious touchdown indication, though it addresses built-in-test maintainability rather than the actual mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "report-lewis",
+      "human": 0,
+      "judge": 1,
+      "reason": "Documents how a faster-better-cheaper program with reduced engineering rigor, small team and inadequate verification led to loss, a contributing programmatic factor here but not the transient-latching mechanism."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "report-mco_phase1",
+      "human": 1,
+      "judge": 0,
+      "reason": "Merely describes the Mars Polar Lander EDL timeline and mission configuration without identifying any touchdown-sensor, software-requirement, or testing vulnerability."
+    },
+    {
+      "case": "mpl",
+      "doc_id": "report-wire",
+      "human": 1,
+      "judge": 2,
+      "reason": "Describes the same class of root cause: an unmodeled electrical transient causing premature actuation that testing failed to reveal because non-flight simulators produced false-positive results."
+    }
+  ]
+}

@@ -90,21 +90,30 @@ def judge(description: str, mechanism: str, texts: dict[str, str]) -> dict[str, 
     ids = sorted(texts)
     batches = [ids[start : start + BATCH] for start in range(0, len(ids), BATCH)]
 
-    def run(batch: list[str]) -> dict[str, dict]:
+    def ask(batch: list[str]) -> dict[str, dict]:
         docs = "\n\n".join(f'<document id="{d}">\n{texts[d]}\n</document>' for d in batch)
         user = (
             f"System before the failure:\n{description}\n\n"
             f"Actual failure mechanism:\n{mechanism}\n\nCandidates:\n\n{docs}"
         )
         result = json_call(SYSTEM, user, SCHEMA, max_tokens=8000)
-        graded = {
+        return {
             j["doc_id"]: {"grade": j["grade"], "reason": j["reason"]}
             for j in result["judgments"]
             if j["doc_id"] in batch
         }
-        missing = set(batch) - set(graded)
+
+    def run(batch: list[str]) -> dict[str, dict]:
+        graded = ask(batch)
+        # The model occasionally drops a document from a long batch; ask again for just those.
+        for _ in range(2):
+            missing = sorted(set(batch) - set(graded))
+            if not missing:
+                break
+            graded |= ask(missing)
+        missing = sorted(set(batch) - set(graded))
         if missing:
-            raise RuntimeError(f"judge skipped {sorted(missing)}")
+            raise RuntimeError(f"judge skipped {missing}")
         return graded
 
     out: dict[str, dict] = {}
