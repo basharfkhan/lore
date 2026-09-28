@@ -45,6 +45,8 @@ def evaluate(retriever, cases) -> dict:
                 "top10": ranked[:10],
             }
         )
+        if hypotheses := getattr(retriever, "last_hypotheses", None):
+            rows[-1]["hypotheses"] = [vars(h) for h in hypotheses]
     metrics = ["hit@10", "recall@10", "recall@20", "ndcg@10"]
     mean = {m: statistics.mean(r[m] for r in rows if not math.isnan(r[m])) for m in metrics}
     return {"retriever": retriever.name, "cases": rows, "mean": mean}

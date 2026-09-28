@@ -11,6 +11,7 @@ dependencies = [
     "pytesseract>=0.3.10",
     "Pillow>=10.0",
     "rank-bm25>=0.2.2",
+    "anthropic>=0.80",
 ]
 
 [project.optional-dependencies]
