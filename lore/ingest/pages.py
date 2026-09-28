@@ -98,7 +98,7 @@ def plan(doc: pymupdf.Document) -> list[str]:
 
 
 def _ocr_lines(data: dict) -> tuple[str, float | None]:
-    """Rebuild text from image_to_data output: lines joined by spaces, paragraphs by a blank line."""
+    """Rebuild text from image_to_data: lines joined by spaces, paragraphs by a blank line."""
     paragraphs: dict[tuple, dict[tuple, list[str]]] = {}
     confidences = []
     for i, word in enumerate(data["text"]):
@@ -153,7 +153,12 @@ def ocr_page(pdf_path: str, index: int, cache_path: str) -> tuple[str, float | N
             if (retry_conf or 0) > (confidence or 0):
                 text, confidence, rotation = retry_text, retry_conf, -turn % 360
     cache.parent.mkdir(parents=True, exist_ok=True)
-    record = {"version": OCR_CACHE_VERSION, "text": text, "confidence": confidence, "rotation": rotation}
+    record = {
+        "version": OCR_CACHE_VERSION,
+        "text": text,
+        "confidence": confidence,
+        "rotation": rotation,
+    }
     cache.write_text(json.dumps(record), encoding="utf-8")
     return text, confidence, rotation
 
@@ -161,7 +166,9 @@ def ocr_page(pdf_path: str, index: int, cache_path: str) -> tuple[str, float | N
 def extract_report(report_id: str, pdf_path: Path, pool: ProcessPoolExecutor) -> list[Page]:
     with pymupdf.open(pdf_path) as doc:
         decisions = plan(doc)
-        layer_text = [p.get_text() if d == "text_layer" else "" for p, d in zip(doc, decisions)]
+        layer_text = [
+            p.get_text() if d == "text_layer" else "" for p, d in zip(doc, decisions, strict=True)
+        ]
 
     futures = {
         i: pool.submit(ocr_page, str(pdf_path), i, str(OCR_CACHE / report_id / f"{i + 1:04d}.json"))

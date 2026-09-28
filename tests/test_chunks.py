@@ -26,7 +26,10 @@ def test_hyphenation_is_rejoined():
 
 
 def test_page_variants_share_a_mask():
-    keys = {_mask(s) for s in ["Page 32 Genesis Report", "Genesis Report Page E-4", "Page I Genesis Report"]}
+    keys = {
+        _mask(s)
+        for s in ["Page 32 Genesis Report", "Genesis Report Page E-4", "Page I Genesis Report"]
+    }
     assert keys == {"genesis report"}
 
 

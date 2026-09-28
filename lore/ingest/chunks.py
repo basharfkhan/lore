@@ -58,7 +58,9 @@ _PAGE_REF = re.compile(
     r"\bpage\s+(?:[a-z]-?)?(?:\d+|[ivxlc]+\b)?|\b\d+\s+of\s+\d+\b", re.IGNORECASE
 )
 _TOC_LINE = re.compile(r"(\.\s*){4,}\s*\d+\s*$")
-_NUMBERED_HEADING = re.compile(r"^(\d+(\.\d+)*\.?|[A-Z]\.|[IVX]+\.|Appendix [A-Z0-9]+[.:]?)\s+[A-Z]")
+_NUMBERED_HEADING = re.compile(
+    r"^(\d+(\.\d+)*\.?|[A-Z]\.|[IVX]+\.|Appendix [A-Z0-9]+[.:]?)\s+[A-Z]"
+)
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z(\"'])")
 
 
@@ -119,7 +121,9 @@ def boilerplate_lines(pages: list[str]) -> set[str]:
     numbered_keys: set[str] = set()
     for text in pages:
         lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
-        edges = {_mask(ln) for ln in lines[:BOILERPLATE_EDGE_LINES] + lines[-BOILERPLATE_EDGE_LINES:]}
+        edges = {
+            _mask(ln) for ln in lines[:BOILERPLATE_EDGE_LINES] + lines[-BOILERPLATE_EDGE_LINES:]
+        }
         # Plain lines only count at the page edges, so a recurring heading such as FINDINGS
         # survives. Numbered lines count anywhere: text-layer order can put a footer mid-page.
         numbered = {_mask(ln) for ln in lines if _PAGE_REF.search(ln)}
@@ -130,7 +134,9 @@ def boilerplate_lines(pages: list[str]) -> set[str]:
     plain_min = max(3, BOILERPLATE_MIN_SHARE * len(pages))
     numbered_min = max(3, BOILERPLATE_MIN_SHARE_NUMBERED * len(pages))
     return {
-        key for key, n in counts.items() if n >= (numbered_min if key in numbered_keys else plain_min)
+        key
+        for key, n in counts.items()
+        if n >= (numbered_min if key in numbered_keys else plain_min)
     }
 
 

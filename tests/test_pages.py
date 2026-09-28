@@ -7,13 +7,15 @@ def _data(rows):
 
 
 def test_ocr_lines_rebuilds_lines_and_paragraphs():
-    data = _data([
-        ("", -1, 1, 0, 0),  # layout rows carry no word and conf -1
-        ("Board", 96, 1, 1, 1),
-        ("findings", 90, 1, 1, 1),
-        ("continued", 94, 1, 1, 2),
-        ("Recommendations", 88, 2, 1, 1),
-    ])
+    data = _data(
+        [
+            ("", -1, 1, 0, 0),  # layout rows carry no word and conf -1
+            ("Board", 96, 1, 1, 1),
+            ("findings", 90, 1, 1, 1),
+            ("continued", 94, 1, 1, 2),
+            ("Recommendations", 88, 2, 1, 1),
+        ]
+    )
     text, conf = _ocr_lines(data)
     assert text == "Board findings\ncontinued\n\nRecommendations"
     assert conf == 92.0

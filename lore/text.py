@@ -7,7 +7,22 @@ from html import unescape
 from html.parser import HTMLParser
 
 # Tags that end a line of prose. Everything else (u, b, span, a...) is inline.
-_BLOCK_TAGS = {"p", "br", "div", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6", "table", "ul", "ol"}
+_BLOCK_TAGS = {
+    "p",
+    "br",
+    "div",
+    "li",
+    "tr",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "table",
+    "ul",
+    "ol",
+}
 
 # LLIS uses these as "nothing here" markers in otherwise free-text fields.
 _EMPTY_MARKERS = {"", "none", "n/a", "na", "tbd", "not applicable", "not specified"}

@@ -80,7 +80,9 @@ def main() -> None:
     args = parser.parse_args()
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8")) if MANIFEST_PATH.exists() else {}
+    manifest = (
+        json.loads(MANIFEST_PATH.read_text(encoding="utf-8")) if MANIFEST_PATH.exists() else {}
+    )
     session = requests.Session()
     session.headers["User-Agent"] = USER_AGENT
 
@@ -97,7 +99,9 @@ def main() -> None:
             print(f"  FAIL  {report.id}: {exc}")
         time.sleep(1)  # be polite to NASA's servers
 
-    MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    MANIFEST_PATH.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
     if failures:
         raise SystemExit(f"{len(failures)} report(s) failed: {', '.join(failures)}")
 
