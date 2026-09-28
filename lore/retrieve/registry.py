@@ -24,10 +24,11 @@ def build_retrievers(names: list[str]) -> list:
                 from lore.retrieve.hybrid import HybridRetriever
 
                 built[name] = HybridRetriever(get("bm25"), get("dense"))
-            elif name == "hypotheses":
+            elif name in ("hypotheses", "hypotheses-bm25"):
                 from lore.retrieve.hypothesis import HypothesisRetriever
 
-                built[name] = HypothesisRetriever(get("hybrid"))
+                base = "hybrid" if name == "hypotheses" else "bm25"
+                built[name] = HypothesisRetriever(get(base))
             else:
                 raise ValueError(f"unknown retriever {name!r}")
         return built[name]

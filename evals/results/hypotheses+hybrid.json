@@ -1,0 +1,454 @@
+{
+  "retriever": "hypotheses+hybrid",
+  "cases": [
+    {
+      "case": "mco",
+      "reviewed": false,
+      "n_relevant": 12,
+      "n_direct": 2,
+      "hit@10": 1.0,
+      "recall@10": 0.3333333333333333,
+      "recall@20": 0.5,
+      "ndcg@10": 0.6032032656872245,
+      "hit@30": 1.0,
+      "recall@30": 0.6666666666666666,
+      "first_direct_rank": 2,
+      "unjudged@30": 5,
+      "top10": [
+        "llis-584",
+        "llis-569",
+        "llis-424",
+        "llis-726",
+        "llis-733",
+        "llis-533",
+        "llis-207",
+        "report-soho",
+        "llis-343",
+        "llis-420"
+      ],
+      "hypotheses": [
+        {
+          "failure_mode": "Systematic navigation error from a units/convention mismatch in a data file exchanged between the builder's ground software and the navigation team, driving the spacecraft to an insertion periapsis far below the intended value",
+          "mechanism": "The small-force/thruster-impulse files delivered to the navigation team were produced against an interface specification that was ambiguous or not enforced (e.g., English vs. metric impulse units, thruster-frame vs. body-frame sign or axis convention, per-pulse vs. accumulated totals). The navigation filter absorbed the erroneous accelerations as a small, consistent bias, so solutions looked internally converged while the predicted arrival aimpoint drifted steadily in one direction. Nothing in the pipeline dimension-checked or independently re-derived the quantities, so the error persisted through every maneuver design until arrival geometry was irrecoverable.",
+          "layer": "Integration and interfaces (cross-organization data exchange)",
+          "search_query": "units mismatch measurement convention error in data file exchanged between contractor and analysis team interface control document trajectory error"
+        },
+        {
+          "failure_mode": "Mismodeled small forces from frequent asymmetric momentum desaturations corrupt orbit determination",
+          "mechanism": "A single offset solar array produces a large steady solar-pressure torque, forcing frequent thruster-based desaturations whose net delta-V does not cancel. Thruster scale factors, plume impingement on the array, duty-cycle-dependent minimum impulse bit, and valve thermal effects were characterized only by ground test or analysis, never calibrated in flight. Residual unmodeled acceleration of a fraction of a mm/s accumulated over months of cruise into a large arrival position error, and because it was quasi-constant it was not distinguishable in the Doppler residuals from an estimated stochastic parameter.",
+          "layer": "Design and requirements (flight dynamics modeling / attitude-nav coupling)",
+          "search_query": "unmodeled small forces attitude control thruster desaturation delta-V bias degraded orbit determination solar pressure asymmetric appendage"
+        },
+        {
+          "failure_mode": "No end-to-end validation or operational readiness test of the ground data pipeline that feeds navigation",
+          "mechanism": "Ground software producing the thruster/momentum-dump products was treated as non-critical support software and exempted from the flight-software-class verification, independent review, and regression testing. Testing validated the file format but never compared the delivered content against an independent physical truth model or a flight-like end-to-end rehearsal with the navigation team in the loop. Latent errors in a rarely-exercised product therefore appeared only in flight, when there was no truth reference to catch them.",
+          "layer": "Verification and test gaps",
+          "search_query": "ground support software not verified to flight standards end-to-end data flow test operational readiness test critical analysis product"
+        },
+        {
+          "failure_mode": "Persistent anomalous signatures in tracking/orbit-determination residuals were observed but never formally reported, tracked or escalated to a disposition",
+          "mechanism": "Analysts noticed disagreements between solution methods, unexplained residual trends, or repeated need to re-aim, but raised them by informal email/hallway conversation rather than through a closed-loop anomaly reporting system with mandatory disposition before a critical event. With no requirement to resolve open anomalies before an irreversible maneuver, the team normalized the discrepancy as 'model noise' and proceeded to insertion.",
+          "layer": "Operations (anomaly management and flight readiness discipline)",
+          "search_query": "anomaly observed but not formally documented informal reporting unresolved discrepancy before critical event closed-loop problem reporting"
+        },
+        {
+          "failure_mode": "Lean staffing with a navigation team shared across two concurrent arrivals produces attention split, fatigue and loss of independent cross-checks",
+          "mechanism": "The same analysts simultaneously supported approach operations for this orbiter and preparation for a second arrival three months later. Peak workload overlapped, shifts lengthened, key expertise was single-string with no trained backup, and routine cross-checks (independent orbit solutions, peer review of maneuver files, verification of delivered data products) were the first tasks dropped under schedule pressure. Errors that a second analyst would have caught went undetected.",
+          "layer": "Organizational and programmatic",
+          "search_query": "staffing shortfall shared analysis team multiple concurrent missions workload fatigue loss of independent checks operations errors"
+        },
+        {
+          "failure_mode": "Ambiguous ownership and missing navigation accuracy requirements between the spacecraft contractor and the external navigation institution",
+          "mechanism": "Responsibility for delivery accuracy, small-force modeling, and verification of exchanged data was split across organizations without a formal error budget, traceable accuracy requirement, or a single accountable systems engineer. Each side assumed the other validated the interface products. No formal mission assurance or independent technical authority audited the navigation process, so requirements-level gaps (e.g., no requirement for independent orbit determination, no defined arrival delivery 3-sigma) were never identified.",
+          "layer": "Design and requirements / programmatic organization",
+          "search_query": "unclear roles and responsibilities between organizations missing requirement flowdown error budget no single accountable systems engineer interface ownership"
+        },
+        {
+          "failure_mode": "Final approach trajectory correction opportunity and contingency maneuver were deleted or waived, removing the last chance to correct an arrival aimpoint error",
+          "mechanism": "To save cost and staff effort, the late approach TCM was designated 'contingency only' with no pre-built command products, no rehearsed decision timeline and no quantitative go/no-go criteria on delivery accuracy. When solutions began trending, there was insufficient time, verified product, or decision authority to execute a correction, and the team defaulted to 'no maneuver' because the abnormal solution could not be proven correct within the window.",
+          "layer": "Operations planning and mission design margin",
+          "search_query": "contingency maneuver capability deleted to save cost late correction opportunity waived decision timeline go no-go criteria critical event"
+        },
+        {
+          "failure_mode": "Orbit insertion burn fails or terminates early due to onboard fault protection, attitude control saturation, or loss of ground visibility during occultation",
+          "mechanism": "The insertion burn is the first long main-engine firing and occurs partly behind the planet. If fault protection thresholds (attitude error, accelerometer, pressure, thruster duty cycle) were tuned for cruise rather than burn conditions, a transient causes a safe-mode entry that terminates thrust; with no autonomous burn-resume logic and no real-time link, the vehicle is left on a hyperbolic or wrong-period orbit. Center-of-mass offset from the asymmetric array increases control-authority demand and propellant use during the burn, aggravating the risk.",
+          "layer": "Software and fault logic",
+          "search_query": "fault protection safe mode aborts critical propulsive burn no autonomous resume occultation loss of signal attitude control saturation"
+        },
+        {
+          "failure_mode": "Aerobraking corridor violation: periapsis too deep for atmospheric density variability, causing excess heating or dynamic pressure on the asymmetric array and loss of control",
+          "mechanism": "Atmospheric density at Mars varies by large factors with dust activity, season and longitude, and only coarse density models plus limited in-flight accelerometer feedback are available. With thin margins between effective drag and structural/thermal limits on a one-sided solar array, a single density spike or a slow ground reaction time (lean staff, one shift per day, slow periapsis-raise command turnaround) exceeds array temperature or torque limits, producing structural damage, attitude loss or propellant exhaustion.",
+          "layer": "Design and requirements plus operations margin",
+          "search_query": "aerobraking corridor control atmospheric density variability heating limit solar array thermal structural margin slow ground reaction periapsis"
+        },
+        {
+          "failure_mode": "Propulsion system fails at first major use after long cruise (pressurization, valve, or propellant thermal problem)",
+          "mechanism": "The main engine and pressurization system sit dormant for many months; latent issues such as regulator internal leakage causing tank overpressure, check-valve vapor migration and propellant mixing, frozen or heater-failed propellant lines, or catalyst-bed degradation are not detectable without an in-flight checkout burn. Cost-driven omission of a dedicated commissioning burn and reduced acceptance testing of the propulsion module meant the first demonstration of full performance was the irreversible insertion burn itself.",
+          "layer": "Design, ground test and acceptance",
+          "search_query": "propulsion system dormant long cruise first firing failure pressure regulator leakage check valve propellant migration no in-flight checkout burn"
+        }
+      ]
+    },
+    {
+      "case": "genesis",
+      "reviewed": false,
+      "n_relevant": 27,
+      "n_direct": 5,
+      "hit@10": 0.0,
+      "recall@10": 0.18518518518518517,
+      "recall@20": 0.18518518518518517,
+      "ndcg@10": 0.2456822370850773,
+      "hit@30": 1.0,
+      "recall@30": 0.2962962962962963,
+      "first_direct_rank": 25,
+      "unjudged@30": 13,
+      "top10": [
+        "report-mpl_ds2",
+        "report-lewis",
+        "llis-1308",
+        "llis-633",
+        "llis-799",
+        "llis-684",
+        "report-wire",
+        "llis-1201",
+        "report-mco_phase2",
+        "llis-432"
+      ],
+      "hypotheses": [
+        {
+          "failure_mode": "Entry-sensing switches installed with their sensitive axis reversed, so the deceleration pulse never closes the contacts and no parachute timer starts",
+          "mechanism": "An orientation or polarity error in the inherited drawing package (or in the unit installation) propagates uncaught because the acceptance path is drawing inspection and review rather than a stimulus test; the sensor sees deceleration in the wrong sense, its output stays open through peak entry loads, and the pyrotechnic sequence is never armed.",
+          "layer": "Design documentation and drawing control",
+          "search_query": "inertial switch installed reversed orientation polarity drawing error undetected deceleration sensor sense axis"
+        },
+        {
+          "failure_mode": "Unqualified heritage reuse: the inherited avionics deceleration thresholds and timer values do not match the new entry profile",
+          "mechanism": "Heritage is credited at box level, but entry velocity, ballistic coefficient, flight path angle and peak g differ from the source mission; the trip threshold, dwell time or timer duration is outside the actual deceleration history, so the trigger either never occurs or occurs at the wrong dynamic pressure for chute deployment.",
+          "layer": "Requirements and design (heritage qualification)",
+          "search_query": "heritage hardware reuse without requirements re-derivation new mission environment exceeds qualification envelope"
+        },
+        {
+          "failure_mode": "No end-to-end functional test of the sense-to-deploy chain in a flight-like dynamic environment",
+          "mechanism": "Verification relies on reviews, inspections and piece-part tests; the integrated chain of deceleration sensor, arming logic, timer, firing circuit and pyrotechnic initiator is never exercised on a centrifuge, sled or drop test with flight units, so an interface or polarity defect survives to flight with zero chance of detection.",
+          "layer": "Verification and test program",
+          "search_query": "lack of end-to-end integrated functional test deployment chain inspection substituted for test flight-like environment"
+        },
+        {
+          "failure_mode": "Single-string, no-backup deployment trigger with no ground command path or independent backup initiation",
+          "mechanism": "A single class of sensor and a single timer branch control both drogue and parafoil; there is no dissimilar backup (barometric, radar altimeter, ground-commanded, or time-from-separation) and no crew or operator intervention possible during the minutes-long entry, so any one fault results in total loss of the returned samples.",
+          "layer": "Fault tolerance architecture",
+          "search_query": "single point failure deployment initiation no redundant dissimilar trigger irreversible time critical event"
+        },
+        {
+          "failure_mode": "Dormancy-induced failure of the pyrotechnic firing chain or its power source after three years in space",
+          "mechanism": "Initiators, bridgewires, energetic material, firing capacitors or batteries degrade through long cold soak, thermal cycling, vacuum outgassing and radiation; with no in-flight health or continuity checks or periodic checkout of the entry avionics, a latent open, low battery voltage or degraded initiator only appears at the one moment it matters.",
+          "layer": "Long-life reliability and in-flight health monitoring",
+          "search_query": "long duration dormant storage degradation pyrotechnic initiator battery no in-flight continuity checkout latent failure"
+        },
+        {
+          "failure_mode": "Parachute system deployment failure: drogue/parafoil interference, line entanglement, bag strip or inflation at wrong dynamic pressure",
+          "mechanism": "The two-stage decelerator is qualified analytically or by scaled tests only; real wake, capsule spin rate, oscillation or off-nominal deploy Mach/q causes drogue trailing instability, riser twisting, parafoil line-over or failure to reef, leaving the capsule descending too fast for capture or impacting intact-but-hard.",
+          "layer": "Aerodynamic decelerator design and test",
+          "search_query": "parachute staging failure line entanglement bag strip deployment wrong dynamic pressure decelerator drop test gap"
+        },
+        {
+          "failure_mode": "Arming/sequencing logic fault or EMI-induced spurious or inhibited trigger in the avionics",
+          "mechanism": "The state machine that arms the pyro bus depends on a discrete or stored state set earlier (separation, wake-up, cruise-stage release); a reset, watchdog event, single-event upset or electrical transient during entry clears or corrupts that state, or conversely an EMI transient fires the pyros prematurely at high dynamic pressure and shreds the canopy.",
+          "layer": "Flight software and fault management logic",
+          "search_query": "arming sequence state lost reset single event upset spurious pyrotechnic firing electromagnetic transient fault logic"
+        },
+        {
+          "failure_mode": "Ground handling and integration damage or misconfiguration of the entry sensing and pyro hardware",
+          "mechanism": "Handling shock, connector mismate, wrong-part installation, safe/arm plug left in the wrong state, or a broken/loose sensor lead introduced during ATLO or late access is not caught because post-installation verification is limited to visual inspection and continuity rather than functional stimulation.",
+          "layer": "Integration, ground handling and ATLO",
+          "search_query": "ground handling damage connector mismate safe arm plug misconfiguration inadequate post-installation functional verification"
+        },
+        {
+          "failure_mode": "Recovery operations failure: loss of tracking, timeline mismatch, or unsuccessful mid-air helicopter capture",
+          "mechanism": "Capture depends on acquiring a beacon, predicting a narrow dispersion footprint, weather within limits, and rehearsed crew performance in a single pass; beacon failure, larger-than-modeled landing dispersion, winds, or a missed hook pass leads to uncontrolled ground impact and sample contamination or loss, with no contingency for a ground landing.",
+          "layer": "Operations and recovery",
+          "search_query": "recovery operations contingency landing dispersion tracking beacon loss rehearsal single opportunity capture weather constraints"
+        },
+        {
+          "failure_mode": "Cost-capped programmatic pressure suppresses independent review and test of the most critical, least recoverable function",
+          "mechanism": "A fixed-price, small-team structure with high staff turnover accepts heritage claims to descope qualification testing; risk assessments focus on cruise and science phases, no independent technical authority challenges the entry-detection design, and the mission's only irreversible critical event receives the least verification rigor.",
+          "layer": "Organisational and programmatic",
+          "search_query": "cost cap schedule pressure descoped qualification testing heritage claim independent review critical event risk acceptance"
+        }
+      ]
+    },
+    {
+      "case": "noaa_n_prime",
+      "reviewed": false,
+      "n_relevant": 27,
+      "n_direct": 7,
+      "hit@10": 1.0,
+      "recall@10": 0.1111111111111111,
+      "recall@20": 0.2222222222222222,
+      "ndcg@10": 0.4341050220190921,
+      "hit@30": 1.0,
+      "recall@30": 0.2962962962962963,
+      "first_direct_rank": 1,
+      "unjudged@30": 14,
+      "top10": [
+        "llis-273",
+        "llis-1272",
+        "llis-914",
+        "llis-1204",
+        "report-columbia_caib_v1",
+        "llis-576",
+        "llis-565",
+        "llis-1222",
+        "llis-819",
+        "llis-1016"
+      ],
+      "hypotheses": [
+        {
+          "failure_mode": "Load-bearing fasteners missing from the shared adapter plate, so the spacecraft was never actually attached to the turnover cart and fell during rotation",
+          "mechanism": "The cart/adapter is shared between two programs; another team removed attachment bolts (or borrowed them for their own fixture) without a configuration-change record, tag, or logbook entry. The receiving team assumed the fixture was in the as-left certified state, mated the spacecraft visually, and released the crane. On initiating rotation the only restraint was friction and the interface separated.",
+          "layer": "Integration and interfaces / ground support equipment configuration control",
+          "search_query": "shared ground support equipment handling fixture missing attachment bolts configuration control between programs"
+        },
+        {
+          "failure_mode": "Written handling procedure omitted an explicit pre-rotation verification of the spacecraft-to-fixture bolted interface",
+          "mechanism": "The procedure was built around crane operations and rotation sequence and assumed fixture integrity as a precondition rather than a verified step. With no step requiring count, insertion check, torque check and independent sign-off of every attachment fastener before load transfer, a latent hardware discrepancy had no barrier to catch it.",
+          "layer": "Procedure design and requirements",
+          "search_query": "handling procedure missing verification step fastener torque confirmation before load transfer lifting operation"
+        },
+        {
+          "failure_mode": "Crew executed a familiar move from memory rather than reading and signing the procedure step by step",
+          "mechanism": "After many repetitions of the same operation, the team treated the document as a reference instead of a controlled, in-hand, step-by-step execution record. Steps were performed out of order or checked off in batches afterwards, so a skipped verification or an unexpected hardware condition went unnoticed; normalization of repeated success eroded the discipline that made the procedure effective.",
+          "layer": "Operations and human factors",
+          "search_query": "routine repetitive operation complacency procedure not followed step by step sign off skipped experienced crew"
+        },
+        {
+          "failure_mode": "Government and contractor quality assurance oversight was present but not positioned as a mandatory hold point at the critical interface",
+          "mechanism": "QA coverage was sampled or based on general surveillance of the high-value operation rather than a mandatory inspection point on the load path before load transfer. Inspectors observed the crane and rigging, which looked nominal, while the unverifiable condition (fastener engagement inside the interface) was accepted on the assumption that the previous team had left the fixture certified.",
+          "layer": "Quality assurance and organisational oversight",
+          "search_query": "quality assurance mandatory inspection point hold point critical lift oversight surveillance gap hardware damage"
+        },
+        {
+          "failure_mode": "Turnover cart mechanism overloaded or unstable for this spacecraft's mass and centre-of-gravity offset",
+          "mechanism": "The cart was sized and analysed for the other program's lighter or differently balanced article. With an offset CG the rotational moment exceeded the trunnion, gearbox, brake or counterbalance capability; the load ran away partway through rotation or the cart tipped on its casters as the CG passed over the wheel base.",
+          "layer": "Design and analysis of ground support equipment",
+          "search_query": "ground handling fixture overload center of gravity offset rotation tipping rated capacity analysis"
+        },
+        {
+          "failure_mode": "Ground support equipment certification, proof load and periodic inspection had lapsed or did not cover the as-modified configuration",
+          "mechanism": "The cart and adapter plate were modified or re-drilled to serve the second program and were not re-analysed, re-proof-loaded or re-certified. Periodic inspection intervals were missed while the equipment sat between campaigns, so wear, corrosion, brake degradation or an uncertified modification was carried into a critical lift.",
+          "layer": "Verification and test gap",
+          "search_query": "lifting device handling equipment periodic recertification proof load lapsed uncertified modification"
+        },
+        {
+          "failure_mode": "Wrong fastener type, length or grade installed at a look-alike adapter interface",
+          "mechanism": "Both programs use the same bolt pattern but different bolt lengths, grades or insert depths. Commonality invited use of the other program's hardware, giving minimal thread engagement or insufficient strength. Installation looked correct externally, and the deficiency only manifested when the interface took full tension and moment during rotation.",
+          "layer": "Integration and interfaces / parts control",
+          "search_query": "look-alike fastener wrong grade insufficient thread engagement structural interface handling failure"
+        },
+        {
+          "failure_mode": "Rotation imparted loads beyond spacecraft design limits, causing hidden structural or component damage",
+          "mechanism": "Jerky or rapid rotation, brake grabbing, or unsupported appendages and harnesses produced dynamic and bending loads above the handling load cases in the structural specification. With no instrumentation or load monitoring and no formal post-move inspection or functional retest, the damage was carried forward undetected into environmental test or launch.",
+          "layer": "Design and requirements / post-operation verification",
+          "search_query": "handling induced dynamic loads exceed design limit latent structural damage no post move inspection functional test"
+        },
+        {
+          "failure_mode": "Snag or collision during rotation with umbilicals, platforms, or facility structure",
+          "mechanism": "Ground cables, purge lines, access platforms and adjacent equipment were not fully cleared or surveyed for the swept envelope of the rotating spacecraft. A tethered line went taut or a protrusion contacted structure, applying an unplanned side load, tearing a connector, or arresting the rotation asymmetrically.",
+          "layer": "Operations and facility integration",
+          "search_query": "clearance survey swept envelope collision umbilical snag during spacecraft move facility obstruction"
+        },
+        {
+          "failure_mode": "Schedule and staffing pressure compressed crew certification, briefing and independent checks",
+          "mechanism": "Pressure to make the next test slot drove the move onto an off-shift with a partly unfamiliar crew, an abbreviated pre-task briefing, and verbal approval of a deviation instead of a documented redline. Shift handover lost the knowledge that the shared fixture had been disturbed, and no one owned verification of its state.",
+          "layer": "Programmatic and organisational pressure",
+          "search_query": "schedule pressure shift handover communication breakdown verbal deviation critical ground operation mishap"
+        }
+      ]
+    },
+    {
+      "case": "columbia",
+      "reviewed": false,
+      "n_relevant": 10,
+      "n_direct": 2,
+      "hit@10": 1.0,
+      "recall@10": 0.3,
+      "recall@20": 0.3,
+      "ndcg@10": 0.5147427243139775,
+      "hit@30": 1.0,
+      "recall@30": 0.3,
+      "first_direct_rank": 1,
+      "unjudged@30": 15,
+      "top10": [
+        "report-challenger_rogers_v1",
+        "llis-733",
+        "llis-679",
+        "llis-723",
+        "llis-495",
+        "report-lewis",
+        "llis-832",
+        "report-mpl_ds2",
+        "llis-682",
+        "llis-886"
+      ],
+      "hypotheses": [
+        {
+          "failure_mode": "Recurring debris shedding accepted as an 'in-family' maintenance issue rather than a violation of a hard design requirement, so the hazard was never closed",
+          "mechanism": "Each flight that returned with impact damage and no loss of vehicle was used as evidence that the anomaly was tolerable. The requirement prohibiting shedding of debris from the launch vehicle was effectively replaced by an empirical acceptance band built from prior flights. Because the observed damage population never included a catastrophic case, the accepted band drifted upward with every flight, and the hazard report was repeatedly closed with 'accepted risk' language instead of corrective action. The controlling failure is organisational: the definition of 'normal' was set by outcomes rather than by margin against the design limit.",
+          "layer": "Design and requirements / safety process",
+          "search_query": "repeated in-family anomaly accepted without root cause closure requirement violation normalized as acceptable risk"
+        },
+        {
+          "failure_mode": "Energetic insulation debris from a cryogenic tank penetrates a brittle composite leading-edge panel, creating a through-hole that admits hot gas during entry",
+          "mechanism": "Low-density foam at high relative velocity carries far more kinetic energy than intuition suggests because energy scales with the square of closing speed. The composite leading-edge panel is thin, brittle and has essentially no damage tolerance to a localized, high-momentum strike, unlike the tile field which is soft and self-limiting. A hole or cracked panel is not detectable from the crew compartment and may leave no telemetry signature until entry heating, when plasma enters the wing cavity and attacks unprotected structure from the inside. The design assumed the debris environment was benign and never established an impact energy allowable for the leading edge.",
+          "layer": "Design and requirements",
+          "search_query": "brittle composite leading edge impact damage tolerance high velocity low density debris kinetic energy allowable"
+        },
+        {
+          "failure_mode": "Damage assessment performed with an empirical analysis tool extrapolated far outside its validated calibration range, yielding a falsely reassuring 'no burn-through' answer",
+          "mechanism": "The impact assessment code was calibrated against small projectiles at test energies orders of magnitude below the event being analysed. When operators entered a projectile volume and mass far outside the calibration database, the tool still returned a numeric penetration depth with no warning of extrapolation. Analysts treated the output as a prediction rather than as an unqualified extrapolation, and conservatism claimed for the model was never demonstrated at the relevant scale. Verification of the tool itself (validation envelope, documented limits of applicability, required engineering judgement flags) was never completed to the standard applied to flight hardware.",
+          "layer": "Software / analysis tool verification",
+          "search_query": "engineering analysis model used outside validated calibration range extrapolation software validation envelope limits of applicability"
+        },
+        {
+          "failure_mode": "Requests for external imaging of the suspected damage site were not pursued, so the team flew with an unresolved unknown that could have been resolved",
+          "mechanism": "Working-level engineers asked for independent imagery to bound the damage; the request crossed organisational boundaries (program, agency, external asset owners) and was cancelled because no formal 'mandatory need' had been declared through the proper channel. The burden of proof was inverted: the team was required to prove the damage was dangerous before data would be collected, rather than prove it was safe. Informal channels were shut down as 'off-protocol', and the requesters were not told the decision rationale, so no appeal occurred.",
+          "layer": "Operations / decision-making",
+          "search_query": "request for additional inspection data denied burden of proof inverted dissenting engineering concern not escalated to decision authority"
+        },
+        {
+          "failure_mode": "No on-orbit inspection or damage-repair capability existed, so the problem was framed as unactionable and therefore not worth characterising",
+          "mechanism": "Because there was no certified method to survey the leading edges on orbit and no repair kit or contingency safe-haven plan, managers reasoned that even confirmed damage would change nothing, which removed the incentive to gather data. The absence of a contingency capability thus propagated backward into a decision not to look. Requirements never flowed down an 'inspect and repair' or 'safe return / rescue' capability for a known recurring damage mechanism, and no contingency consumables or rendezvous option was baselined for the flight profile.",
+          "layer": "Design and requirements / contingency operations",
+          "search_query": "no in-flight inspection or repair capability for known damage mechanism contingency safe haven rescue option not baselined"
+        },
+        {
+          "failure_mode": "Manual spray application and rework of insulation over structural fittings produced voids that liberated a large divot through cryopumping or cryoingestion",
+          "mechanism": "Insulation over complex geometry \u2014 fittings, brackets, cable trays \u2014 cannot be machine-sprayed and is applied and repaired by hand. Hand layup entrains voids and creates weak interlaminar planes and poor substrate adhesion. On the pad, air liquefies or ice forms in subsurface voids against the cryogenic substrate; during ascent, depressurisation and aerodynamic heating pressurise the void and blow out a large coherent chunk rather than benign surface popcorning. Process control relied on technician skill, and non-destructive inspection of the as-applied insulation for subsurface voids was not performed on flight articles.",
+          "layer": "Manufacturing process control / ground handling",
+          "search_query": "hand applied foam insulation voids over cryogenic substrate cryopumping divot liberation manual spray process control nondestructive inspection"
+        },
+        {
+          "failure_mode": "Certification and qualification testing of the thermal protection system used unrepresentative projectiles, so the true impact threshold was never known",
+          "mechanism": "Qualification testing established impact resistance using small ice particles or small foam samples at limited energies, which bounded the tile field but not the leading-edge panels, and did not cover the largest credible shed mass from a known-weak insulation location. No full-scale impact test was ever conducted on a flight-representative leading-edge panel. Consequently the 'test-like-you-fly' chain broke: the flight environment (large shed mass, high closing velocity, oblique angle) had no test anchor, and all subsequent in-flight judgements rested on unanchored analysis.",
+          "layer": "Verification and test",
+          "search_query": "qualification test projectile not representative of actual flight debris environment full scale impact test never performed test like you fly gap"
+        },
+        {
+          "failure_mode": "Age-related degradation of the composite leading-edge panels reduced impact resistance below the as-certified level and was not tracked",
+          "mechanism": "Reusable coated carbon composite panels suffer coating craze cracking, subsurface oxidation and mass loss with each thermal cycle. Inspection was largely visual and surface-based and could not detect internal oxidation or thinning. Certified impact capability was based on new-article properties, but the fleet leaf had accumulated many missions; residual strength was a declining, unmeasured quantity. A strike that a new panel might have survived could breach an aged one, and the analysis tool's allowables reflected pristine material.",
+          "layer": "Ageing hardware / inspection and maintenance",
+          "search_query": "reusable high temperature composite ageing oxidation loss of strength visual inspection cannot detect subsurface degradation certified allowables based on new material"
+        },
+        {
+          "failure_mode": "Schedule pressure toward an externally fixed assembly milestone compressed anomaly resolution and weakened independent safety oversight",
+          "mechanism": "A hard downstream commitment turned flight rate into the dominant program metric. Anomalies from prior flights were closed with rationale-for-flight rather than corrective action to protect the manifest; safety and mission assurance staffing and independent technical authority were reduced or embedded under the program being reviewed, eliminating an independent path to challenge. Review boards became status briefings where the burden fell on the objector. The result is a system in which the technical warning existed but no organisational mechanism could act on it in time.",
+          "layer": "Organisational and programmatic",
+          "search_query": "schedule pressure launch rate commitment eroded anomaly disposition independent safety oversight lacked authority flight rationale instead of corrective action"
+        },
+        {
+          "failure_mode": "Ambiguous or off-nominal flight data during ascent and entry were dispositioned as instrumentation error, delaying recognition of a real structural breach",
+          "mechanism": "The debris strike occurred outside the field of view of routine camera coverage, and several tracking assets were degraded or mis-focused, so the event was reconstructed late and with poor resolution. During entry, early indications \u2014 unexplained sensor dropouts, off-trend temperatures in the wing cavity, increasing control-surface trim to counter asymmetric drag \u2014 appeared one at a time and were individually attributed to transducer failure. No fault-detection logic or console procedure existed to correlate a cluster of dissimilar off-nominal indications into a single structural-breach hypothesis, and no annunciation reached the crew in time for any action.",
+          "layer": "Fault detection logic, instrumentation and flight operations",
+          "search_query": "off nominal sensor indications dismissed as instrumentation failure no correlation logic for multiple dissimilar anomalies late recognition of structural breach imagery coverage gap"
+        }
+      ]
+    },
+    {
+      "case": "mpl",
+      "reviewed": false,
+      "n_relevant": 17,
+      "n_direct": 4,
+      "hit@10": 0.0,
+      "recall@10": 0.17647058823529413,
+      "recall@20": 0.17647058823529413,
+      "ndcg@10": 0.22043860785019317,
+      "hit@30": 0.0,
+      "recall@30": 0.29411764705882354,
+      "first_direct_rank": 39,
+      "unjudged@30": 11,
+      "top10": [
+        "report-mco_phase1",
+        "report-wire",
+        "llis-723",
+        "llis-431",
+        "llis-803",
+        "llis-559",
+        "report-lewis",
+        "llis-346",
+        "llis-687",
+        "llis-132"
+      ],
+      "hypotheses": [
+        {
+          "failure_mode": "Premature descent engine shutdown caused by a transient touchdown indication that flight software latched as a valid landing event",
+          "mechanism": "At leg deployment the legs snap into the locked position, producing a mechanical shock and momentary closure of the touchdown switch hundreds of metres above the surface. The touchdown monitor samples the discrete, sets a persistent 'touchdown' state variable, and no debounce, persistence count, or consecutive-sample confirmation clears it. When the terminal-descent phase later enables the shutdown branch, the stale latched bit is read as true and the engines are commanded off while the vehicle still has vertical velocity, producing free-fall impact.",
+          "layer": "Software and fault logic",
+          "search_query": "spurious discrete sensor transient at mechanism deployment latched by flight software causing premature engine shutdown no debounce persistence filter"
+        },
+        {
+          "failure_mode": "Missing or incorrectly derived requirement to inhibit and clear the touchdown detection logic until the vehicle is within the valid landing altitude band",
+          "mechanism": "The shutdown requirement was written at the sensor level ('shut off engines when touchdown is sensed') without a derived requirement stating that indications outside a defined altitude/velocity envelope must be ignored AND that any state set during the inhibit period must be reset on exit. With a small team and no formal requirement-to-code traceability or hazard-driven requirement review, the omission was never caught; software correctly implemented a wrong specification.",
+          "layer": "Design and requirements",
+          "search_query": "missing derived requirement to inhibit sensor logic outside valid flight phase envelope requirement traceability gap hazard analysis omission terminal landing"
+        },
+        {
+          "failure_mode": "Verification gap: touchdown sensing and engine shutdown were never exercised end-to-end with flight hardware, real deployment dynamics and flight software in the loop",
+          "mechanism": "Sensors were qualified at component level (static actuation), software was checked in a simulation using idealised sensor models, and the deployment test used dummy avionics. Because system-level integrated testing slipped to the end of the schedule and was descoped when it collided with shipping dates, no test ever combined leg deployment shock, the actual sensor electronics, and the actual flight software state machine. The interaction-level defect was therefore invisible to every test that was run.",
+          "layer": "Verification and test",
+          "search_query": "integrated system level hardware in the loop test descoped late in schedule sensor software interaction defect escaped component level verification"
+        },
+        {
+          "failure_mode": "Interface/harness error on the three identical sensor channels (cross-strapped, reversed polarity, or swapped legs) latent because no functional end-to-end stimulus test was performed after final integration",
+          "mechanism": "Three electrically identical touchdown channels route through connectors mated late in flow. A swapped or mis-pinned connector, reversed switch sense (normally-open vs normally-closed), or pull-up value error makes one or more channels read 'touchdown true' continuously or never. Continuity checks verify wires, not sense polarity, so only a functional actuation test with flight software reading the data would have detected it; that test was not in the post-integration plan.",
+          "layer": "Integration and interfaces",
+          "search_query": "connector mis-pin reversed sensor polarity cross-strapped identical channels latent wiring error continuity test insufficient functional end to end stimulus"
+        },
+        {
+          "failure_mode": "Single-string, unvoted touchdown sensing accepted as a single-point failure for an irreversible pyrotechnic-like action",
+          "mechanism": "One sensor per leg with an OR-type or unfiltered acceptance logic means any single stuck-closed switch, cracked solder joint, EMI pickup, or shorted harness can command the irreversible engine-off action. No cross-comparison against radar altitude, inertial velocity, or thrust/acceleration signature was required as a concurrence condition. FMEA/fault-tree work was abbreviated under the cost cap, so the criticality-1 single-point failure was never formally dispositioned.",
+          "layer": "Design and requirements",
+          "search_query": "single point failure unvoted sensor commanding irreversible action FMEA fault tree abbreviated criticality one no independent concurrence cross check"
+        },
+        {
+          "failure_mode": "Altitude/velocity sensing error during terminal descent (radar false lock on separated hardware, terrain, or dust) leading to wrong throttle or shutdown timing",
+          "mechanism": "The descent radar or altimeter acquires a return from the jettisoned heat shield, backshell, parachute, a sloped or highly radar-reflective terrain feature, or a dust cloud raised by the engines. The GNC accepts the erroneous range/velocity, commands an incorrect throttle profile, and either shuts engines off high or fails to arrest velocity before ground contact. No independent altitude source or reasonableness/rate-limit check rejects the bad solution.",
+          "layer": "Design and fault logic",
+          "search_query": "landing radar altimeter false lock on jettisoned hardware terrain or dust erroneous altitude velocity accepted by guidance no reasonableness check"
+        },
+        {
+          "failure_mode": "No EDL telemetry created a diagnostic dead zone that both removed any chance of in-flight intervention and made post-failure root-cause identification impossible",
+          "mechanism": "Accepting zero data return during the only irreversible, highest-risk 10 minutes of the mission was traded away for cost and DSN/antenna-pointing simplicity. There is no carrier-only tone, no stored-and-forward event log on a surviving recorder, and no relay path. Consequently no precursor trend could be observed, no safing command sent, and after loss the team cannot distinguish among a dozen candidate causes, so the same latent defect remains in follow-on builds.",
+          "layer": "Operations and observability",
+          "search_query": "no telemetry during critical irreversible event single event mission phase loss of diagnostic data semaphore tone recorder root cause unrecoverable"
+        },
+        {
+          "failure_mode": "Cost-cap and small-team pressure eroded independent review, systems engineering depth and margin, allowing a latent design defect to fly",
+          "mechanism": "A fixed-price cap with a launch window that cannot slip forces the team to consume schedule reserve, defer testing, waive review board actions, and staff one engineer per subsystem with no independent cross-check. Peer reviewers lack time to read the software design; risk lists are closed by assertion rather than test. The organisation optimises for on-time shipment, and the accumulated small waivers combine into an unmitigated criticality-1 hazard.",
+          "layer": "Organisational and programmatic",
+          "search_query": "cost cap schedule pressure small team reduced independent review waived board actions descoped testing latent defect faster better cheaper risk acceptance"
+        },
+        {
+          "failure_mode": "Reused heritage software or sensor design flown in a different dynamic environment without re-verification of its assumptions",
+          "mechanism": "Touchdown-detection code, switch hardware, or a landing-logic module inherited from a prior program is labelled 'flight-proven' and exempted from full re-test. The heritage design assumed different deployment shock levels, sampling rates, altitude enable logic, or leg kinematics. Because the qualification basis was not re-derived for the new environment, an assumption that was valid on the source vehicle becomes a defect on this one.",
+          "layer": "Design reuse and verification",
+          "search_query": "heritage flight proven software or component reused in new environment assumptions not re-verified qualification basis not re-derived waived retest"
+        },
+        {
+          "failure_mode": "Landing mechanism/structural failure at contact: leg deployment jam, sensor damage or misalignment from ground handling, or tip-over on slope, rock or crushable-stroke exceedance",
+          "mechanism": "Legs stowed for long periods, handled repeatedly during late integration, and exposed to cold-soak can fail to deploy or lock; a sensor bracket bent during handling or a fixture load can hold the switch off-nominal. Alternatively, terminal horizontal velocity, a slope or boulder beyond the certified envelope, or crushable-honeycomb stroke exhausted by a higher-than-predicted touchdown velocity causes a leg to collapse or the lander to tip over, severing power or comm before the surface mission begins.",
+          "layer": "Ground handling, mechanisms and landing environment",
+          "search_query": "deployable landing leg failure to deploy cold soak stowed mechanism handling damage misalignment slope rock touchdown velocity exceeds crushable stroke tip over"
+        }
+      ]
+    }
+  ],
+  "mean": {
+    "hit@10": 0.6,
+    "recall@10": 0.22122004357298475,
+    "recall@20": 0.27677559912854033,
+    "ndcg@10": 0.4036343713911129,
+    "hit@30": 0.8,
+    "recall@30": 0.37067538126361654
+  },
+  "run_at": "2026-09-28T04:57:13+00:00"
+}

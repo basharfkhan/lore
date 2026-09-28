@@ -45,7 +45,8 @@ def client() -> anthropic.Anthropic:
     global _client
     if _client is None:
         _load_dotenv()
-        _client = anthropic.Anthropic()
+        # Generous retries: the SDK backs off exponentially on 429, 529 overloaded and 5xx.
+        _client = anthropic.Anthropic(max_retries=8)
     return _client
 
 

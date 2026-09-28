@@ -1,0 +1,45 @@
+{
+  "model": "claude-opus-5",
+  "cases": [
+    {
+      "case": "mco",
+      "actual": "Mars Climate Orbiter lost during Mars orbit insertion",
+      "recognised": true,
+      "mission_guess": "Mars Climate Orbiter (NASA/JPL + Lockheed Martin, launched Dec 1998, lost at Mars Orbit Insertion 23 September 1999)",
+      "confidence": "high",
+      "what_happened": "The giveaways are unmistakable: Faster-Better-Cheaper Mars orbiter, aerobraking plan, Lockheed Martin Astronautics building/operating while JPL navigated, the single asymmetric solar panel causing frequent angular momentum desaturations, the AMD data files handed from contractor ground software to the nav team, and a thin nav staff simultaneously supporting Mars Polar Lander (arriving December 1999). The AMD file reported thruster impulse in pound-force-seconds while the JPL navigation software ingested the numbers as newton-seconds, a factor of ~4.45. The small-force modelling error accumulated over cruise, systematically biasing the trajectory solution; a planned final TCM-5 was not executed and independent warnings (nav engineers' concerns, discrepancies between Doppler-based and other solutions) were not escalated through the lean, under-resourced operations process. At Mars Orbit Insertion the spacecraft's actual periapsis was roughly 57 km instead of the intended ~226 km, well below the survivable limit, and it was destroyed by atmospheric stresses or skipped out and was lost; no signal was reacquired after occultation. The follow-on Mars Polar Lander was also lost that December, triggering the Mars program restructuring.\n\nPre-mortem lesson: the fatal weakness is the interface between two organisations' software (units/spec conformance, end-to-end validation, independent trajectory verification, and a culture where junior engineers' anomaly reports get formally tracked).nn"
+    },
+    {
+      "case": "genesis",
+      "actual": "Genesis sample return capsule parachutes failed to deploy",
+      "recognised": true,
+      "mission_guess": "NASA Genesis solar-wind sample return (launched Aug 2001, Earth return 8 September 2004)",
+      "confidence": "high",
+      "what_happened": "This is Genesis, the Discovery-class mission that collected solar wind ions at L1 and returned the collector canister for mid-air helicopter capture over the Utah Test and Training Range. The entry-detection G-switches in the Sample Return Capsule Avionics Unit were installed in the wrong orientation \u2014 the design drawings, adapted from the Stardust heritage design, showed the switches rotated (essentially inverted/90-degrees off) so their sensitive axis did not align with the deceleration vector. As a result entry was never sensed, the timers never started, and neither the drogue mortar nor the parafoil fired. The capsule hit the desert floor at roughly 300 km/h and broke open, contaminating the collector arrays with Utah soil. The Mishap Investigation Board blamed over-reliance on heritage plus reviews/drawing inspection instead of a simple end-to-end functional or centrifuge test that would have revealed the reversed switches; ironically much of the science was salvaged because the solar-wind atoms were embedded below the surface of the collector wafers and could be cleaned."
+    },
+    {
+      "case": "noaa_n_prime",
+      "actual": "NOAA N-Prime satellite fell off its turnover cart",
+      "recognised": true,
+      "mission_guess": "NOAA-N Prime (later NOAA-19), September 6, 2003 turnover-cart mishap at Lockheed Martin Space Systems, Sunnyvale",
+      "confidence": "high",
+      "what_happened": "This is the classic NOAA-N Prime handling accident. While the spacecraft was being rotated from vertical to horizontal on a shared turnover cart, it fell to the floor. The root cause was that the 24 bolts securing the adapter plate to the turnover cart had been removed earlier by technicians working the co-located DMSP program, who needed them elsewhere, and the removal was never documented or flagged. The operations team, working from a procedure that assumed the bolts were installed (and which lacked an explicit verification step), did not physically check the hardware before releasing the spacecraft from its vertical support, so the satellite pivoted off the plate and tipped over. Damage was on the order of $100-135M and repairs delayed launch by years; the spacecraft was eventually rebuilt and launched successfully in February 2009 as NOAA-19. The mishap board cited procedural non-compliance, inadequate configuration control of shared GSE, weak pre-operation verification/'look before you lift' discipline, complacency from a routine repetitive operation, and ineffective quality assurance oversight. It is widely used as a case study in GSE configuration management and human-factors-driven mishap prevention."
+    },
+    {
+      "case": "columbia",
+      "actual": "Space Shuttle Columbia broke up during re-entry",
+      "recognised": true,
+      "mission_guess": "STS-107 \u2014 Space Shuttle Columbia (launched 16 January 2003, lost 1 February 2003)",
+      "confidence": "high",
+      "what_happened": "This is the classic pre-mortem framing of Columbia's final flight: a dedicated ~16-day microgravity science mission flying the SPACEHAB Research Double Module, outside the ISS assembly manifest but conducted under a program culture shaped by pressure to meet the Node 2 / station assembly schedule. About 82 seconds after liftoff a suitcase-sized piece of spray-on foam insulation from the external tank's left bipod ramp struck the leading edge of the left wing, breaching an RCC panel (panel 8). On orbit, the Debris Assessment Team used the Crater impact tool well outside its validated range, foam strikes were normalized as an 'in-family' turnaround/maintenance issue, and repeated informal requests for on-orbit imagery (DoD assets) were cancelled by management; the crew was told there was no safety concern. During reentry on 1 February 2003, superheated plasma entered the wing through the breach, destroying the wing structure and causing loss of control and breakup over Texas, killing all seven astronauts. The CAIB found the organizational causes (schedule pressure, normalization of deviance, broken safety-reporting channels) as important as the physical cause; the fleet was grounded until STS-114 in 2005, on-orbit inspection (OBSS) and repair capability were added, and the Shuttle was retired in 2011."
+    },
+    {
+      "case": "mpl",
+      "actual": "Mars Polar Lander lost during descent",
+      "recognised": true,
+      "mission_guess": "Mars Polar Lander (Mars Surveyor '98 lander, lost December 3, 1999)",
+      "confidence": "high",
+      "what_happened": "This is Mars Polar Lander, part of NASA's 'faster, better, cheaper' Mars Surveyor program. The leading failure explanation from the JPL/NASA review boards: when the three landing legs deployed at about 1.5 km altitude, the mechanical shock generated spurious touchdown signals in the Hall-effect magnetic sensors in the leg struts. The flight software did not latch/ignore these transients correctly \u2014 the touchdown indication was set as a persistent state before the software began polling at 40 m altitude \u2014 so on enabling touchdown logic the software read a false 'landed' flag and commanded premature descent-engine shutdown. The lander would have free-fallen roughly 40 m and impacted at ~80 km/h, destroying it. The defect was traceable to an inadequate software requirement (the transient behaviour was known from earlier leg-deployment tests but the sensor data were not properly handled), and it was never caught because full system-level EDL testing was compressed/incomplete under the cost cap and small team. With no telemetry during EDL (the spacecraft transmitted nothing until after landing, a cost-saving decision), there was no data to confirm the cause \u2014 the failure is inferred, not observed. The two Deep Space 2 penetrator probes carried along were also lost. Fixes for later missions: latch/filter spurious sensor transients in software, require end-to-end EDL system tests with flight software and real hardware dynamics, and carry semaphore/carrier-tone telemetry throughout EDL (as Spirit/Opportunity, Phoenix, MSL and InSight did)."
+    }
+  ]
+}

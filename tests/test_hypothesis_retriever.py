@@ -22,9 +22,14 @@ def fake_generator(description):
     ]
 
 
-def test_hypotheses_surface_mechanism_matches_and_agreement_wins():
+def test_each_hypothesis_gets_its_best_hit_in_before_any_second_hit():
     retriever = HypothesisRetriever(Keyword(), generator=fake_generator)
     ranked = [h.chunk_id for h in retriever.search("mars lander", k=10)]
-    assert ranked[0] == "voyager-gyro#0"  # found by both hypotheses
-    assert {"mars-doc#0", "wire-pyro#0", "viking-thrusters#0"} <= set(ranked)
+    assert ranked[:3] == ["mars-doc#0", "voyager-gyro#0", "wire-pyro#0"]
+    assert ranked[3:] == ["shuttle-landing#0", "viking-thrusters#0"]  # duplicates dropped
     assert len(retriever.last_hypotheses) == 2
+
+
+def test_k_caps_the_output():
+    retriever = HypothesisRetriever(Keyword(), generator=fake_generator)
+    assert len(retriever.search("mars lander", k=2)) == 2

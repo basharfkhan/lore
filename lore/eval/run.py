@@ -40,33 +40,35 @@ def evaluate(retriever, cases) -> dict:
                 "recall@10": recall_at_k(ranked, rel, 10),
                 "recall@20": recall_at_k(ranked, rel, 20),
                 "ndcg@10": ndcg_at_k(ranked, rel, 10),
+                "hit@30": hit_at_k(ranked, rel, 30),
+                "recall@30": recall_at_k(ranked, rel, 30),
                 "first_direct_rank": first_rank(ranked, rel),
-                "unjudged@10": sum(d not in case.labels for d in ranked[:10]),
+                "unjudged@30": sum(d not in case.labels for d in ranked[:30]),
                 "top10": ranked[:10],
             }
         )
         if hypotheses := getattr(retriever, "last_hypotheses", None):
             rows[-1]["hypotheses"] = [vars(h) for h in hypotheses]
-    metrics = ["hit@10", "recall@10", "recall@20", "ndcg@10"]
+    metrics = ["hit@10", "recall@10", "recall@20", "ndcg@10", "hit@30", "recall@30"]
     mean = {m: statistics.mean(r[m] for r in rows if not math.isnan(r[m])) for m in metrics}
     return {"retriever": retriever.name, "cases": rows, "mean": mean}
 
 
 def report(result: dict) -> None:
-    columns = ["hit@10", "R@10", "R@20", "nDCG@10", "1st direct", "unjudged@10"]
-    widths = [6, 6, 6, 8, 10, 11]
+    columns = ["hit@10", "R@10", "nDCG@10", "hit@30", "R@30", "1st direct", "unjudged@30"]
+    widths = [6, 6, 8, 6, 6, 10, 11]
     header = f"{'case':14s} " + " ".join(f"{c:>{w}s}" for c, w in zip(columns, widths, strict=True))
     print(f"\nretriever: {result['retriever']}\n{header}")
     for r in result["cases"]:
         rank = r["first_direct_rank"] or f">{DEPTH}"
         print(
-            f"{r['case']:14s} {r['hit@10']:6.0f} {r['recall@10']:6.2f} {r['recall@20']:6.2f} "
-            f"{r['ndcg@10']:8.3f} {rank!s:>10s} {r['unjudged@10']:11d}"
+            f"{r['case']:14s} {r['hit@10']:6.0f} {r['recall@10']:6.2f} {r['ndcg@10']:8.3f} "
+            f"{r['hit@30']:6.0f} {r['recall@30']:6.2f} {rank!s:>10s} {r['unjudged@30']:11d}"
         )
     m = result["mean"]
     print(
-        f"{'mean':14s} {m['hit@10']:6.2f} {m['recall@10']:6.2f} "
-        f"{m['recall@20']:6.2f} {m['ndcg@10']:8.3f}"
+        f"{'mean':14s} {m['hit@10']:6.2f} {m['recall@10']:6.2f} {m['ndcg@10']:8.3f} "
+        f"{m['hit@30']:6.2f} {m['recall@30']:6.2f}"
     )
 
 
