@@ -1,0 +1,133 @@
+# Public mishap investigation reports that seed the corpus alongside LLIS.
+#
+# mishap_date is the date of the failure itself. It is the cutoff for the historical eval:
+# when LORE is asked about a system as it stood before a mishap, only material dated before
+# this day may be retrieved. report_date is when the findings became public, which is when
+# they could first have taught anyone anything.
+#
+# Every URL is a NASA host (nasa.gov, NTRS, LLIS, LaRC). Mirrors on third-party sites are
+# deliberately not used, so provenance is never in question.
+
+reports:
+  - id: apollo1_as204
+    title: Report of Apollo 204 Review Board
+    mission: Apollo 1
+    mishap_date: 1967-01-27
+    report_date: 1967-04-05
+    url: https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf
+
+  - id: apollo13
+    title: Report of Apollo 13 Review Board
+    mission: Apollo 13
+    mishap_date: 1970-04-13
+    report_date: 1970-06-15
+    url: https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf
+
+  - id: challenger_rogers_v1
+    title: Report of the Presidential Commission on the Space Shuttle Challenger Accident, Volume 1
+    mission: STS-51-L Challenger
+    mishap_date: 1986-01-28
+    report_date: 1986-06-06
+    url: https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf
+
+  # The mirror was ground wrongly in 1980-81; the flaw surfaced after launch. The cutoff is
+  # the public discovery, but eval cases should describe the program as of the grinding.
+  - id: hubble_optics
+    title: The Hubble Space Telescope Optical Systems Failure Report
+    mission: Hubble Space Telescope
+    mishap_date: 1990-06-27
+    report_date: 1990-11-01
+    url: https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf
+
+  - id: lewis
+    title: Lewis Spacecraft Mission Failure Investigation Board
+    mission: Lewis
+    mishap_date: 1997-08-26
+    report_date: 1998-02-12
+    url: https://llis.nasa.gov/llis_lib/pdf/1009461main1_0625-mr.pdf
+
+  - id: soho
+    title: SOHO Mission Interruption Joint NASA/ESA Investigation Board
+    mission: SOHO
+    mishap_date: 1998-06-25
+    report_date: 1998-08-31
+    url: https://ntrs.nasa.gov/api/citations/19990019501/downloads/19990019501.pdf
+
+  - id: wire
+    title: WIRE Mishap Investigation Board Report
+    mission: Wide-Field Infrared Explorer
+    mishap_date: 1999-03-04
+    report_date: 1999-06-08
+    url: https://llis.nasa.gov/llis_lib/pdf/1009462main1_0637-mr.pdf
+
+  - id: mco_phase1
+    title: Mars Climate Orbiter Mishap Investigation Board Phase I Report
+    mission: Mars Climate Orbiter
+    mishap_date: 1999-09-23
+    report_date: 1999-11-10
+    url: https://llis.nasa.gov/llis_lib/pdf/1009464main1_0641-mr.pdf
+
+  - id: mco_phase2
+    title: Report on Project Management in NASA by the Mars Climate Orbiter Mishap Investigation Board
+    mission: Mars Climate Orbiter
+    mishap_date: 1999-09-23
+    report_date: 2000-03-13
+    url: https://discovery.larc.nasa.gov/discovery/PDF_FILES/mars_climate_orbiter_phaseII.pdf
+
+  - id: mpl_ds2
+    title: Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions
+    mission: Mars Polar Lander / Deep Space 2
+    mishap_date: 1999-12-03
+    report_date: 2000-03-22
+    url: https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf
+
+  - id: contour
+    title: CONTOUR Mishap Investigation Board Report
+    mission: CONTOUR
+    mishap_date: 2002-08-15
+    report_date: 2003-05-31
+    url: https://discovery.larc.nasa.gov/pdf_files/Contour_Mishap_Investigation.pdf
+
+  - id: columbia_caib_v1
+    title: Columbia Accident Investigation Board Report, Volume 1
+    mission: STS-107 Columbia
+    mishap_date: 2003-02-01
+    report_date: 2003-08-26
+    url: https://ntrs.nasa.gov/api/citations/20030093634/downloads/20030093634.pdf
+
+  - id: noaa_n_prime
+    title: NOAA N-Prime Mishap Investigation Final Report
+    mission: NOAA N-Prime
+    mishap_date: 2003-09-06
+    report_date: 2004-09-13
+    url: https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf
+
+  - id: genesis
+    title: Genesis Mishap Investigation Board Report, Volume I
+    mission: Genesis
+    mishap_date: 2004-09-08
+    report_date: 2006-06-13
+    url: https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf
+
+  # Full report is ITAR-restricted; this public summary is all that was released.
+  - id: dart
+    title: Overview of the DART Mishap Investigation Results, For Public Release
+    mission: DART
+    mishap_date: 2005-04-15
+    report_date: 2006-05-15
+    url: https://www.nasa.gov/pdf/148072main_DART_mishap_overview.pdf
+
+  - id: glory_t9
+    title: Taurus XL T9 (Glory) Mishap Investigation Board Public Release Summary
+    mission: Glory
+    mishap_date: 2011-03-04
+    report_date: 2013-02-20
+    url: https://www.nasa.gov/pdf/728836main_T9_MIB_Public_Release_Summary.pdf
+
+  # Covers both Taurus XL failures (OCO in 2009, Glory in 2011); the cutoff is the first.
+  - id: oco_glory_2019
+    title: "NASA Investigative Summary: Taurus XL T8 and T9 Mission Failures"
+    mission: Orbiting Carbon Observatory / Glory
+    mishap_date: 2009-02-24
+    report_date: 2019-04-30
+    url: https://www.nasa.gov/wp-content/uploads/2019/04/oco_glory_public_summary_update_-_for_the_web_-_04302019.pdf

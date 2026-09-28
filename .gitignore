@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.env
+
+# Downloaded data never goes in git; `python -m lore.data.llis` and `python -m lore.data.reports`
+# rebuild it. Anchored to the repo root so it cannot swallow the lore/data/ package.
+/data/
