@@ -4,11 +4,11 @@
     {
       "case": "mco",
       "reviewed": false,
-      "n_relevant": 11,
+      "n_relevant": 12,
       "n_direct": 2,
       "hit@10": 1.0,
-      "recall@10": 0.5454545454545454,
-      "recall@20": 0.7272727272727273,
+      "recall@10": 0.5,
+      "recall@20": 0.6666666666666666,
       "ndcg@10": 0.671011261413237,
       "first_direct_rank": 1,
       "unjudged@10": 0,
@@ -28,12 +28,12 @@
     {
       "case": "genesis",
       "reviewed": false,
-      "n_relevant": 21,
-      "n_direct": 4,
+      "n_relevant": 27,
+      "n_direct": 5,
       "hit@10": 1.0,
-      "recall@10": 0.14285714285714285,
-      "recall@20": 0.23809523809523808,
-      "ndcg@10": 0.39654740472297983,
+      "recall@10": 0.1111111111111111,
+      "recall@20": 0.18518518518518517,
+      "ndcg@10": 0.36716072665117533,
       "first_direct_rank": 1,
       "unjudged@10": 0,
       "top10": [
@@ -52,12 +52,12 @@
     {
       "case": "noaa_n_prime",
       "reviewed": false,
-      "n_relevant": 19,
-      "n_direct": 6,
+      "n_relevant": 27,
+      "n_direct": 7,
       "hit@10": 1.0,
-      "recall@10": 0.15789473684210525,
-      "recall@20": 0.21052631578947367,
-      "ndcg@10": 0.5283642383607055,
+      "recall@10": 0.1111111111111111,
+      "recall@20": 0.18518518518518517,
+      "ndcg@10": 0.49856254804417993,
       "first_direct_rank": 1,
       "unjudged@10": 0,
       "top10": [
@@ -76,12 +76,12 @@
     {
       "case": "columbia",
       "reviewed": false,
-      "n_relevant": 4,
+      "n_relevant": 10,
       "n_direct": 2,
       "hit@10": 1.0,
-      "recall@10": 0.25,
-      "recall@20": 0.5,
-      "ndcg@10": 0.515157140670655,
+      "recall@10": 0.1,
+      "recall@20": 0.2,
+      "ndcg@10": 0.38434836867631483,
       "first_direct_rank": 1,
       "unjudged@10": 0,
       "top10": [
@@ -100,13 +100,13 @@
     {
       "case": "mpl",
       "reviewed": false,
-      "n_relevant": 13,
-      "n_direct": 3,
+      "n_relevant": 17,
+      "n_direct": 4,
       "hit@10": 0.0,
-      "recall@10": 0.3076923076923077,
-      "recall@20": 0.38461538461538464,
-      "ndcg@10": 0.278062765884828,
-      "first_direct_rank": null,
+      "recall@10": 0.23529411764705882,
+      "recall@20": 0.29411764705882354,
+      "ndcg@10": 0.25328611543354873,
+      "first_direct_rank": 45,
       "unjudged@10": 0,
       "top10": [
         "report-mco_phase1",
@@ -124,9 +124,9 @@
   ],
   "mean": {
     "hit@10": 0.8,
-    "recall@10": 0.2807797465692202,
-    "recall@20": 0.4121019331545647,
-    "ndcg@10": 0.47782856221048103
+    "recall@10": 0.2115032679738562,
+    "recall@20": 0.30623093681917213,
+    "ndcg@10": 0.43487380404369114
   },
-  "run_at": "2026-09-28T03:57:40+00:00"
+  "run_at": "2026-09-28T04:37:08+00:00"
 }

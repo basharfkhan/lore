@@ -22,6 +22,30 @@ relevant:
   - doc_id: llis-495
     grade: 1
     why: Safety and quality organisations left out of design decisions.
+  - doc_id: llis-447
+    grade: 1
+    why: Anomalies within specification can later cause problems - the logic of accepting foam strikes as in-family.
+    found_by: dense
+  - doc_id: llis-733
+    grade: 1
+    why: Minor glitches get dismissed without formal problem reporting.
+    found_by: dense
+  - doc_id: llis-1086
+    grade: 1
+    why: Close calls went unreported because no one treated them as mishaps.
+    found_by: dense
+  - doc_id: llis-1223
+    grade: 1
+    why: Simplified models must be refined before being trusted; the board faulted the debris model used outside its validated range.
+    found_by: dense
+  - doc_id: llis-917
+    grade: 1
+    why: Project culture did not draw on available technical expertise (MCO); the board found engineering concerns did not reach managers.
+    found_by: dense
+  - doc_id: llis-1092
+    grade: 1
+    why: People avoid raising performance problems unless communication barriers are addressed.
+    found_by: dense
 not_relevant: [llis-1015, llis-1062, llis-1084, llis-1133, llis-1182, llis-1234, llis-1260,
   llis-1262, llis-127, llis-1293, llis-1312, llis-1345, llis-1360, llis-1370, llis-1374,
   llis-1375, llis-1378, llis-1381, llis-18, llis-182, llis-20, llis-220, llis-243, llis-258,
@@ -32,4 +56,11 @@ not_relevant: [llis-1015, llis-1062, llis-1084, llis-1133, llis-1182, llis-1234,
   llis-815, llis-819, llis-825, llis-832, llis-836, llis-923, llis-934, llis-935, llis-948,
   llis-95, llis-98, llis-991, llis-116, report-apollo13, report-apollo1_as204,
   report-hubble_optics, report-lewis, report-mco_phase1, report-mco_phase2, report-mpl_ds2,
-  report-soho]
+  report-soho, llis-1010, llis-1040, llis-1096, llis-11, llis-1146, llis-1216, llis-1224,
+  llis-1261, llis-1263, llis-1264, llis-1265, llis-1266, llis-1288, llis-1289, llis-13, llis-1341,
+  llis-1362, llis-1368, llis-1379, llis-1430, llis-204, llis-271, llis-272, llis-291, llis-310,
+  llis-333, llis-356, llis-391, llis-449, llis-457, llis-460, llis-493, llis-499, llis-504,
+  llis-509, llis-519, llis-523, llis-566, llis-597, llis-606, llis-629, llis-638, llis-669,
+  llis-670, llis-696, llis-700, llis-727, llis-737, llis-756, llis-760, llis-772, llis-778,
+  llis-789, llis-8, llis-809, llis-891, llis-922, llis-933, llis-940, llis-968, llis-986,
+  report-wire]

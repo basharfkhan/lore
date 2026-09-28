@@ -14,6 +14,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Dense retrieval. Pulls PyTorch (CPU build by default) and downloads model weights on first use.
+embed = [
+    "sentence-transformers>=3.0",
+    "numpy>=1.26",
+]
 dev = [
     "pytest>=8.0",
     "ruff>=0.6",

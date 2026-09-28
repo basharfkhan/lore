@@ -3,11 +3,13 @@
 Only the case description goes to the retriever, restricted to material available before the
 mishap. Ranking is scored at document level (the first chunk of each document counts).
 
-    python -m lore.eval.run
+    python -m lore.eval.run                       # bm25, dense and hybrid
+    python -m lore.eval.run --retrievers bm25
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import statistics
@@ -15,7 +17,8 @@ from datetime import UTC, datetime
 
 from lore.eval.cases import EVAL_DIR, load_cases
 from lore.eval.metrics import first_rank, hit_at_k, ndcg_at_k, recall_at_k
-from lore.retrieve.bm25 import BM25Retriever, unique_docs
+from lore.retrieve.bm25 import unique_docs
+from lore.retrieve.registry import build_retrievers
 
 RESULTS_DIR = EVAL_DIR / "results"
 DEPTH = 100  # documents ranked per case; first_rank beyond this is reported as a miss
@@ -47,15 +50,11 @@ def evaluate(retriever, cases) -> dict:
     return {"retriever": retriever.name, "cases": rows, "mean": mean}
 
 
-def main() -> None:
-    cases = [c for c in load_cases() if c.labels]
-    result = evaluate(BM25Retriever.from_file(), cases)
-    result["run_at"] = datetime.now(UTC).isoformat(timespec="seconds")
-
+def report(result: dict) -> None:
     columns = ["hit@10", "R@10", "R@20", "nDCG@10", "1st direct", "unjudged@10"]
     widths = [6, 6, 6, 8, 10, 11]
     header = f"{'case':14s} " + " ".join(f"{c:>{w}s}" for c, w in zip(columns, widths, strict=True))
-    print(f"retriever: {result['retriever']}\n{header}")
+    print(f"\nretriever: {result['retriever']}\n{header}")
     for r in result["cases"]:
         rank = r["first_direct_rank"] or f">{DEPTH}"
         print(
@@ -67,13 +66,25 @@ def main() -> None:
         f"{'mean':14s} {m['hit@10']:6.2f} {m['recall@10']:6.2f} "
         f"{m['recall@20']:6.2f} {m['ndcg@10']:8.3f}"
     )
-    unreviewed = [r["case"] for r in result["cases"] if not r["reviewed"]]
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--retrievers", nargs="+", default=["bm25", "dense", "hybrid"])
+    args = parser.parse_args()
+
+    cases = [c for c in load_cases() if c.labels]
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    for retriever in build_retrievers(args.retrievers):
+        result = evaluate(retriever, cases)
+        result["run_at"] = datetime.now(UTC).isoformat(timespec="seconds")
+        report(result)
+        path = RESULTS_DIR / f"{result['retriever']}.json"
+        path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+
+    unreviewed = [c.id for c in cases if not c.reviewed]
     if unreviewed:
         print(f"\nlabels not yet human-reviewed: {', '.join(unreviewed)}")
-
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    path = RESULTS_DIR / f"{result['retriever']}.json"
-    path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

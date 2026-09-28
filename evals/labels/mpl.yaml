@@ -49,6 +49,22 @@ relevant:
   - doc_id: report-wire
     grade: 1
     why: Full WIRE board report on the start-up transient.
+  - doc_id: llis-403
+    grade: 2
+    why: Viking '75 - stored safing logic fired thrusters on the pad, a phase it was never meant to run in; consider what stored logic does if triggered at the wrong time.
+    found_by: dense
+  - doc_id: llis-626
+    grade: 1
+    why: Deep Space 2 (MPL's companion probes) - FMECA and sneak-circuit analysis at system level.
+    found_by: dense
+  - doc_id: llis-4
+    grade: 1
+    why: Ground test configuration that differs from flight configuration causes failures.
+    found_by: dense
+  - doc_id: llis-333
+    grade: 1
+    why: Delayed diagnostic data cripples anomaly response; relates to no telemetry during EDL.
+    found_by: dense
 not_relevant: [llis-1021, llis-1022, llis-1132, llis-1274, llis-139, llis-1604, llis-194,
   llis-212, llis-271, llis-287, llis-302, llis-307, llis-310, llis-343, llis-345, llis-346,
   llis-361, llis-362, llis-369, llis-372, llis-391, llis-396, llis-40, llis-419, llis-447,
@@ -57,4 +73,9 @@ not_relevant: [llis-1021, llis-1022, llis-1132, llis-1274, llis-139, llis-1604, 
   llis-668, llis-672, llis-687, llis-707, llis-716, llis-719, llis-729, llis-757, llis-76,
   llis-761, llis-771, llis-772, llis-774, llis-776, llis-789, llis-793, llis-817, llis-827,
   llis-830, llis-831, llis-836, llis-837, llis-838, llis-839, report-apollo13,
-  report-apollo1_as204, report-challenger_rogers_v1, report-lewis, report-soho]
+  report-apollo1_as204, report-challenger_rogers_v1, report-lewis, report-soho, llis-1090,
+  llis-1104, llis-1128, llis-1131, llis-1212, llis-1220, llis-1224, llis-1258, llis-128,
+  llis-1340, llis-209, llis-272, llis-274, llis-281, llis-290, llis-291, llis-292, llis-3,
+  llis-373, llis-375, llis-433, llis-450, llis-584, llis-585, llis-590, llis-608, llis-609,
+  llis-656, llis-661, llis-675, llis-680, llis-697, llis-726, llis-733, llis-756, llis-781,
+  llis-784, llis-791, llis-792, llis-798, llis-835]

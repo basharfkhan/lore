@@ -64,11 +64,47 @@ relevant:
   - doc_id: llis-1211
     grade: 1
     why: Formal handling processes to protect hardware.
+  - doc_id: llis-1200
+    grade: 2
+    why: Orbiter 103 payload bay door raised without the procedure's required check of the support equipment configuration first - the N-Prime mechanism.
+    found_by: dense
+  - doc_id: llis-1199
+    grade: 1
+    why: STS-38 platform beam incident - standard sequence not followed during ground processing.
+    found_by: dense
+  - doc_id: llis-1210
+    grade: 1
+    why: Deviations from approved procedures must be carefully managed.
+    found_by: dense
+  - doc_id: llis-1227
+    grade: 1
+    why: Every one of multiple checkpoints must actually work to catch an installation error.
+    found_by: dense
+  - doc_id: llis-382
+    grade: 1
+    why: Unclear procedures and no cognizant technical staff present led to incorrect assembly.
+    found_by: dense
+  - doc_id: llis-588
+    grade: 1
+    why: SRB holddown post incident - moving heavy critical hardware needs more than OSHA-level practice.
+    found_by: dense
+  - doc_id: llis-481
+    grade: 1
+    why: Information lost between test shifts; N-Prime's cart change was never communicated.
+    found_by: dense
+  - doc_id: llis-1182
+    grade: 1
+    why: Atlantis fuel cell mishap - ground processing with delegated supervision and procedure lapses.
+    found_by: dense
 not_relevant: [llis-109, llis-1090, llis-1100, llis-1158, llis-1209, llis-121, llis-13, llis-1336,
-  llis-1338, llis-1340, llis-135, llis-1368, llis-1370, llis-1371, llis-1375, llis-1378,
-  llis-143, llis-1497, llis-1501, llis-159, llis-182, llis-236, llis-240, llis-246, llis-280,
-  llis-281, llis-331, llis-355, llis-385, llis-433, llis-436, llis-482, llis-499, llis-517,
-  llis-564, llis-567, llis-584, llis-61, llis-664, llis-668, llis-715, llis-719, llis-726,
-  llis-728, llis-732, llis-733, llis-845, llis-85, llis-865, llis-910, llis-92, llis-96, report-apollo13,
+  llis-1338, llis-1340, llis-135, llis-1368, llis-1370, llis-1371, llis-1375, llis-1378, llis-143,
+  llis-1497, llis-1501, llis-159, llis-182, llis-236, llis-240, llis-246, llis-280, llis-281,
+  llis-331, llis-355, llis-385, llis-433, llis-436, llis-482, llis-499, llis-517, llis-564,
+  llis-567, llis-584, llis-61, llis-664, llis-668, llis-715, llis-719, llis-726, llis-728,
+  llis-732, llis-733, llis-845, llis-85, llis-865, llis-910, llis-92, llis-96, report-apollo13,
   report-challenger_rogers_v1, report-columbia_caib_v1, report-contour, report-hubble_optics,
-  report-lewis, report-mco_phase1, report-mco_phase2, report-mpl_ds2, report-soho, report-wire]
+  report-lewis, report-mco_phase1, report-mco_phase2, report-mpl_ds2, report-soho, report-wire,
+  llis-1, llis-1034, llis-1036, llis-1138, llis-1186, llis-1212, llis-1221, llis-1252, llis-1268,
+  llis-1277, llis-1374, llis-140, llis-191, llis-195, llis-230, llis-261, llis-370, llis-4,
+  llis-450, llis-504, llis-521, llis-566, llis-638, llis-651, llis-656, llis-666, llis-675,
+  llis-691, llis-74, llis-923, llis-939, llis-991, report-apollo1_as204]

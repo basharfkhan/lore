@@ -16,8 +16,8 @@ before the failure.
 
 ## Status
 
-Data, OCR, chunking, a keyword baseline and a first draft of the historical eval (5 mishaps)
-are done. Label review, embeddings and the agent are next.
+Data, OCR, chunking, keyword/dense/hybrid retrieval and a draft historical eval (5 mishaps) are
+done. Label review and the hypothesis-generating agent are next.
 
 ## Data
 
@@ -88,20 +88,29 @@ Candidates are pooled from the case query plus hindsight queries written with kn
 real root causes, and supplemented by direct searches. Labels are drafted, then human-reviewed
 (`reviewed_by` in each file).
 
-Keyword baseline (`python -m lore.eval.run`), draft labels:
+Results (`python -m lore.eval.run`), draft labels, 5 cases, document level:
 
-| case | hit@10 (grade 2) | recall@10 | recall@20 | nDCG@10 | first grade-2 rank |
-|---|---|---|---|---|---|
-| Mars Climate Orbiter | 1 | 0.55 | 0.73 | 0.671 | 1 |
-| Genesis | 1 | 0.14 | 0.24 | 0.397 | 1 |
-| NOAA N-Prime | 1 | 0.16 | 0.21 | 0.528 | 1 |
-| Columbia | 1 | 0.25 | 0.50 | 0.515 | 1 |
-| Mars Polar Lander | 0 | 0.31 | 0.38 | 0.278 | not in top 100 |
-| **mean** | **0.80** | **0.28** | **0.41** | **0.478** | |
+| retriever | hit@10 (grade 2) | recall@10 | recall@20 | nDCG@10 |
+|---|---|---|---|---|
+| BM25 (keyword) | **0.80** | 0.21 | 0.31 | **0.435** |
+| Dense (bge-base-en-v1.5) | 0.40 | 0.19 | 0.30 | 0.265 |
+| Hybrid (reciprocal rank fusion) | 0.60 | **0.25** | **0.33** | 0.379 |
 
-These flatter BM25: the pool was built with BM25, so every document it ranks highly has been
-judged, while documents only a semantic retriever would find have not been seen yet. The pool
-will be widened with the embedding retriever before any comparison is claimed.
+The pool now includes candidates from all three retrievers (130 to 151 per case), so no
+retriever is scored only on documents it found itself.
+
+**Dense retrieval lost, and the reason shapes the rest of the project.** It matches topic, not
+failure mechanism: asked about a Mars lander, it returns Mars documents (Mars Climate Orbiter,
+Mars Observer, Mars Pathfinder) and anything about landing (Shuttle autoland). A pre-mortem
+needs documents that share a *way of failing*, which are usually about unrelated hardware:
+Mars Polar Lander's best precursors are about Voyager's gyros and Viking's thrusters.
+
+Searching by failure hypothesis instead of by system description fixes this. Using the
+hindsight queries as hypotheses (for example "spurious transient signal triggers software
+logic"), a grade-2 precursor ranks at or near first in every case, and the union of results over
+all hypotheses roughly doubles recall. Those queries were written knowing the answer, so they
+are a ceiling, not a result. The agent's job is to generate such hypotheses from the system
+description alone, and the eval will measure how close it gets to that ceiling.
 
 What the labelling found about the corpus itself:
 
@@ -110,9 +119,9 @@ What the labelling found about the corpus itself:
   incidents from 1992-93 foreshadow the NOAA N-Prime drop; Voyager's gyro-swap lesson warns
   against "spurious inputs triggering unwanted events", which is what shut down Mars Polar
   Lander's engines.
-- **Mars Polar Lander is where keywords fail.** Its precursors talk about gyros, pyro events and
-  star trackers, not touchdown sensors, so BM25 ranks none of them in the top 100. This is the
-  case semantic retrieval has to win.
+- **Mars Polar Lander defeats every retriever.** Its precursors talk about gyros, pyro events,
+  Viking's pad thruster firing and star trackers, not touchdown sensors. No retriever puts one in
+  its top 10 from the system description.
 - **Some gaps are real.** Nothing in LLIS before 1999 concerns English/metric unit mismatches,
   and nothing before 2003 concerns external tank foam (only ice debris).
 - **LLIS dates are not always trustworthy.** Two lessons were dated before the mishaps they

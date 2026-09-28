@@ -72,6 +72,30 @@ relevant:
   - doc_id: report-mco_phase2
     grade: 1
     why: Faster-better-cheaper project management and verification shortfalls.
+  - doc_id: llis-595
+    grade: 2
+    why: Misapplied heritage systems - a proven design in a new application does not ensure success or remove the need for independent peer review.
+    found_by: dense
+  - doc_id: llis-1276
+    grade: 1
+    why: Independent peer reviews are where latent design errors must be caught.
+    found_by: dense
+  - doc_id: llis-944
+    grade: 1
+    why: Test pyrovalves the way they will be used on the mission.
+    found_by: dense
+  - doc_id: llis-786
+    grade: 1
+    why: Without independent review, design defects go undetected.
+    found_by: dense
+  - doc_id: llis-929
+    grade: 1
+    why: Reviews need formality and technical penetration; the Genesis board found reviews missed the design error.
+    found_by: dense
+  - doc_id: llis-637
+    grade: 1
+    why: WIRE board lesson - pyro electronics design error not caught by review or test (date corrected).
+    found_by: dense
 not_relevant: [llis-1107, llis-1197, llis-1208, llis-1212, llis-1217, llis-1227, llis-1268,
   llis-1274, llis-1316, llis-1319, llis-133, llis-1360, llis-1370, llis-1390, llis-1398,
   llis-1451, llis-1480, llis-1504, llis-1507, llis-1511, llis-1522, llis-238, llis-267, llis-271,
@@ -80,4 +104,10 @@ not_relevant: [llis-1107, llis-1197, llis-1208, llis-1212, llis-1217, llis-1227,
   llis-613, llis-626, llis-628, llis-638, llis-642, llis-643, llis-652, llis-663, llis-700,
   llis-702, llis-730, llis-765, llis-771, llis-780, llis-812, llis-836, llis-853, llis-922,
   llis-981, report-apollo13, report-apollo1_as204, report-challenger_rogers_v1,
-  report-columbia_caib_v1, report-hubble_optics, report-mco_phase1]
+  report-columbia_caib_v1, report-hubble_optics, report-mco_phase1, llis-1035, llis-1111,
+  llis-1207, llis-1223, llis-1251, llis-1253, llis-1265, llis-1340, llis-1393, llis-1478,
+  llis-1488, llis-1604, llis-21, llis-224, llis-287, llis-298, llis-338, llis-367, llis-407,
+  llis-409, llis-467, llis-517, llis-521, llis-577, llis-582, llis-609, llis-641, llis-644,
+  llis-648, llis-651, llis-657, llis-664, llis-667, llis-671, llis-675, llis-680, llis-706,
+  llis-726, llis-729, llis-733, llis-743, llis-761, llis-766, llis-779, llis-790, llis-815,
+  llis-875, llis-885, llis-932, llis-97, llis-982, llis-987, report-soho]

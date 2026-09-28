@@ -46,6 +46,10 @@ relevant:
   - doc_id: report-soho
     grade: 1
     why: Operations errors under a reduced, overloaded operations team.
+  - doc_id: llis-692
+    grade: 1
+    why: Coordinate-frame conventions miscommunicated between teams; the same class of convention error as units.
+    found_by: dense
 not_relevant: [llis-1, llis-10, llis-1011, llis-1016, llis-1052, llis-1055, llis-1065, llis-1072,
   llis-1075, llis-1113, llis-1182, llis-1186, llis-1228, llis-1230, llis-148, llis-202, llis-207,
   llis-213, llis-281, llis-320, llis-343, llis-358, llis-372, llis-377, llis-395, llis-420,
@@ -54,4 +58,9 @@ not_relevant: [llis-1, llis-10, llis-1011, llis-1016, llis-1052, llis-1055, llis
   llis-695, llis-699, llis-708, llis-713, llis-717, llis-731, llis-736, llis-739, llis-754,
   llis-763, llis-790, llis-791, llis-792, llis-819, llis-820, llis-840, llis-841, llis-85,
   llis-860, llis-995, llis-997, report-apollo13, report-apollo1_as204,
-  report-challenger_rogers_v1, report-wire]
+  report-challenger_rogers_v1, report-wire, llis-1098, llis-1134, llis-1187, llis-1206, llis-1216,
+  llis-1252, llis-17802, llis-196, llis-272, llis-279, llis-288, llis-305, llis-307, llis-310,
+  llis-345, llis-347, llis-373, llis-391, llis-394, llis-400, llis-403, llis-405, llis-409,
+  llis-447, llis-52, llis-528, llis-533, llis-560, llis-567, llis-572, llis-583, llis-586,
+  llis-597, llis-611, llis-638, llis-649, llis-671, llis-681, llis-687, llis-726, llis-728,
+  llis-738, llis-772, llis-805, llis-831, llis-853, llis-882, llis-891, report-hubble_optics]
