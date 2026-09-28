@@ -1,0 +1,22 @@
+# LLIS lessons whose recorded date is impossible: they describe a mishap that had not happened
+# yet on that date. Left alone, they leak the answer into the historical eval (a pre-mortem for
+# Genesis would retrieve the Genesis mishap lesson). Found by scanning for lessons that name a
+# catalogued mishap and are dated before it; tests/test_llis_dates.py repeats that scan.
+#
+# The replacement is the earliest date the content could have existed: the release of the
+# investigation it summarises. That is conservative, which is the safe direction for a cutoff.
+
+overrides:
+  - lesson_number: 637
+    title: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board
+    recorded: 1998-10-20
+    date: 1999-06-08
+    reason: WIRE failed on 1999-03-04; the board reported on 1999-06-08.
+
+  - lesson_number: 1733
+    title: Genesis Sample Return Mishap (2004)
+    recorded: 2004-02-09
+    date: 2006-06-13
+    reason: >-
+      Genesis crashed on 2004-09-08 and the board report was released on 2006-06-13.
+      Neighbouring lesson numbers are all dated 2006.

@@ -1,0 +1,83 @@
+case: genesis
+drafted_by: claude
+reviewed_by:
+notes: >-
+  The board's findings were an inverted sensor design that heritage and drawing reviews did not
+  catch, and a verification approach that substituted inspection for test. Lessons on trusting
+  heritage designs and on test-as-you-fly are the direct precursors. LLIS 1733 (the Genesis
+  lesson itself) was recorded with a date before the crash and is corrected in
+  configs/llis_date_overrides.yaml.
+relevant:
+  - doc_id: llis-346
+    grade: 2
+    why: Mars Observer - relying on heritage designs without a thorough analysis of differences.
+  - doc_id: llis-371
+    grade: 2
+    why: SEASAT - flight-proven heritage designs can still contain design errors.
+  - doc_id: llis-789
+    grade: 2
+    why: Formal subsystem inheritance reviews to catch problems in inherited designs.
+  - doc_id: llis-1196
+    grade: 2
+    why: Test as you fly; carefully assess any planned departure from end-to-end verification.
+  - doc_id: llis-1308
+    grade: 1
+    why: Heritage does not mean use as is.
+  - doc_id: llis-342
+    grade: 1
+    why: End-to-end functional verification of critical hardware.
+  - doc_id: llis-633
+    grade: 1
+    why: Functional performance testing before acceptance.
+  - doc_id: llis-978
+    grade: 1
+    why: No substitute for real end-to-end testing.
+  - doc_id: llis-1335
+    grade: 1
+    why: Test facilities must support test-as-you-fly.
+  - doc_id: llis-16
+    grade: 1
+    why: A reversed-installation error in a critical component; x-ray and mandatory inspection added.
+  - doc_id: llis-289
+    grade: 1
+    why: Magellan microswitch mounted so it measured the wrong thing.
+  - doc_id: llis-692
+    grade: 1
+    why: Coordinate-frame conventions miscommunicated; Genesis' error was an orientation convention.
+  - doc_id: llis-634
+    grade: 1
+    why: WIRE pyro electronics design error in a mission-critical event sequence.
+  - doc_id: llis-938
+    grade: 1
+    why: MPL - tests with known deficiencies must be rerun.
+  - doc_id: llis-939
+    grade: 1
+    why: MPL - test critical phase transitions across the full operational range.
+  - doc_id: llis-586
+    grade: 1
+    why: Cassini/Huygens reference antenna's polarization sense was wrong; verify, don't assume.
+  - doc_id: llis-312
+    grade: 1
+    why: End-to-end checks of pyro circuit connection, wiring and signal (found by direct search).
+    found_by: manual
+  - doc_id: report-mpl_ds2
+    grade: 1
+    why: Lander lost to an untested sensor/software interaction during entry, descent and landing.
+  - doc_id: report-wire
+    grade: 1
+    why: Pyro electronics design error not caught by review or test.
+  - doc_id: report-contour
+    grade: 1
+    why: Reliance on analysis and similarity instead of test.
+  - doc_id: report-mco_phase2
+    grade: 1
+    why: Faster-better-cheaper project management and verification shortfalls.
+not_relevant: [llis-1107, llis-1197, llis-1208, llis-1212, llis-1217, llis-1227, llis-1268,
+  llis-1274, llis-1316, llis-1319, llis-133, llis-1360, llis-1370, llis-1390, llis-1398,
+  llis-1451, llis-1480, llis-1504, llis-1507, llis-1511, llis-1522, llis-238, llis-267, llis-271,
+  llis-286, llis-290, llis-296, llis-304, llis-310, llis-311, llis-35, llis-372, llis-394,
+  llis-397, llis-417, llis-431, llis-449, llis-492, llis-494, llis-534, llis-572, llis-574,
+  llis-613, llis-626, llis-628, llis-638, llis-642, llis-643, llis-652, llis-663, llis-700,
+  llis-702, llis-730, llis-765, llis-771, llis-780, llis-812, llis-836, llis-853, llis-922,
+  llis-981, report-apollo13, report-apollo1_as204, report-challenger_rogers_v1,
+  report-columbia_caib_v1, report-hubble_optics, report-mco_phase1]

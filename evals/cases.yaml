@@ -1,0 +1,113 @@
+# Historical pre-mortem cases.
+#
+# Each case describes a system as it stood BEFORE a real mishap, the way an engineer would ask
+# for a pre-mortem: what it is, how it is built and verified, what constraints it is under.
+# The description must never name the failure or its cause. Retrieval is limited to material
+# available before `cutoff` (the mishap date), and success means surfacing the lessons that
+# already existed and would have pointed at what went wrong.
+#
+# `hindsight_queries` are NOT given to the system under test. They use knowledge of the actual
+# root causes to pool candidate documents for labelling, so the labels do not depend only on
+# what the system under test happens to retrieve (standard TREC-style pooling).
+#
+# Labels live in evals/labels/<case id>.yaml. Grades:
+#   2 = direct precursor: a lesson about the same failure mechanism or root cause
+#   1 = related: a contributing factor the board also cited, or a clearly applicable practice
+#   0 = judged not relevant (recorded so reviewed candidates are not re-judged)
+
+cases:
+  - id: mco
+    mishap: Mars Climate Orbiter lost during Mars orbit insertion
+    report: mco_phase1
+    cutoff: 1999-09-23
+    query: >-
+      Pre-mortem for a low-cost Mars orbiter in cruise, about to perform Mars orbit insertion
+      followed by aerobraking. The spacecraft is built and operated by a contractor; a
+      navigation team at a separate institution determines the trajectory and designs the
+      correction maneuvers. The navigation models account for small thruster firings from
+      frequent angular momentum desaturations (the spacecraft has a single asymmetric solar
+      array) using data files produced by the contractor's ground software and delivered to the
+      navigation team. Operations run with a lean staff, and the navigation team is shared with
+      a lander mission arriving at Mars three months later.
+    hindsight_queries:
+      - English metric units conversion mismatch between organizations
+      - software interface specification compliance data exchanged between contractor and ground team
+      - navigation trajectory anomaly discrepancy not escalated or resolved
+      - angular momentum desaturation small thruster forces modeling trajectory error
+      - operations staffing transition from development team to lean operations team
+      - trajectory correction maneuver contingency not planned
+
+  - id: genesis
+    mishap: Genesis sample return capsule parachutes failed to deploy
+    report: genesis
+    cutoff: 2004-09-08
+    query: >-
+      Pre-mortem for a sample return capsule returning to Earth after three years in space. On
+      entry it must autonomously deploy a drogue and then a parafoil so a helicopter can capture
+      it in mid-air. Entry is detected by acceleration-sensing switches on the capsule avionics
+      unit, which start the timers that fire the parachute pyrotechnics. The avionics design is
+      inherited from an earlier sample return mission, and verification relies on that heritage,
+      design reviews and drawing inspections under a cost-capped Discovery-class budget.
+    hindsight_queries:
+      - sensor installed inverted backwards reversed orientation polarity
+      - heritage design reuse inherited hardware not re-verified
+      - test as you fly end to end functional test of sensors
+      - acceleration switch centrifuge test deleted replaced by analysis
+      - design review failed to catch design error
+      - parachute deployment pyrotechnic sequence failure entry
+
+  - id: noaa_n_prime
+    mishap: NOAA N-Prime satellite fell off its turnover cart
+    report: noaa_n_prime
+    cutoff: 2003-09-06
+    query: >-
+      Pre-mortem for moving a completed weather satellite in the contractor's integration and
+      test facility: the spacecraft is to be rotated from vertical to horizontal on a turnover
+      cart before the next test. The turnover cart and its adapter plate are shared with another
+      satellite program in the same building. The operations team works from an existing
+      written handling procedure for a move they have done many times, with government quality
+      assurance oversight at the facility.
+    hindsight_queries:
+      - handling fixture configuration not verified before lift bolts missing
+      - procedures not followed complacency during routine operations
+      - ground support equipment shared between programs configuration change not communicated
+      - spacecraft dropped near drop handling mishap
+      - quality assurance oversight mandatory inspection points not performed
+      - lifting operation hardware damage ground handling
+
+  - id: columbia
+    mishap: Space Shuttle Columbia broke up during re-entry
+    report: columbia_caib_v1
+    cutoff: 2003-02-01
+    query: >-
+      Pre-mortem for a 16-day Space Shuttle science mission. The external tank is covered with
+      spray-on foam insulation; foam loss during ascent has been seen on earlier flights, and
+      debris hits on the orbiter's thermal protection system are routinely treated as an
+      in-family maintenance issue. The wing leading edges are reinforced carbon-carbon panels.
+      The program is under schedule pressure to support space station assembly, and any
+      in-flight damage assessment relies on engineering analysis tools and requests for imagery.
+    hindsight_queries:
+      - debris impact damage to thermal protection system tiles foam shedding
+      - normalization of deviance accepting recurring anomalies as in-family flight rationale
+      - schedule pressure compromising safety decisions
+      - engineering concerns not communicated to management safety culture
+      - reinforced carbon-carbon leading edge damage inspection
+      - damage assessment model used outside its validated range
+
+  - id: mpl
+    mishap: Mars Polar Lander lost during descent
+    report: mpl_ds2
+    cutoff: 1999-12-03
+    query: >-
+      Pre-mortem for a Mars lander that performs autonomous entry, descent and powered landing
+      with throttled descent engines. Three landing legs deploy during descent; each has a
+      touchdown sensor, and flight software shuts the descent engines off when touchdown is
+      sensed. The project works under a tight cost cap with a small team, system-level testing
+      is late in the schedule, and there is no telemetry during entry, descent and landing.
+    hindsight_queries:
+      - spurious transient signal sensor false indication software logic
+      - system requirements not flowed down to software requirements
+      - retest after hardware or wiring change test as you fly
+      - no telemetry during critical mission events entry descent landing
+      - cost cap insufficient margins faster better cheaper risk
+      - flight software testing incomplete fault protection

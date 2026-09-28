@@ -1,0 +1,132 @@
+{
+  "retriever": "bm25",
+  "cases": [
+    {
+      "case": "mco",
+      "reviewed": false,
+      "n_relevant": 11,
+      "n_direct": 2,
+      "hit@10": 1.0,
+      "recall@10": 0.5454545454545454,
+      "recall@20": 0.7272727272727273,
+      "ndcg@10": 0.671011261413237,
+      "first_direct_rank": 1,
+      "unjudged@10": 0,
+      "top10": [
+        "llis-424",
+        "llis-423",
+        "llis-584",
+        "report-lewis",
+        "llis-585",
+        "llis-377",
+        "llis-574",
+        "llis-358",
+        "llis-343",
+        "report-soho"
+      ]
+    },
+    {
+      "case": "genesis",
+      "reviewed": false,
+      "n_relevant": 21,
+      "n_direct": 4,
+      "hit@10": 1.0,
+      "recall@10": 0.14285714285714285,
+      "recall@20": 0.23809523809523808,
+      "ndcg@10": 0.39654740472297983,
+      "first_direct_rank": 1,
+      "unjudged@10": 0,
+      "top10": [
+        "llis-346",
+        "report-apollo1_as204",
+        "report-mpl_ds2",
+        "llis-1107",
+        "report-apollo13",
+        "report-columbia_caib_v1",
+        "llis-939",
+        "report-challenger_rogers_v1",
+        "llis-638",
+        "llis-700"
+      ]
+    },
+    {
+      "case": "noaa_n_prime",
+      "reviewed": false,
+      "n_relevant": 19,
+      "n_direct": 6,
+      "hit@10": 1.0,
+      "recall@10": 0.15789473684210525,
+      "recall@20": 0.21052631578947367,
+      "ndcg@10": 0.5283642383607055,
+      "first_direct_rank": 1,
+      "unjudged@10": 0,
+      "top10": [
+        "llis-1089",
+        "llis-273",
+        "report-columbia_caib_v1",
+        "llis-715",
+        "llis-865",
+        "llis-482",
+        "llis-267",
+        "report-lewis",
+        "llis-567",
+        "llis-1371"
+      ]
+    },
+    {
+      "case": "columbia",
+      "reviewed": false,
+      "n_relevant": 4,
+      "n_direct": 2,
+      "hit@10": 1.0,
+      "recall@10": 0.25,
+      "recall@20": 0.5,
+      "ndcg@10": 0.515157140670655,
+      "first_direct_rank": 1,
+      "unjudged@10": 0,
+      "top10": [
+        "report-challenger_rogers_v1",
+        "llis-923",
+        "llis-682",
+        "llis-832",
+        "llis-6",
+        "llis-312",
+        "llis-1260",
+        "llis-20",
+        "llis-755",
+        "llis-458"
+      ]
+    },
+    {
+      "case": "mpl",
+      "reviewed": false,
+      "n_relevant": 13,
+      "n_direct": 3,
+      "hit@10": 0.0,
+      "recall@10": 0.3076923076923077,
+      "recall@20": 0.38461538461538464,
+      "ndcg@10": 0.278062765884828,
+      "first_direct_rank": null,
+      "unjudged@10": 0,
+      "top10": [
+        "report-mco_phase1",
+        "llis-641",
+        "report-apollo13",
+        "llis-411",
+        "llis-378",
+        "llis-194",
+        "llis-361",
+        "llis-638",
+        "report-challenger_rogers_v1",
+        "llis-836"
+      ]
+    }
+  ],
+  "mean": {
+    "hit@10": 0.8,
+    "recall@10": 0.2807797465692202,
+    "recall@20": 0.4121019331545647,
+    "ndcg@10": 0.47782856221048103
+  },
+  "run_at": "2026-09-28T03:57:40+00:00"
+}

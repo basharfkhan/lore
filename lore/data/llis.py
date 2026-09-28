@@ -13,10 +13,12 @@ from __future__ import annotations
 import argparse
 import json
 from datetime import UTC, datetime
+from pathlib import Path
 
 import requests
+import yaml
 
-from lore.paths import PROCESSED_DIR, RAW_DIR
+from lore.paths import CONFIG_DIR, PROCESSED_DIR, RAW_DIR
 from lore.text import html_to_text
 
 SEARCH_URL = "https://llis.nasa.gov/llis/lesson/_search"
@@ -26,6 +28,7 @@ LESSON_URL = "https://llis.nasa.gov/lesson/{number}"
 MAX_LESSONS = 10_000
 
 RAW_PATH = RAW_DIR / "llis" / "lessons_raw.json"
+OVERRIDES_PATH = CONFIG_DIR / "llis_date_overrides.yaml"
 OUT_PATH = PROCESSED_DIR / "llis.jsonl"
 
 # (output field, source field) for the free-text parts of a lesson.
@@ -97,6 +100,22 @@ def normalise(hit: dict) -> dict:
     return record
 
 
+def apply_date_overrides(records: list[dict], path: Path = OVERRIDES_PATH) -> int:
+    """Replace impossible lesson dates; the original is kept as ``date_recorded``."""
+    overrides = yaml.safe_load(path.read_text(encoding="utf-8"))["overrides"]
+    by_number = {r["lesson_number"]: r for r in records}
+    for item in overrides:
+        record = by_number[item["lesson_number"]]
+        if record["date"] != str(item["recorded"]):
+            raise RuntimeError(
+                f"LLIS {item['lesson_number']} is now dated {record['date']}, not "
+                f"{item['recorded']}; re-check the override before applying it"
+            )
+        record["date_recorded"] = record["date"]
+        record["date"] = str(item["date"])
+    return len(overrides)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--offline", action="store_true", help="reuse the saved raw dump")
@@ -116,6 +135,7 @@ def main() -> None:
     records = sorted((normalise(h) for h in lessons), key=lambda r: r["lesson_number"])
     if len({r["lesson_number"] for r in records}) != len(records):
         raise RuntimeError("duplicate lesson numbers in LLIS dump")
+    corrected = apply_date_overrides(records)
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with OUT_PATH.open("w", encoding="utf-8", newline="\n") as f:
         for record in records:
@@ -124,7 +144,8 @@ def main() -> None:
     undated = sum(1 for r in records if not r["date"])
     print(
         f"{len(records)} lessons -> {OUT_PATH} "
-        f"({len(hits) - len(lessons)} non-lesson entries dropped, {undated} undated)"
+        f"({len(hits) - len(lessons)} non-lesson entries dropped, {undated} undated, "
+        f"{corrected} dates corrected)"
     )
 
 

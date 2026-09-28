@@ -1,0 +1,35 @@
+case: columbia
+drafted_by: claude
+reviewed_by:
+notes: >-
+  LLIS before February 2003 warns that ascent debris (ice) can damage the thermal protection
+  system, but holds nothing specific to external tank foam. The strongest precursor is
+  organisational: the Challenger report, whose acceptance of recurring O-ring erosion the
+  Columbia board explicitly compared to the treatment of foam strikes.
+relevant:
+  - doc_id: report-challenger_rogers_v1
+    grade: 2
+    why: Recurring anomalies accepted as normal and flight rationale built on past success.
+  - doc_id: llis-89
+    grade: 2
+    why: Ice dislodged during ascent can hit the orbiter's TPS with enough force to cause damage.
+  - doc_id: llis-202
+    grade: 1
+    why: >-
+      Challenger ice team did not report discrepancies seen with instruments they did not fully
+      understand (found by direct search; pooling missed it).
+    found_by: manual
+  - doc_id: llis-495
+    grade: 1
+    why: Safety and quality organisations left out of design decisions.
+not_relevant: [llis-1015, llis-1062, llis-1084, llis-1133, llis-1182, llis-1234, llis-1260,
+  llis-1262, llis-127, llis-1293, llis-1312, llis-1345, llis-1360, llis-1370, llis-1374,
+  llis-1375, llis-1378, llis-1381, llis-18, llis-182, llis-20, llis-220, llis-243, llis-258,
+  llis-312, llis-315, llis-393, llis-404, llis-422, llis-427, llis-458, llis-466, llis-521,
+  llis-532, llis-555, llis-587, llis-6, llis-625, llis-649, llis-655, llis-664, llis-666,
+  llis-672, llis-679, llis-681, llis-682, llis-687, llis-689, llis-691, llis-705, llis-725,
+  llis-755, llis-76, llis-761, llis-791, llis-792, llis-802, llis-803, llis-805, llis-806,
+  llis-815, llis-819, llis-825, llis-832, llis-836, llis-923, llis-934, llis-935, llis-948,
+  llis-95, llis-98, llis-991, llis-116, report-apollo13, report-apollo1_as204,
+  report-hubble_optics, report-lewis, report-mco_phase1, report-mco_phase2, report-mpl_ds2,
+  report-soho]
