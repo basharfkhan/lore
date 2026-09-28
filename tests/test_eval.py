@@ -61,3 +61,21 @@ def test_every_pooled_candidate_is_judged():
         }
         missing = sorted(pooled - set(case.labels))
         assert not missing, f"{case.id}: unjudged pooled documents {missing}"
+
+
+def test_weighted_kappa_and_precision_recall():
+    from lore.eval.judge import precision_recall, weighted_kappa
+
+    perfect = [(0, 0), (1, 1), (2, 2), (0, 0)]
+    assert weighted_kappa(perfect) == pytest.approx(1.0)
+    assert weighted_kappa([(0, 2), (2, 0), (1, 1)]) < 0
+    assert precision_recall([(2, 2), (0, 2), (2, 0)], 2) == (0.5, 0.5)
+
+
+def test_names_in_guess_catches_hedged_recognition_only():
+    from lore.eval.mine_cases import names_in_guess
+
+    source = "During the ULYSSES mission a controller sent a command twice."
+    assert names_in_guess(source, "Possibly Helios, Ulysses or ISEE-3") == ["ULYSSES"]
+    sensor = "Failure of the Earth Sensor Assembly aboard the satellite."
+    assert names_in_guess(sensor, "a horizon sensor on some LEO satellite") == []

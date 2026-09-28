@@ -6,7 +6,7 @@
 # available before `cutoff` (the mishap date), and success means surfacing the lessons that
 # already existed and would have pointed at what went wrong.
 #
-# `hindsight_queries` are NOT given to the system under test. They use knowledge of the actual
+# `failure_mechanism` and `hindsight_queries` are NOT given to the system under test. They use knowledge of the actual
 # root causes to pool candidate documents for labelling, so the labels do not depend only on
 # what the system under test happens to retrieve (standard TREC-style pooling).
 #
@@ -18,6 +18,8 @@
 cases:
   - id: mco
     mishap: Mars Climate Orbiter lost during Mars orbit insertion
+    failure_mechanism: >-
+      Ground software supplied thruster impulse data in English units where the navigation team's models expected metric, so small-force trajectory effects were mis-modelled across a contractor/navigation interface that was never verified, and trajectory discrepancies were not escalated.
     report: mco_phase1
     cutoff: 1999-09-23
     query: >-
@@ -39,6 +41,8 @@ cases:
 
   - id: genesis
     mishap: Genesis sample return capsule parachutes failed to deploy
+    failure_mechanism: >-
+      The acceleration switches that start the parachute sequence were designed in an inverted orientation, an error inherited-design reviews and drawing inspections missed because the planned functional test was replaced by inspection.
     report: genesis
     cutoff: 2004-09-08
     query: >-
@@ -58,6 +62,8 @@ cases:
 
   - id: noaa_n_prime
     mishap: NOAA N-Prime satellite fell off its turnover cart
+    failure_mechanism: >-
+      Another program had removed the bolts securing the shared turnover cart's adapter plate without recording it, and the operations team moved the satellite without verifying the cart configuration as the procedure required.
     report: noaa_n_prime
     cutoff: 2003-09-06
     query: >-
@@ -77,6 +83,8 @@ cases:
 
   - id: columbia
     mishap: Space Shuttle Columbia broke up during re-entry
+    failure_mechanism: >-
+      Foam shed from the external tank during ascent struck and breached a wing leading-edge panel; recurring foam strikes had been accepted as in-family, and engineering concerns about the damage did not reach decision makers.
     report: columbia_caib_v1
     cutoff: 2003-02-01
     query: >-
@@ -96,6 +104,8 @@ cases:
 
   - id: mpl
     mishap: Mars Polar Lander lost during descent
+    failure_mechanism: >-
+      A transient touchdown-sensor signal generated when the landing legs deployed was latched by flight software and shut the descent engines off at altitude; the requirement to ignore the transient never reached the software, and testing did not catch it.
     report: mpl_ds2
     cutoff: 1999-12-03
     query: >-

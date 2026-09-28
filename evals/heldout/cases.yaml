@@ -1,0 +1,446 @@
+# Held-out cases mined from obscure LLIS incidents by lore/eval/mine_cases.py.
+# Rewritten and contamination-probed with claude-opus-5; only unrecognised cases kept.
+# Never tune on these: they exist to test a design fixed on the dev cases.
+cases:
+- id: llis559
+  source_lesson: llis-559
+  source_title: Redundant Verification of Critical Command Timing (1995)
+  cutoff: '1995-01-01'
+  query: An interplanetary spacecraft is midway through its mission, having completed its first major
+    science objective. Attitude and pointing maneuvers are executed by the onboard flight computer, which
+    issues a command sequence to enable the thrusters and simultaneously starts an internal countdown
+    timer that bounds the burn duration. The processor was selected primarily for low mass and radiation
+    tolerance, so throughput and memory are modest. Flight sequences and software loads are generated
+    on a single development and simulation model, which is in continuous use supporting operations; new
+    software loads are uplinked periodically as the mission progresses. Ground controllers monitor telemetry,
+    but one-way light time and command turnaround mean roughly fifteen minutes elapse before any ground
+    intervention can reach the vehicle. Propellant margins are sized for the remaining mission.
+  failure_mechanism: An arithmetic overflow in the flight computer (whose corrective patch had been omitted
+    from a post-launch software load) triggered a floating-point interrupt that produced erroneous commands
+    and disabled the burn countdown timer, so the thrusters fired uncontrolled until the slow ground response,
+    exhausting mission-critical propellant; no independent watchdog timer existed as backup.
+  hindsight_queries:
+  - arithmetic overflow flight software erroneous commands
+  - watchdog timer thruster burn duration limit
+  - configuration management error in uplinked software load
+  - unbounded thruster firing propellant depletion fault protection
+  - verify in-flight software updates on testbed
+  difficulty: hard
+  blind_guess: 'The most likely failure is a propellant-depleting stuck-on thruster event: an inadequately
+    regression-tested new software load (validated only on the single, operationally saturated simulation
+    testbed) overloads the low-throughput processor so that the burn-termination task misses its deadline
+    through CPU saturation/priority inversion, and because the shutoff depends on that same software timer
+    rather than an independent hardware watchdog that safes the valves, the thrusters keep firing for
+    the full ~15+ minute round-trip light-time delay before ground can intervene, consuming the mission''s
+    remaining propellant margin and leaving the vehicle tumbling off-Sun/off-Earth.'
+  contamination:
+    recognised: true
+    confidence: low
+    guess: Most likely the DoD/NASA Clementine mission (1994) — the runaway attitude-control thruster
+      firing after lunar mapping that killed the Geographos flyby. A plausible alternative is NEAR Shoemaker's
+      20 Dec 1998 aborted rendezvous burn.
+- id: llis567
+  source_lesson: llis-567
+  source_title: Provide Software Checks On All Spacecraft Command Constraints (1997)
+  cutoff: '1997-01-01'
+  query: 'We are preparing on-orbit checkout of a production-line commercial geosynchronous communications
+    satellite that has just reached its approximate final operational orbit. The checkout campaign exercises
+    the on-board electronics suite, including a test of the attitude recovery loops: ground controllers
+    will command a small roll away from the nominal Earth-pointing attitude, at a commanded rate of about
+    1 degree per second, and verify that the attitude control system automatically fires thrusters in
+    a short burst to restore pointing. Attitude rates are sensed by gyros that have selectable fine and
+    coarse sensitivity ranges, configured by ground command for different mission phases. Operations rely
+    on real-time ground commanding rather than extensive pre-flight simulation, with one operations team
+    supporting several spacecraft under an ambitious checkout schedule. Please identify how this test
+    could go wrong.'
+  failure_mechanism: The gyros were left in the fine sensitivity range (0.6 deg/s) from the transfer orbit,
+    so the commanded 1 deg/s roll saturated the attitude control electronics and the thrusters fired continuously,
+    driving the satellite into a flat spin; no software command constraint check blocked the incompatible
+    configuration.
+  hindsight_queries:
+  - sensor range saturation attitude control runaway thruster firing
+  - command constraint checking spacecraft configuration mismatch
+  - gyro scale range selection wrong mode on-orbit test
+  - closed-loop control loss of rate feedback saturation lessons
+  - operator omitted configuration command before test
+  difficulty: easy
+  blind_guess: 'The most likely failure is a gyro range/configuration mismatch: with the rate gyros left
+    (or commanded) in their fine, low-full-scale range whose saturation limit is below the commanded ~1
+    deg/s slew, the sensed roll rate clips (or wraps/changes apparent sign) so the attitude control loop
+    receives an erroneous rate feedback and fires thrusters in the wrong sense or without cutoff, driving
+    a positive-feedback spin-up that breaks Earth lock, depletes attitude-control propellant, and tumbles
+    the spacecraft out of sun/antenna pointing before the single, schedule-pressured ground team can diagnose
+    and inhibit the loop.'
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not confidently identifiable as one named mission; reads like an anonymised industry/insurance
+      case study of a commercial GEO comsat lost (or badly degraded) during in-orbit checkout because
+      of a rate-gyro range/configuration error. It has the flavour of late-1990s/2000s high-rate production
+      GEO programmes (Hughes/Boeing HS-601/702, SS/L 1300, Orbital STAR class) and is structurally similar
+      to the SSTI Lewis loss (gyro/thruster interaction plus thin ops staffing), though Lewis was LEO.
+- id: llis572
+  source_lesson: llis-572
+  source_title: Damage to Bipropellant Main Engines from Premature Oxidizer Depletion (1997)
+  cutoff: '1997-01-01'
+  query: We are preparing orbit-raising operations for the first of a series of commercial geostationary
+    communications satellites. The spacecraft uses a pressure-fed bipropellant main propulsion system
+    burning nitrogen tetroxide and hydrazine, with helium pressurization of the propellant tanks, plus
+    monopropellant thrusters sharing the fuel supply. Propellant loads were computed from the engine mixture
+    ratio quoted in the supplier's specification; detailed component acceptance test flow data reside
+    with the propulsion contractor. A sequence of apogee burns, ending with a final burn to place the
+    spacecraft on station, is planned and modelled by mission analysts. Onboard software can terminate
+    a burn using either a single accelerometer reading below a manually set threshold, or multiple acceleration
+    readings time-averaged and compared against a value 60 percent below the last steady-state level;
+    the latter logic is enabled for the final burn. Ground controllers monitor telemetry, including feed
+    line pressures, in near real time. Schedule pressure is high for on-station delivery.
+  failure_mechanism: The engines' actual mixture ratio was slightly more oxidizer-rich than the specification
+    value used for propellant loading (supplier acceptance test flow data never reaching the customer),
+    so oxidizer ran out about a minute before the end of the final burn, and the time-averaged acceleration
+    threshold failed to detect depletion because residual monopropellant thrust and intermittent oxidizer
+    slugs kept average acceleration high, letting the engines run damaged in an off-mixture mode.
+  hindsight_queries:
+  - propellant load margin mixture ratio acceptance test data
+  - bipropellant oxidizer depletion detection accelerometer threshold
+  - supplier test data not provided to customer propulsion performance
+  - dissolved pressurant gas saturation in propellant tanks
+  - burn termination logic thrust decay detection
+  difficulty: easy
+  blind_guess: The most likely failure is oxidizer exhaustion partway through the final apogee burn because
+    the propellant load was sized to the supplier's nominal specification mixture ratio rather than the
+    as-built engine's actual acceptance-test mixture ratio (which runs oxidizer-rich), so the NTO tank
+    empties while fuel remains — and the enabled time-averaged 60-percent-thrust-decay cutoff logic is
+    too slow to catch the resulting rapid thrust decay, letting the engine and shared-feed monopropellant
+    thrusters ingest helium/two-phase flow and waste fuel, leaving the satellite short of geostationary
+    orbit with insufficient remaining propellant for full mission life.
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not confidently identifiable; reads like a lessons-learned case study of a first-of-class commercial
+      GEO comsat (e.g. a Hughes/Loral/Thales-class bipropellant bus) whose final apogee burn terminated
+      prematurely because the true engine mixture ratio differed from the supplier specification, leading
+      to early depletion of one propellant.
+- id: llis579
+  source_lesson: llis-579
+  source_title: Avoid Inadvertent quotHotquot Mates or Demates of Connectors (1996)
+  cutoff: '1996-01-01'
+  query: During integration and test of a planetary orbiter's electrical power subsystem, technicians
+    are routinely mating and demating multi-pin electrical power connectors between the solar array harness,
+    the battery assembly and the main power bus. External ground power to the spacecraft is switched off
+    for these operations, but the onboard batteries remain installed and in a charged state to support
+    functional checks that follow immediately afterward. Distribution to loads is controlled by remote
+    power switches that keep selected lines isolated from structure ground; blocking diodes and series
+    inductors sit between sources and the bus. The harness uses standard circular connectors with metal
+    backshells bonded to spacecraft ground, mated by hand in a crowded bay with limited visibility and
+    access. Schedule pressure keeps cable operations frequent, and later environmental testing will require
+    additional mate/demate cycles.
+  failure_mechanism: During a hand mate, a slightly cocked/twisted entry let an exposed corner pin (a
+    solar array power return isolated by a remote power switch) touch the grounded backshell of the mating
+    connector, creating a path around the open switch that let the charged batteries momentarily energize
+    the power bus.
+  hindsight_queries:
+  - mating connectors with battery energized
+  - scoop-proof connector requirement spacecraft harness
+  - pin to backshell short during connector mate
+  - hot mate demate power connector lesson learned
+  - battery isolation procedure before cable operations
+  difficulty: easy
+  blind_guess: The most likely failure is a hot mate/demate of a battery-energized connector in the blind,
+    crowded bay — as the pins break or first touch under load, the series inductance forces an arc (and
+    the first/last pin to touch can momentarily short a live pin to the grounded metal backshell or to
+    an adjacent pin, bypassing the isolated-return and blocking-diode protections), which erodes and welds
+    contact plating and leaves latent high-resistance or intermittently shorted pins that survive I&T
+    but open or short in flight after thermal-vac and launch vibration.
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not identifiable as a unique mission; reads like a generic NASA/ESA 'lessons learned' hazard
+      write-up about mating/demating energized connectors during spacecraft I&T (the style matches lessons-learned
+      items derived from planetary-orbiter integration mishaps such as Mars Observer/Mars-class orbiters,
+      but no distinctive fingerprint is present)
+- id: llis591
+  source_lesson: llis-591
+  source_title: Pyrovalve Blow-by May Interact Violently With Propellant (1993)
+  cutoff: '1993-01-01'
+  query: We are reviewing the propulsion priming sequence for a three-axis stabilized communications satellite
+    before launch. The spacecraft carries a monopropellant hydrazine system with a blowdown tank isolated
+    from the thruster manifold by two normally closed pyrotechnic isolation valves plumbed in parallel
+    for redundancy. Before priming, the tank and upstream lines hold pressurized fuel, while the downstream
+    lines, manifold and thruster valves are closed off and hold only a low-pressure inert gas left from
+    ground servicing; residual gas composition and venting history are not tightly controlled. After separation
+    from the launch vehicle, flight software commands the primary valve to fire, charging the lines up
+    to the closed thruster valves, and then fires the backup valve about one second later to guarantee
+    flow. Qualification has been at component level; the sequence has not been demonstrated end-to-end
+    on a flight-representative feed system.
+  failure_mechanism: Rapid pressurization of the line drove adiabatic compression of trapped pad gas and
+    exothermic decomposition of hydrazine at the dead-ended thruster valves, and hot combustion-product
+    blow-by past the second pyrovalve's initiator/ram seal then ignited the decomposed fuel, detonating
+    and rupturing the propellant lines on both sides of the valve.
+  hindsight_queries:
+  - pyrovalve hot gas leakage into propellant lines
+  - adiabatic compression ignition of hydrazine during line priming
+  - dead-end pressure surge monopropellant decomposition
+  - pyrotechnic valve contamination combustion products downstream
+  - redundant isolation valve firing sequence propellant detonation
+  difficulty: easy
+  blind_guess: 'The most likely failure is an adiabatic-compression ("dieseling") detonation: when the
+    primary pyrovalve fires, hydrazine slugs at high velocity into the dead-ended, low-pressure downstream
+    manifold and compresses the trapped residual gas pocket against the closed thruster valves, adiabatically
+    heating it to hydrazine''s autoignition point and triggering explosive decomposition and waterhammer
+    overpressure that ruptures the manifold, lines, or thruster valve seats — an event the 1-second-later
+    backup valve firing can re-create as a second surge, and which component-level qualification alone
+    would not have caught.'
+  contamination:
+    recognised: true
+    confidence: low
+    guess: Not confidently a single named mission \u2014 the setup is the textbook precondition for adiabatic-compression
+      ('dieseling'/detonation) damage in a hydrazine feed system when a pyro valve dumps high-pressure
+      propellant into an evacuated-but-not-truly-evacuated downstream manifold. The closest well-documented
+      flight analogues are Landsat 6 (1993, ruptured hydrazine manifold prevented apogee kick motor operation,
+      spacecraft lost) and Mars Observer (1993, pyro-valve pressurization event believed to have ruptured/failed
+      the propulsion system, loss of contact). Mars Observer is bipropellant, so the monopropellant blowdown
+      detail fits the Landsat-6-class failure better.
+- id: llis612
+  source_lesson: llis-612
+  source_title: Fault Protection of Wax Thermal Actuator Applications (1998)
+  cutoff: '1998-01-01'
+  query: A small deep-space technology-demonstration spacecraft uses four high-output paraffin wax thermal
+    actuators to release its stowed solar arrays shortly after launch. Each actuator contains a primary
+    and a redundant secondary electrical heater; the design intent is that energizing the primary heaters
+    expands the wax charge and strokes the actuator, with the secondary heaters held in reserve. Ground
+    testing showed actuation within roughly 70 to 90 seconds of heater turn-on, so flight software commands
+    the primary heaters on for a three-minute interval to provide margin. Heater power is routed from
+    the spacecraft power distribution assembly, a printed circuit board that also switches other loads,
+    and the heater commands are issued by the distribution logic. Telemetry provides bus current and switch
+    status. Mass and part-count constraints limited the number of dedicated protective and monitoring
+    components in the release circuitry.
+  failure_mechanism: A spurious command re-energized the already-actuated wax actuators' primary heaters
+    for many minutes; the overheated actuators internally shorted, bridging primary to secondary heater
+    circuits and drawing about 6 A through distribution-board traces rated far lower, burning the heater
+    circuits open and nearly damaging the shared power distribution board.
+  hindsight_queries:
+  - heater left powered inadvertent command spacecraft
+  - wax paraffin actuator overheat failure mode
+  - internal short redundant heater cross-strapping
+  - circuit trace current rating undersized short circuit
+  - deployment actuator collateral damage power distribution
+  difficulty: easy
+  blind_guess: 'The most probable failure is a common-cause loss of the release function in the shared
+    power distribution assembly rather than in the wax itself: an unprotected overcurrent or short in
+    a primary heater element (or a shorted/latched switching FET driven for the full fixed three-minute
+    interval) burns the PDA traces or driver that feeds both the primary and the ''redundant'' secondary
+    heater legs, so with no fuse, no thermal cutout, and no deployment-position telemetry to tell software
+    that the actuator never stroked, the array stays stowed and the backup heaters cannot be used — and
+    the same fault can also overheat and extrude/leak the paraffin charge past its dynamic seal, permanently
+    destroying the actuator''s stroke capability.'
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not confidently identifiable; the profile (small deep-space technology-demonstration smallsat/CubeSat,
+      paraffin 'high-output' wax actuators releasing solar arrays right after launch, mass-constrained
+      power distribution board with minimal fusing) fits an Artemis I-class or SmallSat secondary payload
+      such as NEA Scout, Lunar Flashlight, LunIR/Team Miles, or a mission like Lunar Trailblazer, but
+      I cannot pin it to a specific documented event.
+- id: llis621
+  source_lesson: llis-621
+  source_title: Post Mission Hardware Drop Incident (1998)
+  cutoff: '1998-01-01'
+  query: A cryogenic experiment payload has returned from a flight mission and is being shipped to a collaborating
+    university laboratory for post-mission disassembly, inspection and functional testing. The highest-value
+    component is a cryoprobe assembly that must be lifted from its shipping/handling configuration and
+    transferred onto a support stand in the lab, which has a bare concrete floor. The transfer uses a
+    purpose-built lift fixture that was previously proof-tested and is reassembled locally for each use;
+    the vertical load path is carried through a threaded fastener joint. The laboratory work is staffed
+    by a small university team, and the lift is planned to be performed by a single operator without a
+    dedicated crane crew. Post-mission activities are on a limited budget and schedule, with the hardware
+    expected to be refurbished and reused. What could go wrong?
+  failure_mechanism: The lift fixture's vertical load path depended on a double lock-nut arrangement;
+    it had been reassembled with one lock nut missing and the other nearly disengaged, and the single
+    unsupervised operator's inspection did not catch it, so the nut backed off during the transfer and
+    the cryoprobe fell about 18 inches onto the concrete floor.
+  hindsight_queries:
+  - lift fixture failure dropped flight hardware
+  - critical lift procedure not followed handling damage
+  - threaded fastener backed out load path single point failure
+  - pre-operational inspection of handling fixture missed
+  - post-mission hardware handling damage lessons
+  difficulty: easy
+  blind_guess: 'The most likely failure is a dropped-load event during the lift: because the proof-tested
+    fixture is re-assembled locally for each use by a single operator with no independent inspection or
+    torque/thread-engagement verification, the single-point threaded joint in the vertical load path is
+    reassembled with insufficient thread engagement (or a wrong-grade/damaged/cross-threaded or un-locked
+    fastener that backs out under load and handling vibration), so the joint separates in tension mid-transfer
+    and the cryoprobe assembly falls onto the bare concrete floor, causing irreparable damage to the highest-value
+    flight component.'
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not confidently identifiable. The setup reads like a returned Shuttle/sounding-rocket cryogenic
+      physics payload (e.g., a superfluid-helium microgravity experiment such as the Lambda Point / Confined
+      Helium / CVX-class dewar-and-probe insert, or a similar university-built cryostat probe) being de-integrated
+      at a collaborating university lab. It also strongly resembles a generic NASA/OSHA-style 'lessons
+      learned' case study about a dropped-load mishap during a non-critical-lift operation.
+- id: llis624
+  source_lesson: llis-624
+  source_title: Design, Test, and Inspection of Semi-Rigid RF Cables (1997)
+  cutoff: '1997-01-01'
+  query: An Earth-orbiting radar instrument's electronics subsystem is being prepared for environmental
+    qualification. Inside the subsystem enclosure, six semi-rigid coaxial RF cables carry microwave signals
+    between two separately mounted internal structures, each with its own mounting interface to the enclosure.
+    The cables are routed and clamped along short runs between connectors on the two structures, and are
+    installed permanently as part of the assembly. Qualification calls for a full three-axis random vibration
+    test at protoflight levels on the flight unit, followed by thermal vacuum testing, with RF performance
+    measured before and after. Post-vibration verification relies on visual examination of the installed
+    harness plus end-to-end RF checks. A structural mass model of the subsystem is available. The program
+    is schedule-constrained, with the instrument on the critical path to spacecraft integration.
+  failure_mechanism: Vibration-induced relative motion between the two independently mounted internal
+    structures forced the load path through the semi-rigid coax, and resonance of the cable runs with
+    the supporting structure fatigued the outer conductor, producing hairline cracks that escaped in-situ
+    visual inspection and required five redesign-and-retest cycles.
+  hindsight_queries:
+  - semi-rigid coaxial cable fatigue vibration test
+  - cable spanning two structures load path relief
+  - hairline crack inspection RF cable after vibration
+  - cable resonance matching structure natural frequency
+  - RF signal drift thermal cycling cracked coax detection
+  difficulty: easy
+  blind_guess: 'The dominant failure is displacement-driven high-cycle fatigue at the cable-to-connector
+    junctions: because the six semi-rigid coax jumpers rigidly tie two independently mounted internal
+    structures, out-of-phase dynamic (and later CTE-driven) relative motion of those two mounting interfaces
+    is forced into the short, stiff cable runs, concentrating bending strain at the first clamp and at
+    the connector backshell/solder-fillet transition, where the outer conductor or center-pin solder joint
+    cracks partially — a latent defect that still passes post-vibration visual inspection and pre/post
+    end-to-end insertion-loss checks, then opens into intermittent RF dropout, phase instability, or dielectric/center-conductor
+    contact loss under on-orbit thermal cycling.'
+  contamination:
+    recognised: false
+    confidence: low
+    guess: Not identifiable as a specific flight; reads like a generic radar-instrument electronics (e.g.,
+      an L-band SAR electronics box of the SMAP/NISAR/Sentinel-1 class) qualification scenario, possibly
+      drawn from a lessons-learned case about semi-rigid coax failures in vibration.
+rejected:
+- id: llis432
+  reason: recognised as 'NASA Mars Observer (launched Sept 1992, lost 21 Aug 1993 just before Mars orbit
+    insertion)'
+- id: llis439
+  reason: probe named the real mission ['ITHACO']
+- id: llis484
+  reason: recognised as 'Mars Observer (NASA, launched September 1992; lost 21 August 1993 just before
+    Mars orbit insertion)'
+- id: llis485
+  reason: recognised as 'NASA Mars Observer (launched 25 September 1992; contact lost 21 August 1993,
+    three days before Mars orbit insertion)'
+- id: llis486
+  reason: probe named the real mission ['Observer']
+- id: llis487
+  reason: recognised as "Most likely NASA's Juno (Jupiter orbiter) and its October 2016 main-engine (Leros-1b,
+    MON/hydrazine) helium check-valve anomaly; the same failure physics also describes Mars Observer (1993)
+    and Akatsuki (2010)."
+- id: llis497
+  reason: probe named the real mission ['Cassini', 'Teflon']
+- id: llis533
+  reason: recognised as "A NASA 'faster, better, cheaper' Mars orbiter developed by JPL with an industrial
+    prime reusing heritage designs — most likely Mars Climate Orbiter (JPL + Lockheed Martin Astronautics,
+    heritage from Mars Global Surveyor, lost 23 Sep 1999); the description also fits Mars Observer (JPL
+    + RCA/GE Astro Space, cost-capped Observer-class, heritage from Earth-orbiting comsat/DMSP buses,
+    lost 21 Aug 1993)."
+- id: llis560
+  reason: recognised as 'NASA/JPL Galileo during interplanetary cruise — an asteroid flyby (Gaspra, 29
+    Oct 1991, or Ida, 28 Aug 1993) conducted after the high-gain antenna failed to deploy, using the low-gain
+    antenna and the DMS tape recorder'
+- id: llis574
+  reason: recognised as 'Mars Global Surveyor (NASA, launched Nov 1996) — its solar array deployment/latch
+    indication (redundant hinge potentiometers) and the -Y panel that failed to fully latch, which drove
+    a re-planned, much longer aerobraking campaign'
+- id: llis578
+  reason: recognised as "Cassini–Huygens (NASA Cassini orbiter with ESA's Huygens Titan probe), pre-launch
+    processing at Cape Canaveral LC-40 on the Titan IVB/Centaur, September–October 1997"
+- id: llis583
+  reason: probe named the real mission ['GSE', 'Surveyor']
+- id: llis584
+  reason: probe named the real mission ['Global', 'MGS', 'Surveyor']
+- id: llis601
+  reason: probe named the real mission ['Deep']
+- id: llis603
+  reason: probe named the real mission ['DC-DC', 'Pathfinder']
+- id: llis609
+  reason: probe named the real mission ['Cassini']
+- id: llis622
+  reason: probe named the real mission ['ATLO']
+- id: llis639
+  reason: recognised as 'NASA Deep Space 1 (DS1), launched October 1998 — the NSTAR 30-cm xenon ion engine
+    technology demonstration (New Millennium Program), which flew by asteroid Braille and comet Borrelly.'
+- id: llis913
+  reason: not a specific incident
+- id: llis991
+  reason: probe named the real mission ['SIRTF']
+- id: llis1300
+  reason: recognised as 'James Webb Space Telescope (JWST) — the 2018 propulsion-system test anomaly at
+    the spacecraft contractor/subcontractor, in which incorrect voltage was applied to the propulsion
+    pressure transducers during testing and damaged them (one of the workmanship/test-error findings later
+    catalogued by the JWST Independent Review Board, alongside the wrong-solvent valve cleaning and the
+    acoustic-test fastener release).'
+- id: llis1315
+  reason: not a specific incident
+- id: llis1316
+  reason: probe named the real mission ['MER']
+- id: llis1335
+  reason: recognised as "Most likely NASA/JPL's Mars Science Laboratory (Curiosity) and its Electra-Lite
+    UHF transceiver during pre-launch EMI/EMC flight qualification (the earlier, smaller rover of the
+    same lineage being the Mars Exploration Rovers / Sojourner-class heritage radio). This is a well-known
+    JPL EMC 'lessons learned' case study."
+- id: llis1358
+  reason: recognised as "Mars Exploration Rover (MER, Spirit/Opportunity) system-level thermal-vacuum
+    test — the three TIRS (Transverse Impulse Rocket Subsystem) solid motors represented by inert mass
+    simulators; a NASA/JPL lessons-learned case about non-flight 'convenience' heaters damaging flight
+    hardware"
+- id: llis1360
+  reason: description leaks ['tether']
+- id: llis1371
+  reason: probe named the real mission ['ESD', 'Exploration']
+- id: llis1376
+  reason: probe named the real mission ['Electronics', 'MER', 'Module']
+- id: llis1390
+  reason: recognised as 'Cassini\ndash Huygens \n the Huygens Titan entry probe and the Probe Support
+    Avionics/Probe Support Equipment relay receiver on the Cassini orbiter (ESA probe, NASA/JPL orbiter)'
+- id: llis1410
+  reason: probe named the real mission ['EDL']
+- id: llis1411
+  reason: not a specific incident
+- id: llis1415
+  reason: probe named the real mission ['ULYSSES']
+- id: llis1416
+  reason: recognised as 'Cassini–Huygens (Saturn orbiter) — reaction wheel assembly (RWA) bearing degradation
+    during cruise, ~2000–2001'
+- id: llis1426
+  reason: probe named the real mission ['Temperature']
+- id: llis1431
+  reason: not a specific incident
+- id: llis1480
+  reason: probe named the real mission ['MER']
+- id: llis1481
+  reason: probe named the real mission ['Global', 'Odyssey', 'Surveyor']
+- id: llis1484
+  reason: recognised as 'NASA Mars Exploration Rovers (MER) \\u2014 Spirit (MER-A) and Opportunity (MER-B),
+    launched 2003, landed January 2004 via airbag-cushioned lander'
+- id: llis1519
+  reason: recognised as 'NASA/JPL Mars Exploration Rovers (Spirit/MER-A and Opportunity/MER-B, launched
+    June/July 2003) — specifically the MER ground data system / operations storage (file server) infrastructure
+    at JPL, as captured in a NASA lessons-learned write-up.'
+- id: llis1520
+  reason: recognised as 'NASA/JPL Mars rover flight software hardware-in-the-loop testbed operations —
+    most likely Mars Science Laboratory (Curiosity, launched Nov 2011), possibly the Mars Exploration
+    Rovers; this reads like the setup paragraph of a NASA Lessons Learned / JPL PFR case about testbed
+    configuration control.'
+- id: llis1529
+  reason: probe named the real mission ['MRO']
+- id: llis1532
+  reason: probe named the real mission ['TES']
+- id: llis1619
+  reason: probe named the real mission ['ATLO', 'Electronics', 'Exploration', 'Module']
+- id: llis1725
+  reason: recognised as "Mars Exploration Rover (Spirit/Opportunity) class rover — Instrument Deployment
+    Device (robotic arm) with the Rock Abrasion Tool (RAT) on the turret; pyro cable-cutter release of
+    the arm launch restraints (same NSI/cable-cutter catalogue parts used for solar array and lander/airbag
+    restraint release). Could also fit a later MSL/Perseverance-style arm, but the 'surface-grinding tool'
+    strongly implies the RAT, i.e. MER."

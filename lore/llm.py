@@ -22,7 +22,14 @@ CACHE_DIR = DATA_DIR / "interim" / "llm_cache"
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
 
 
+MAX_OUTPUT_TOKENS = 32000  # stays non-streaming-safe; the answers here are short JSON
+
+
 class RefusalError(RuntimeError):
+    pass
+
+
+class TruncatedError(RuntimeError):
     pass
 
 
@@ -64,11 +71,21 @@ def json_call(system: str, user: str, schema: dict, *, max_tokens: int = 16000) 
     if cache.exists():
         return json.loads(cache.read_text(encoding="utf-8"))["output"]
 
-    response = client().beta.messages.create(**request, betas=[FALLBACK_BETA], fallbacks="default")
+    # Adaptive thinking shares the max_tokens budget with the answer, so a hard input can run
+    # out before the JSON is written. Retry with more room; the cache stays keyed on the
+    # original request so reruns still hit it.
+    for budget in (max_tokens, min(max_tokens * 4, MAX_OUTPUT_TOKENS)):
+        # Streamed so large budgets don't trip the SDK's 10-minute non-streaming guard.
+        with client().beta.messages.stream(
+            **(request | {"max_tokens": budget}), betas=[FALLBACK_BETA], fallbacks="default"
+        ) as stream:
+            response = stream.get_final_message()
+        if response.stop_reason != "max_tokens":
+            break
     if response.stop_reason == "refusal":
         raise RefusalError(str(response.stop_details))
     if response.stop_reason == "max_tokens":
-        raise RuntimeError("response hit max_tokens before the JSON was complete")
+        raise TruncatedError(f"response hit max_tokens ({budget}) before the JSON was complete")
     text = next(b.text for b in response.content if b.type == "text")
     output = json.loads(text)
 
