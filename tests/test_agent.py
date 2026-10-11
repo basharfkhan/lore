@@ -52,3 +52,27 @@ def test_unknown_ids_and_tools_return_errors_not_exceptions():
 def test_follow_up_links_to_earlier_documents_are_supported():
     earlier = {"https://llis.nasa.gov/lesson/1196": "LLIS 1196"}
     assert check_links("As [LLIS 1196](https://llis.nasa.gov/lesson/1196) says.", earlier) == []
+
+
+def test_process_chatter_before_the_report_is_removed():
+    from lore.agent.premortem import strip_preamble
+
+    report = "Two risks stand out.\n\n### 1. First risk\nDetails."
+    for opener in [
+        "Enough material gathered. Writing the pre-mortem now.",
+        "Good, I have everything needed. Writing the report now.",
+        "I now have enough to write the report.",
+    ]:
+        assert strip_preamble(f"{opener}\n\n{report}") == report
+
+
+def test_real_opening_lines_are_kept():
+    from lore.agent.premortem import strip_preamble
+
+    for answer in [
+        "Two risks stand out.\n\n### 1. First risk\nDetails.",
+        "Here is [LLIS 267](https://llis.nasa.gov/lesson/267), the closest match.\n\nIt says more.",
+        "I only do pre-mortems and questions about this archive.",
+        "Your system has three linked single points of failure.\n\n### 1. Risk\nText.",
+    ]:
+        assert strip_preamble(answer) == answer

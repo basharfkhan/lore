@@ -118,6 +118,26 @@ def _collect_sources(result, sources: dict[str, str]) -> None:
             sources[item["url"]] = item.get("title", "")
 
 
+_CHATTER = re.compile(
+    r"^(good|great|ok(ay)?|alright|enough|now|i('ve| have| now have)|let me|writing|here('s| is))\b"
+    r"[^\n]{0,140}$",
+    re.IGNORECASE,
+)
+
+
+def strip_preamble(answer: str) -> str:
+    """Drop a one-line remark about the process that precedes the report.
+
+    The prompt forbids it, but models still sometimes open with "Enough material gathered.
+    Writing the pre-mortem now." The line is removed only when it is short, starts like such a
+    remark, cites nothing, and real content follows.
+    """
+    first, sep, rest = answer.partition("\n\n")
+    if sep and rest.strip() and "](" not in first and _CHATTER.match(first.strip()):
+        return rest.strip()
+    return answer
+
+
 def check_links(answer: str, sources: dict[str, str]) -> list[str]:
     """Links in the answer that no tool returned during this run."""
     links = set(re.findall(r"\]\((https?://[^)\s]+)\)", answer))
@@ -164,7 +184,8 @@ def run(
             break
         calls = [b for b in response.content if b.type == "tool_use"]
         if response.stop_reason != "tool_use" or not calls:
-            out.answer = "\n".join(b.text for b in response.content if b.type == "text").strip()
+            text = "\n".join(b.text for b in response.content if b.type == "text").strip()
+            out.answer = strip_preamble(text)
             break
         results = []
         for call in calls:
