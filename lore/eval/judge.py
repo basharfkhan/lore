@@ -1,14 +1,19 @@
-"""LLM relevance judge, and its calibration against the human-reviewed dev labels.
+"""LLM relevance judge that answers the same two questions as the human adjudicator.
 
-Hand-labelling ~100 pooled candidates for each of 30 cases is not practical, so candidates for
-the held-out cases are graded by Claude with the same rubric the dev labels use. The judge is
-only trusted as far as it agrees with those labels, so calibration reports that agreement
-(exact, weighted kappa, and precision/recall on "relevant" and "direct precursor").
+Free-form 0/1/2 grading did not survive contact with three readers: the draft labels, the
+first version of this judge and the human reviewer gave three different grades to the same
+lessons. Each mishap's cause is therefore split into two parts (evals/criteria.yaml) and a
+document is graded by whether it is about each one: both is a 2 (direct precursor), one is a 1
+(related), neither is a 0.
 
-The judge is told the real failure mechanism: it grades the way a human who knows the answer
-does. The system under test never sees the mechanism.
+The judge is checked against the human answers in evals/review/adjudication_checklist.md.
+Those rows are the ones the earlier judge and the draft labels disagreed on, so they are the
+hard cases, not a random sample; agreement on them is a lower bound.
 
-    python -m lore.eval.judge calibrate
+The judge is told the real failure mechanism. The system under test never sees it.
+
+    python -m lore.eval.judge calibrate    # agreement with the human answers
+    python -m lore.eval.judge regrade      # write judge grades for every dev label
 """
 
 from __future__ import annotations
@@ -19,30 +24,35 @@ import statistics
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 
-from lore.data.llis import OUT_PATH as LLIS_PATH
-from lore.eval.cases import EVAL_DIR, POOL_DIR, load_cases
-from lore.llm import MODEL, json_call
+import yaml
+from rank_bm25 import BM25Okapi
 
-BATCH = 15
+from lore.data.llis import OUT_PATH as LLIS_PATH
+from lore.eval.adjudicate import SHEET, read_sheet
+from lore.eval.cases import EVAL_DIR, load_cases
+from lore.llm import MODEL, json_call
+from lore.retrieve.bm25 import CHUNKS_PATH, tokenize
+
+CRITERIA_PATH = EVAL_DIR / "criteria.yaml"
+RESULTS_DIR = EVAL_DIR / "results"
+BATCH = 12
 DOC_CHARS = 1800
-WORKERS = 8
+REPORT_PASSAGES = 3
+WORKERS = 4
 
 SYSTEM = """\
 You grade documents from NASA's lessons-learned archive for a pre-mortem evaluation. You are \
-given a system as it stood before a real failure, the actual failure mechanism, and candidate \
-documents that were all written before the failure. For each document decide whether an \
-engineer reading it beforehand would have been warned about what went wrong.
+given what actually went wrong in a real failure, split into two parts, A and B, and candidate \
+documents written before that failure. For each document answer two yes/no questions: is the \
+document about part A, and is it about part B?
 
-Grades:
-2 - direct precursor: the document describes the same failure mechanism or root cause, even \
-if it happened to different hardware or a different program.
-1 - related: a contributing factor to this failure, or a practice that would clearly have \
-helped prevent it, but not the mechanism itself.
-0 - not relevant: shares only topic, vocabulary or hardware type, or is generic advice that \
-applies to any project.
+Answer yes only when the document is really about that thing: it describes an event where it \
+happened, or gives a lesson or recommendation specifically about it. Answer no when the \
+document merely mentions it in passing, shares the topic or hardware type, or gives generic \
+advice (test thoroughly, review designs, follow procedures) that would apply to any project. \
+The two answers are independent. Most documents are no on both.
 
-Be strict. Most candidates are 0. A document that is about the same kind of spacecraft but a \
-different failure is 0. Give each grade a one-sentence reason."""
+Give one sentence of reasoning per document."""
 
 SCHEMA = {
     "type": "object",
@@ -53,10 +63,11 @@ SCHEMA = {
                 "type": "object",
                 "properties": {
                     "doc_id": {"type": "string"},
-                    "grade": {"type": "integer", "enum": [0, 1, 2]},
+                    "about_a": {"type": "boolean"},
+                    "about_b": {"type": "boolean"},
                     "reason": {"type": "string"},
                 },
-                "required": ["doc_id", "grade", "reason"],
+                "required": ["doc_id", "about_a", "about_b", "reason"],
                 "additionalProperties": False,
             },
         }
@@ -66,13 +77,31 @@ SCHEMA = {
 }
 
 
-def document_texts(doc_ids: list[str], snippets: dict[str, str]) -> dict[str, str]:
-    """Full lesson text for LLIS documents; for reports, the pooled chunk that matched."""
+def load_criteria() -> dict[str, dict[str, str]]:
+    return yaml.safe_load(CRITERIA_PATH.read_text(encoding="utf-8"))
+
+
+def document_texts(doc_ids: list[str], focus: str) -> dict[str, str]:
+    """Text shown to the judge: the whole lesson, or a report's passages closest to ``focus``.
+
+    A report is hundreds of pages, so the judge reads its few passages that best match the
+    failure being graded. Showing one arbitrary pooled excerpt had the judge grading the
+    Challenger report on a paragraph about heat-shield temperatures.
+    """
     lessons = {}
     with LLIS_PATH.open(encoding="utf-8") as f:
         for line in f:
             lesson = json.loads(line)
             lessons[lesson["id"]] = lesson
+    report_ids = {d for d in doc_ids if d not in lessons}
+    report_chunks: dict[str, list[dict]] = {d: [] for d in report_ids}
+    if report_ids:
+        with CHUNKS_PATH.open(encoding="utf-8") as f:
+            for line in f:
+                chunk = json.loads(line)
+                if chunk["doc_id"] in report_ids:
+                    report_chunks[chunk["doc_id"]].append(chunk)
+
     texts = {}
     for doc_id in doc_ids:
         if doc_id in lessons:
@@ -81,24 +110,34 @@ def document_texts(doc_ids: list[str], snippets: dict[str, str]) -> dict[str, st
                 p for p in [x["driving_event"], x["lesson"], x["recommendation"]] if p
             )
             texts[doc_id] = f"{x['title']}\n\n{body}"[:DOC_CHARS]
-        else:
-            texts[doc_id] = snippets.get(doc_id, doc_id)[:DOC_CHARS]
+            continue
+        chunks = report_chunks[doc_id]
+        scores = BM25Okapi([tokenize(c["text"]) for c in chunks]).get_scores(tokenize(focus))
+        best = sorted(range(len(chunks)), key=scores.__getitem__, reverse=True)[:REPORT_PASSAGES]
+        passages = "\n\n[...]\n\n".join(chunks[i]["text"][: DOC_CHARS // 2] for i in sorted(best))
+        texts[doc_id] = f"{chunks[0]['doc_title']} (excerpts)\n\n{passages}"
     return texts
 
 
-def judge(description: str, mechanism: str, texts: dict[str, str]) -> dict[str, dict]:
+def judge(mechanism: str, criteria: dict[str, str], texts: dict[str, str]) -> dict[str, dict]:
+    """Return {doc_id: {"a": bool, "b": bool, "grade": int, "reason": str}}."""
     ids = sorted(texts)
     batches = [ids[start : start + BATCH] for start in range(0, len(ids), BATCH)]
+    header = (
+        f"What actually went wrong:\n{mechanism}\n\n"
+        f"Part A: {criteria['a']}\nPart B: {criteria['b']}\n\nCandidates:\n\n"
+    )
 
     def ask(batch: list[str]) -> dict[str, dict]:
         docs = "\n\n".join(f'<document id="{d}">\n{texts[d]}\n</document>' for d in batch)
-        user = (
-            f"System before the failure:\n{description}\n\n"
-            f"Actual failure mechanism:\n{mechanism}\n\nCandidates:\n\n{docs}"
-        )
-        result = json_call(SYSTEM, user, SCHEMA, max_tokens=8000)
+        result = json_call(SYSTEM, header + docs, SCHEMA, max_tokens=8000)
         return {
-            j["doc_id"]: {"grade": j["grade"], "reason": j["reason"]}
+            j["doc_id"]: {
+                "a": j["about_a"],
+                "b": j["about_b"],
+                "grade": int(j["about_a"]) + int(j["about_b"]),
+                "reason": j["reason"],
+            }
             for j in result["judgments"]
             if j["doc_id"] in batch
         }
@@ -145,69 +184,92 @@ def precision_recall(pairs: list[tuple[int, int]], threshold: int) -> tuple[floa
     return (tp / judged if judged else float("nan"), tp / human if human else float("nan"))
 
 
-def calibrate() -> None:
-    per_case, all_pairs, disagreements = [], [], []
-    for case in load_cases():
-        pool = {
-            json.loads(line)["doc_id"]: json.loads(line)["snippet"]
-            for line in (POOL_DIR / f"{case.id}.jsonl").read_text(encoding="utf-8").splitlines()
-        }
-        texts = document_texts(sorted(case.labels), pool)
-        judged = judge(case.query, case.failure_mechanism, texts)
-        pairs = [(case.labels[d], judged[d]["grade"]) for d in sorted(case.labels)]
-        all_pairs += pairs
-        per_case.append((case.id, weighted_kappa(pairs), len(pairs)))
-        disagreements += [
-            {
-                "case": case.id,
-                "doc_id": d,
-                "human": case.labels[d],
-                "judge": judged[d]["grade"],
-                "reason": judged[d]["reason"],
-            }
-            for d in sorted(case.labels)
-            if abs(case.labels[d] - judged[d]["grade"]) >= 1
-            and max(case.labels[d], judged[d]["grade"]) >= 1
-        ]
+def judge_case(case, criteria: dict[str, str], doc_ids: list[str]) -> dict[str, dict]:
+    focus = f"{case.failure_mechanism} {criteria['a']} {criteria['b']}"
+    return judge(case.failure_mechanism, criteria, document_texts(doc_ids, focus))
 
-    exact = statistics.mean(h == j for h, j in all_pairs)
-    p1, r1 = precision_recall(all_pairs, 1)
-    p2, r2 = precision_recall(all_pairs, 2)
-    kappa = weighted_kappa(all_pairs)
-    reviewed = all(c.reviewed for c in load_cases())
-    print(f"{len(all_pairs)} judged pairs, reference labels human-reviewed: {reviewed}")
-    print(f"exact agreement {exact:.2f}   weighted kappa {kappa:.2f}")
-    print(f"relevant (>=1): judge precision {p1:.2f} recall {r1:.2f}")
-    print(f"direct   (=2):  judge precision {p2:.2f} recall {r2:.2f}")
-    for cid, k, n in per_case:
-        print(f"  {cid:13s} kappa {k:.2f}  ({n} pairs)")
-    matrix = Counter(all_pairs)
+
+def calibrate() -> None:
+    cases = {c.id: c for c in load_cases()}
+    criteria = load_criteria()
+    human, _ = read_sheet(
+        SHEET.read_text(encoding="utf-8"), {c.mishap: c.id for c in cases.values()}
+    )
+    by_case: dict[str, list[str]] = {}
+    for case_id, doc_id in human:
+        by_case.setdefault(case_id, []).append(doc_id)
+
+    rows, pairs = [], []
+    for case_id, doc_ids in by_case.items():
+        judged = judge_case(cases[case_id], criteria[case_id], sorted(doc_ids))
+        for doc_id in sorted(doc_ids):
+            h, j = human[(case_id, doc_id)], judged[doc_id]
+            pairs.append((h, j["grade"]))
+            rows.append({"case": case_id, "doc_id": doc_id, "human": h, **j})
+
+    exact = statistics.mean(h == j for h, j in pairs)
+    within_one = statistics.mean(abs(h - j) <= 1 for h, j in pairs)
+    kappa = weighted_kappa(pairs)
+    p2, r2 = precision_recall(pairs, 2)
+    print(f"{len(pairs)} human-adjudicated rows (the hard cases)")
+    print(f"exact agreement {exact:.2f}   within one grade {within_one:.2f}   kappa {kappa:.2f}")
+    print(f"direct precursor (=2): judge precision {p2:.2f} recall {r2:.2f}")
+    matrix = Counter(pairs)
     print("confusion (rows human 0/1/2, cols judge 0/1/2):")
     for h in range(3):
         print("  ", [matrix[(h, j)] for j in range(3)])
+    for r in rows:
+        if r["human"] != r["grade"]:
+            print(
+                f"  {r['case']:13s} {r['doc_id']:10s} you {r['human']} judge {r['grade']} "
+                f"(A={'y' if r['a'] else 'n'} B={'y' if r['b'] else 'n'}) {r['reason'][:110]}"
+            )
 
-    path = EVAL_DIR / "results" / "judge_calibration.json"
     report = {
         "model": MODEL,
-        "pairs": len(all_pairs),
+        "rows": len(pairs),
         "exact_agreement": exact,
+        "within_one": within_one,
         "weighted_kappa": kappa,
-        "relevant_precision": p1,
-        "relevant_recall": r1,
         "direct_precision": p2,
         "direct_recall": r2,
-        "per_case_kappa": {cid: k for cid, k, _ in per_case},
-        "disagreements": disagreements,
+        "judgments": rows,
     }
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    path = RESULTS_DIR / "judge_calibration.json"
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(f"{len(disagreements)} disagreements -> {path}")
+
+
+def regrade() -> None:
+    """Judge every labelled dev document with the checklist; humans win where they answered."""
+    cases = load_cases()
+    criteria = load_criteria()
+    human, _ = read_sheet(SHEET.read_text(encoding="utf-8"), {c.mishap: c.id for c in cases})
+    out = {}
+    for case in cases:
+        judged = judge_case(case, criteria[case.id], sorted(case.labels))
+        changed = Counter()
+        for doc_id, j in judged.items():
+            if (case.id, doc_id) in human:
+                j["grade"] = human[(case.id, doc_id)]
+                j["source"] = "human"
+            else:
+                j["source"] = "judge"
+            changed[(case.labels[doc_id], j["grade"])] += 1
+        out[case.id] = judged
+        moved = sum(n for (old, new), n in changed.items() if old != new)
+        direct = sorted(d for d, j in judged.items() if j["grade"] == 2)
+        print(f"{case.id:13s} {len(judged)} docs, {moved} grades changed, direct: {direct}")
+    path = RESULTS_DIR / "judge_regrade.json"
+    path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    print(f"-> {path}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("command", choices=["calibrate"])
-    parser.parse_args()
-    calibrate()
+    parser.add_argument("command", choices=["calibrate", "regrade"])
+    args = parser.parse_args()
+    {"calibrate": calibrate, "regrade": regrade}[args.command]()
 
 
 if __name__ == "__main__":

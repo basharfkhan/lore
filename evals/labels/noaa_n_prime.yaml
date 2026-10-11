@@ -1,110 +1,199 @@
 case: noaa_n_prime
 drafted_by: claude
-reviewed_by:
-notes: >-
-  The board found the team did not verify the turnover cart's configuration (another program had
-  removed 24 bolts without recording it), complacency about a routine move, poor coordination,
-  and ineffective oversight. LLIS holds three TOPEX/Poseidon handling incidents from 1992-93
-  that warn about exactly this.
+reviewed_by: null
+notes: The board found the team did not verify the turnover cart's configuration (another program had
+  removed 24 bolts without recording it), complacency about a routine move, poor coordination, and ineffective
+  oversight. LLIS holds three TOPEX/Poseidon handling incidents from 1992-93 that warn about exactly this.
 relevant:
-  - doc_id: llis-1089
-    grade: 2
-    why: TOPEX/Poseidon handling anomaly - lifting fixture unstable in the spacecraft's configuration.
-  - doc_id: llis-267
-    grade: 2
-    why: TOPEX/Poseidon near-drop - reused fixtures require analysis by the current user.
-  - doc_id: llis-273
-    grade: 2
-    why: TOPEX/Poseidon drop - damage potential whenever hardware is handled, even routinely.
-  - doc_id: llis-621
-    grade: 2
-    why: Hardware drop; verify lift fixture design and configuration.
-  - doc_id: llis-914
-    grade: 2
-    why: Genesis canister lift - never assume visual inspection alone assures GSE safety.
-  - doc_id: llis-1213
-    grade: 2
-    why: Configuration changes must be fed back to every affected program element.
-  - doc_id: llis-918
-    grade: 1
-    why: Support equipment must be re-evaluated as requirements change.
-  - doc_id: llis-1272
-    grade: 1
-    why: Unclear roles between organisations cause systemic process breakdowns.
-  - doc_id: llis-873
-    grade: 1
-    why: Detailed procedures for work on critical equipment and its interfaces.
-  - doc_id: llis-1041
-    grade: 1
-    why: Gravity Probe-B - GSE operations need reviewed procedures; schedule pressure.
-  - doc_id: llis-178
-    grade: 1
-    why: Mandatory inspection points were eliminated before 51-L.
-  - doc_id: llis-1047
-    grade: 1
-    why: Government mandatory inspection points reduced faster than quality staff.
-  - doc_id: llis-332
-    grade: 1
-    why: QA oversight compromised when access is restricted.
-  - doc_id: llis-1215
-    grade: 1
-    why: Human factors in safety-critical lifts.
-  - doc_id: llis-649
-    grade: 1
-    why: Control and management of ground support equipment criticality.
-  - doc_id: llis-1427
-    grade: 1
-    why: Update procedures and retrain whenever the configuration changes.
-  - doc_id: llis-119
-    grade: 1
-    why: Poor configuration documentation led to missing hardware during a handling operation.
-  - doc_id: llis-435
-    grade: 1
-    why: Ground support equipment failure damaged SEASAT-A.
-  - doc_id: llis-1211
-    grade: 1
-    why: Formal handling processes to protect hardware.
-  - doc_id: llis-1200
-    grade: 2
-    why: Orbiter 103 payload bay door raised without the procedure's required check of the support equipment configuration first - the N-Prime mechanism.
-    found_by: dense
-  - doc_id: llis-1199
-    grade: 1
-    why: STS-38 platform beam incident - standard sequence not followed during ground processing.
-    found_by: dense
-  - doc_id: llis-1210
-    grade: 1
-    why: Deviations from approved procedures must be carefully managed.
-    found_by: dense
-  - doc_id: llis-1227
-    grade: 1
-    why: Every one of multiple checkpoints must actually work to catch an installation error.
-    found_by: dense
-  - doc_id: llis-382
-    grade: 1
-    why: Unclear procedures and no cognizant technical staff present led to incorrect assembly.
-    found_by: dense
-  - doc_id: llis-588
-    grade: 1
-    why: SRB holddown post incident - moving heavy critical hardware needs more than OSHA-level practice.
-    found_by: dense
-  - doc_id: llis-481
-    grade: 1
-    why: Information lost between test shifts; N-Prime's cart change was never communicated.
-    found_by: dense
-  - doc_id: llis-1182
-    grade: 1
-    why: Atlantis fuel cell mishap - ground processing with delegated supervision and procedure lapses.
-    found_by: dense
-not_relevant: [llis-109, llis-1090, llis-1100, llis-1158, llis-1209, llis-121, llis-13, llis-1336,
-  llis-1338, llis-1340, llis-135, llis-1368, llis-1370, llis-1371, llis-1375, llis-1378, llis-143,
-  llis-1497, llis-1501, llis-159, llis-182, llis-236, llis-240, llis-246, llis-280, llis-281,
-  llis-331, llis-355, llis-385, llis-433, llis-436, llis-482, llis-499, llis-517, llis-564,
-  llis-567, llis-584, llis-61, llis-664, llis-668, llis-715, llis-719, llis-726, llis-728,
-  llis-732, llis-733, llis-845, llis-85, llis-865, llis-910, llis-92, llis-96, report-apollo13,
-  report-challenger_rogers_v1, report-columbia_caib_v1, report-contour, report-hubble_optics,
-  report-lewis, report-mco_phase1, report-mco_phase2, report-mpl_ds2, report-soho, report-wire,
-  llis-1, llis-1034, llis-1036, llis-1138, llis-1186, llis-1212, llis-1221, llis-1252, llis-1268,
-  llis-1277, llis-1374, llis-140, llis-191, llis-195, llis-230, llis-261, llis-370, llis-4,
-  llis-450, llis-504, llis-521, llis-566, llis-638, llis-651, llis-656, llis-666, llis-675,
-  llis-691, llis-74, llis-923, llis-939, llis-991, report-apollo1_as204]
+- doc_id: llis-273
+  grade: 2
+  why: TOPEX/Poseidon drop - damage potential whenever hardware is handled, even routinely.
+- doc_id: llis-621
+  grade: 2
+  why: Hardware drop; verify lift fixture design and configuration.
+- doc_id: llis-914
+  grade: 2
+  why: Genesis canister lift - never assume visual inspection alone assures GSE safety.
+- doc_id: llis-1213
+  grade: 1
+  why: Configuration changes must be fed back to every affected program element.
+  adjudicated_by: bashar
+- doc_id: llis-1272
+  grade: 1
+  why: Unclear roles between organisations cause systemic process breakdowns.
+- doc_id: llis-873
+  grade: 1
+  why: Detailed procedures for work on critical equipment and its interfaces.
+- doc_id: llis-1041
+  grade: 1
+  why: Gravity Probe-B - GSE operations need reviewed procedures; schedule pressure.
+- doc_id: llis-178
+  grade: 1
+  why: Mandatory inspection points were eliminated before 51-L.
+- doc_id: llis-1047
+  grade: 1
+  why: Government mandatory inspection points reduced faster than quality staff.
+- doc_id: llis-332
+  grade: 1
+  why: QA oversight compromised when access is restricted.
+- doc_id: llis-1215
+  grade: 1
+  why: Human factors in safety-critical lifts.
+- doc_id: llis-649
+  grade: 1
+  why: Control and management of ground support equipment criticality.
+- doc_id: llis-1427
+  grade: 1
+  why: Update procedures and retrain whenever the configuration changes.
+- doc_id: llis-119
+  grade: 2
+  why: Poor configuration documentation led to missing hardware during a handling operation.
+  adjudicated_by: bashar
+- doc_id: llis-435
+  grade: 1
+  why: Ground support equipment failure damaged SEASAT-A.
+- doc_id: llis-1211
+  grade: 1
+  why: Formal handling processes to protect hardware.
+- doc_id: llis-1200
+  grade: 2
+  why: Orbiter 103 payload bay door raised without the procedure's required check of the support equipment
+    configuration first - the N-Prime mechanism.
+  found_by: dense
+- doc_id: llis-1199
+  grade: 1
+  why: STS-38 platform beam incident - standard sequence not followed during ground processing.
+  found_by: dense
+- doc_id: llis-1210
+  grade: 1
+  why: Deviations from approved procedures must be carefully managed.
+  found_by: dense
+- doc_id: llis-1227
+  grade: 1
+  why: Every one of multiple checkpoints must actually work to catch an installation error.
+  found_by: dense
+- doc_id: llis-382
+  grade: 1
+  why: Unclear procedures and no cognizant technical staff present led to incorrect assembly.
+  found_by: dense
+- doc_id: llis-588
+  grade: 1
+  why: SRB holddown post incident - moving heavy critical hardware needs more than OSHA-level practice.
+  found_by: dense
+- doc_id: llis-481
+  grade: 1
+  why: Information lost between test shifts; N-Prime's cart change was never communicated.
+  found_by: dense
+- doc_id: llis-1182
+  grade: 1
+  why: Atlantis fuel cell mishap - ground processing with delegated supervision and procedure lapses.
+  found_by: dense
+- doc_id: llis-240
+  why: Graded by checklist.
+  grade: 2
+  adjudicated_by: bashar
+- doc_id: llis-521
+  why: Graded by checklist.
+  grade: 1
+  adjudicated_by: bashar
+- doc_id: llis-991
+  why: Graded by checklist.
+  grade: 2
+  adjudicated_by: bashar
+not_relevant:
+- llis-1
+- llis-1034
+- llis-1036
+- llis-1089
+- llis-109
+- llis-1090
+- llis-1100
+- llis-1138
+- llis-1158
+- llis-1186
+- llis-1209
+- llis-121
+- llis-1212
+- llis-1221
+- llis-1252
+- llis-1268
+- llis-1277
+- llis-13
+- llis-1336
+- llis-1338
+- llis-1340
+- llis-135
+- llis-1368
+- llis-1370
+- llis-1371
+- llis-1374
+- llis-1375
+- llis-1378
+- llis-140
+- llis-143
+- llis-1497
+- llis-1501
+- llis-159
+- llis-182
+- llis-191
+- llis-195
+- llis-230
+- llis-236
+- llis-246
+- llis-261
+- llis-267
+- llis-280
+- llis-281
+- llis-331
+- llis-355
+- llis-370
+- llis-385
+- llis-4
+- llis-433
+- llis-436
+- llis-450
+- llis-482
+- llis-499
+- llis-504
+- llis-517
+- llis-564
+- llis-566
+- llis-567
+- llis-584
+- llis-61
+- llis-638
+- llis-651
+- llis-656
+- llis-664
+- llis-666
+- llis-668
+- llis-675
+- llis-691
+- llis-715
+- llis-719
+- llis-726
+- llis-728
+- llis-732
+- llis-733
+- llis-74
+- llis-845
+- llis-85
+- llis-865
+- llis-910
+- llis-918
+- llis-92
+- llis-923
+- llis-939
+- llis-96
+- report-apollo13
+- report-apollo1_as204
+- report-challenger_rogers_v1
+- report-columbia_caib_v1
+- report-contour
+- report-hubble_optics
+- report-lewis
+- report-mco_phase1
+- report-mco_phase2
+- report-mpl_ds2
+- report-soho
+- report-wire

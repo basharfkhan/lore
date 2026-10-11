@@ -1,81 +1,183 @@
 case: mpl
 drafted_by: claude
-reviewed_by:
-notes: >-
-  The probable cause was a spurious touchdown-sensor signal at leg deployment, latched by flight
-  software, that shut the engines down at altitude. LLIS held three lessons about transient or
-  spurious inputs triggering irreversible actions during deployment events. The Mars Climate
-  Orbiter board report and lesson were published before MPL arrived and are legitimately
-  available.
+reviewed_by: null
+notes: The probable cause was a spurious touchdown-sensor signal at leg deployment, latched by flight
+  software, that shut the engines down at altitude. LLIS held three lessons about transient or spurious
+  inputs triggering irreversible actions during deployment events. The Mars Climate Orbiter board report
+  and lesson were published before MPL arrived and are legitimately available.
 relevant:
-  - doc_id: llis-409
-    grade: 2
-    why: >-
-      Voyager gyro swap: enable protection logic only when needed and preclude spurious inputs
-      triggering unwanted events. The same mechanism that shut down MPL's engines.
-  - doc_id: llis-422
-    grade: 2
-    why: Deployment events produce false sensor readings; disable the dependent logic around them.
-  - doc_id: llis-634
-    grade: 2
-    why: WIRE - transients at power-up triggered an irreversible action; design for transients.
-  - doc_id: llis-432
-    grade: 1
-    why: Keep real-time telemetry during critical events; the MPL board faulted its absence.
-  - doc_id: llis-378
-    grade: 1
-    why: System engineers must own subsystem interactions; subsystem engineers will not predict them.
-  - doc_id: llis-411
-    grade: 1
-    why: Design for testability; abnormal modes are easy to overlook.
-  - doc_id: llis-594
-    grade: 1
-    why: Ground tests should mirror the flight configuration.
-  - doc_id: llis-596
-    grade: 1
-    why: Faster-better-cheaper missions are vulnerable to scope and resource pressure.
-  - doc_id: llis-723
-    grade: 1
-    why: Independent verification and validation of embedded software.
-  - doc_id: llis-269
-    grade: 1
-    why: Magellan star scanner false sightings - sensors can report events that did not happen.
-  - doc_id: llis-641
-    grade: 1
-    why: MCO board (Nov 1999) with recommendations addressed to MPL before its landing.
-  - doc_id: report-mco_phase1
-    grade: 1
-    why: Same, the full MCO Phase I report.
-  - doc_id: report-wire
-    grade: 1
-    why: Full WIRE board report on the start-up transient.
-  - doc_id: llis-403
-    grade: 2
-    why: Viking '75 - stored safing logic fired thrusters on the pad, a phase it was never meant to run in; consider what stored logic does if triggered at the wrong time.
-    found_by: dense
-  - doc_id: llis-626
-    grade: 1
-    why: Deep Space 2 (MPL's companion probes) - FMECA and sneak-circuit analysis at system level.
-    found_by: dense
-  - doc_id: llis-4
-    grade: 1
-    why: Ground test configuration that differs from flight configuration causes failures.
-    found_by: dense
-  - doc_id: llis-333
-    grade: 1
-    why: Delayed diagnostic data cripples anomaly response; relates to no telemetry during EDL.
-    found_by: dense
-not_relevant: [llis-1021, llis-1022, llis-1132, llis-1274, llis-139, llis-1604, llis-194,
-  llis-212, llis-271, llis-287, llis-302, llis-307, llis-310, llis-343, llis-345, llis-346,
-  llis-361, llis-362, llis-369, llis-372, llis-391, llis-396, llis-40, llis-419, llis-447,
-  llis-533, llis-544, llis-559, llis-56, llis-560, llis-567, llis-569, llis-577, llis-578,
-  llis-610, llis-612, llis-625, llis-637, llis-638, llis-655, llis-657, llis-660, llis-664,
-  llis-668, llis-672, llis-687, llis-707, llis-716, llis-719, llis-729, llis-757, llis-76,
-  llis-761, llis-771, llis-772, llis-774, llis-776, llis-789, llis-793, llis-817, llis-827,
-  llis-830, llis-831, llis-836, llis-837, llis-838, llis-839, report-apollo13,
-  report-apollo1_as204, report-challenger_rogers_v1, report-lewis, report-soho, llis-1090,
-  llis-1104, llis-1128, llis-1131, llis-1212, llis-1220, llis-1224, llis-1258, llis-128,
-  llis-1340, llis-209, llis-272, llis-274, llis-281, llis-290, llis-291, llis-292, llis-3,
-  llis-373, llis-375, llis-433, llis-450, llis-584, llis-585, llis-590, llis-608, llis-609,
-  llis-656, llis-661, llis-675, llis-680, llis-697, llis-726, llis-733, llis-756, llis-781,
-  llis-784, llis-791, llis-792, llis-798, llis-835]
+- doc_id: llis-409
+  grade: 2
+  why: 'Voyager gyro swap: enable protection logic only when needed and preclude spurious inputs triggering
+    unwanted events. The same mechanism that shut down MPL''s engines.'
+- doc_id: llis-422
+  grade: 2
+  why: Deployment events produce false sensor readings; disable the dependent logic around them.
+- doc_id: llis-634
+  grade: 2
+  why: WIRE - transients at power-up triggered an irreversible action; design for transients.
+- doc_id: llis-432
+  grade: 1
+  why: Keep real-time telemetry during critical events; the MPL board faulted its absence.
+- doc_id: llis-378
+  grade: 1
+  why: System engineers must own subsystem interactions; subsystem engineers will not predict them.
+- doc_id: llis-411
+  grade: 1
+  why: Design for testability; abnormal modes are easy to overlook.
+- doc_id: llis-594
+  grade: 1
+  why: Ground tests should mirror the flight configuration.
+- doc_id: llis-596
+  grade: 1
+  why: Faster-better-cheaper missions are vulnerable to scope and resource pressure.
+- doc_id: llis-723
+  grade: 1
+  why: Independent verification and validation of embedded software.
+- doc_id: llis-269
+  grade: 1
+  why: Magellan star scanner false sightings - sensors can report events that did not happen.
+- doc_id: llis-641
+  grade: 1
+  why: MCO board (Nov 1999) with recommendations addressed to MPL before its landing.
+- doc_id: report-mco_phase1
+  grade: 1
+  why: Same, the full MCO Phase I report.
+- doc_id: report-wire
+  grade: 1
+  why: Full WIRE board report on the start-up transient.
+- doc_id: llis-403
+  grade: 1
+  why: Viking '75 - stored safing logic fired thrusters on the pad, a phase it was never meant to run
+    in; consider what stored logic does if triggered at the wrong time.
+  found_by: dense
+  adjudicated_by: bashar
+- doc_id: llis-626
+  grade: 1
+  why: Deep Space 2 (MPL's companion probes) - FMECA and sneak-circuit analysis at system level.
+  found_by: dense
+- doc_id: llis-4
+  grade: 1
+  why: Ground test configuration that differs from flight configuration causes failures.
+  found_by: dense
+- doc_id: llis-333
+  grade: 1
+  why: Delayed diagnostic data cripples anomaly response; relates to no telemetry during EDL.
+  found_by: dense
+- doc_id: llis-637
+  why: Graded by checklist.
+  grade: 2
+  adjudicated_by: bashar
+not_relevant:
+- llis-1021
+- llis-1022
+- llis-1090
+- llis-1104
+- llis-1128
+- llis-1131
+- llis-1132
+- llis-1212
+- llis-1220
+- llis-1224
+- llis-1258
+- llis-1274
+- llis-128
+- llis-1340
+- llis-139
+- llis-1604
+- llis-194
+- llis-209
+- llis-212
+- llis-271
+- llis-272
+- llis-274
+- llis-281
+- llis-287
+- llis-290
+- llis-291
+- llis-292
+- llis-3
+- llis-302
+- llis-307
+- llis-310
+- llis-343
+- llis-345
+- llis-346
+- llis-361
+- llis-362
+- llis-369
+- llis-372
+- llis-373
+- llis-375
+- llis-391
+- llis-396
+- llis-40
+- llis-419
+- llis-433
+- llis-447
+- llis-450
+- llis-533
+- llis-544
+- llis-559
+- llis-56
+- llis-560
+- llis-567
+- llis-569
+- llis-577
+- llis-578
+- llis-584
+- llis-585
+- llis-590
+- llis-608
+- llis-609
+- llis-610
+- llis-612
+- llis-625
+- llis-638
+- llis-655
+- llis-656
+- llis-657
+- llis-660
+- llis-661
+- llis-664
+- llis-668
+- llis-672
+- llis-675
+- llis-680
+- llis-687
+- llis-697
+- llis-707
+- llis-716
+- llis-719
+- llis-726
+- llis-729
+- llis-733
+- llis-756
+- llis-757
+- llis-76
+- llis-761
+- llis-771
+- llis-772
+- llis-774
+- llis-776
+- llis-781
+- llis-784
+- llis-789
+- llis-791
+- llis-792
+- llis-793
+- llis-798
+- llis-817
+- llis-827
+- llis-830
+- llis-831
+- llis-835
+- llis-836
+- llis-837
+- llis-838
+- llis-839
+- report-apollo13
+- report-apollo1_as204
+- report-challenger_rogers_v1
+- report-lewis
+- report-soho

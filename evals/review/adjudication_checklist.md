@@ -51,14 +51,14 @@ is graded the same way. Mishap reports are left out (the judge saw only one exce
 
 | lesson | A (y/n) | B (y/n) | your earlier grade |
 |---|---|---|---|
-| [llis-1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final ](https://llis.nasa.gov/lesson/1089) | | |  |
-| [llis-119: Solid Rocket Motor (SRM) Segment and Handling Ring Mating](https://llis.nasa.gov/lesson/119) | | |  |
-| [llis-1213: Configuration Control at All Levels of Change](https://llis.nasa.gov/lesson/1213) | | |  |
-| [llis-240: Pneumatic Explosion](https://llis.nasa.gov/lesson/240) | | |  |
-| [llis-267: TOPEX/POSEIDON Near-Drop Incident](https://llis.nasa.gov/lesson/267) | | |  |
-| [llis-521: Inspection Oversights Led to Model Failure](https://llis.nasa.gov/lesson/521) | | |  |
-| [llis-918: Evolution of Mission Requirements for Support Equipment](https://llis.nasa.gov/lesson/918) | | |  |
-| [llis-991: Planning and Conduct of Hazardous Tests Require Extra Precautions (200](https://llis.nasa.gov/lesson/991) | | |  |
+| [llis-1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final ](https://llis.nasa.gov/lesson/1089) | n | n | 0 |
+| [llis-119: Solid Rocket Motor (SRM) Segment and Handling Ring Mating](https://llis.nasa.gov/lesson/119) | y | y | 2 |
+| [llis-1213: Configuration Control at All Levels of Change](https://llis.nasa.gov/lesson/1213) | y | n | 1 |
+| [llis-240: Pneumatic Explosion](https://llis.nasa.gov/lesson/240) | y | y | 2 |
+| [llis-267: TOPEX/POSEIDON Near-Drop Incident](https://llis.nasa.gov/lesson/267) | n | n | 0 |
+| [llis-521: Inspection Oversights Led to Model Failure](https://llis.nasa.gov/lesson/521) | y | n | 1 |
+| [llis-918: Evolution of Mission Requirements for Support Equipment](https://llis.nasa.gov/lesson/918) | n | n | 0 |
+| [llis-991: Planning and Conduct of Hazardous Tests Require Extra Precautions (200](https://llis.nasa.gov/lesson/991) | y | y | 2 |
 
 ## Mars Polar Lander lost during descent
 
@@ -69,5 +69,5 @@ is graded the same way. Mishap reports are left out (the judge saw only one exce
 
 | lesson | A (y/n) | B (y/n) | your earlier grade |
 |---|---|---|---|
-| [llis-403: Thrusters Fired on Launch Pad (1975)](https://llis.nasa.gov/lesson/403) | | |  |
-| [llis-637: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board](https://llis.nasa.gov/lesson/637) | | |  |
+| [llis-403: Thrusters Fired on Launch Pad (1975)](https://llis.nasa.gov/lesson/403) | n | y | 1 |
+| [llis-637: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board](https://llis.nasa.gov/lesson/637) | y | y | 2 |

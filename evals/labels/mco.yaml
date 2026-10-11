@@ -1,66 +1,169 @@
 case: mco
 drafted_by: claude
-reviewed_by:  # set to your name once every judgment below has been checked
-notes: >-
-  No lesson before September 1999 is about English/metric unit mismatches, so the direct
-  precursors are about the process that failed: navigation and spacecraft teams jointly
-  modelling small thruster forces, and verifying data that crosses an organisational interface.
+reviewed_by: null
+notes: 'No lesson before September 1999 is about English/metric unit mismatches, so the direct precursors
+  are about the process that failed: navigation and spacecraft teams jointly modelling small thruster
+  forces, and verifying data that crosses an organisational interface.'
 relevant:
-  - doc_id: llis-424
-    grade: 2
-    why: >-
-      Voyager (1977): translational accelerations from attitude control thrusters complicate
-      orbit determination; navigation and spacecraft teams must jointly estimate these effects
-      and establish operational interfaces. MCO's small-forces modelling failed at exactly this
-      interface.
-  - doc_id: llis-569
-    grade: 2
-    why: >-
-      Interface control and verification: communicating design details across mechanical,
-      electrical and informational interfaces is a pervasive failure point. MCO's root cause was
-      a ground software file that did not meet its interface specification.
-  - doc_id: llis-423
-    grade: 1
-    why: Viking non-gravitational accelerations must be estimated against navigation requirements.
-  - doc_id: llis-577
-    grade: 1
-    why: Data translated between two organisations' software can be silently corrupted; verify it.
-  - doc_id: llis-584
-    grade: 1
-    why: MGS ground/flight software configuration mismatch; verify ground software compatibility.
-  - doc_id: llis-585
-    grade: 1
-    why: Staff continuity from development into operations; the MCO board cited this transition.
-  - doc_id: llis-262
-    grade: 1
-    why: Concurrent real-time operations starve planning; MCO's navigators were shared with MPL.
-  - doc_id: llis-608
-    grade: 1
-    why: State requirements unambiguously across partner organisations.
-  - doc_id: llis-723
-    grade: 1
-    why: Independent V&V of software; the board found ground software was not adequately verified.
-  - doc_id: report-lewis
-    grade: 1
-    why: Lean operations team failed to monitor the spacecraft during a critical period.
-  - doc_id: report-soho
-    grade: 1
-    why: Operations errors under a reduced, overloaded operations team.
-  - doc_id: llis-692
-    grade: 1
-    why: Coordinate-frame conventions miscommunicated between teams; the same class of convention error as units.
-    found_by: dense
-not_relevant: [llis-1, llis-10, llis-1011, llis-1016, llis-1052, llis-1055, llis-1065, llis-1072,
-  llis-1075, llis-1113, llis-1182, llis-1186, llis-1228, llis-1230, llis-148, llis-202, llis-207,
-  llis-213, llis-281, llis-320, llis-343, llis-358, llis-372, llis-377, llis-395, llis-420,
-  llis-446, llis-468, llis-474, llis-481, llis-484, llis-559, llis-566, llis-574, llis-578,
-  llis-590, llis-593, llis-617, llis-619, llis-627, llis-655, llis-657, llis-672, llis-691,
-  llis-695, llis-699, llis-708, llis-713, llis-717, llis-731, llis-736, llis-739, llis-754,
-  llis-763, llis-790, llis-791, llis-792, llis-819, llis-820, llis-840, llis-841, llis-85,
-  llis-860, llis-995, llis-997, report-apollo13, report-apollo1_as204,
-  report-challenger_rogers_v1, report-wire, llis-1098, llis-1134, llis-1187, llis-1206, llis-1216,
-  llis-1252, llis-17802, llis-196, llis-272, llis-279, llis-288, llis-305, llis-307, llis-310,
-  llis-345, llis-347, llis-373, llis-391, llis-394, llis-400, llis-403, llis-405, llis-409,
-  llis-447, llis-52, llis-528, llis-533, llis-560, llis-567, llis-572, llis-583, llis-586,
-  llis-597, llis-611, llis-638, llis-649, llis-671, llis-681, llis-687, llis-726, llis-728,
-  llis-738, llis-772, llis-805, llis-831, llis-853, llis-882, llis-891, report-hubble_optics]
+- doc_id: llis-424
+  grade: 2
+  why: 'Voyager (1977): translational accelerations from attitude control thrusters complicate orbit determination;
+    navigation and spacecraft teams must jointly estimate these effects and establish operational interfaces.
+    MCO''s small-forces modelling failed at exactly this interface.'
+- doc_id: llis-569
+  grade: 2
+  why: 'Interface control and verification: communicating design details across mechanical, electrical
+    and informational interfaces is a pervasive failure point. MCO''s root cause was a ground software
+    file that did not meet its interface specification.'
+- doc_id: llis-423
+  grade: 1
+  why: Viking non-gravitational accelerations must be estimated against navigation requirements.
+- doc_id: llis-577
+  grade: 1
+  why: Data translated between two organisations' software can be silently corrupted; verify it.
+  adjudicated_by: bashar
+- doc_id: llis-584
+  grade: 1
+  why: MGS ground/flight software configuration mismatch; verify ground software compatibility.
+- doc_id: llis-585
+  grade: 1
+  why: Staff continuity from development into operations; the MCO board cited this transition.
+- doc_id: llis-262
+  grade: 1
+  why: Concurrent real-time operations starve planning; MCO's navigators were shared with MPL.
+- doc_id: llis-608
+  grade: 1
+  why: State requirements unambiguously across partner organisations.
+- doc_id: llis-723
+  grade: 1
+  why: Independent V&V of software; the board found ground software was not adequately verified.
+- doc_id: report-lewis
+  grade: 1
+  why: Lean operations team failed to monitor the spacecraft during a critical period.
+- doc_id: report-soho
+  grade: 1
+  why: Operations errors under a reduced, overloaded operations team.
+- doc_id: llis-692
+  grade: 1
+  why: Coordinate-frame conventions miscommunicated between teams; the same class of convention error
+    as units.
+  found_by: dense
+not_relevant:
+- llis-1
+- llis-10
+- llis-1011
+- llis-1016
+- llis-1052
+- llis-1055
+- llis-1065
+- llis-1072
+- llis-1075
+- llis-1098
+- llis-1113
+- llis-1134
+- llis-1182
+- llis-1186
+- llis-1187
+- llis-1206
+- llis-1216
+- llis-1228
+- llis-1230
+- llis-1252
+- llis-148
+- llis-17802
+- llis-196
+- llis-202
+- llis-207
+- llis-213
+- llis-272
+- llis-279
+- llis-281
+- llis-288
+- llis-305
+- llis-307
+- llis-310
+- llis-320
+- llis-343
+- llis-345
+- llis-347
+- llis-358
+- llis-372
+- llis-373
+- llis-377
+- llis-391
+- llis-394
+- llis-395
+- llis-400
+- llis-403
+- llis-405
+- llis-409
+- llis-420
+- llis-446
+- llis-447
+- llis-468
+- llis-474
+- llis-481
+- llis-484
+- llis-52
+- llis-528
+- llis-533
+- llis-559
+- llis-560
+- llis-566
+- llis-567
+- llis-572
+- llis-574
+- llis-578
+- llis-583
+- llis-586
+- llis-590
+- llis-593
+- llis-597
+- llis-611
+- llis-617
+- llis-619
+- llis-627
+- llis-638
+- llis-649
+- llis-655
+- llis-657
+- llis-671
+- llis-672
+- llis-681
+- llis-687
+- llis-691
+- llis-695
+- llis-699
+- llis-708
+- llis-713
+- llis-717
+- llis-726
+- llis-728
+- llis-731
+- llis-736
+- llis-738
+- llis-739
+- llis-754
+- llis-763
+- llis-772
+- llis-790
+- llis-791
+- llis-792
+- llis-805
+- llis-819
+- llis-820
+- llis-831
+- llis-840
+- llis-841
+- llis-85
+- llis-853
+- llis-860
+- llis-882
+- llis-891
+- llis-995
+- llis-997
+- report-apollo13
+- report-apollo1_as204
+- report-challenger_rogers_v1
+- report-hubble_optics
+- report-wire
