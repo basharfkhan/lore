@@ -6,15 +6,18 @@ requires-python = ">=3.11"
 dependencies = [
     "requests>=2.31",
     "PyYAML>=6.0",
-    "pymupdf>=1.24",
-    # Needs the Tesseract binary too (Windows: winget install UB-Mannheim.TesseractOCR).
-    "pytesseract>=0.3.10",
-    "Pillow>=10.0",
     "rank-bm25>=0.2.2",
     "anthropic>=0.80",
 ]
 
 [project.optional-dependencies]
+# Building the corpus from PDFs. Kept out of the base install so the web service stays small.
+ingest = [
+    "pymupdf>=1.24",
+    # Needs the Tesseract binary too (Windows: winget install UB-Mannheim.TesseractOCR).
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0",
+]
 # The web service. psycopg is only used when DATABASE_URL is set (the daily spend counter).
 serve = [
     "fastapi>=0.110",

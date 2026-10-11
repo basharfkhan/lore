@@ -16,10 +16,61 @@ before the failure.
 
 ## Status
 
-The data pipeline, four retrievers and the evaluation are done. On held-out cases the model
-cannot recall, searching by generated failure hypotheses finds a direct precursor for 5 of 7
-incidents, against 2 of 7 for keyword, dense or hybrid search (details under Evaluation). The
-written pre-mortem report with citations and a web interface are not built yet.
+Working end to end: the data pipeline, four retrievers, the evaluation, and a web app where an
+agent writes a cited pre-mortem. On held-out cases the model cannot recall, searching by
+generated failure hypotheses finds a direct precursor for 5 of 7 incidents, against 2 of 7 for
+keyword, dense or hybrid search (details under Evaluation).
+
+## The app
+
+A web page where you describe a system or an operation and get a cited pre-mortem back.
+
+- **An agent, not a fixed pipeline.** Claude is given two tools, `search_archive` and
+  `read_document` ([lore/agent/tools.py](lore/agent/tools.py)), and decides what to look up.
+  A typical run makes 4 to 8 searches, one per failure mode it thinks of, reads 5 to 9 documents
+  in full, and writes three to five risks, each with the precedent, what the investigators
+  recommended and one thing to check. Follow-up questions continue the same conversation.
+- **Every link is audited.** After the agent answers, each link in the report is checked against
+  the documents its tools returned during the conversation
+  ([check_links](lore/agent/premortem.py)), and the page shows the result. A link the agent
+  could not have read is flagged.
+- **You can watch it work.** The page streams each search and each document read as it happens.
+- **Search is BM25 only.** On the held-out evaluation, hypothesis-driven search scored the same
+  over BM25 as over the hybrid retriever, so the service runs without an embedding model, in
+  about 210 MB of memory.
+
+### Choosing the model
+
+The same question was run through three models:
+
+| Model | Cost per question | Report length (350 to 500 words requested) | Notes |
+|---|---|---|---|
+| claude-haiku-4-5 | $0.04 | 885 | left a section empty; added thresholds and requirements the sources do not contain |
+| claude-sonnet-5 | $0.12 | 446 | on brief; checks tied to the investigators' recommendations |
+| claude-opus-5 | $0.30 | 696 | sharpest precedent (the WIRE start-up transient for a burn-wire driver) |
+
+The live service uses Sonnet. Haiku is cheapest, but advice that is not in the source documents
+is the failure this tool most needs to avoid. Typical live questions since then have cost about
+$0.08, and a follow-up about $0.02.
+
+### Keeping a public demo affordable
+
+- Three finished examples load instantly and cost nothing.
+- Live questions stop once the day's spend reaches a cap (default $1, `LORE_DAILY_CAP_USD`).
+  The count is kept in Postgres when `DATABASE_URL` is set, because a free host wakes from sleep
+  with an empty disk and a file-based counter would reset.
+- Each visitor is limited to 6 questions an hour and each conversation to 5 turns.
+
+### Running it
+
+```bash
+.venv/Scripts/python -m pip install -e ".[serve]"
+.venv/Scripts/python -m uvicorn lore.serve.app:app --port 8000
+```
+
+The searchable corpus ships compressed in `corpus/` (6 MB) and is unpacked on first start, so
+the app runs without rebuilding the data pipeline. [render.yaml](render.yaml) and the
+[Dockerfile](Dockerfile) deploy it as one free web service.
 
 ## Data
 
@@ -189,13 +240,14 @@ The LLM steps (hypotheses, case mining, contamination probes, judging) took abou
 `claude-opus-5`, roughly $26 at list prices. Responses are cached on disk by request, so reruns
 are free.
 
-## Setup
+## Setup for development
 
 ```bash
 python -m venv .venv
-.venv/Scripts/python -m pip install -e ".[dev,embed]"
+.venv/Scripts/python -m pip install -e ".[dev,ingest,embed,serve]"
 .venv/Scripts/python -m pytest
 ```
 
-Dense retrieval downloads the embedding model on first use. The LLM steps need an Anthropic API
-key in `.env` (see `.env.example`).
+`ingest` is for rebuilding the corpus from the PDFs and needs the Tesseract binary. Dense
+retrieval (`embed`) downloads the embedding model on first use. The LLM steps need an Anthropic
+API key in `.env` (see `.env.example`).

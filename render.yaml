@@ -1,0 +1,22 @@
+# Render Blueprint (https://render.com/docs/blueprint-spec): one free web service that serves
+# both the page and the API.
+services:
+  - type: web
+    name: lore
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Postgres connection string for the daily spend counter. Without it the counter lives on
+      # the container's disk, which is wiped whenever the free instance sleeps.
+      - key: DATABASE_URL
+        sync: false
+      - key: LORE_DAILY_CAP_USD
+        value: "1.00"
+      - key: LORE_AGENT_MODEL
+        value: claude-sonnet-5
