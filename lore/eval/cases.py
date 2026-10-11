@@ -25,6 +25,7 @@ class Case:
     query: str
     hindsight_queries: list[str]
     failure_mechanism: str = ""
+    difficulty: str = ""  # held-out cases only: "easy" | "hard"
     # doc_id -> grade (0, 1, 2), empty until labelled
     labels: dict[str, int] = field(default_factory=dict)
     reviewed: bool = False

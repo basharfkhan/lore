@@ -1,115 +1,213 @@
 case: genesis
-drafted_by: claude
-reviewed_by: null
+grading: 'Two-question checklist (evals/criteria.yaml): both parts = 2, one = 1, neither = 0.'
+graded_by: claude-opus-5 checklist judge; rows marked human were adjudicated by bashar and override the
+  judge
+reviewed_by: bashar (the 22 disputed rows, see evals/review/adjudication_checklist.md)
 notes: The board's findings were an inverted sensor design that heritage and drawing reviews did not catch,
   and a verification approach that substituted inspection for test. Lessons on trusting heritage designs
   and on test-as-you-fly are the direct precursors. LLIS 1733 (the Genesis lesson itself) was recorded
   with a date before the crash and is corrected in configs/llis_date_overrides.yaml.
 relevant:
-- doc_id: llis-346
-  grade: 1
-  why: Mars Observer - relying on heritage designs without a thorough analysis of differences.
-  adjudicated_by: bashar
-- doc_id: llis-371
+- doc_id: llis-1398
   grade: 2
-  why: SEASAT - flight-proven heritage designs can still contain design errors.
-- doc_id: llis-789
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-586
   grade: 2
-  why: Formal subsystem inheritance reviews to catch problems in inherited designs.
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The reference antenna was effectively wound/labeled with reversed (opposite) polarization, and
+    the error persisted because the vendor's calibration certificate was trusted instead of independently
+    verifying performance.
+- doc_id: llis-609
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The SAFE/ARM logic states for two telemetry channels were documented reversed, and the error escaped
+    because alarm testing with correct parameters was never performed prior to launch.
 - doc_id: llis-1196
-  grade: 2
-  why: Test as you fly; carefully assess any planned departure from end-to-end verification.
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Directly documents MPL/DS2 failures where system-level functional tests (touchdown sensing in flight
+    configuration, impact tests) were omitted or not representative, letting errors escape, though no
+    reversed-part issue.
+- doc_id: llis-1197
+  grade: 1
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-1268
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Recommends a post-environmental system test (including an attitude control polarity check) because
+    unplanned tests uncovered problems, directly addressing errors that would escape without functional
+    testing, though it doesn't describe an actual reversed-installation event.
 - doc_id: llis-1308
   grade: 1
-  why: Heritage does not mean use as is.
-- doc_id: llis-633
-  grade: 1
-  why: Functional performance testing before acceptance.
-- doc_id: llis-978
-  grade: 1
-  why: No substitute for real end-to-end testing.
-- doc_id: llis-1335
-  grade: 1
-  why: Test facilities must support test-as-you-fly.
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Explicitly warns that heritage hardware/software cannot be used as-is and needs modification/verification
+    for the new mission, matching the inherited-design-trusted-without-re-verification lesson.
 - doc_id: llis-16
   grade: 1
-  why: A reversed-installation error in a critical component; x-ray and mandatory inspection added.
-  adjudicated_by: bashar
-- doc_id: llis-289
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-271
   grade: 1
-  why: Magellan microswitch mounted so it measured the wrong thing.
-- doc_id: llis-692
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-286
   grade: 1
-  why: Coordinate-frame conventions miscommunicated; Genesis' error was an orientation convention.
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The cover-ejection failure escaped because the as-flown configuration (heater energized) was never
+    functionally tested, highlighting untested flight sequences.
+- doc_id: llis-296
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Describes a design flaw carried over from Voyager and trusted on Topex, with the explicit lesson
+    that inherited designs require in-depth re-analysis.
+- doc_id: llis-304
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The LNA defect escaped because only transmit-only/receive-only testing was done and no end-to-end
+    functional test was performed, which is the lesson given; no orientation/polarity error involved.
+- doc_id: llis-310
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The attitude failures stemmed from an algorithm error in inherited flight software (also seen on
+    DMSP) that was carried over without re-verification, matching Part B; nothing reversed or mis-oriented.
+- doc_id: llis-311
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The high-rate data channel problem is tied to the fact that no complete end-to-end functional test
+    was performed before flight, matching the skipped-test theme; no inverted hardware.
+- doc_id: llis-346
+  grade: 1
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-371
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The Agena bus was treated as flight-proven heritage despite substantial modification, with requalification
+    and tests waived, matching Part B; the opposite-polarity brush arrangement was a design vulnerability,
+    not a part installed backwards.
+- doc_id: llis-431
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Directly describes cables cross-connected/transposed into the wrong connectors, i.e., connections
+    mated backwards, though not about skipped functional testing.
+- doc_id: llis-492
+  grade: 1
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-517
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: A parachute recovery system failed because a design change (teflon wrap) was adopted without performing
+    confirming strip-out load tests, an error escaping because functional testing was omitted.
+- doc_id: llis-595
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Lewis failure stemmed directly from an inherited/heritage attitude control design applied and validated
+    without independent re-verification, matching Part B, but involves no reversed-orientation hardware.
+- doc_id: llis-633
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Directly addresses the absence of required functional performance testing (left to discretion)
+    allowing weak designs and in-flight anomalies to go undetected, though it says nothing about inverted
+    parts.
 - doc_id: llis-634
   grade: 1
-  why: WIRE pyro electronics design error in a mission-critical event sequence.
-  adjudicated_by: bashar
-- doc_id: llis-938
-  grade: 1
-  why: MPL - tests with known deficiencies must be rerun.
-  adjudicated_by: bashar
-- doc_id: llis-939
-  grade: 1
-  why: MPL - test critical phase transitions across the full operational range.
-- doc_id: llis-586
-  grade: 1
-  why: Cassini/Huygens reference antenna's polarization sense was wrong; verify, don't assume.
-- doc_id: report-mpl_ds2
-  grade: 1
-  why: Lander lost to an untested sensor/software interaction during entry, descent and landing.
-- doc_id: report-wire
-  grade: 1
-  why: Pyro electronics design error not caught by review or test.
-- doc_id: report-contour
-  grade: 1
-  why: Reliance on analysis and similarity instead of test.
-- doc_id: report-mco_phase2
-  grade: 1
-  why: Faster-better-cheaper project management and verification shortfalls.
-- doc_id: llis-595
-  grade: 2
-  why: Misapplied heritage systems - a proven design in a new application does not ensure success or remove
-    the need for independent peer review.
-  found_by: dense
-- doc_id: llis-1276
-  grade: 1
-  why: Independent peer reviews are where latent design errors must be caught.
-  found_by: dense
-- doc_id: llis-944
-  grade: 1
-  why: Test pyrovalves the way they will be used on the mission.
-  found_by: dense
-- doc_id: llis-786
-  grade: 1
-  why: Without independent review, design defects go undetected.
-  found_by: dense
-- doc_id: llis-929
-  grade: 1
-  why: Reviews need formality and technical penetration; the Genesis board found reviews missed the design
-    error.
-  found_by: dense
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
 - doc_id: llis-637
   grade: 1
-  why: WIRE board lesson - pyro electronics design error not caught by review or test (date corrected).
-  found_by: dense
-  adjudicated_by: bashar
-- doc_id: llis-1197
-  why: Graded by checklist.
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-729
   grade: 1
-  adjudicated_by: bashar
-- doc_id: llis-1398
-  why: Graded by checklist.
-  grade: 2
-  adjudicated_by: bashar
-- doc_id: llis-271
-  why: Graded by checklist.
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Specifically recommends safe-to-mate cable tests that check for wiring errors including reverse
+    polarities, directly addressing backwards wiring/connections.
+- doc_id: llis-789
   grade: 1
-  adjudicated_by: bashar
-- doc_id: llis-492
-  why: Graded by checklist.
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Directly addresses the risk of trusting inherited/COTS hardware designs and prescribes inheritance
+    review to assess the need for modification or additional testing, matching Part B's inherited-design-not-re-verified
+    theme.
+- doc_id: llis-875
   grade: 1
-  adjudicated_by: bashar
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: A circuit breaker was miswired causing phase rotation that drove cooling fans backwards, a clear
+    case of reversed wiring/polarity (though the inspection failure here is a quality check, not a replaced
+    functional test).
+- doc_id: llis-938
+  grade: 1
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-939
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: It is specifically about a mission-critical logic error escaping because the full end-to-end functional
+    test was omitted/masked in the pre-launch test program.
+- doc_id: llis-981
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: It is specifically about parts installed backwards/reverse polarity (tantalum capacitors installed
+    or designed in reversed orientation), matching Part A; it says nothing about skipped functional testing
+    or inherited designs.
+- doc_id: report-hubble_optics
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The HST failure centrally involved reliance on a single measurement path without independent end-to-end
+    verification tests (inverse null corrector data dismissed), an error that escaped verification—though
+    the field lens was explicitly found NOT to be installed backwards, so Part A does not apply.
+- doc_id: report-mpl_ds2
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The MPL report describes how a missing requirement meant no unit/functional test was run to catch
+    spurious touchdown sensor transients (a test that would have caught the error was never performed),
+    which is squarely part B, but it does not involve a part installed or designed backwards/inverted.
 not_relevant:
 - llis-1035
 - llis-1107
@@ -123,11 +221,12 @@ not_relevant:
 - llis-1251
 - llis-1253
 - llis-1265
-- llis-1268
 - llis-1274
+- llis-1276
 - llis-1316
 - llis-1319
 - llis-133
+- llis-1335
 - llis-1340
 - llis-1360
 - llis-1370
@@ -146,14 +245,10 @@ not_relevant:
 - llis-224
 - llis-238
 - llis-267
-- llis-286
 - llis-287
+- llis-289
 - llis-290
-- llis-296
 - llis-298
-- llis-304
-- llis-310
-- llis-311
 - llis-312
 - llis-338
 - llis-342
@@ -165,18 +260,15 @@ not_relevant:
 - llis-407
 - llis-409
 - llis-417
-- llis-431
 - llis-449
 - llis-467
 - llis-494
-- llis-517
 - llis-521
 - llis-534
 - llis-572
 - llis-574
 - llis-577
 - llis-582
-- llis-609
 - llis-613
 - llis-626
 - llis-628
@@ -195,11 +287,11 @@ not_relevant:
 - llis-671
 - llis-675
 - llis-680
+- llis-692
 - llis-700
 - llis-702
 - llis-706
 - llis-726
-- llis-729
 - llis-730
 - llis-733
 - llis-743
@@ -209,23 +301,27 @@ not_relevant:
 - llis-771
 - llis-779
 - llis-780
+- llis-786
 - llis-790
 - llis-812
 - llis-815
 - llis-836
 - llis-853
-- llis-875
 - llis-885
 - llis-922
+- llis-929
 - llis-932
+- llis-944
 - llis-97
-- llis-981
+- llis-978
 - llis-982
 - llis-987
 - report-apollo13
 - report-apollo1_as204
 - report-challenger_rogers_v1
 - report-columbia_caib_v1
-- report-hubble_optics
+- report-contour
 - report-mco_phase1
+- report-mco_phase2
 - report-soho
+- report-wire

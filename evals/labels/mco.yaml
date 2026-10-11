@@ -1,53 +1,116 @@
 case: mco
-drafted_by: claude
-reviewed_by: null
+grading: 'Two-question checklist (evals/criteria.yaml): both parts = 2, one = 1, neither = 0.'
+graded_by: claude-opus-5 checklist judge; rows marked human were adjudicated by bashar and override the
+  judge
+reviewed_by: bashar (the 22 disputed rows, see evals/review/adjudication_checklist.md)
 notes: 'No lesson before September 1999 is about English/metric unit mismatches, so the direct precursors
   are about the process that failed: navigation and spacecraft teams jointly modelling small thruster
   forces, and verifying data that crosses an organisational interface.'
 relevant:
 - doc_id: llis-424
   grade: 2
-  why: 'Voyager (1977): translational accelerations from attitude control thrusters complicate orbit determination;
-    navigation and spacecraft teams must jointly estimate these effects and establish operational interfaces.
-    MCO''s small-forces modelling failed at exactly this interface.'
-- doc_id: llis-569
-  grade: 2
-  why: 'Interface control and verification: communicating design details across mechanical, electrical
-    and informational interfaces is a pervasive failure point. MCO''s root cause was a ground software
-    file that did not meet its interface specification.'
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Directly describes unmodelled small translational accelerations from unbalanced attitude-control
+    thrusters and plume impingement affecting orbit determination, and the need for a new operational
+    interface between the Spacecraft and Navigation Teams.
+- doc_id: llis-1216
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Describes an element-to-element interface test where configuration/drawing data used by different
+    organizations did not match the actual hardware, an unverified interface data mismatch; no thruster
+    content.
+- doc_id: llis-377
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Documents a trajectory correction maneuver delivering 21% less velocity change because thruster
+    plume impingement forces were mis-modelled—directly about small thruster forces affecting trajectory.
 - doc_id: llis-423
   grade: 1
-  why: Viking non-gravitational accelerations must be estimated against navigation requirements.
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Describes unexpected small non-gravitational accelerations (lander outgassing) perturbing orbit
+    determination and targeting, directly a small-force trajectory modelling lesson, though not about
+    unit/interface mismatch.
+- doc_id: llis-569
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Directly describes interface control failures—out-of-date ICDs and independently prepared interface
+    drawings between JPL and vendors causing mismatched connectors—i.e., unverified interfaces between
+    organizations.
+- doc_id: llis-572
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Contractor engine test data not shared with the customer led to wrong mixture ratio assumptions
+    for propellant loading—a data handoff/verification failure across the contractor interface, though
+    not about small-force navigation.
 - doc_id: llis-577
   grade: 1
-  why: Data translated between two organisations' software can be silently corrupted; verify it.
-  adjudicated_by: bashar
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-578
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: ESA-furnished ducting configuration and effects were not communicated to JPL, resulting in a mismatched
+    cooling-flow interface (0.26 vs 0.04 kg/s) and hardware damage.
 - doc_id: llis-584
   grade: 1
-  why: MGS ground/flight software configuration mismatch; verify ground software compatibility.
-- doc_id: llis-585
-  grade: 1
-  why: Staff continuity from development into operations; the MCO board cited this transition.
-- doc_id: llis-262
-  grade: 1
-  why: Concurrent real-time operations starve planning; MCO's navigators were shared with MPL.
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Concerns small propulsive aerobraking trim maneuvers (0.1 m/s delta-v) whose unintended repetition
+    perturbed the trajectory, directly about small forces affecting trajectory, but not about mismatched
+    data conventions between teams.
 - doc_id: llis-608
   grade: 1
-  why: State requirements unambiguously across partner organisations.
-- doc_id: llis-723
-  grade: 1
-  why: Independent V&V of software; the board found ground software was not adequately verified.
-- doc_id: report-lewis
-  grade: 1
-  why: Lean operations team failed to monitor the spacecraft during a critical period.
-- doc_id: report-soho
-  grade: 1
-  why: Operations errors under a reduced, overloaded operations team.
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Specifically about requirements/interface data being misinterpreted across a NASA/ESA partner interface
+    due to ambiguous conventions, a real instance of mismatched interpretation between organizations.
 - doc_id: llis-692
   grade: 1
-  why: Coordinate-frame conventions miscommunicated between teams; the same class of convention error
-    as units.
-  found_by: dense
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Specifically warns that inconsistent coordinate frame definitions between subsystem engineers cause
+    design errors and recommends a common definition document to govern data transfer across teams, directly
+    addressing unverified convention mismatches.
+- doc_id: llis-726
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Specifically advocates end-to-end interface and compatibility testing of ground data system elements
+    to verify proper data flow between elements/users, which is directly about unverified interfaces.
+- doc_id: report-lewis
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Centrally describes how small thruster imbalance and small initial rates were never modelled in
+    the inherited attitude-control simulation, a direct lesson about unmodelled small thruster forces
+    on spacecraft dynamics.
+- doc_id: report-wire
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Its core lesson is that simulators/test support equipment did not faithfully represent the actual
+    hardware behavior at a complex multi-organization payload/spacecraft interface that was never properly
+    verified; the venting torque issue concerns attitude, not thruster-induced trajectory errors.
 not_relevant:
 - llis-1
 - llis-10
@@ -65,7 +128,6 @@ not_relevant:
 - llis-1186
 - llis-1187
 - llis-1206
-- llis-1216
 - llis-1228
 - llis-1230
 - llis-1252
@@ -75,6 +137,7 @@ not_relevant:
 - llis-202
 - llis-207
 - llis-213
+- llis-262
 - llis-272
 - llis-279
 - llis-281
@@ -89,7 +152,6 @@ not_relevant:
 - llis-358
 - llis-372
 - llis-373
-- llis-377
 - llis-391
 - llis-394
 - llis-395
@@ -111,10 +173,9 @@ not_relevant:
 - llis-560
 - llis-566
 - llis-567
-- llis-572
 - llis-574
-- llis-578
 - llis-583
+- llis-585
 - llis-586
 - llis-590
 - llis-593
@@ -137,7 +198,7 @@ not_relevant:
 - llis-708
 - llis-713
 - llis-717
-- llis-726
+- llis-723
 - llis-728
 - llis-731
 - llis-736
@@ -166,4 +227,4 @@ not_relevant:
 - report-apollo1_as204
 - report-challenger_rogers_v1
 - report-hubble_optics
-- report-wire
+- report-soho

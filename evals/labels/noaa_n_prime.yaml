@@ -1,109 +1,219 @@
 case: noaa_n_prime
-drafted_by: claude
-reviewed_by: null
+grading: 'Two-question checklist (evals/criteria.yaml): both parts = 2, one = 1, neither = 0.'
+graded_by: claude-opus-5 checklist judge; rows marked human were adjudicated by bashar and override the
+  judge
+reviewed_by: bashar (the 22 disputed rows, see evals/review/adjudication_checklist.md)
 notes: The board found the team did not verify the turnover cart's configuration (another program had
   removed 24 bolts without recording it), complacency about a routine move, poor coordination, and ineffective
   oversight. LLIS holds three TOPEX/Poseidon handling incidents from 1992-93 that warn about exactly this.
 relevant:
-- doc_id: llis-273
+- doc_id: llis-1182
   grade: 2
-  why: TOPEX/Poseidon drop - damage potential whenever hardware is handled, even routinely.
-- doc_id: llis-621
-  grade: 2
-  why: Hardware drop; verify lift fixture design and configuration.
-- doc_id: llis-914
-  grade: 2
-  why: Genesis canister lift - never assume visual inspection alone assures GSE safety.
-- doc_id: llis-1213
-  grade: 1
-  why: Configuration changes must be fed back to every affected program element.
-  adjudicated_by: bashar
-- doc_id: llis-1272
-  grade: 1
-  why: Unclear roles between organisations cause systemic process breakdowns.
-- doc_id: llis-873
-  grade: 1
-  why: Detailed procedures for work on critical equipment and its interfaces.
-- doc_id: llis-1041
-  grade: 1
-  why: Gravity Probe-B - GSE operations need reviewed procedures; schedule pressure.
-- doc_id: llis-178
-  grade: 1
-  why: Mandatory inspection points were eliminated before 51-L.
-- doc_id: llis-1047
-  grade: 1
-  why: Government mandatory inspection points reduced faster than quality staff.
-- doc_id: llis-332
-  grade: 1
-  why: QA oversight compromised when access is restricted.
-- doc_id: llis-1215
-  grade: 1
-  why: Human factors in safety-critical lifts.
-- doc_id: llis-649
-  grade: 1
-  why: Control and management of ground support equipment criticality.
-- doc_id: llis-1427
-  grade: 1
-  why: Update procedures and retrain whenever the configuration changes.
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The fuel cell was damaged because a hydrogen vent port had been left capped (a hardware state not
+    communicated across shifts/teams) and the crew proceeded with venting without verifying the configuration,
+    closely matching both parts.
 - doc_id: llis-119
   grade: 2
-  why: Poor configuration documentation led to missing hardware during a handling operation.
-  adjudicated_by: bashar
-- doc_id: llis-435
-  grade: 1
-  why: Ground support equipment failure damaged SEASAT-A.
-- doc_id: llis-1211
-  grade: 1
-  why: Formal handling processes to protect hardware.
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-1199
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: A platform beam left inside the Orbiter aft compartment by earlier work (falsely recorded as removed)
+    caused damage when the next team rotated the vehicle without confirming the actual closeout configuration.
 - doc_id: llis-1200
   grade: 2
-  why: Orbiter 103 payload bay door raised without the procedure's required check of the support equipment
-    configuration first - the N-Prime mechanism.
-  found_by: dense
-- doc_id: llis-1199
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The Zero-G weight baskets were left pinned/configured from prior operations and the bridge operator
+    moved the bridge without performing the required verification that the Zero-G system was disconnected.
+- doc_id: llis-1338
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The mishap involved a work deck extension left with a lifting device still on it after prior pump
+    removal work, and the deck mover rolling it away without verifying the configuration, closely matching
+    both parts.
+- doc_id: llis-1340
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: An actuator coupling was left out during prior maintenance without being recorded/caught, and the
+    test team proceeded to run the engine without verifying the valve configuration, matching both parts.
+- doc_id: llis-240
+  grade: 2
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-564
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Undocumented wiring revisions (hardware changed and not recorded on drawings) combined with a technician
+    who failed to verify the actual configuration/voltage before working directly matches both parts.
+- doc_id: llis-873
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Earlier maintenance left the circuit breaker miswired (an undocumented/unverified changed state
+    after maintenance) and the subsequent power-up proceeded without the inspection catching the configuration,
+    damaging the equipment.
+- doc_id: llis-914
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The lift fixture had been reassembled by a vendor with hoist ring fasteners left untightened/untorqued
+    without record, and the next lift proceeded because the procedure did not require checking fastener
+    configuration before use.
+- doc_id: llis-991
+  grade: 2
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: report-soho
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: SOHO's mishap centered on a modified procedure whose functional change was not communicated (hardware/system
+    left in an altered configuration) and on operators executing subsequent commands without verifying
+    the actual spacecraft/procedure configuration, including disabled gyro settings.
+- doc_id: llis-1212
   grade: 1
-  why: STS-38 platform beam incident - standard sequence not followed during ground processing.
-  found_by: dense
-- doc_id: llis-1210
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: 'Incident #2 shows operators resuming test ''under the assumption that the motor was still disconnected,''
+    i.e., operating test hardware without verifying its actual configuration, though no prior team made
+    an unrecorded change.'
+- doc_id: llis-1213
   grade: 1
-  why: Deviations from approved procedures must be carefully managed.
-  found_by: dense
-- doc_id: llis-1227
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-1368
   grade: 1
-  why: Every one of multiple checkpoints must actually work to catch an installation error.
-  found_by: dense
-- doc_id: llis-382
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The core lesson is that workers must personally re-verify the de-energized/locked state of a system
+    before working, rather than assuming a prior person's configuration, matching part B though the hazard
+    state was not an undocumented change by an earlier program.
+- doc_id: llis-1374
   grade: 1
-  why: Unclear procedures and no cognizant technical staff present led to incorrect assembly.
-  found_by: dense
-- doc_id: llis-588
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Directly addresses facility systems whose as-built modifications/circuits were never recorded in
+    updated drawings or communicated to the work team, i.e., equipment left in an undocumented state from
+    earlier work; it does not address verifying configuration before operating.
+- doc_id: llis-1378
   grade: 1
-  why: SRB holddown post incident - moving heavy critical hardware needs more than OSHA-level practice.
-  found_by: dense
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Core lesson is that workers must personally verify the system state before (and after resuming)
+    work rather than assuming others left it safe, which matches the failure to verify configuration before
+    proceeding; the energized state was not an unrecorded change left by earlier work.
+- doc_id: llis-1427
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: The close call stemmed from system changes not reflected in SOPs/checklists or communicated through
+    retraining, matching hardware altered by earlier work without adequate recording/communication, though
+    it does not address verifying configuration before a move.
+- doc_id: llis-273
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The SAD was left unfastened in its fixture with no warning or instruction, and an unfamiliar employee
+    tilted it without verifying whether it was secured—closely matching the failure to check configuration
+    before handling, though the unfastened state stemmed from inspection practice rather than prior work
+    left unrecorded.
+- doc_id: llis-4
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Flight hardware was damaged because the ground test stand had been configured with non-flight valves
+    and added orifices deviating from the flight configuration, an example of support equipment left in
+    an unsafe/altered state that caused damage, though it does not address a next team failing to verify
+    configuration.
 - doc_id: llis-481
   grade: 1
-  why: Information lost between test shifts; N-Prime's cart change was never communicated.
-  found_by: dense
-- doc_id: llis-1182
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: The lesson is directly about work status and configuration information not being communicated or
+    recorded between shifts, leaving the next team without knowledge of prior actions, though it does
+    not address a failure to verify configuration before moving hardware.
+- doc_id: llis-499
   grade: 1
-  why: Atlantis fuel cell mishap - ground processing with delegated supervision and procedure lapses.
-  found_by: dense
-- doc_id: llis-240
-  why: Graded by checklist.
-  grade: 2
-  adjudicated_by: bashar
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The lesson centers on a crew working on a system without verifying its pressure/configuration state
+    first (including reviewing drawings and configuration control documents), matching Part B, though
+    it does not describe prior work leaving the hardware altered and unrecorded.
 - doc_id: llis-521
-  why: Graded by checklist.
   grade: 1
-  adjudicated_by: bashar
-- doc_id: llis-991
-  why: Graded by checklist.
-  grade: 2
-  adjudicated_by: bashar
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-567
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Controllers commanded a maneuver without verifying/correcting the gyro sensitivity configuration
+    left over from a previous phase, which is a failure to check configuration before operating, though
+    no undocumented prior modification by another team is described.
+- doc_id: llis-588
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The forklift operator's lack of attention to the holddown post's restraint configuration before
+    moving it is a failure to verify hardware configuration prior to a move, but no undocumented prior
+    alteration by another team is cited.
+- doc_id: llis-621
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The operator failed to detect, via pre-operation inspection, that the lift fixture's lock nut was
+    missing before lifting flight hardware, matching the failure-to-verify-configuration element.
+- doc_id: llis-923
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: A quick release pin left missing from a VAB platform kickplate by earlier maintenance/retraction
+    work went unnoticed and unrecorded, leaving support structure in a changed state that caused a launch
+    scrub, but the lesson is not about a next team failing to verify configuration before operating.
+- doc_id: report-apollo13
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: The oxygen shelf drop incident left the tank in an undocumented damaged/changed internal configuration
+    that was not properly recorded or acted upon, though the focus is not on a next team failing to verify
+    configuration before operating.
 not_relevant:
 - llis-1
 - llis-1034
 - llis-1036
+- llis-1041
+- llis-1047
 - llis-1089
 - llis-109
 - llis-1090
@@ -113,27 +223,27 @@ not_relevant:
 - llis-1186
 - llis-1209
 - llis-121
-- llis-1212
+- llis-1210
+- llis-1211
+- llis-1215
 - llis-1221
+- llis-1227
 - llis-1252
 - llis-1268
+- llis-1272
 - llis-1277
 - llis-13
 - llis-1336
-- llis-1338
-- llis-1340
 - llis-135
-- llis-1368
 - llis-1370
 - llis-1371
-- llis-1374
 - llis-1375
-- llis-1378
 - llis-140
 - llis-143
 - llis-1497
 - llis-1501
 - llis-159
+- llis-178
 - llis-182
 - llis-191
 - llis-195
@@ -145,23 +255,23 @@ not_relevant:
 - llis-280
 - llis-281
 - llis-331
+- llis-332
 - llis-355
 - llis-370
+- llis-382
 - llis-385
-- llis-4
 - llis-433
+- llis-435
 - llis-436
 - llis-450
 - llis-482
-- llis-499
 - llis-504
 - llis-517
-- llis-564
 - llis-566
-- llis-567
 - llis-584
 - llis-61
 - llis-638
+- llis-649
 - llis-651
 - llis-656
 - llis-664
@@ -182,10 +292,8 @@ not_relevant:
 - llis-910
 - llis-918
 - llis-92
-- llis-923
 - llis-939
 - llis-96
-- report-apollo13
 - report-apollo1_as204
 - report-challenger_rogers_v1
 - report-columbia_caib_v1
@@ -195,5 +303,4 @@ not_relevant:
 - report-mco_phase1
 - report-mco_phase2
 - report-mpl_ds2
-- report-soho
 - report-wire

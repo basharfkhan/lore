@@ -1,73 +1,171 @@
 case: mpl
-drafted_by: claude
-reviewed_by: null
+grading: 'Two-question checklist (evals/criteria.yaml): both parts = 2, one = 1, neither = 0.'
+graded_by: claude-opus-5 checklist judge; rows marked human were adjudicated by bashar and override the
+  judge
+reviewed_by: bashar (the 22 disputed rows, see evals/review/adjudication_checklist.md)
 notes: The probable cause was a spurious touchdown-sensor signal at leg deployment, latched by flight
   software, that shut the engines down at altitude. LLIS held three lessons about transient or spurious
   inputs triggering irreversible actions during deployment events. The Mars Climate Orbiter board report
   and lesson were published before MPL arrived and are legitimately available.
 relevant:
+- doc_id: llis-1212
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Describes a power surge/outage causing uncommanded motor startup on power restoration (a spurious
+    power-up event) with control electronics acting on it, damaging hardware.
+- doc_id: llis-269
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Describes false star detections (spurious sensor inputs from solar protons and particles) that
+    the attitude determination software acted on, causing erroneous updates until onboard filtering was
+    added.
+- doc_id: llis-281
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: A transient ground-loop voltage spike generated at a power-on/TWTA turn-on event was sensed by
+    the Power On Reset circuit, which responded to noise it should have rejected (noise-immunity/coupling
+    fix).
 - doc_id: llis-409
   grade: 2
-  why: 'Voyager gyro swap: enable protection logic only when needed and preclude spurious inputs triggering
-    unwanted events. The same mechanism that shut down MPL''s engines.'
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Describes gyro output oscillation (spurious signal) during launch triggering failure protection
+    logic that should have been disabled during that mission phase, and recommends enabling protection
+    logic only when needed and precluding spurious triggering inputs.
 - doc_id: llis-422
   grade: 2
-  why: Deployment events produce false sensor readings; disable the dependent logic around them.
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Bright particles from pyrotechnic events created spurious star-tracker signals that triggered fault-protection
+    responses, with the recommendation to disable that logic during and after such events.
+- doc_id: llis-612
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Describes a spurious signal from the power distribution logic that re-powered wax actuator heaters
+    long after deployment, and recommends designing the distribution circuitry to preclude such inadvertent
+    (phase-inappropriate) actuation.
+- doc_id: llis-626
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: An overly sensitive electronic switch was triggered by stray ground paths (effectively a spurious
+    input) and powered the probes during assembly rather than only at the intended release event, i.e.,
+    a circuit acting on an input it should have been inhibited against.
 - doc_id: llis-634
   grade: 2
-  why: WIRE - transients at power-up triggered an irreversible action; design for transients.
-- doc_id: llis-432
-  grade: 1
-  why: Keep real-time telemetry during critical events; the MPL board faulted its absence.
-- doc_id: llis-378
-  grade: 1
-  why: System engineers must own subsystem interactions; subsystem engineers will not predict them.
-- doc_id: llis-411
-  grade: 1
-  why: Design for testability; abnormal modes are easy to overlook.
-- doc_id: llis-594
-  grade: 1
-  why: Ground tests should mirror the flight configuration.
-- doc_id: llis-596
-  grade: 1
-  why: Faster-better-cheaper missions are vulnerable to scope and resource pressure.
-- doc_id: llis-723
-  grade: 1
-  why: Independent verification and validation of embedded software.
-- doc_id: llis-269
-  grade: 1
-  why: Magellan star scanner false sightings - sensors can report events that did not happen.
-- doc_id: llis-641
-  grade: 1
-  why: MCO board (Nov 1999) with recommendations addressed to MPL before its landing.
-- doc_id: report-mco_phase1
-  grade: 1
-  why: Same, the full MCO Phase I report.
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Power-up turn-on transients produced spurious signals that latched the control logic, which then
+    fired cover release pyros because the transients were not blocked from the driver circuitry, and testing
+    missed it.
+- doc_id: llis-637
+  grade: 2
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-680
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: Microcircuit design checklist explicitly addresses noise/false triggering from slow rise times
+    and pattern sensitivity and improper input handling, which relates to spurious inputs and circuits
+    responding to them, though at component level.
+- doc_id: llis-837
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The document is specifically about spurious/false indications (false alarms) and prescribes design
+    techniques (voting, filtering, tolerating transient anomalies) so circuitry does not declare or act
+    on signals it should ignore.
 - doc_id: report-wire
+  grade: 2
+  about_a: true
+  about_b: true
+  graded_by: judge
+  why: The mishap was caused by an electronics power-turn-on transient (spurious signal) that the pyro
+    circuit responded to by firing deployment pyros, with the lesson calling for inhibits and transient
+    characterization so circuits don't act on such signals.
+- doc_id: llis-307
   grade: 1
-  why: Full WIRE board report on the start-up transient.
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Reports anomalous command counter readings possibly caused by noise or spurious stimuli incrementing
+    a counter, i.e., a false/spurious signal event, though no logic acted improperly on a phase-inappropriate
+    input.
+- doc_id: llis-310
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Flight software fault logic declared inertial reference loss based on flawed star-identification/sun-monitor
+    tests and inherited algorithm errors, triggering safing responses it should not have—logic acting
+    wrongly on inputs.
+- doc_id: llis-343
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Describes fault-protection logic triggering contingency mode entry at an inappropriate mission
+    phase (interfering with RPA turn-on) and inhibiting momentum unloading, an inappropriate automated
+    response to a sensed condition.
+- doc_id: llis-345
+  grade: 1
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Lesson about fault protection software design/testing deficiencies causing inappropriate autonomous
+    responses, including untested fault protection on the flight spacecraft, closely related to logic
+    acting improperly.
 - doc_id: llis-403
   grade: 1
-  why: Viking '75 - stored safing logic fired thrusters on the pad, a phase it was never meant to run
-    in; consider what stored logic does if triggered at the wrong time.
-  found_by: dense
-  adjudicated_by: bashar
-- doc_id: llis-626
+  graded_by: human
+  why: Graded by the reviewer with the two-question checklist.
+- doc_id: llis-559
   grade: 1
-  why: Deep Space 2 (MPL's companion probes) - FMECA and sneak-circuit analysis at system level.
-  found_by: dense
-- doc_id: llis-4
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: Describes flight software acting on erroneous overflow results, disabling the burn-limiting timer
+    and leaving thrusters firing—software logic failing to limit/check an invalid condition—though the
+    trigger was a computation overflow, not a transient sensor signal.
+- doc_id: llis-567
   grade: 1
-  why: Ground test configuration that differs from flight configuration causes failures.
-  found_by: dense
-- doc_id: llis-333
+  about_a: false
+  about_b: true
+  graded_by: judge
+  why: The thruster runaway occurred because the control electronics acted on a saturated gyro input and
+    the command/control software lacked constraint checks that would have inhibited firing in that configuration,
+    which is a direct Part B lesson; the gyro reading was a saturation artifact of a wrong setting rather
+    than a transient/spurious signal event.
+- doc_id: llis-609
   grade: 1
-  why: Delayed diagnostic data cripples anomaly response; relates to no telemetry during EDL.
-  found_by: dense
-- doc_id: llis-637
-  why: Graded by checklist.
-  grade: 2
-  adjudicated_by: bashar
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Describes false red-alarm indications during countdown caused by reversed SAFE/ARM logic states
+    in the telemetry dictionary that testing failed to catch, i.e., an actual spurious-signal/false-indication
+    event; it is not about software acting on an input it should have inhibited.
+- doc_id: llis-776
+  grade: 1
+  about_a: true
+  about_b: false
+  graded_by: judge
+  why: Specifically about identifying and remedying spurious responses/interference signals induced in
+    systems during operation, i.e., false signals, though not about software failing to filter them.
 not_relevant:
 - llis-1021
 - llis-1022
@@ -76,7 +174,6 @@ not_relevant:
 - llis-1128
 - llis-1131
 - llis-1132
-- llis-1212
 - llis-1220
 - llis-1224
 - llis-1258
@@ -91,17 +188,13 @@ not_relevant:
 - llis-271
 - llis-272
 - llis-274
-- llis-281
 - llis-287
 - llis-290
 - llis-291
 - llis-292
 - llis-3
 - llis-302
-- llis-307
-- llis-310
-- llis-343
-- llis-345
+- llis-333
 - llis-346
 - llis-361
 - llis-362
@@ -109,31 +202,34 @@ not_relevant:
 - llis-372
 - llis-373
 - llis-375
+- llis-378
 - llis-391
 - llis-396
+- llis-4
 - llis-40
+- llis-411
 - llis-419
+- llis-432
 - llis-433
 - llis-447
 - llis-450
 - llis-533
 - llis-544
-- llis-559
 - llis-56
 - llis-560
-- llis-567
 - llis-569
 - llis-577
 - llis-578
 - llis-584
 - llis-585
 - llis-590
+- llis-594
+- llis-596
 - llis-608
-- llis-609
 - llis-610
-- llis-612
 - llis-625
 - llis-638
+- llis-641
 - llis-655
 - llis-656
 - llis-657
@@ -143,12 +239,12 @@ not_relevant:
 - llis-668
 - llis-672
 - llis-675
-- llis-680
 - llis-687
 - llis-697
 - llis-707
 - llis-716
 - llis-719
+- llis-723
 - llis-726
 - llis-729
 - llis-733
@@ -159,7 +255,6 @@ not_relevant:
 - llis-771
 - llis-772
 - llis-774
-- llis-776
 - llis-781
 - llis-784
 - llis-789
@@ -173,11 +268,11 @@ not_relevant:
 - llis-831
 - llis-835
 - llis-836
-- llis-837
 - llis-838
 - llis-839
 - report-apollo13
 - report-apollo1_as204
 - report-challenger_rogers_v1
 - report-lewis
+- report-mco_phase1
 - report-soho

@@ -1,0 +1,4793 @@
+{
+  "mco": {
+    "llis-1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns propagating manufacturing procedural changes to reworked hardware (inverter screw torque), unrelated to interface data conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-10": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About investigating failure cause before repairing a soldered pin in a computer interface port; hardware failure, not mismatched data conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-1011": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes smooth contract transition of logistics functions, with no relation to data interface verification or thruster forces.",
+      "source": "judge"
+    },
+    "llis-1016": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deals with needing documented interagency procedures for ISS collision avoidance maneuvers, not mismatched data conventions or unmodelled small thruster forces on trajectory.",
+      "source": "judge"
+    },
+    "llis-1052": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Logistics contract workforce/management integration lesson, unrelated to either failure element.",
+      "source": "judge"
+    },
+    "llis-1055": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Shuttle-Mir lessons-learned analysis for ISS operations; nothing about data interfaces or small forces.",
+      "source": "judge"
+    },
+    "llis-1065": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Workforce experience and management insight issue, unrelated to interface data mismatch or navigation forces.",
+      "source": "judge"
+    },
+    "llis-1072": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Duplicate Shuttle-Mir lessons analysis recommendation, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-1075": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Logistics contract implementation lesson with no bearing on data conventions or thruster-induced trajectory effects.",
+      "source": "judge"
+    },
+    "llis-1098": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses inconsistent work rules among multiple organizations processing hardware, not mismatched data/units or unverified software interfaces.",
+      "source": "judge"
+    },
+    "llis-1113": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns insufficient spare EVA safety hardware, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1134": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Workforce downsizing and critical skills deficits, with no connection to interface data conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-1182": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a fuel cell venting accident due to a capped purge port and supervision issues, not unit/interface mismatch or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-1186": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Crane structural failure from weld fatigue; unrelated to data interfaces or thruster forces.",
+      "source": "judge"
+    },
+    "llis-1187": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Crane trolley acceleration close call; no relation to unit conventions or propulsive trajectory effects.",
+      "source": "judge"
+    },
+    "llis-1206": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns status reporting protocols during integrated tests, not data convention mismatches across a technical interface or thruster forces.",
+      "source": "judge"
+    },
+    "llis-1216": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Describes an element-to-element interface test where configuration/drawing data used by different organizations did not match the actual hardware, an unverified interface data mismatch; no thruster content.",
+      "source": "judge"
+    },
+    "llis-1228": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses circular document referencing in specification trees, a documentation structuring issue rather than mismatched data conventions across an unverified interface.",
+      "source": "judge"
+    },
+    "llis-1230": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware weld mismatch near tube bends; physical not data interface, and unrelated to thrusters.",
+      "source": "judge"
+    },
+    "llis-1252": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About reconciling statements of work across sites, a contractual/management issue, not technical data convention mismatch or small forces.",
+      "source": "judge"
+    },
+    "llis-148": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "RCS thruster propellant leak hazard to ground personnel, not about thruster small forces perturbing trajectory or interface data.",
+      "source": "judge"
+    },
+    "llis-17802": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Case study on government-contractor MOUs and requirements creep, generic programmatic communication rather than mismatched data conventions at an unverified interface.",
+      "source": "judge"
+    },
+    "llis-196": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Workload and manpower limitations in launch processing; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-202": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About unreliable instrument readings and failure to report discrepancies, related to escalation but not to interface unit conventions or thruster-induced trajectory effects.",
+      "source": "judge"
+    },
+    "llis-207": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns disorganized responsibility for environmental data collection/reporting at KSC, not mismatched data conventions across an unverified interface nor thruster small forces.",
+      "source": "judge"
+    },
+    "llis-213": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About lack of an accessible flight-experience database for trajectory variables, not an interface unit/convention mismatch or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-262": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses organizational staffing of concurrent real-time operations and advance planning, unrelated to data interface mismatches or thruster forces.",
+      "source": "judge"
+    },
+    "llis-272": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes flying an instrument with an open failure report and workaround, not interface data conventions or small-force navigation effects.",
+      "source": "judge"
+    },
+    "llis-279": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About relative vs absolute positioning commands for mechanisms, not unit/convention mismatches between teams or thruster trajectory perturbations.",
+      "source": "judge"
+    },
+    "llis-281": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An electrical grounding/noise coupling issue with a recommendation for interface verification tests, but it is about AC ground paths rather than mismatched data conventions between organizations.",
+      "source": "judge"
+    },
+    "llis-288": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns a mismatch between test-bed and spacecraft hardware/software states causing safing, not inter-team data convention mismatch or small-force navigation modelling.",
+      "source": "judge"
+    },
+    "llis-305": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Propulsion oxidizer flow decay due to material incompatibility; no interface data issue and no small-force trajectory effect.",
+      "source": "judge"
+    },
+    "llis-307": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Anomalous command counter readings and telemetry format recommendations, not unit conventions across an interface or thruster-induced trajectory errors.",
+      "source": "judge"
+    },
+    "llis-310": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Attitude/star identification software errors and use of in-house vs manufacturer gyro noise parameters, but not a unit-convention/interface verification failure nor small-force trajectory modelling.",
+      "source": "judge"
+    },
+    "llis-343": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Postulated propulsion breach causing contingency mode and loss of downlink; concerns fault protection, not data interface conventions or small-force trajectory modelling.",
+      "source": "judge"
+    },
+    "llis-320": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The document concerns crew and ground training fidelity for payload operations, with no bearing on unverified data interfaces/unit conventions or thruster small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-345": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns fault protection design gaps and lack of RCS thruster control algorithms for attitude stabilization, not unit/interface mismatches nor small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-347": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About contractor mergers and management/agreement continuity, not data conventions across an interface nor thruster forces on trajectory.",
+      "source": "judge"
+    },
+    "llis-358": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Solar array drive control algorithm deficiency; not about interface data conventions or small thruster forces on trajectory.",
+      "source": "judge"
+    },
+    "llis-372": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Balloon gondola structural failure with inadequate external-organization interface requirements, but it is about mechanical hardware load requirements, not mismatched data conventions or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-373": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "TWTA in-flight anomaly and contractor QA; unrelated to units/interface data or trajectory small forces.",
+      "source": "judge"
+    },
+    "llis-377": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Documents a trajectory correction maneuver delivering 21% less velocity change because thruster plume impingement forces were mis-modelled\u2014directly about small thruster forces affecting trajectory.",
+      "source": "judge"
+    },
+    "llis-391": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Spacecraft safing recovery, configuration management and ground configuration errors; not unit conventions across an interface nor thruster trajectory effects.",
+      "source": "judge"
+    },
+    "llis-394": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Scan platform actuator mechanical wear; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-395": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Antenna gain/polarization anomaly; unrelated to interface data conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-400": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Structural/attitude-control interaction causing gas consumption; it recommends communicating key parameter data across subsystem interfaces but is fundamentally about control-structure instability, not mismatched data conventions or trajectory perturbation.",
+      "source": "judge"
+    },
+    "llis-403": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Inadvertent safing sequence firing RCS thrusters on the pad\u2014about prelaunch command constraints, not interface unit mismatch or trajectory navigation effects.",
+      "source": "judge"
+    },
+    "llis-405": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Stepping versus explicit commands for positioning devices; unrelated to unit conversion interfaces or thruster trajectory forces.",
+      "source": "judge"
+    },
+    "llis-409": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes gyro failure-protection logic swapping during launch due to unexpected saturation behavior, not an interface unit/convention mismatch nor small thruster forces affecting trajectory.",
+      "source": "judge"
+    },
+    "llis-420": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns a propulsion pressure regulator leak and workaround maneuvers, unrelated to interface data conventions or small-force navigation modelling.",
+      "source": "judge"
+    },
+    "llis-423": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes unexpected small non-gravitational accelerations (lander outgassing) perturbing orbit determination and targeting, directly a small-force trajectory modelling lesson, though not about unit/interface mismatch.",
+      "source": "judge"
+    },
+    "llis-424": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Directly describes unmodelled small translational accelerations from unbalanced attitude-control thrusters and plume impingement affecting orbit determination, and the need for a new operational interface between the Spacecraft and Navigation Teams.",
+      "source": "judge"
+    },
+    "llis-446": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About failure to notify a ground group of late procedure changes for Spacelab power-up; generic communication issue, not a data convention/interface verification or thruster forces.",
+      "source": "judge"
+    },
+    "llis-447": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About logging within-spec component anomaly trends, unrelated to interface data conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-468": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns training and schedule contingency for new ground hardware, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-474": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Telephone system outage contingency planning, irrelevant to both parts.",
+      "source": "judge"
+    },
+    "llis-481": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About shift-to-shift communication during testing; generic communication lesson, not about mismatched data conventions across an unverified software/team interface or thruster forces.",
+      "source": "judge"
+    },
+    "llis-484": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses using an Earth-orbital propulsion design for a planetary mission, not data interface conventions or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-52": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns contractor work control and safety briefings for facility modifications, not data interfaces or spacecraft navigation.",
+      "source": "judge"
+    },
+    "llis-528": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About procurement and inadequate acceptance tests for pressure transducers, not about unit/convention mismatches across team interfaces or thruster forces.",
+      "source": "judge"
+    },
+    "llis-533": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concurrent engineering/teaming lessons for MGS; mentions communication and partnership generally but not a mismatched data convention or unverified interface, nor small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-559": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About a flight software overflow defect and missed patch causing an overlong thruster burn, not an inter-team data convention mismatch nor small-force trajectory modelling.",
+      "source": "judge"
+    },
+    "llis-560": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Galileo scan platform anomaly and fault protection; unrelated to unit/interface mismatches or small-force navigation effects.",
+      "source": "judge"
+    },
+    "llis-566": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Tether break failure on TSS-1R; no interface data convention issue or thruster small-force trajectory concern.",
+      "source": "judge"
+    },
+    "llis-567": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground controllers failed to change gyro sensitivity causing runaway thruster firing; an operations/command-constraint issue, not a data unit/interface mismatch or small-force trajectory modelling.",
+      "source": "judge"
+    },
+    "llis-569": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Directly describes interface control failures\u2014out-of-date ICDs and independently prepared interface drawings between JPL and vendors causing mismatched connectors\u2014i.e., unverified interfaces between organizations.",
+      "source": "judge"
+    },
+    "llis-572": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Contractor engine test data not shared with the customer led to wrong mixture ratio assumptions for propellant loading\u2014a data handoff/verification failure across the contractor interface, though not about small-force navigation.",
+      "source": "judge"
+    },
+    "llis-574": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deployment position potentiometer reliability lesson; unrelated to data interface conventions or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-577": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Describes data files translated between incompatible CAD programs across JPL and vendors producing undetected conversion errors\u2014an unverified software/organizational data interface.",
+      "source": "human"
+    },
+    "llis-578": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "ESA-furnished ducting configuration and effects were not communicated to JPL, resulting in a mismatched cooling-flow interface (0.26 vs 0.04 kg/s) and hardware damage.",
+      "source": "judge"
+    },
+    "llis-583": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Facility power loss during thermal-vacuum test and GSE backflow; no interface convention mismatch or small-force trajectory issue.",
+      "source": "judge"
+    },
+    "llis-584": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Concerns small propulsive aerobraking trim maneuvers (0.1 m/s delta-v) whose unintended repetition perturbed the trajectory, directly about small forces affecting trajectory, but not about mismatched data conventions between teams.",
+      "source": "judge"
+    },
+    "llis-585": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses staffing continuity on low-cost projects, not unit/interface mismatches or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-586": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns a mislabeled vendor antenna polarization certification; about convention mislabeling of COTS hardware rather than a data interface between teams, and unrelated to thruster forces.",
+      "source": "judge"
+    },
+    "llis-590": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General flight software development process lessons, no unit/interface mismatch or small-force navigation content.",
+      "source": "judge"
+    },
+    "llis-593": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Avionics/software architecture lessons; mentions attitude control subsystem only as hardware combined in a processor, not trajectory small forces.",
+      "source": "judge"
+    },
+    "llis-597": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About continuous on-orbit health monitoring during checkout, not interface unit mismatch or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-608": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Specifically about requirements/interface data being misinterpreted across a NASA/ESA partner interface due to ambiguous conventions, a real instance of mismatched interpretation between organizations.",
+      "source": "judge"
+    },
+    "llis-611": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Launch services contracting and interface responsibility issues, not mismatched data conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-617": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "LOX test stand fire mishap, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-619": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "ACE project management success practices, unrelated to unit conventions or small forces.",
+      "source": "judge"
+    },
+    "llis-627": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware refurbishment material substitution failure, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-649": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "GSE critical items identification and FMEA practice, unrelated to data interface conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-638": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes the DC-XA landing gear deployment failure and vehicle toppling, with no mention of mismatched data conventions between teams or small thruster forces affecting trajectory.",
+      "source": "judge"
+    },
+    "llis-655": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic preliminary design review agenda guidance, not about unit/interface mismatches or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-657": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic critical design review process guidance applicable to any project.",
+      "source": "judge"
+    },
+    "llis-671": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About demagnetizing ferromagnetic parts, unrelated to interface conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-672": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns ablative nozzle composite manufacturing, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-681": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General concurrent engineering team practices, not specific to data interface conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-687": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deployable appendage design guidelines, unrelated to units/interfaces or thruster-induced trajectory effects.",
+      "source": "judge"
+    },
+    "llis-691": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes an anomaly reporting database; touches on anomaly escalation generally but not interface/unit mismatch or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-692": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Specifically warns that inconsistent coordinate frame definitions between subsystem engineers cause design errors and recommends a common definition document to govern data transfer across teams, directly addressing unverified convention mismatches.",
+      "source": "judge"
+    },
+    "llis-695": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Thermal analysis modeling guidance, unrelated to unit conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-699": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Optical mirror structural analysis, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-708": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Plasma noise EMI design practice, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-713": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About physical tolerance buildup for mating hardware across contractors, not data/unit convention mismatch or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-717": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Optical interferometer testing guideline, unrelated to interface conventions or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-723": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic IV&V software practice; does not specifically address mismatched data conventions across organizational interfaces or thruster forces.",
+      "source": "judge"
+    },
+    "llis-726": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Specifically advocates end-to-end interface and compatibility testing of ground data system elements to verify proper data flow between elements/users, which is directly about unverified interfaces.",
+      "source": "judge"
+    },
+    "llis-728": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fastener inspection practice, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-731": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Spacecraft data system hardware design; mentions standard interfaces and attitude control commanding only in passing.",
+      "source": "judge"
+    },
+    "llis-736": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes arcjet thruster design for stationkeeping, but not about small-force effects on navigation/trajectory modeling.",
+      "source": "judge"
+    },
+    "llis-738": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic problem reporting/corrective action system, not about unit/interface mismatches or thruster forces.",
+      "source": "judge"
+    },
+    "llis-739": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lightning protection design, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-754": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Optical contamination control, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-763": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Rocket engine systems testing, about propulsion test integration rather than data interface conventions or small-force navigation.",
+      "source": "judge"
+    },
+    "llis-772": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fault protection design practice; not about data interface mismatch or small-force trajectory modeling.",
+      "source": "judge"
+    },
+    "llis-790": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Independent review of problem/failure reports; generic anomaly-review advice, not specific to interface conventions or thruster forces.",
+      "source": "judge"
+    },
+    "llis-791": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes risk rating of problem/failure reports for management visibility, not unit/interface mismatches or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-792": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About radiation design margins, unrelated to data interface conventions or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "llis-805": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns GIDEP alerts for parts/materials/safety problems, not unit conversion interfaces or thruster forces.",
+      "source": "judge"
+    },
+    "llis-819": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Structural stress analysis practice, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-820": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "GPS timing system reliability upgrade; timing commonality is not about mismatched data conventions between teams or thruster-induced navigation errors.",
+      "source": "judge"
+    },
+    "llis-831": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic maintainability program management guidance, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-840": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Mean Time To Repair prediction technique, unrelated to interface data conventions or small forces.",
+      "source": "judge"
+    },
+    "llis-841": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Availability prediction methods, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-85": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground support equipment lifting sling stress issue, unrelated to data interfaces or spacecraft navigation.",
+      "source": "judge"
+    },
+    "llis-853": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Solid state DC drive control maintainability, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-860": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Facility renovation office move coordination, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-882": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Laser shaft alignment of rotating machinery, unrelated to data unit mismatch or thruster forces.",
+      "source": "judge"
+    },
+    "llis-891": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on reliability-centered preventive maintenance, unrelated to interface data conventions or thruster small forces.",
+      "source": "judge"
+    },
+    "llis-995": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns NASA's physical presence and insight into contractor operations under SFOC, not mismatched data conventions across an unverified technical interface, and says nothing about thruster forces.",
+      "source": "judge"
+    },
+    "llis-997": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About workforce downsizing and safety metrics, with no relevance to interface data mismatches or small-force navigation effects.",
+      "source": "judge"
+    },
+    "report-apollo13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Narrative mentions S-IVB attitude thruster trajectory adjustment and midcourse burns only in passing; the report's subject is the oxygen tank failure, not mis-modelled small forces or unverified data interfaces.",
+      "source": "judge"
+    },
+    "report-apollo1_as204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers the Apollo 204 cabin fire, egress and test hazard planning; nothing about unit/interface mismatches or thruster perturbations.",
+      "source": "judge"
+    },
+    "report-challenger_rogers_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns SRM joint failure, launch decision-making and flight planning, not data-convention mismatches across an interface or small-force trajectory effects.",
+      "source": "judge"
+    },
+    "report-hubble_optics": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a metrology/test-equipment error and dismissed discrepant data within the contractor, not a quantity passed between organizations with mismatched conventions, and has no navigation/thruster content.",
+      "source": "judge"
+    },
+    "report-lewis": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Centrally describes how small thruster imbalance and small initial rates were never modelled in the inherited attitude-control simulation, a direct lesson about unmodelled small thruster forces on spacecraft dynamics.",
+      "source": "judge"
+    },
+    "report-soho": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Focuses on operational errors, gyro telemetry discrepancies and ground-system issues during attitude loss, not on cross-organization data convention mismatches or small-force trajectory modelling.",
+      "source": "judge"
+    },
+    "report-wire": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Its core lesson is that simulators/test support equipment did not faithfully represent the actual hardware behavior at a complex multi-organization payload/spacecraft interface that was never properly verified; the venting torque issue concerns attitude, not thruster-induced trajectory errors.",
+      "source": "judge"
+    }
+  },
+  "genesis": {
+    "llis-1035": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes pyrovalve booster retention failure found through testing and its redesign, with no reversed/inverted hardware and no skipped functional test or unverified heritage design.",
+      "source": "judge"
+    },
+    "llis-1107": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Policy recommendation about Crew Return Vehicle availability, unrelated to part orientation or verification/test omissions.",
+      "source": "judge"
+    },
+    "llis-1111": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Recommends fire-evident pyrotechnic initiators for EVA visibility; no inverted installation or skipped functional test issue.",
+      "source": "judge"
+    },
+    "llis-1196": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Directly documents MPL/DS2 failures where system-level functional tests (touchdown sensing in flight configuration, impact tests) were omitted or not representative, letting errors escape, though no reversed-part issue.",
+      "source": "judge"
+    },
+    "llis-1197": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "A bench thermal functional test was deleted on the assumption that earlier subassembly testing was adequate, allowing a hardware-software error to escape\u2014exactly the skipped-test/trusted-prior-verification failure mode.",
+      "source": "human"
+    },
+    "llis-1207": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses streamlining duplicate certification of heritage hardware for efficiency rather than an error escaping because inherited design or testing was not re-verified.",
+      "source": "judge"
+    },
+    "llis-1208": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A functional test was performed but mis-set up by a technician, damaging transducers; no inverted part and no omitted test or trusted heritage design.",
+      "source": "judge"
+    },
+    "llis-1212": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns contingency control of test hardware after a power outage, not reversed installation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-1217": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses fastener collar burrs as a sharp-edge hazard and reversing collar facing as mitigation, not an erroneously inverted component or a bypassed functional test.",
+      "source": "judge"
+    },
+    "llis-1223": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About fidelity of structural models in analysis, unrelated to orientation errors or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-1227": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Missing fasteners passed multiple inspection/documentation checkpoints, an installation-omission and inspection-buyoff breakdown rather than a reversed part or a functional test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-1251": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About failure to file mishap paperwork after a facility flood; unrelated to either failure mode.",
+      "source": "judge"
+    },
+    "llis-1253": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes inadvertent flight termination activation from an uninvolved range's open-loop FTS transmitter test, unrelated to inverted parts or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-1265": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns wind tunnel model loss from reliance on procedures and untested conditions, not reversed orientation or a skipped functional test of inherited design.",
+      "source": "judge"
+    },
+    "llis-1268": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Recommends a post-environmental system test (including an attitude control polarity check) because unplanned tests uncovered problems, directly addressing errors that would escape without functional testing, though it doesn't describe an actual reversed-installation event.",
+      "source": "judge"
+    },
+    "llis-1274": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About test planning inefficiencies and schedule reserve loss, not about an error escaping due to a skipped test or reversed hardware.",
+      "source": "judge"
+    },
+    "llis-1276": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic advocacy for independent peer review to catch latent design errors; does not address skipped functional tests or inverted components.",
+      "source": "judge"
+    },
+    "llis-1308": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly warns that heritage hardware/software cannot be used as-is and needs modification/verification for the new mission, matching the inherited-design-trusted-without-re-verification lesson.",
+      "source": "judge"
+    },
+    "llis-1316": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pyrotechnic pin puller failure from sheared threads and informal refurbishment, not an orientation error or a functional test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-1319": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An on-orbit controller setpoint limit anomaly; no reversed installation and no skipped-test/inherited-design verification lesson.",
+      "source": "judge"
+    },
+    "llis-133": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Flexhose length causing kinking is a design fit issue, unrelated to inverted orientation or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-1335": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About test facility limitations for test-as-you-fly RF testing, not about reversed hardware or omitting a functional test in favor of inspection.",
+      "source": "judge"
+    },
+    "llis-1340": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An omitted actuator coupling during assembly caused engine test shutdown; a missing part rather than an inverted one, and no skipped-test/inherited-design theme.",
+      "source": "judge"
+    },
+    "llis-1360": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Separation nut impact damage to pyro cabling is a design oversight of unrestrained hardware, not an orientation error or a bypassed functional test.",
+      "source": "judge"
+    },
+    "llis-1370": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns adapting COTS aviation GPS units to orbit; no reversed-orientation part and no skipped functional test driving an escape.",
+      "source": "judge"
+    },
+    "llis-1390": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About a Doppler link-margin error found by end-to-end test; related to inadequate pre-launch verification but not about substituting inspection for a functional test or inherited design, nor about reversed orientation.",
+      "source": "judge"
+    },
+    "llis-1393": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Steam line corrosion rupture; unrelated to reversed parts or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-1398": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes reversed-polarity wiring in a GSE power harness and the escape caused by skipping documentation/QA review and not completing the Safe-To-Mate verification procedure.",
+      "source": "human"
+    },
+    "llis-1451": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Configuration management of investigation data; unrelated to either failure mode.",
+      "source": "judge"
+    },
+    "llis-1478": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About aged lubricant/hardware beyond certification limits, not reversed installation or a skipped functional test.",
+      "source": "judge"
+    },
+    "llis-1480": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About in-flight updating of EDL parameters; mentions parachute deployment but not inverted hardware or skipped verification.",
+      "source": "judge"
+    },
+    "llis-1488": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Radiation testing failures of COTS DSP boards; unrelated to orientation errors or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-1504": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic program management lesson on diluted review rigor, not a specific test-skipped escape or reversed hardware.",
+      "source": "judge"
+    },
+    "llis-1507": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Program budget/schedule stress and lowered review standards; generic management lesson, neither failure mode.",
+      "source": "judge"
+    },
+    "llis-1511": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Safety organization emphasis issues; unrelated to reversed hardware or skipped functional verification.",
+      "source": "judge"
+    },
+    "llis-1522": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About technical standards and applicable documents; neither orientation errors nor test-replaced-by-inspection escapes.",
+      "source": "judge"
+    },
+    "llis-16": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Describes a check valve spring installed backwards causing failure, directly an inverted/reversed-installation event; the fix was adding inspection rather than an escape from skipped functional test.",
+      "source": "human"
+    },
+    "llis-1604": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General F-18 HATP program lessons on steering committees, systems engineering and risk management, not about reversed parts or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-21": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About particle contamination in limit switches and PIND screening, unrelated to inverted installation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-224": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About assuming SRM case dimensions were stable and not remeasuring during refurbishment\u2014an unverified assumption about reused hardware, but not an inverted part nor a functional test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-238": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A facility overpressurization mishap; the 'inverted dished head' is a design feature, not an orientation error, and no test-escape lesson.",
+      "source": "judge"
+    },
+    "llis-267": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Near-drop from a reused Galileo lifting fixture; it touches on reusing inherited hardware without analysis but concerns handling/GSE stability analysis, not a design error escaping because a functional test was skipped\u2014borderline but not a functional-test escape of a flight design.",
+      "source": "judge"
+    },
+    "llis-271": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly describes a failure caused by erroneously assuming an inherited design was acceptable without re-analysis for new environments.",
+      "source": "human"
+    },
+    "llis-286": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The cover-ejection failure escaped because the as-flown configuration (heater energized) was never functionally tested, highlighting untested flight sequences.",
+      "source": "judge"
+    },
+    "llis-287": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Reverse polarity was applied by test instrumentation during improper testing, not a part designed or wired backwards, and the escape was due to inadequate procedures rather than a skipped functional test.",
+      "source": "judge"
+    },
+    "llis-289": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Microswitch mounting location/marginal stroke caused a false indication, but it is not an inverted/backwards installation nor a test-skipped escape.",
+      "source": "judge"
+    },
+    "llis-290": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "GPC overheated due to a cooling duct cover left in place and procedure non-compliance, not a reversed part or a skipped functional test.",
+      "source": "judge"
+    },
+    "llis-296": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes a design flaw carried over from Voyager and trusted on Topex, with the explicit lesson that inherited designs require in-depth re-analysis.",
+      "source": "judge"
+    },
+    "llis-298": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a burst disc fatigue failure and oxygen vent fire; no reversed/inverted hardware and no escaped error due to skipped functional testing or unverified heritage.",
+      "source": "judge"
+    },
+    "llis-304": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The LNA defect escaped because only transmit-only/receive-only testing was done and no end-to-end functional test was performed, which is the lesson given; no orientation/polarity error involved.",
+      "source": "judge"
+    },
+    "llis-310": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The attitude failures stemmed from an algorithm error in inherited flight software (also seen on DMSP) that was carried over without re-verification, matching Part B; nothing reversed or mis-oriented.",
+      "source": "judge"
+    },
+    "llis-311": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The high-rate data channel problem is tied to the fact that no complete end-to-end functional test was performed before flight, matching the skipped-test theme; no inverted hardware.",
+      "source": "judge"
+    },
+    "llis-312": {
+      "a": false,
+      "b": true,
+      "grade": 0,
+      "reason": "A latent circuit design error survived all requirements/design reviews and the end-to-end tests that validated the erroneous design rather than the end function, matching Part B; the error was a wrong firing-circuit configuration, not a reversed/inverted part.",
+      "source": "human"
+    },
+    "llis-338": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About corrosion of outdoor display hardware; unrelated to orientation errors or verification escapes.",
+      "source": "judge"
+    },
+    "llis-342": {
+      "a": false,
+      "b": true,
+      "grade": 0,
+      "reason": "Directly recommends end-to-end functional (or simulated) testing to verify safety-critical functional design, citing the Super*Zip error that escaped non-functional verification.",
+      "source": "human"
+    },
+    "llis-346": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly about heritage subsystems trusted and not requalified for the new mission environment, the inherited-design-not-re-verified failure mode.",
+      "source": "human"
+    },
+    "llis-35": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns RF susceptibility of NASA Standard Initiators; no reversed installation or testing-escape issue.",
+      "source": "judge"
+    },
+    "llis-367": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pyro telemetry anomaly from a post-fire short/sneak path; no inverted component and no skipped functional test or unverified inheritance.",
+      "source": "judge"
+    },
+    "llis-371": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The Agena bus was treated as flight-proven heritage despite substantial modification, with requalification and tests waived, matching Part B; the opposite-polarity brush arrangement was a design vulnerability, not a part installed backwards.",
+      "source": "judge"
+    },
+    "llis-372": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Gondola/parachute adapter structural failure from inadequate requirements and missing FMECA; no orientation error or test-replaced-by-inspection escape.",
+      "source": "judge"
+    },
+    "llis-394": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This is about a scan platform actuator lubrication/bearing design flaw found via life testing, not about inverted orientation or a skipped functional test of an inherited design.",
+      "source": "judge"
+    },
+    "llis-397": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes lightning-induced current causing anomalous power turn-on and missing failure mode analysis, not reversed orientation or a functional test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-407": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns antenna pattern interferometer effects on the communication link, unrelated to inverted installation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-409": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About failure protection logic enabled during launch causing gyro swaps, not about reversed parts or omitted functional tests.",
+      "source": "judge"
+    },
+    "llis-417": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About high-voltage capacitor corona risk in vacuum found in design review; it notes testing might not reveal it, but is not about an error escaping due to a skipped functional test or inverted part.",
+      "source": "judge"
+    },
+    "llis-431": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Directly describes cables cross-connected/transposed into the wrong connectors, i.e., connections mated backwards, though not about skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-449": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns contaminant migration in a thermal switch due to vibration wear, unrelated to inverted orientation or test-waiver escapes.",
+      "source": "judge"
+    },
+    "llis-467": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Check valve failed to close and was unmonitored, a hardware/monitoring issue, not an inverted installation or a skipped functional test of inherited design.",
+      "source": "judge"
+    },
+    "llis-492": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly describes an inherited (TDRS) antenna design modified and trusted, with inheritance and design reviews failing to reveal the problem that proper verification for the new application would have caught.",
+      "source": "human"
+    },
+    "llis-494": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Centrifuge bearing failure lessons about configuration baselining and logs, generic rather than about inverted parts or substituting inspection for functional test.",
+      "source": "judge"
+    },
+    "llis-517": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "A parachute recovery system failed because a design change (teflon wrap) was adopted without performing confirming strip-out load tests, an error escaping because functional testing was omitted.",
+      "source": "judge"
+    },
+    "llis-521": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Missing fasteners missed by repeated visual inspections, but this is an assembly/inspection oversight rather than a design error escaping because a functional test was replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-534": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns oxygen-compatibility of a grease and MIUL rating mismatch, with no reversed/inverted hardware and no skipped functional test or trusted heritage design.",
+      "source": "judge"
+    },
+    "llis-572": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About propellant mixture-ratio/loading errors and accelerometer depletion detection thresholds, not orientation errors or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-574": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Recommends eliminating potentiometers from deployment position indicators; unrelated to inverted installation or verification-by-inspection.",
+      "source": "judge"
+    },
+    "llis-577": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes net-list translation errors between CAD tools producing wrong node connections (not reversed orientation/polarity), and the error was actually caught by a functional bench test rather than escaping one.",
+      "source": "judge"
+    },
+    "llis-582": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic advocacy for in-depth informal peer design reviews; no specific inverted-part event and no lesson about substituting inspection for functional test.",
+      "source": "judge"
+    },
+    "llis-586": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The reference antenna was effectively wound/labeled with reversed (opposite) polarization, and the error persisted because the vendor's calibration certificate was trusted instead of independently verifying performance.",
+      "source": "judge"
+    },
+    "llis-595": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Lewis failure stemmed directly from an inherited/heritage attitude control design applied and validated without independent re-verification, matching Part B, but involves no reversed-orientation hardware.",
+      "source": "judge"
+    },
+    "llis-609": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The SAFE/ARM logic states for two telemetry channels were documented reversed, and the error escaped because alarm testing with correct parameters was never performed prior to launch.",
+      "source": "judge"
+    },
+    "llis-613": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About an adhesive/solvent process change causing insulation erosion; neither reversed orientation nor an omitted functional test of an inherited design.",
+      "source": "judge"
+    },
+    "llis-626": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Inadvertent powering arose from switch sensitivity and ground paths; heritage is mentioned only in passing and no inverted part or test-replaced-by-inspection lesson is given.",
+      "source": "judge"
+    },
+    "llis-628": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Debris ingestion into fans and filter placement; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-633": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Directly addresses the absence of required functional performance testing (left to discretion) allowing weak designs and in-flight anomalies to go undetected, though it says nothing about inverted parts.",
+      "source": "judge"
+    },
+    "llis-634": {
+      "a": false,
+      "b": false,
+      "grade": 1,
+      "reason": "Describes a pyro electronics logic/transient design error and absence of end-to-end system test fidelity, but not a reversed/inverted component nor an inherited design or test replaced by inspection.",
+      "source": "human"
+    },
+    "llis-637": {
+      "a": false,
+      "b": false,
+      "grade": 1,
+      "reason": "Same WIRE digital logic transient failure; no inverted part orientation and no skipped functional test substituted by inspection.",
+      "source": "human"
+    },
+    "llis-638": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "DC-XA landing gear deployment failure report; not about reversed orientation or a test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-641": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Units conversion error in ground software, unrelated to inverted hardware orientation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-642": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About magnetized 'non-magnetic' tanks causing torque; no inverted installation, and the omitted magnetic testing stemmed from a material assumption rather than inspection substituting for a planned functional test.",
+      "source": "judge"
+    },
+    "llis-643": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic environmental design guidance with no relevance to orientation errors or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-644": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Battery handling/storage practice; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-648": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic GSE design review checklist advice, not about reversed hardware or a functional test being replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-651": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General environmental test methods for GSE; no mention of orientation errors or inspection substituting for functional testing.",
+      "source": "judge"
+    },
+    "llis-652": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Structural load combination methods, unrelated to either failure element.",
+      "source": "judge"
+    },
+    "llis-657": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic CDR process description; generic review advice not specific to inverted parts or verification of inherited designs.",
+      "source": "judge"
+    },
+    "llis-663": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Welding practices guidance, unrelated to orientation errors or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-664": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SOHO loss was due to operational/ground command errors and disabled autonomous failure detection, not a reversed part or a skipped functional test of an inherited design.",
+      "source": "judge"
+    },
+    "llis-667": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on conducting engineering design reviews; no specific mention of inverted hardware or of inspection substituting for functional testing.",
+      "source": "judge"
+    },
+    "llis-671": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns demagnetization of ferromagnetic parts, unrelated to orientation errors or verification gaps.",
+      "source": "judge"
+    },
+    "llis-675": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fastener standardization and procurement guidance, unrelated to either failure mode.",
+      "source": "judge"
+    },
+    "llis-680": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Microcircuit design checklists address electrical application issues, not reversed installation or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-692": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses inconsistent coordinate frame definitions causing design errors in sensor pointing, which relates to orientation/sign conventions but is about documentation of frames rather than a part installed backwards or an untested inherited design.",
+      "source": "judge"
+    },
+    "llis-700": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fracture mechanics reliability analysis, irrelevant to orientation errors or test omission.",
+      "source": "judge"
+    },
+    "llis-702": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Magnetic cleanliness design control, unrelated to the failure modes in question.",
+      "source": "judge"
+    },
+    "llis-706": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Tell-tale magnetic exposure monitoring; no relation to inverted parts or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-726": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes end-to-end mission simulation testing of ground data systems generally, not a case of a skipped functional test or inherited design trusted without re-verification.",
+      "source": "judge"
+    },
+    "llis-729": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Specifically recommends safe-to-mate cable tests that check for wiring errors including reverse polarities, directly addressing backwards wiring/connections.",
+      "source": "judge"
+    },
+    "llis-730": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Sine-burst load testing technique for strength qualification, unrelated to orientation errors or substituting inspection for functional test.",
+      "source": "judge"
+    },
+    "llis-733": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic procedure for reporting and tracking ground test problems/failures, not about reversed hardware or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-743": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a parafoil deployment failure due to poor design review/documentation of a test-unique system, but not an inverted part nor a skipped functional test/unverified inherited design.",
+      "source": "judge"
+    },
+    "llis-761": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General guidance on early instrumentation/sensor design planning; no reversed-orientation installation or skipped functional test issue.",
+      "source": "judge"
+    },
+    "llis-765": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Technical guidance on ultrasonic NDT methods, unrelated to inverted parts or omitted functional testing.",
+      "source": "judge"
+    },
+    "llis-766": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers command destruct system reliability practices, not reversed installation or inspection-substituted testing.",
+      "source": "judge"
+    },
+    "llis-771": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses voltage/temperature margin testing as an alternative to worst-case analysis, not orientation errors or omitted functional verification.",
+      "source": "judge"
+    },
+    "llis-779": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About environmental test sequencing order, not inverted hardware or substituting inspection for functional test.",
+      "source": "judge"
+    },
+    "llis-780": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pyroshock testing guidance; no relation to reversed orientation or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-786": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Advocates independent peer review of reliability analyses to catch design defects, generic review advice rather than a lesson about skipped functional tests or inverted parts.",
+      "source": "judge"
+    },
+    "llis-789": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Directly addresses the risk of trusting inherited/COTS hardware designs and prescribes inheritance review to assess the need for modification or additional testing, matching Part B's inherited-design-not-re-verified theme.",
+      "source": "judge"
+    },
+    "llis-790": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Independent review/approval of problem-failure reports, generic process guidance unrelated to orientation errors or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-812": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Leak testing of cryogenic propellant systems, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-815": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It describes flight loads analysis and finite element modeling as design tools, not reversed parts or skipped functional tests.",
+      "source": "judge"
+    },
+    "llis-836": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It covers SRB refurbishment maintainability design criteria, with no mention of inverted components or inspection-replacing-test errors.",
+      "source": "judge"
+    },
+    "llis-853": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It is about solid state DC drive controls; reversible power flow is unrelated to backwards installation or verification gaps.",
+      "source": "judge"
+    },
+    "llis-875": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "A circuit breaker was miswired causing phase rotation that drove cooling fans backwards, a clear case of reversed wiring/polarity (though the inspection failure here is a quality check, not a replaced functional test).",
+      "source": "judge"
+    },
+    "llis-885": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The MPL test mishap stemmed from an unverified stowed solar array configuration before test, not from inverted hardware or a skipped functional test.",
+      "source": "judge"
+    },
+    "llis-922": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It concerns bubble formation degrading viscous dampers, unrelated to reversed orientation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-929": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It addresses review board composition and peer review effectiveness generally, not a backwards part or a test replaced by inspection.",
+      "source": "judge"
+    },
+    "llis-932": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A ground utility mishap from removal of a thrust block and poor documentation, unrelated to either failure mode.",
+      "source": "judge"
+    },
+    "llis-938": {
+      "a": true,
+      "b": true,
+      "grade": 1,
+      "reason": "It documents touchdown sensor wiring errors (incorrect wiring) and explicitly notes the full leg deployment test was not rerun after correction, so a critical failure mode escaped verification.",
+      "source": "human"
+    },
+    "llis-939": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "It is specifically about a mission-critical logic error escaping because the full end-to-end functional test was omitted/masked in the pre-launch test program.",
+      "source": "judge"
+    },
+    "llis-944": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pyrovalve blow-by and propellant ignition anomalies have nothing to do with inverted installation or test-by-inspection substitution.",
+      "source": "judge"
+    },
+    "llis-97": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A loose O2 meter left in an OMS pod is a foreign object/procedure issue, not reversed orientation or skipped functional test.",
+      "source": "judge"
+    },
+    "llis-978": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It advocates rigorous end-to-end testing generally and credits Terra's success to it, but doesn't describe an error escaping because a functional test was skipped or an inverted part.",
+      "source": "judge"
+    },
+    "llis-981": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "It is specifically about parts installed backwards/reverse polarity (tantalum capacitors installed or designed in reversed orientation), matching Part A; it says nothing about skipped functional testing or inherited designs.",
+      "source": "judge"
+    },
+    "llis-982": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns loss of EEE part lot traceability data, unrelated to inverted installation or skipped functional testing.",
+      "source": "judge"
+    },
+    "llis-987": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic program management lessons from Chandra, with no account of a reversed part or an error escaping due to an omitted functional test.",
+      "source": "judge"
+    },
+    "report-apollo13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers thermostatic switch voltage mismatch and detanking hazards; retest after the shelf drop included functional tests, and no inverted-component or test-replaced-by-inspection lesson is the subject.",
+      "source": "judge"
+    },
+    "report-apollo1_as204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Focuses on fire hazards, wiring quality and hatch design; no specific case of an inverted/backwards part or an error escaping because a functional test was replaced by inspection.",
+      "source": "judge"
+    },
+    "report-challenger_rogers_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deals with O-ring joint design, flight readiness reviews, and paperwork errors, not with reversed orientation parts or an omitted functional test; inherited Titan joint heritage is only mentioned as rationale in passing.",
+      "source": "judge"
+    },
+    "report-columbia_caib_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns foam debris impacts and risk normalization in reviews, not reversed hardware orientation or a skipped functional test.",
+      "source": "judge"
+    },
+    "report-contour": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes solid rocket motor plume heating and lack of telemetry coverage, not an inverted component or a bypassed functional test.",
+      "source": "judge"
+    },
+    "report-hubble_optics": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The HST failure centrally involved reliance on a single measurement path without independent end-to-end verification tests (inverse null corrector data dismissed), an error that escaped verification\u2014though the field lens was explicitly found NOT to be installed backwards, so Part A does not apply.",
+      "source": "judge"
+    },
+    "report-mco_phase1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses units mismatch, small forces modeling, and inadequate navigation reviews, not a reversed part nor an error escaping because a functional test was replaced by inspection.",
+      "source": "judge"
+    },
+    "report-mco_phase2": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General project management and 'safety net' process lessons; no specific inverted hardware case or skipped functional test event.",
+      "source": "judge"
+    },
+    "report-mpl_ds2": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The MPL report describes how a missing requirement meant no unit/functional test was run to catch spurious touchdown sensor transients (a test that would have caught the error was never performed), which is squarely part B, but it does not involve a part installed or designed backwards/inverted.",
+      "source": "judge"
+    },
+    "report-soho": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SOHO's loss stemmed from modified operational procedures, an uncommunicated change, and a cursory name-only review of command scripts, not from an inverted/reversed hardware installation nor from a skipped functional test or unverified inherited design.",
+      "source": "judge"
+    },
+    "report-wire": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "WIRE involves pyro box power-on transients and low-fidelity simulators/design verification, not a reversed-orientation part or an error escaping because a functional test was replaced by inspection or an inherited design went unverified.",
+      "source": "judge"
+    }
+  },
+  "noaa_n_prime": {
+    "llis-1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns failure to propagate a manufacturing torque procedure change to reworked units, not unrecorded hardware configuration changes or failure to verify configuration before an operation.",
+      "source": "judge"
+    },
+    "llis-1034": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A demolition worker removing a bolt causing collapse is a hazard-analysis/lone-worker lesson, not about undocumented hardware state changes left for a subsequent team.",
+      "source": "judge"
+    },
+    "llis-1036": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About prototype-to-flight fabrication process scaling for valve seats, unrelated to GSE configuration control or verification before handling.",
+      "source": "judge"
+    },
+    "llis-1041": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A wrong-gas connection during payload transport; mis-connection of GSE rather than an unrecorded prior configuration change, and it does not address verifying equipment configuration left by another program.",
+      "source": "judge"
+    },
+    "llis-1047": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Workforce/inspection-point downsizing issue, not about equipment configuration state or pre-move verification.",
+      "source": "judge"
+    },
+    "llis-1089": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A spacecraft handling/lift overturn involving fixture center-of-gravity and lifting hardware, but described incident is about a lift anomaly rather than undocumented prior configuration changes to shared GSE or skipped configuration verification (as excerpted).",
+      "source": "human"
+    },
+    "llis-109": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes work stand design/stability shortcomings, not unrecorded configuration changes or failure to verify before use.",
+      "source": "judge"
+    },
+    "llis-1090": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Launch abort communication/authority failure, unrelated to hardware left in a changed state or configuration verification.",
+      "source": "judge"
+    },
+    "llis-1100": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Supplier quality assurance lesson, unrelated to GSE configuration control or pre-operation verification.",
+      "source": "judge"
+    },
+    "llis-1138": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses GSE obsolescence planning, not undocumented configuration changes or verification lapses.",
+      "source": "judge"
+    },
+    "llis-1158": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Roles and responsibilities in flight operations planning, not hardware configuration state or verification.",
+      "source": "judge"
+    },
+    "llis-1182": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The fuel cell was damaged because a hydrogen vent port had been left capped (a hardware state not communicated across shifts/teams) and the crew proceeded with venting without verifying the configuration, closely matching both parts.",
+      "source": "judge"
+    },
+    "llis-1186": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A crane structural failure from fatigue cracking caused injury; it concerns undetected material degradation rather than hardware left in an undocumented changed configuration by a prior team or an unverified configuration check before use.",
+      "source": "judge"
+    },
+    "llis-119": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Bolts were removed from the SRM lifting/handling hardware without authorization or record by an unknown party, and the segment was hoisted and moved before anyone verified the handling ring configuration, matching both parts.",
+      "source": "human"
+    },
+    "llis-1199": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "A platform beam left inside the Orbiter aft compartment by earlier work (falsely recorded as removed) caused damage when the next team rotated the vehicle without confirming the actual closeout configuration.",
+      "source": "judge"
+    },
+    "llis-1200": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The Zero-G weight baskets were left pinned/configured from prior operations and the bridge operator moved the bridge without performing the required verification that the Zero-G system was disconnected.",
+      "source": "judge"
+    },
+    "llis-1209": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A table saw fire from accumulated composite dust and a failed dust collection system is a shop maintenance/housekeeping issue unrelated to undocumented configuration changes or pre-move verification.",
+      "source": "judge"
+    },
+    "llis-121": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The incident involves crane lift-rate overload during tank removal, a procedural/equipment selection issue, not leftover configuration changes or failure to verify equipment configuration.",
+      "source": "judge"
+    },
+    "llis-1210": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This is about an authorized deviation from a hazardous procedure omitting safety steps, not about hardware left in a changed state or an unverified configuration before operating.",
+      "source": "judge"
+    },
+    "llis-1211": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Shipping/packaging documentation deficiencies for robotic workstations do not involve support equipment left in an unsafe state or a team operating without a configuration check.",
+      "source": "judge"
+    },
+    "llis-1212": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Incident #2 shows operators resuming test 'under the assumption that the motor was still disconnected,' i.e., operating test hardware without verifying its actual configuration, though no prior team made an unrecorded change.",
+      "source": "judge"
+    },
+    "llis-1213": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "A late hardware modification (tether point and part number change) was made without being communicated to checklist, training, and mockup users, which is the undocumented/uncommunicated configuration change theme, but it does not involve failing to verify equipment before a move.",
+      "source": "human"
+    },
+    "llis-1215": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A crane operator's inadvertent control input during a truss lift is a human-factors/control-design error, not a leftover unsafe configuration or missed configuration verification.",
+      "source": "judge"
+    },
+    "llis-1221": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The A-frame tipover concerns lift planning, CG, and stability limits rather than undocumented configuration changes or pre-use configuration verification.",
+      "source": "judge"
+    },
+    "llis-1227": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It describes missing fasteners on flight hardware due to process/documentation breakdowns in manufacturing, not support equipment left in a changed state by a prior user nor a subsequent team operating without verifying configuration.",
+      "source": "judge"
+    },
+    "llis-1252": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It concerns statement of work reconciliation across program sites, unrelated to hardware configuration or verification before operation.",
+      "source": "judge"
+    },
+    "llis-1268": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It is about post-environmental system testing of a satellite, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1272": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It describes a shipping mishap of a tool due to incomplete documentation/teamwork, not equipment left altered without record nor failure to verify configuration before moving a payload.",
+      "source": "judge"
+    },
+    "llis-1277": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It addresses GSE fault-detection flagging in checkout, not undocumented configuration changes or pre-use configuration verification.",
+      "source": "judge"
+    },
+    "llis-13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It concerns GSE fluid sampling and filter contamination, a hardware/procedure issue unrelated to undocumented configuration changes or unverified moves.",
+      "source": "judge"
+    },
+    "llis-1336": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It is about cable wiring documentation mismatches, not equipment left in a changed state by another program or moving hardware without verifying setup.",
+      "source": "judge"
+    },
+    "llis-1338": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The mishap involved a work deck extension left with a lifting device still on it after prior pump removal work, and the deck mover rolling it away without verifying the configuration, closely matching both parts.",
+      "source": "judge"
+    },
+    "llis-1340": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "An actuator coupling was left out during prior maintenance without being recorded/caught, and the test team proceeded to run the engine without verifying the valve configuration, matching both parts.",
+      "source": "judge"
+    },
+    "llis-135": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It gives generic preventive maintenance and pre-operational check guidance for VAB cranes, without describing undocumented configuration changes or a specific failure to verify a prior team's setup.",
+      "source": "judge"
+    },
+    "llis-1368": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The core lesson is that workers must personally re-verify the de-energized/locked state of a system before working, rather than assuming a prior person's configuration, matching part B though the hazard state was not an undocumented change by an earlier program.",
+      "source": "judge"
+    },
+    "llis-1370": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It is about adapting commercial GPS navigation units for Shuttle use, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1371": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes ESD charge induced on a shipping container during handling and failure to use a field meter, not hardware left in an undocumented configuration nor a configuration check before a move.",
+      "source": "judge"
+    },
+    "llis-1374": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Directly addresses facility systems whose as-built modifications/circuits were never recorded in updated drawings or communicated to the work team, i.e., equipment left in an undocumented state from earlier work; it does not address verifying configuration before operating.",
+      "source": "judge"
+    },
+    "llis-1375": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General contractor safety oversight and inspection rigor findings, unrelated to undocumented hardware configuration or pre-operation verification.",
+      "source": "judge"
+    },
+    "llis-1378": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Core lesson is that workers must personally verify the system state before (and after resuming) work rather than assuming others left it safe, which matches the failure to verify configuration before proceeding; the energized state was not an unrecorded change left by earlier work.",
+      "source": "judge"
+    },
+    "llis-140": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About risks of working under suspended loads and lifting device failures, not configuration documentation or verification.",
+      "source": "judge"
+    },
+    "llis-143": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Design non-compliances of engine platform hoisting equipment, unrelated to undocumented configuration changes or pre-use verification.",
+      "source": "judge"
+    },
+    "llis-1427": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "The close call stemmed from system changes not reflected in SOPs/checklists or communicated through retraining, matching hardware altered by earlier work without adequate recording/communication, though it does not address verifying configuration before a move.",
+      "source": "judge"
+    },
+    "llis-1497": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Program planning and documentation maturity issues for OSP, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1501": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Requirements development process lessons, unrelated to hardware configuration control or verification before operations.",
+      "source": "judge"
+    },
+    "llis-159": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hoisting clearance/design limitation issue in the OPF, not about undocumented equipment state or configuration checks.",
+      "source": "judge"
+    },
+    "llis-178": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns omission of mandatory O-ring inspection points during processing, which is generic procedure non-compliance rather than unrecorded hardware state or pre-move configuration verification.",
+      "source": "judge"
+    },
+    "llis-182": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Debris shield adequacy on SRB work platforms; unrelated to configuration records or verification.",
+      "source": "judge"
+    },
+    "llis-191": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns on-orbit truss alignment and latch testing, not hardware left in an undocumented changed state or unverified configuration before operating.",
+      "source": "judge"
+    },
+    "llis-195": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About shifting software functions to crew procedures; unrelated to GSE configuration control or verification before handling.",
+      "source": "judge"
+    },
+    "llis-230": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic programmatic discussion of maintenance/inspection requirements and audit compliance, not a specific case of unrecorded hardware changes or unverified configuration.",
+      "source": "judge"
+    },
+    "llis-236": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A lift-gate loading mishap caused by poor securing technique, not by earlier undocumented changes or failure to verify equipment configuration.",
+      "source": "judge"
+    },
+    "llis-240": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Maintenance left the filter cover secured by only three bolts without recording/communicating it, and the test crew pressurized the system without verifying the assembly's configuration\u2014matching both parts.",
+      "source": "human"
+    },
+    "llis-246": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Eye bolt sheared during lifting due to improper rigging technique, not undocumented prior changes or missed configuration verification.",
+      "source": "judge"
+    },
+    "llis-261": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General OSHA guidance on suspended loads, unrelated to configuration control or pre-move verification of support equipment.",
+      "source": "judge"
+    },
+    "llis-267": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A near-drop during lifting caused by inadequate stability analysis of an inherited fixture, not by unrecorded hardware changes or failure to verify its as-left configuration.",
+      "source": "human"
+    },
+    "llis-273": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The SAD was left unfastened in its fixture with no warning or instruction, and an unfamiliar employee tilted it without verifying whether it was secured\u2014closely matching the failure to check configuration before handling, though the unfastened state stemmed from inspection practice rather than prior work left unrecorded.",
+      "source": "judge"
+    },
+    "llis-280": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Electrical design issue with nickel ribbon resistivity; unrelated to GSE configuration or handling.",
+      "source": "judge"
+    },
+    "llis-281": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Grounding/noise coupling anomaly in test configuration, not an issue of undocumented hardware changes or unverified configuration before moving hardware.",
+      "source": "judge"
+    },
+    "llis-331": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About QA technical expertise in optics for Hubble, unrelated to equipment left in a changed state or configuration verification before operations.",
+      "source": "judge"
+    },
+    "llis-332": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This concerns quality assurance oversight being waived during HST mirror fabrication, not hardware left in an unrecorded changed state or an unverified configuration check before operation.",
+      "source": "judge"
+    },
+    "llis-355": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Damage from snagging on a delicate cover (with a protective guard removed for access) is about design/handling vulnerability, not about undocumented configuration changes or failure to verify configuration before a move.",
+      "source": "judge"
+    },
+    "llis-370": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A flight power supply failure attributed to over-stressed design and payload classification standards, unrelated to GSE configuration control.",
+      "source": "judge"
+    },
+    "llis-382": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Misassembly of ETA lines due to unclear procedures is an assembly error, not equipment left in an undocumented changed state nor an unverified pre-move configuration check.",
+      "source": "judge"
+    },
+    "llis-385": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hydra-Set lifting hazards involve equipment failure/wrong size selection during handling, not an unrecorded prior configuration change or skipped configuration verification by a following team.",
+      "source": "judge"
+    },
+    "llis-4": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Flight hardware was damaged because the ground test stand had been configured with non-flight valves and added orifices deviating from the flight configuration, an example of support equipment left in an unsafe/altered state that caused damage, though it does not address a next team failing to verify configuration.",
+      "source": "judge"
+    },
+    "llis-433": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Relay manufacturing defects and vendor QA deficiencies, unrelated to GSE configuration control or verification before handling.",
+      "source": "judge"
+    },
+    "llis-435": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "GSE relay failure damaged flight hardware due to a design/interface vulnerability, not because of an unrecorded configuration change or skipped configuration check.",
+      "source": "judge"
+    },
+    "llis-436": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A flight receiver power converter failure analysis, unrelated to ground handling equipment configuration.",
+      "source": "judge"
+    },
+    "llis-450": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Cable pulling accident lesson focuses on emergency procedure training and work procedures, not on undocumented equipment state changes or configuration verification before operating.",
+      "source": "judge"
+    },
+    "llis-481": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "The lesson is directly about work status and configuration information not being communicated or recorded between shifts, leaving the next team without knowledge of prior actions, though it does not address a failure to verify configuration before moving hardware.",
+      "source": "judge"
+    },
+    "llis-482": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About late GSE setup causing schedule delays, not about unrecorded configuration changes or verification failures.",
+      "source": "judge"
+    },
+    "llis-499": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The lesson centers on a crew working on a system without verifying its pressure/configuration state first (including reviewing drawings and configuration control documents), matching Part B, though it does not describe prior work leaving the hardware altered and unrecorded.",
+      "source": "judge"
+    },
+    "llis-504": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This concerns a test article damaged by improper handling during installation, not undocumented configuration changes or failure to verify configuration before operating.",
+      "source": "judge"
+    },
+    "llis-517": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A parachute design change communicated only by phone caused failure, but it is about design change control and verification testing rather than support equipment left in an altered state or an unverified configuration check before an operation.",
+      "source": "judge"
+    },
+    "llis-521": {
+      "a": false,
+      "b": false,
+      "grade": 1,
+      "reason": "Missing fasteners on a wind-tunnel model were missed by inspectors, but this is an installation/inspection quality issue rather than undocumented prior work on shared equipment or failure to verify configuration before moving hardware.",
+      "source": "human"
+    },
+    "llis-564": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Undocumented wiring revisions (hardware changed and not recorded on drawings) combined with a technician who failed to verify the actual configuration/voltage before working directly matches both parts.",
+      "source": "judge"
+    },
+    "llis-566": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The TSS-1R tether break is an in-flight hardware failure unrelated to undocumented configuration changes or pre-operation configuration verification.",
+      "source": "judge"
+    },
+    "llis-567": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Controllers commanded a maneuver without verifying/correcting the gyro sensitivity configuration left over from a previous phase, which is a failure to check configuration before operating, though no undocumented prior modification by another team is described.",
+      "source": "judge"
+    },
+    "llis-584": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The anomaly stemmed from a command-sequence memory management error onboard, not from unrecorded hardware state changes or an unverified configuration check before an operation.",
+      "source": "judge"
+    },
+    "llis-588": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The forklift operator's lack of attention to the holddown post's restraint configuration before moving it is a failure to verify hardware configuration prior to a move, but no undocumented prior alteration by another team is cited.",
+      "source": "judge"
+    },
+    "llis-621": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The operator failed to detect, via pre-operation inspection, that the lift fixture's lock nut was missing before lifting flight hardware, matching the failure-to-verify-configuration element.",
+      "source": "judge"
+    },
+    "llis-638": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The DC-XA mishap involved a landing gear deployment failure traced to a disconnected pneumatic line/vehicle design issues, not shared GSE left in an undocumented state nor a configuration-check omission before a move.",
+      "source": "judge"
+    },
+    "llis-61": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The document describes damage from a crane load cell system failure and unclear load cell usage requirements, not hardware left in an unrecorded altered state nor a team operating equipment without verifying its configuration.",
+      "source": "judge"
+    },
+    "llis-649": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes FMEA/critical items identification and control for GSE, not about undocumented configuration changes or failing to verify configuration before use.",
+      "source": "judge"
+    },
+    "llis-651": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About environmental testing methods for GSE, unrelated to configuration control or verification before operation.",
+      "source": "judge"
+    },
+    "llis-656": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic hardware review/certification process prior to delivery, not about equipment left in an unsafe state or configuration verification before moving.",
+      "source": "judge"
+    },
+    "llis-664": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SOHO mishap involved ground operational and procedural errors in commanding a spacecraft, not GSE left in an undocumented state or an unverified cart configuration.",
+      "source": "judge"
+    },
+    "llis-666": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "FOD prevention program, a different hazard than undocumented hardware configuration changes or unverified handling setup.",
+      "source": "judge"
+    },
+    "llis-668": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pre-ship review of deliverable hardware readiness, generic review practice unrelated to shared GSE state or pre-move configuration checks.",
+      "source": "judge"
+    },
+    "llis-675": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fastener standardization/selection guidance; shares bolt hardware topic only, not about missing bolts left unrecorded or verification before lifting.",
+      "source": "judge"
+    },
+    "llis-691": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes an orbital anomaly reporting database, not ground equipment configuration control or operational verification.",
+      "source": "judge"
+    },
+    "llis-715": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Antenna near-field measurement technique, entirely unrelated.",
+      "source": "judge"
+    },
+    "llis-719": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Battery cell short-circuit testing, unrelated to GSE configuration or handling operations.",
+      "source": "judge"
+    },
+    "llis-726": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground data system end-to-end compatibility testing, unrelated to GSE state or pre-operation configuration verification.",
+      "source": "judge"
+    },
+    "llis-728": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fastener procurement and inspection system for integrity requirements, not about bolts removed without documentation or unverified equipment configuration.",
+      "source": "judge"
+    },
+    "llis-732": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This is about electrostatic discharge control practices for flight hardware, unrelated to undocumented equipment configuration changes or failure to verify configuration before operations.",
+      "source": "judge"
+    },
+    "llis-733": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It describes a general problem/failure reporting system for ground test anomalies, not an incident of unrecorded hardware state changes or unverified configuration before handling.",
+      "source": "judge"
+    },
+    "llis-74": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The platform hoist fall was caused by a clutch design failure, not by an unrecorded configuration change or by failing to verify equipment configuration.",
+      "source": "judge"
+    },
+    "llis-845": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Predictive vibration monitoring of rotating GSE has nothing to do with undocumented equipment state changes or pre-operation configuration verification.",
+      "source": "judge"
+    },
+    "llis-85": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "This concerns a defective sling design overstressing purge unit lift points, not an unrecorded change in equipment state or a missed configuration check.",
+      "source": "judge"
+    },
+    "llis-865": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The injury stemmed from an unsecured towbar/center-of-gravity issue during rigging; while it recommends inspecting loads before moving, it is about load inspection and rigging safety rather than shared equipment left in an undocumented configuration.",
+      "source": "judge"
+    },
+    "llis-873": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Earlier maintenance left the circuit breaker miswired (an undocumented/unverified changed state after maintenance) and the subsequent power-up proceeded without the inspection catching the configuration, damaging the equipment.",
+      "source": "judge"
+    },
+    "llis-910": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "It addresses programmatic disruption from a contractor relocation (lost data, tooling, configuration management), not a specific case of hardware left in an unsafe state or operated without configuration verification.",
+      "source": "judge"
+    },
+    "llis-914": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The lift fixture had been reassembled by a vendor with hoist ring fasteners left untightened/untorqued without record, and the next lift proceeded because the procedure did not require checking fastener configuration before use.",
+      "source": "judge"
+    },
+    "llis-918": {
+      "a": false,
+      "b": true,
+      "grade": 0,
+      "reason": "The mishap involved handling flight hardware in a ground test fixture without procedures addressing its configuration (3-pin vs 4-pin certified setup), i.e., operating support equipment without verifying/controlling its configuration, though no prior team left an undocumented changed state.",
+      "source": "human"
+    },
+    "llis-92": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The sling slip during booster segment handling was due to center-of-gravity uncertainty, not undocumented equipment changes or omitted configuration checks.",
+      "source": "judge"
+    },
+    "llis-923": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "A quick release pin left missing from a VAB platform kickplate by earlier maintenance/retraction work went unnoticed and unrecorded, leaving support structure in a changed state that caused a launch scrub, but the lesson is not about a next team failing to verify configuration before operating.",
+      "source": "judge"
+    },
+    "llis-939": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns flight software logic errors and test omissions on Mars Polar Lander, not GSE left in an unrecorded state or unverified configuration before an operation.",
+      "source": "judge"
+    },
+    "llis-96": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a lifting mishap due to a sheared block/bolts during a repair lift, with lessons about hydrasets and clearance verification, not about equipment left reconfigured by a prior team or failure to verify configuration before moving a payload.",
+      "source": "judge"
+    },
+    "llis-991": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes GSE left in a changed state (fitting removed and reinstalled without torque or leak check, clogged unmaintained filter) and subsequent operations proceeding without verifying GSE configuration/leak checks, leading to hardware damage.",
+      "source": "human"
+    },
+    "report-apollo13": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "The oxygen shelf drop incident left the tank in an undocumented damaged/changed internal configuration that was not properly recorded or acted upon, though the focus is not on a next team failing to verify configuration before operating.",
+      "source": "judge"
+    },
+    "report-apollo1_as204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Excerpt covers post-fire disassembly planning and investigation methods, not unrecorded equipment reconfiguration or unverified configuration before an operation.",
+      "source": "judge"
+    },
+    "report-challenger_rogers_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses O-ring flame plume, manifest changes, and cannibalization risks only generally, without a specific lesson on unrecorded GSE state changes or unverified configuration checks.",
+      "source": "judge"
+    },
+    "report-columbia_caib_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses bolt catcher qualification by analysis, schedule pressure, and imagery decisions, not support equipment left in an altered state or configuration verification before handling.",
+      "source": "judge"
+    },
+    "report-contour": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Observations concern telemetry coverage, subcontractor oversight, and analytical model/as-built documentation for a motor, not ground support equipment left unsafe by another team or an unverified handling operation.",
+      "source": "judge"
+    },
+    "report-hubble_optics": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns undocumented certification and ignored discrepant optical test data during mirror fabrication, not GSE configuration changes or pre-move verification.",
+      "source": "judge"
+    },
+    "report-lewis": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers contract changes, personnel turnover, and single-shift on-orbit monitoring, unrelated to shared ground equipment configuration control.",
+      "source": "judge"
+    },
+    "report-mco_phase1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Focuses on navigation reviews, tracking data types, and EDL verification testing, not hardware left in a changed state or unverified equipment configuration.",
+      "source": "judge"
+    },
+    "report-mco_phase2": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic project management recommendations plus a cited SOHO lesson on uncontrolled procedure changes; not specifically about physical equipment left altered or an unverified configuration check before an operation.",
+      "source": "judge"
+    },
+    "report-mpl_ds2": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The MPL/DS2 report concerns spacecraft landing software logic and communications failures, not ground support equipment left in an unrecorded state or configuration verification before handling.",
+      "source": "judge"
+    },
+    "report-soho": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "SOHO's mishap centered on a modified procedure whose functional change was not communicated (hardware/system left in an altered configuration) and on operators executing subsequent commands without verifying the actual spacecraft/procedure configuration, including disabled gyro settings.",
+      "source": "judge"
+    },
+    "report-wire": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "WIRE's failure stemmed from pyro electronics design and venting analysis issues, not from undocumented changes to shared support equipment or unverified configuration before an operation.",
+      "source": "judge"
+    }
+  },
+  "columbia": {
+    "llis-1010": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns cryogenic fracture toughness of the SLWT aluminum-lithium alloy and quality control, not ascent debris strikes or suppressed concerns/normalized anomalies.",
+      "source": "judge"
+    },
+    "llis-1015": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses on-orbit micrometeoroid/orbital debris penetration of ISS modules and operational response, not debris striking a vehicle during launch/ascent, nor normalization of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-1040": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A thruster valve seal extrusion materials lesson, unrelated to ascent debris or communication/normalization of risk.",
+      "source": "judge"
+    },
+    "llis-1062": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About ISS software development schedule pressure, not debris strikes or concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "llis-1084": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground facility steam line energization close call; no relation to ascent debris or to normalized recurring anomalies/blocked engineering concerns.",
+      "source": "judge"
+    },
+    "llis-1086": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Directly documents that close calls were habitually handled internally and not passed up the management chain, so safety-significant information never reached higher decision makers.",
+      "source": "judge"
+    },
+    "llis-1092": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Specifically about an engineer's problems and concerns not being communicated to the project manager, and recommends a process to ensure issues escalate to management.",
+      "source": "judge"
+    },
+    "llis-1096": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Construction pressure-test mishap injuring a worker; unrelated to ascent debris or to risk normalization/communication failures.",
+      "source": "judge"
+    },
+    "llis-11": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns inspection methods for embedded defects in orbiter tires, not ascent debris impacts or management communication issues.",
+      "source": "judge"
+    },
+    "llis-1133": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Encryption security for ISS uplink, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1146": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on risk assessment plans for new safety initiatives, not about debris strikes or a specific normalization/communication breakdown.",
+      "source": "judge"
+    },
+    "llis-116": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes ET foam TPS damage from ground demating interference due to bad procedures, not foam shedding striking the orbiter during ascent.",
+      "source": "judge"
+    },
+    "llis-1182": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a ground-processing fuel cell over-pressurization mishap during venting, unrelated to ascent debris strikes or normalized deviance/communication failures.",
+      "source": "judge"
+    },
+    "llis-1216": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About configuration/drawing mismatches in on-orbit constraint testing, not debris strikes or accepted recurring anomalies reaching decision makers.",
+      "source": "judge"
+    },
+    "llis-1223": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns fidelity of structural modeling, unrelated to ascent debris or normalization of recurring problems.",
+      "source": "judge"
+    },
+    "llis-1224": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses hardware deconfiguration during parallel processing tasks, not debris impact or suppressed engineering concerns.",
+      "source": "judge"
+    },
+    "llis-1234": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About facility closure decisions and life-cycle analysis, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1260": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A ground handling glass-damage incident; the impact is from mishandling on a table, not ascent debris, and the lesson concerns process discipline, not normalized anomalies or communication to decision makers.",
+      "source": "judge"
+    },
+    "llis-1261": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel model failure with debris damaging tunnel hardware, but not vehicle debris strike during ascent; lesson is about assessing worst-case test conditions.",
+      "source": "judge"
+    },
+    "llis-1262": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lesson about needing dynamic load analysis in wind tunnel pretest analysis, unrelated to ascent debris strikes or normalized risk acceptance.",
+      "source": "judge"
+    },
+    "llis-1263": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Technical lesson on sting deflection affecting aerodynamic loads, not about vehicle debris strikes or organizational acceptance of recurring issues.",
+      "source": "judge"
+    },
+    "llis-1264": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lesson on personnel understanding of model mount load limits, generic knowledge issue rather than normalized recurring anomalies or ascent debris.",
+      "source": "judge"
+    },
+    "llis-1265": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lesson about not relying solely on procedures to control catastrophic conditions; not about debris strikes or communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-1266": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The test team observed exceedances of a load limit and accepted the slightly out-of-limit condition as safe rather than stopping, an instance of tolerating an exceedance as normal that led to catastrophic failure.",
+      "source": "judge"
+    },
+    "llis-127": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns ground facility curtain wall retraction speed causing impact damage to payloads/facility, not ascent debris strikes or normalized deviance.",
+      "source": "judge"
+    },
+    "llis-1288": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About building two flight test vehicles for cost/risk reduction, unrelated to debris strikes or suppressed engineering concerns.",
+      "source": "judge"
+    },
+    "llis-1289": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About human resource/staffing risks in a classified project, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-1293": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses risk mitigation plan communication to stakeholders generally, not a recurring accepted anomaly or engineers' concerns being blocked from decision makers, nor ascent debris.",
+      "source": "judge"
+    },
+    "llis-13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About GSE fluid sampling and contamination in an APU servicing line, unrelated to ascent debris or normalized problem acceptance.",
+      "source": "judge"
+    },
+    "llis-1312": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a positive safety/risk culture in a flight test project, generic rather than about accepted recurring anomalies or blocked concerns.",
+      "source": "judge"
+    },
+    "llis-1341": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About lack of a formal risk management plan on an instrument project, not about debris strikes or communication of engineering concerns to decision makers.",
+      "source": "judge"
+    },
+    "llis-1345": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns project life-cycle and management transitions, unrelated to either failure element.",
+      "source": "judge"
+    },
+    "llis-1360": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Involves released pyrotechnic nuts impacting and damaging hardware during a Mars separation event, not launch/ascent debris striking the vehicle exterior or heat shield, and not about normalized anomalies.",
+      "source": "judge"
+    },
+    "llis-1362": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About customer/stakeholder relations in an aviation safety data project, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-1368": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Electrical lockout/tagout fatality; although it notes risk-taking based on past experience and low-risk perception, it is about safety procedure verification, not a recurring anomaly accepted as in-family or concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "llis-1370": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About adapting off-the-shelf GPS navigation units for Shuttle, unrelated to ascent debris or normalized deviance.",
+      "source": "judge"
+    },
+    "llis-1374": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns facility drawings and contractor submittals in a construction electrical mishap, unrelated to ascent debris strikes or normalized deviance/concern escalation.",
+      "source": "judge"
+    },
+    "llis-1375": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About contractor safety oversight in construction work, not debris strikes nor engineering concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "llis-1378": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lockout/tagout electrical safety lesson; mentions risk-taking based on past experience but is about personal verification procedures, not systemic acceptance of recurring anomalies or concern escalation.",
+      "source": "judge"
+    },
+    "llis-1379": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About preserving a mishap scene for investigation, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1381": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly cites the lesson that without a formal method of documenting concerns, concerns 'slip through the cracks,' and stresses applying past failure reports\u2014directly about engineers' concerns not reaching decision makers.",
+      "source": "judge"
+    },
+    "llis-18": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About eddy current crack inspection of orbiter brake retainers, not ascent debris strikes or organizational normalization of anomalies.",
+      "source": "judge"
+    },
+    "llis-182": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns ground-processing debris shields protecting SRBs from dropped tools on work platforms, not debris striking the vehicle during ascent.",
+      "source": "judge"
+    },
+    "llis-20": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Debris here is internal contamination in a suit pressure controller during maintenance, not launch-ascent impact on the vehicle exterior.",
+      "source": "judge"
+    },
+    "llis-202": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Documents an inspection team failing to report anomalous low temperature readings to launch officials, an instance of safety-relevant concerns/data not reaching decision makers.",
+      "source": "judge"
+    },
+    "llis-204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel model stress analysis error, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-220": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes shuttle logistics depot capabilities, with no relation to ascent debris or communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-1430": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The document concerns pressure system design and installation hazards, with no relation to ascent debris strikes or normalized recurring anomalies/communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-243": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns CO2 fire suppression hazards to personnel, unrelated to ascent debris strikes or normalized deviance.",
+      "source": "judge"
+    },
+    "llis-258": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About electrical plug grounding orientation, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-271": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Vibration test failure from inherited design assumptions; no debris strike or suppressed concern/normalization of recurring anomaly in flight.",
+      "source": "judge"
+    },
+    "llis-272": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes a recurring, unexplained anomaly accepted as tolerable and flown with an open failure report and workaround \u2014 a case of accepting a repeated problem as normal risk.",
+      "source": "judge"
+    },
+    "llis-291": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Overheated computer from an uncovered duct cover and procedural lapse; not about ascent debris or unheeded engineering concerns.",
+      "source": "judge"
+    },
+    "llis-310": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Software/attitude anomalies in cruise; although a similar problem occurred on another spacecraft, the lesson is about inherited software algorithm errors, not normalized acceptance or suppressed concerns.",
+      "source": "judge"
+    },
+    "llis-312": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "A pyrotechnic rupture produced debris that struck and damaged the orbiter bulkhead insulation and possibly a thermal protection tile, i.e., debris impacting vehicle structure/heat shield.",
+      "source": "judge"
+    },
+    "llis-315": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground pressure system corrosion and explosion, unrelated to launch debris or communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-333": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About timely diagnostic data for safemode recovery, not about debris strikes or normalized recurring problems.",
+      "source": "judge"
+    },
+    "llis-356": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Shroud break-up due to venting/thermal issues during ascent, but not a debris strike on the vehicle nor an organizational normalization issue.",
+      "source": "judge"
+    },
+    "llis-391": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Spacecraft safing recovery and configuration management problems; not about ascent debris or accepted recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-393": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Laser failure from incorrect screw length after modification; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-404": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a TWTA high-voltage corona failure on Viking Lander, unrelated to ascent debris strikes or normalized deviance/communication failures.",
+      "source": "judge"
+    },
+    "llis-422": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns particles shaken loose by pyrotechnic events confusing a star tracker, not debris impacting the vehicle exterior during launch nor organizational acceptance of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-427": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About a cracked RF substrate from tuning practices; the repeated earlier failure is noted but the lesson is about fabrication damage, not accepting recurring anomalies as normal.",
+      "source": "judge"
+    },
+    "llis-447": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Directly addresses tracking in-spec but anomalous trends so recurring drifts are not dismissed as acceptable, a lesson about not normalizing recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-449": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware wear/contamination in a thermal switch, no relation to ascent debris strikes or organizational communication issues.",
+      "source": "judge"
+    },
+    "llis-457": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ammonia rupture hazard analysis lesson, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-458": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Facility coordination/fire alarm deactivation lesson, unrelated to debris strikes or normalized recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-460": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Cracked glass diode cases from coating shrinkage; a manufacturing defect lesson unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-466": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Nozzle aging/delamination and shelf-life surveillance, unrelated to ascent debris strikes or organizational decision-making failures.",
+      "source": "judge"
+    },
+    "llis-493": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Aircraft spin accident lessons about pilot training and ejection decisions, not about debris impacts or suppressed engineering concerns.",
+      "source": "judge"
+    },
+    "llis-495": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel vane collapse lesson about systems engineering and safety organization authority generally, not about accepted recurring anomalies or concerns failing to reach decision makers specifically.",
+      "source": "judge"
+    },
+    "llis-499": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pressure system maintenance fatality lesson, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-504": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel model flap failure due to improper handling; not vehicle ascent debris strike nor normalization of deviance/communication failure.",
+      "source": "judge"
+    },
+    "llis-509": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Acoustic emission wave velocity research in composite tubes, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-519": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "NDE publication on acoustic emission damage detection; unrelated to debris strikes or organizational communication.",
+      "source": "judge"
+    },
+    "llis-521": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel model fairing loss from missing fasteners due to inspection oversight; not an ascent debris strike nor accepted recurring anomaly/communication breakdown.",
+      "source": "judge"
+    },
+    "llis-523": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel model blade loss impacting fan blades; failure mode was dismissed as non-credible in design, but this is a design-criteria lesson, not a flight ascent debris strike or suppressed engineering concern.",
+      "source": "judge"
+    },
+    "llis-532": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Indoor air quality/facility planning issue, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-555": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "CO2 washout in space suit training, unrelated to debris strikes or organizational decision-making.",
+      "source": "judge"
+    },
+    "llis-566": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Tether break on TSS-1R, an on-orbit payload failure, not ascent debris strike or normalized recurring anomaly.",
+      "source": "judge"
+    },
+    "llis-587": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Over-pressurization close call from misread gauge; generic human-error lesson, not about ascent debris or suppressed engineering concerns.",
+      "source": "judge"
+    },
+    "llis-597": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lewis spacecraft monitoring lesson about false assumptions of safe-mode; concerns relate to monitoring, not debris strikes or engineers' concerns failing to reach decision makers about a recurring in-family anomaly.",
+      "source": "judge"
+    },
+    "llis-6": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Orbiter OMS carrier panel lost in flight creating potential hazardous debris, but it is about improper installation producing shed debris rather than a debris strike on the heat shield during ascent or normalized acceptance of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-606": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Steam strainer rupture from wrong material; mentions industry habit of dismissing catastrophic failure as non-credible but is not about recurring accepted anomalies in a flight program or blocked engineering concerns.",
+      "source": "judge"
+    },
+    "llis-625": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes Lewis spacecraft loss from flawed safe mode and inadequate monitoring, not ascent debris strikes nor normalized recurring anomalies/blocked communication of concerns.",
+      "source": "judge"
+    },
+    "llis-629": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns clogged cabin air filters from hair and lint, unrelated to ascent debris impact or organizational normalization of anomalies.",
+      "source": "judge"
+    },
+    "llis-638": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "DC-XA landing gear failure and post-landing explosion; no ascent debris strike or communication/normalization lesson.",
+      "source": "judge"
+    },
+    "llis-649": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic GSE critical items/FMEA practice, not about ascent debris strikes or normalized deviance.",
+      "source": "judge"
+    },
+    "llis-655": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic preliminary design review process guidance applicable to any project.",
+      "source": "judge"
+    },
+    "llis-664": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SOHO loss from operational errors and disabled autonomous safety; not ascent debris strike, and failures are procedural errors rather than normalized recurring anomalies or suppressed engineering concerns.",
+      "source": "judge"
+    },
+    "llis-666": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses foreign object debris left in hardware during ground processing, not debris shed during ascent striking the vehicle, and offers no lesson on normalized anomalies or concern escalation.",
+      "source": "judge"
+    },
+    "llis-669": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General composite laminate design/manufacturing practices, only passing mention of impact resistance.",
+      "source": "judge"
+    },
+    "llis-670": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Contamination control for optical cleanliness, unrelated to ascent debris strikes or organizational decision-making.",
+      "source": "judge"
+    },
+    "llis-672": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ablative nozzle composite manufacturing practices, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-679": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses on-orbit meteoroid/space debris impact shielding design, not launch-ascent debris striking the vehicle, and nothing on normalized anomalies or concern escalation.",
+      "source": "judge"
+    },
+    "llis-681": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic concurrent engineering guideline, not about debris strikes or unheeded engineering concerns.",
+      "source": "judge"
+    },
+    "llis-682": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic composites design/manufacturing guideline; impact resistance mentioned only as a material property, not ascent debris strikes or normalized deviance.",
+      "source": "judge"
+    },
+    "llis-687": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deployable appendage design guidelines, unrelated to ascent debris strikes or communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-689": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Composite material selection guidance with no relevance to debris impacts or organizational risk acceptance.",
+      "source": "judge"
+    },
+    "llis-691": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes an orbital anomaly reporting database for trending; it concerns post-launch anomaly tracking generally, not acceptance of recurring in-family problems or suppressed engineering concerns about a specific hazard.",
+      "source": "judge"
+    },
+    "llis-696": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fatigue reliability analysis method; no connection to ascent debris strikes or management communication failures.",
+      "source": "judge"
+    },
+    "llis-700": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Probabilistic fracture mechanics guideline, unrelated to debris impact or normalization of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-705": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses micrometeoroid impact protection in orbit, not debris striking the vehicle during launch/ascent, and says nothing about organizational concern escalation.",
+      "source": "judge"
+    },
+    "llis-725": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "EEE parts selection practice, irrelevant to both failure aspects.",
+      "source": "judge"
+    },
+    "llis-727": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Thermal control coatings selection guidance; concerns orbital degradation, not ascent debris impact or management decision-making.",
+      "source": "judge"
+    },
+    "llis-733": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Pre-flight problem/failure reporting and trend analysis procedure is generic process guidance about documenting ground-test problems, not specifically about accepting recurring anomalies as normal or concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "llis-737": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ceramic component reliability code; no relation to debris strikes or organizational risk acceptance.",
+      "source": "judge"
+    },
+    "llis-755": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Diamond turning optical fabrication practice, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-756": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic sneak circuit analysis guidance for electro-mechanical systems, unrelated to ascent debris strikes or normalization of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-76": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes orbiter TPS blanket damage from ground ECS duct airflow during ground processing, not debris impact during ascent, and no issue of accepted recurring anomalies or unheard concerns.",
+      "source": "judge"
+    },
+    "llis-760": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Technical description of eddy current nondestructive testing methods, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-761": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Guideline on early instrumentation/sensor design, not about ascent debris strikes or communication of engineering concerns.",
+      "source": "judge"
+    },
+    "llis-772": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About autonomous spacecraft fault protection design, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-778": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Materials outgassing selection practice, unrelated to debris strikes or management communication of risk.",
+      "source": "judge"
+    },
+    "llis-789": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Subsystem inheritance review guidance for heritage hardware, not about debris impacts or normalized recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-791": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Risk rating of problem/failure reports is about elevating significant anomalies with uncertain corrective action to management visibility, directly addressing the risk of recurring problems being closed without decision-maker attention.",
+      "source": "judge"
+    },
+    "llis-792": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Radiation design margin requirement, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-8": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes an oxygen system flash fire in an EMU regulator; particulate contamination is internal, not external debris striking a vehicle during ascent.",
+      "source": "judge"
+    },
+    "llis-802": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Battery life-cycle ground simulation testing, unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-803": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on FMEA-derived Critical Items Lists, not specifically about debris strikes or concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "llis-805": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes the GIDEP/ALERTS data exchange program for parts and safety problems, not about ascent debris strikes nor about normalization of recurring anomalies or blocked engineering concerns.",
+      "source": "judge"
+    },
+    "llis-806": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About rocket engine technology test bed practices; unrelated to ascent debris strikes or communication/normalization-of-deviance issues.",
+      "source": "judge"
+    },
+    "llis-809": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Thermal design/heat sinks for parts in vacuum; unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-815": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Flight loads analysis for spacecraft structural design; no debris impact or organizational communication content.",
+      "source": "judge"
+    },
+    "llis-819": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic structural stress analysis practice; does not address ascent debris impact damage or organizational acceptance of recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-825": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Reliability block diagram methodology; unrelated to debris strikes or decision-making communication failures.",
+      "source": "judge"
+    },
+    "llis-832": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Robotic application/removal of SRB insulation for maintainability; mentions insulation but not debris shedding/impact or organizational issues.",
+      "source": "judge"
+    },
+    "llis-836": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SRB refurbishment maintainability practices; no relation to ascent debris impacts or normalized anomalies.",
+      "source": "judge"
+    },
+    "llis-89": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Directly addresses ice debris from the ET/SRB/orbiter being dislodged during launch and impacting the orbiter's TPS or windows, with a prevention recommendation.",
+      "source": "judge"
+    },
+    "llis-891": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Reliability centered preventive maintenance strategy; unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-917": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes problems being dispositioned within project teams without recourse to outside technical expertise, a lesson about engineering concerns/expertise not reaching proper review and decision levels.",
+      "source": "judge"
+    },
+    "llis-922": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Technical lesson about bubble formation in viscous dampers; unrelated to ascent debris strikes or organizational normalization of anomalies.",
+      "source": "judge"
+    },
+    "llis-923": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a loose quick release pin found on the ET feedline before launch causing a scrub, not debris striking the vehicle during ascent nor normalized deviance/communication failure.",
+      "source": "judge"
+    },
+    "llis-933": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Wind tunnel rotor blade separation due to wrong material; the information-not-communicated aspect concerns a material substitution approval, not a recurring accepted anomaly or suppressed engineering concern in a flight decision chain.",
+      "source": "judge"
+    },
+    "llis-934": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An SSME ground test turbopump overtemperature mishap, unrelated to ascent debris strikes or normalized recurring anomalies.",
+      "source": "judge"
+    },
+    "llis-935": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Thermal spray equipment fire caused by gun orientation; unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-940": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fall injury at a wind tunnel; safety-violation lesson unrelated to debris strikes or normalization of flight anomalies.",
+      "source": "judge"
+    },
+    "llis-948": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Post-Challenger SRM joint redesign recommendation, a hardware fix unrelated to ascent debris impact or communication/normalization issues.",
+      "source": "judge"
+    },
+    "llis-95": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground platform contact damaged orbiter tiles, a ground-handling clearance issue rather than ascent debris impact.",
+      "source": "judge"
+    },
+    "llis-968": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About test program reductions due to cost/schedule on instrument projects, not debris strikes or normalized anomalies/communication breakdowns.",
+      "source": "judge"
+    },
+    "llis-98": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A dropped leak detector damaged tiles during ground processing, not an ascent debris strike.",
+      "source": "judge"
+    },
+    "llis-986": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Electrical ground-fault incident involving unfamiliar equipment and schedule pressure; not about debris strikes or accepted recurring anomalies/unheard engineering concerns.",
+      "source": "judge"
+    },
+    "llis-991": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground cryostat test failures from procedure and GSE maintenance lapses, unrelated to ascent debris or normalized deviance in decision making.",
+      "source": "judge"
+    },
+    "report-apollo13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Apollo 13 oxygen tank rupture from internal wiring/thermal damage; not about external debris striking the vehicle during ascent nor about normalized recurring anomalies reaching decision makers in the excerpted content.",
+      "source": "judge"
+    },
+    "report-apollo1_as204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes the Apollo 204 cabin fire's origin and propagation; the only mention of a 'struck object' is in ruling out ignition sources, and nothing addresses normalized recurring anomalies or blocked engineering concerns.",
+      "source": "judge"
+    },
+    "report-challenger_rogers_v1": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Debris contact at lift off is only mentioned as a possibility that was ruled out, but the report is the canonical account of an eroding-seal anomaly repeatedly accepted as acceptable risk and of engineers' launch concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "report-hubble_optics": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Explicitly documents that test data indicating the mirror flaw were discounted and that engineers' concerns stayed within a closed division and never reached higher management, a direct instance of Part B.",
+      "source": "judge"
+    },
+    "report-lewis": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Focuses on cost/schedule pressure, contract changes, team relocation and ground station coverage rather than a normalized recurring anomaly or engineering concerns being suppressed.",
+      "source": "judge"
+    },
+    "report-mco_phase1": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "States the navigation team's trajectory concerns were not communicated effectively to the spacecraft operations team or project management, a specific case of engineers' concerns not reaching decision makers.",
+      "source": "judge"
+    },
+    "report-mco_phase2": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Same communication findings plus recommendations to foster an environment where problems can be raised without reprisal, directly addressing concerns failing to reach decision makers.",
+      "source": "judge"
+    },
+    "report-mpl_ds2": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers systems engineering shortfalls, requirements omissions and untested software logic, not debris strikes nor normalized anomalies/blocked concerns.",
+      "source": "judge"
+    },
+    "report-soho": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns operator procedure errors and premature safe-mode recovery; a prior similar shortcut is noted in passing but the report is not framed around accepted recurring anomalies or unheard engineering concerns.",
+      "source": "judge"
+    },
+    "report-wire": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deals with a pyro/vent torque design oversight during deployment, with only generic review-process advice, unrelated to ascent debris strikes or normalization of recurring anomalies.",
+      "source": "judge"
+    }
+  },
+  "mpl": {
+    "llis-1021": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic policy recommendation about software safety plans and independent V&V, not about a spurious signal or unfiltered input logic.",
+      "source": "judge"
+    },
+    "llis-1022": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses organizational roles for software development, not transient signals or faulty software logic.",
+      "source": "judge"
+    },
+    "llis-1090": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a momentary command destruct receiver dropout triggering an abort call, but the lesson concerns range safety communication/authority procedures, not software acting on a transient signal.",
+      "source": "judge"
+    },
+    "llis-1104": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns using unqualified hardware/unvalidated software in integrated testing, generic process advice unrelated to spurious signals or input filtering.",
+      "source": "judge"
+    },
+    "llis-1128": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About maintaining COTS software development tools, unrelated to either failure element.",
+      "source": "judge"
+    },
+    "llis-1131": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic call for program-wide software development standards, not about transient inputs or software logic errors.",
+      "source": "judge"
+    },
+    "llis-1132": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Recommends user involvement in software development; generic requirements-understanding advice, not about spurious signals or mis-handled inputs.",
+      "source": "judge"
+    },
+    "llis-1212": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes a power surge/outage causing uncommanded motor startup on power restoration (a spurious power-up event) with control electronics acting on it, damaging hardware.",
+      "source": "judge"
+    },
+    "llis-1220": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About verification requirement allocation between element and system levels, unrelated to transient signals or software logic.",
+      "source": "judge"
+    },
+    "llis-1224": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware deconfiguration during parallel processing tasks; no relation to spurious signals or software input handling.",
+      "source": "judge"
+    },
+    "llis-1258": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns control of temporary wire harness installations, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-1274": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lesson on test series planning and schedule impacts, not about transient signals or unfiltered software inputs.",
+      "source": "judge"
+    },
+    "llis-128": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns orbiter main landing gear tire overpressure/rupture after landing, with no spurious signal or faulty logic involved.",
+      "source": "judge"
+    },
+    "llis-1340": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The SSME test cutoff was triggered by a genuine out-of-limit pressure caused by a missing valve coupler, not a spurious transient or improperly unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-139": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About postlanding hazardous gas detection capability, unrelated to false signals or software logic.",
+      "source": "judge"
+    },
+    "llis-1604": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General program-management lessons from the F-18 HARV; built-in-test failures are mentioned only in passing with no spurious-signal or unfiltered-logic lesson.",
+      "source": "judge"
+    },
+    "llis-194": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses certification of the shuttle autoland system, not spurious sensor signals or improperly filtered logic.",
+      "source": "judge"
+    },
+    "llis-209": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns time correlation between telemetry systems for anomaly reconstruction, not false inputs or faulty signal handling.",
+      "source": "judge"
+    },
+    "llis-212": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About long-term avionics computer obsolescence and upgrade planning, not spurious signals or software logic errors.",
+      "source": "judge"
+    },
+    "llis-269": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes false star detections (spurious sensor inputs from solar protons and particles) that the attitude determination software acted on, causing erroneous updates until onboard filtering was added.",
+      "source": "judge"
+    },
+    "llis-271": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A structural vibration test failure due to inherited design assumptions, unrelated to false signals or software logic.",
+      "source": "judge"
+    },
+    "llis-272": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An unresolved instrument slide startup failure flown with a workaround; not about transient false signals or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-274": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Over-temperature exposure during thermal vacuum testing caused by a controller failure and operator override; the protection circuits worked as intended.",
+      "source": "judge"
+    },
+    "llis-281": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "A transient ground-loop voltage spike generated at a power-on/TWTA turn-on event was sensed by the Power On Reset circuit, which responded to noise it should have rejected (noise-immunity/coupling fix).",
+      "source": "judge"
+    },
+    "llis-287": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes reverse-polarity test instrumentation damaging a power control unit due to inadequate procedures, not a spurious sensor signal or unfiltered logic response.",
+      "source": "judge"
+    },
+    "llis-290": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About procedural/training failure causing computer overheating; the vacuum sensor gave a misleading-but-valid reading rather than a transient spurious signal acted on by logic.",
+      "source": "judge"
+    },
+    "llis-291": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Focuses on dust cover design for ventilation ducts, unrelated to spurious signals or software acting on bad inputs.",
+      "source": "judge"
+    },
+    "llis-292": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lesson concerns choosing direct versus indirect monitoring parameters, not a transient false signal or unfiltered logic latch.",
+      "source": "judge"
+    },
+    "llis-3": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Facility maintenance mishap flooding Mission Control; unrelated to sensor signals or software logic.",
+      "source": "judge"
+    },
+    "llis-302": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware crimp fabrication defect causing an open circuit, not a spurious signal or software misinterpretation.",
+      "source": "judge"
+    },
+    "llis-307": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Reports anomalous command counter readings possibly caused by noise or spurious stimuli incrementing a counter, i.e., a false/spurious signal event, though no logic acted improperly on a phase-inappropriate input.",
+      "source": "judge"
+    },
+    "llis-310": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Flight software fault logic declared inertial reference loss based on flawed star-identification/sun-monitor tests and inherited algorithm errors, triggering safing responses it should not have\u2014logic acting wrongly on inputs.",
+      "source": "judge"
+    },
+    "llis-333": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns availability of diagnostic telemetry after safemode entry, not spurious signals or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-343": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes fault-protection logic triggering contingency mode entry at an inappropriate mission phase (interfering with RPA turn-on) and inhibiting momentum unloading, an inappropriate automated response to a sensed condition.",
+      "source": "judge"
+    },
+    "llis-345": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Lesson about fault protection software design/testing deficiencies causing inappropriate autonomous responses, including untested fault protection on the flight spacecraft, closely related to logic acting improperly.",
+      "source": "judge"
+    },
+    "llis-346": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General heritage-design lesson; mentions poorly understood inherited fault-management software only in passing without describing an input wrongly acted upon.",
+      "source": "judge"
+    },
+    "llis-361": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns parachute diameter and descent rate injury risk, unrelated to spurious signals or faulty software logic.",
+      "source": "judge"
+    },
+    "llis-362": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware component (op amp) failure from moisture-induced corrosion, not a transient false input or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-369": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes a software 'deadly embrace' looping condition, not a spurious input nor logic acting on a signal it should have ignored.",
+      "source": "judge"
+    },
+    "llis-372": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Structural failure of a parachute clevis adapter on a balloon gondola; no signal or software issue.",
+      "source": "judge"
+    },
+    "llis-373": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "TWTA hardware anomaly and contractor quality assurance lessons, unrelated to transient signals or software filtering.",
+      "source": "judge"
+    },
+    "llis-375": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Telecom link margin and data rate selection policy, no connection to spurious signals or phase-limited logic.",
+      "source": "judge"
+    },
+    "llis-378": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About untestable in-flight transmitter power modes and receiver overload risk, not false sensor signals or software inhibits.",
+      "source": "judge"
+    },
+    "llis-391": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Recovery/configuration-management problems after a memory parity error, not a spurious deployment transient or unfiltered input logic.",
+      "source": "judge"
+    },
+    "llis-396": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Antenna cable connector contamination causing RF power loss; a hardware defect, not a transient signal or software logic fault.",
+      "source": "judge"
+    },
+    "llis-4": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Ground test configuration mismatch causing tire blowouts; the software error is mentioned only in passing and is not about acting on an input that should be ignored.",
+      "source": "judge"
+    },
+    "llis-40": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Physical access limitations to shuttle main engines for maintenance; unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-403": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Flight software safing logic meant only for post-launch executed on the pad and fired thrusters, with the explicit lesson that such functions should be constrained to the proper mission phase (Part B); the trigger was an inadvertent command, not a spurious sensor transient.",
+      "source": "human"
+    },
+    "llis-409": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes gyro output oscillation (spurious signal) during launch triggering failure protection logic that should have been disabled during that mission phase, and recommends enabling protection logic only when needed and precluding spurious triggering inputs.",
+      "source": "judge"
+    },
+    "llis-411": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns RF receiver overload and inability to test transmitter high-power mode, not a spurious signal latched by logic.",
+      "source": "judge"
+    },
+    "llis-419": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About RF carrier leakage causing gain variation, a hardware coupling problem, not a transient input acted on by logic.",
+      "source": "judge"
+    },
+    "llis-422": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Bright particles from pyrotechnic events created spurious star-tracker signals that triggered fault-protection responses, with the recommendation to disable that logic during and after such events.",
+      "source": "judge"
+    },
+    "llis-432": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About qualifying TWTAs for powered pyro shock and telemetry during critical events, not spurious signals or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-433": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Relay manufacturing/weld defects and procurement quality, unrelated to transient signals or software logic.",
+      "source": "judge"
+    },
+    "llis-447": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About logging component parameter drift trends, not spurious signals or logic handling.",
+      "source": "judge"
+    },
+    "llis-450": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Facility accident and emergency training lesson, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-533": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concurrent engineering/organizational lessons, not about spurious signals or software logic errors.",
+      "source": "judge"
+    },
+    "llis-544": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "EMI testing at component level; generic test-early advice without describing a spurious signal latched by logic.",
+      "source": "judge"
+    },
+    "llis-559": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "Describes flight software acting on erroneous overflow results, disabling the burn-limiting timer and leaving thrusters firing\u2014software logic failing to limit/check an invalid condition\u2014though the trigger was a computation overflow, not a transient sensor signal.",
+      "source": "judge"
+    },
+    "llis-56": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Mechanical quick-disconnect hardware incident, unrelated to signals or software logic.",
+      "source": "judge"
+    },
+    "llis-560": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes an unexplained real scan-platform motion that triggered a conservative fault response that turned off gyros; it is not about a spurious/transient sensor signal nor about logic failing to filter or inhibit an input it should have ignored.",
+      "source": "judge"
+    },
+    "llis-567": {
+      "a": false,
+      "b": true,
+      "grade": 1,
+      "reason": "The thruster runaway occurred because the control electronics acted on a saturated gyro input and the command/control software lacked constraint checks that would have inhibited firing in that configuration, which is a direct Part B lesson; the gyro reading was a saturation artifact of a wrong setting rather than a transient/spurious signal event.",
+      "source": "judge"
+    },
+    "llis-569": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns out-of-date interface control drawings and connector mismatches, unrelated to spurious signals or unfiltered software logic.",
+      "source": "judge"
+    },
+    "llis-577": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About CAD/CAM net-list translation errors causing wiring faults on printed wiring boards, not about false signals or software ignoring/acting on inputs.",
+      "source": "judge"
+    },
+    "llis-578": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "A ground cooling airflow incident damaging probe insulation; no relation to spurious signals or software logic.",
+      "source": "judge"
+    },
+    "llis-584": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "An unintended repeat of a stored aerobraking maneuver sequence due to onboard memory/sequence management, not a spurious sensor signal nor a failure to filter or phase-inhibit an input.",
+      "source": "judge"
+    },
+    "llis-585": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Programmatic lesson on staff continuity, unrelated to either failure mechanism.",
+      "source": "judge"
+    },
+    "llis-590": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General flight software development process guidance (plans, test sets, CASE tools) without addressing spurious inputs or missing software inhibits.",
+      "source": "judge"
+    },
+    "llis-594": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Hardware anomaly of a COTS micro-machined valve stuck closed; nothing about false signals or software logic.",
+      "source": "judge"
+    },
+    "llis-596": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Programmatic 'faster, better, cheaper' management lessons, not a technical signal or software-logic issue.",
+      "source": "judge"
+    },
+    "llis-608": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses ambiguous requirement wording with foreign partners; it concerns requirements communication generally, not spurious signals or unfiltered software logic.",
+      "source": "judge"
+    },
+    "llis-609": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Describes false red-alarm indications during countdown caused by reversed SAFE/ARM logic states in the telemetry dictionary that testing failed to catch, i.e., an actual spurious-signal/false-indication event; it is not about software acting on an input it should have inhibited.",
+      "source": "judge"
+    },
+    "llis-610": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns long-term life testing of spacecraft components, with no relation to spurious signals or logic acting on unfiltered inputs.",
+      "source": "judge"
+    },
+    "llis-612": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Describes a spurious signal from the power distribution logic that re-powered wax actuator heaters long after deployment, and recommends designing the distribution circuitry to preclude such inadvertent (phase-inappropriate) actuation.",
+      "source": "judge"
+    },
+    "llis-625": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Lewis loss stemmed from a flawed attitude-control safe mode and inadequate on-orbit monitoring, not from a spurious signal being acted upon by unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-626": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "An overly sensitive electronic switch was triggered by stray ground paths (effectively a spurious input) and powered the probes during assembly rather than only at the intended release event, i.e., a circuit acting on an input it should have been inhibited against.",
+      "source": "judge"
+    },
+    "llis-634": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Power-up turn-on transients produced spurious signals that latched the control logic, which then fired cover release pyros because the transients were not blocked from the driver circuitry, and testing missed it.",
+      "source": "judge"
+    },
+    "llis-637": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The WIRE board report attributes the loss to power-up transients/non-deterministic startup states (spurious signals) acted on by digital logic that failed to inhibit pyro firing.",
+      "source": "human"
+    },
+    "llis-638": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "The DC-XA engines shut down on a genuine weight-on-gear indication; the mishap was caused by a landing leg failing to deploy, not by a false signal or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-641": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "MCO loss was a units conversion error in ground trajectory software, unrelated to spurious signals or improperly inhibited logic.",
+      "source": "judge"
+    },
+    "llis-655": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic preliminary design review practice with no specific content on spurious signals or input filtering logic.",
+      "source": "judge"
+    },
+    "llis-656": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic hardware review/certification process guidance, not about transient signals or flawed inhibit logic.",
+      "source": "judge"
+    },
+    "llis-657": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic critical design review agenda guidance applicable to any project, not about spurious inputs or software filtering.",
+      "source": "judge"
+    },
+    "llis-660": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes mechanical flow fuses for fluid systems; the 'inhibit' concept is hydraulic, not about spurious electrical signals or software logic.",
+      "source": "judge"
+    },
+    "llis-661": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses redundancy levels in ground communication systems, unrelated to spurious signals or misapplied logic.",
+      "source": "judge"
+    },
+    "llis-664": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SOHO loss was caused by ground command/procedure errors and disabled autonomous failure detection, not a transient false sensor signal latched by software.",
+      "source": "judge"
+    },
+    "llis-668": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic pre-ship review practice with no relation to spurious signals or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-672": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About ablative composite nozzle materials, entirely unrelated.",
+      "source": "judge"
+    },
+    "llis-675": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fastener standardization guidance, unrelated to signals or software logic.",
+      "source": "judge"
+    },
+    "llis-680": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "Microcircuit design checklist explicitly addresses noise/false triggering from slow rise times and pattern sensitivity and improper input handling, which relates to spurious inputs and circuits responding to them, though at component level.",
+      "source": "judge"
+    },
+    "llis-687": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Deployed appendage mechanical design guidelines (margins, environment), not about transient sensor signals or software inhibits.",
+      "source": "judge"
+    },
+    "llis-697": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General active redundancy practice, no discussion of spurious signals or phase-dependent logic.",
+      "source": "judge"
+    },
+    "llis-707": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic fault tolerant design process guidance, not specific to transient false inputs or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-716": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic deployable appendage test planning guidance, not about sensor transients at deployment or software handling of them.",
+      "source": "judge"
+    },
+    "llis-719": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Battery short-circuit testing practice, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-723": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General IV&V of embedded software advice; mentions unintended functions but is generic process guidance, not about spurious inputs or unfiltered logic specifically.",
+      "source": "judge"
+    },
+    "llis-726": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on end-to-end ground data system compatibility and mission simulation testing, not about spurious signals or unfiltered logic.",
+      "source": "judge"
+    },
+    "llis-729": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About avoiding electrical/mechanical overstress during integration, not about transient false signals being acted upon by software.",
+      "source": "judge"
+    },
+    "llis-733": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic problem/failure reporting process guidance, unrelated to spurious signals or faulty logic handling.",
+      "source": "judge"
+    },
+    "llis-756": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Sneak circuit analysis addresses unintended circuit paths/latent design errors, but it is generic analysis guidance, not about spurious transient signals or phase-inappropriate logic responses specifically.",
+      "source": "judge"
+    },
+    "llis-757": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic fault-tree analysis methodology, not about transient signals or unfiltered software logic.",
+      "source": "judge"
+    },
+    "llis-76": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes TPS blanket damage from air duct flow; unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-761": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General guidance on early instrumentation/sensor design planning; does not address spurious sensor transients or software mishandling of them.",
+      "source": "judge"
+    },
+    "llis-771": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Voltage/temperature margin testing practice, unrelated to spurious signals or improper logic response.",
+      "source": "judge"
+    },
+    "llis-772": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Fault protection design practice discusses autonomous responses during critical events but is generic and does not address transient false inputs or phase-limited inhibits specifically.",
+      "source": "judge"
+    },
+    "llis-774": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "DC isolation resistance verification practice; not about transient false signals triggering logic.",
+      "source": "judge"
+    },
+    "llis-776": {
+      "a": true,
+      "b": false,
+      "grade": 1,
+      "reason": "Specifically about identifying and remedying spurious responses/interference signals induced in systems during operation, i.e., false signals, though not about software failing to filter them.",
+      "source": "judge"
+    },
+    "llis-781": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Thermal-vacuum versus thermal-atmospheric testing guidance, unrelated to either part.",
+      "source": "judge"
+    },
+    "llis-784": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Discusses powered-on vibration testing to reveal intermittent electronic failures, not a spurious signal at deployment nor flawed logic acting on an input it should have ignored.",
+      "source": "judge"
+    },
+    "llis-789": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic guidance on inheritance reviews of heritage hardware/software; no specific spurious signal or unfiltered input logic issue.",
+      "source": "judge"
+    },
+    "llis-791": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "About risk rating of problem/failure reports, unrelated to transient signals or software input handling.",
+      "source": "judge"
+    },
+    "llis-792": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Covers radiation design margin requirements, not transient sensor signals or software filtering logic.",
+      "source": "judge"
+    },
+    "llis-793": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns RF receiver susceptibility to spurious RF signals (false lock), a different domain than a transient sensor signal at deployment, and gives no lesson about software ignoring invalid inputs.",
+      "source": "judge"
+    },
+    "llis-798": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Addresses radiated electromagnetic interference/intermodulation analysis, not a deployment-induced spurious sensor signal or software latching logic.",
+      "source": "judge"
+    },
+    "llis-817": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Vibroacoustic qualification testing practice; unrelated to spurious signals or input-handling logic errors.",
+      "source": "judge"
+    },
+    "llis-827": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Quantitative reliability requirements guidance, generic and unrelated to both parts.",
+      "source": "judge"
+    },
+    "llis-830": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes engine failure prediction via signal power analysis versus redline limits; not about spurious transient inputs or improper phase-gating of logic.",
+      "source": "judge"
+    },
+    "llis-831": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Maintainability program management guidance, irrelevant to either failure element.",
+      "source": "judge"
+    },
+    "llis-835": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General benefits of maintainability programs; no connection to spurious signals or software filtering.",
+      "source": "judge"
+    },
+    "llis-836": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "SRB refurbishment/maintainability practices, unrelated to transient sensor signals or flight software logic.",
+      "source": "judge"
+    },
+    "llis-837": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The document is specifically about spurious/false indications (false alarms) and prescribes design techniques (voting, filtering, tolerating transient anomalies) so circuitry does not declare or act on signals it should ignore.",
+      "source": "judge"
+    },
+    "llis-838": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "General software maintainability guidance with no connection to spurious signals or unfiltered logic acting on bad inputs.",
+      "source": "judge"
+    },
+    "llis-839": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Generic fault detection/isolation/recovery guidance that only mentions false alarm rates in passing, with no lesson about transient signals or improperly filtered logic.",
+      "source": "judge"
+    },
+    "report-apollo13": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Electrical transients appear only as telemetry evidence of fan switching during the oxygen tank failure; the report is about tank/thermostat design, not spurious inputs being acted upon.",
+      "source": "judge"
+    },
+    "report-apollo1_as204": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Power-bus transients and signal dropouts are discussed as investigative evidence of the fire, not as a false input that logic wrongly acted upon or a lesson about filtering such inputs.",
+      "source": "judge"
+    },
+    "report-lewis": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Failure stemmed from a flawed safe mode design and inadequate monitoring, not from a spurious transient signal or unfiltered logic acting on it.",
+      "source": "judge"
+    },
+    "report-challenger_rogers_v1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Concerns O-ring joint failure and launch decision-making; avionics data are only noted as having performed normally.",
+      "source": "judge"
+    },
+    "report-mco_phase1": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Root cause was a units conversion error in ground software, unrelated to spurious transient signals or mission-phase-inappropriate logic responses.",
+      "source": "judge"
+    },
+    "report-soho": {
+      "a": false,
+      "b": false,
+      "grade": 0,
+      "reason": "Describes procedural/command sequence errors and safe-mode recovery practices, not a false signal or logic acting on an input it should have ignored.",
+      "source": "judge"
+    },
+    "report-wire": {
+      "a": true,
+      "b": true,
+      "grade": 2,
+      "reason": "The mishap was caused by an electronics power-turn-on transient (spurious signal) that the pyro circuit responded to by firing deployment pyros, with the lesson calling for inhibits and transient characterization so circuits don't act on such signals.",
+      "source": "judge"
+    }
+  }
+}
