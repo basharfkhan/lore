@@ -169,7 +169,7 @@ from an anonymised paragraph. The retrieval cutoff for each case is 1 January of
 ### Grading
 
 The first labels were free-form grades of 2, 1 or 0. That scale did not hold up: on the same
-lessons the draft labels, an LLM judge and the human reviewer gave three different grades, and
+lessons the draft labels, an LLM judge and I gave three different grades, and
 the judge agreed with the drafts at a weighted kappa of only 0.57. Many of the drafts were the
 ones at fault, graded from short excerpts.
 
@@ -178,15 +178,15 @@ For NOAA N-Prime: (A) equipment left in a changed state by earlier work that was
 and (B) the next team operating it without checking. A document about both parts is a 2, about
 one is a 1, about neither is a 0.
 
-- The reviewer answered the two questions for the 22 documents where the judge and the drafts
+- I answered the two questions for the 22 documents where the judge and the drafts
   disagreed about a direct precursor
   ([evals/review/adjudication_checklist.md](evals/review/adjudication_checklist.md)).
 - The judge, asked the same two questions, agrees with those answers at weighted kappa 0.78,
   with precision and recall of 0.80 on direct precursors, and is never more than one grade away.
   These 22 are the disputed documents, so they are harder than a random sample.
-- The judge grades everything else, and the human answers override it where they exist.
+- The judge grades everything else, and the my answers override it where they exist.
 
-Limits: the reviewer is one person, the judge is the same model family that generates the
+Limits: the reviewer is only me, the judge is the same model family that generates the
 hypotheses, and the two-part criteria for held-out cases are generated from each hidden
 mechanism rather than hand-written. Columbia has no direct precursor under this rule: before
 2003 the archive has a lesson about ascent debris and the Challenger report about accepting a
