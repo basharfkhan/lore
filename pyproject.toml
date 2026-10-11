@@ -15,6 +15,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# The web service. psycopg is only used when DATABASE_URL is set (the daily spend counter).
+serve = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "psycopg[binary]>=3.1",
+]
 # Dense retrieval. Pulls PyTorch (CPU build by default) and downloads model weights on first use.
 embed = [
     "sentence-transformers>=3.0",

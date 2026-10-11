@@ -1,0 +1,359 @@
+[
+ {
+  "title": "CubeSat panel deployment",
+  "question": "We are a small university team building a 6U CubeSat. A deployable solar panel is released by a burn wire, and the deployment timer starts when the separation switches open after ejection from the dispenser. We are reusing the flight software from our previous CubeSat and plan to test the deployment once on the bench before delivery.",
+  "answer": "## Overall picture\n\nYour mission-critical chain is: a mechanical switch state change → a software timer → an irreversible thermal-actuated release → a one-shot mechanical deployment. Every historical failure mode in that chain comes from the joints between those pieces — switch transients the software believes, power-up transients the release circuit obeys, and heritage/ground-test assumptions that don't hold in flight.\n\n### 1. Burn-wire circuit fires on power-up, before you intend it\nA reused release driver that is armed as soon as the bus powers can fire during integration, in the dispenser, or before you are stable on orbit. WIRE's telescope cover was ejected when the pyro electronics box was *first powered*: oscillator and FPGA start-up transients left the control logic in a non-deterministic state long enough to issue a fire command, and the cryogen vented — mission lost. The board recommended designing for known turn-on transients, using inhibits requiring two separate and independent actions (arm, then fire), and performing power turn-on characterization tests for irreversible events ([LLIS 634: Transient Start-up Performance of the WIRE Pyro Electronics (1999)](https://llis.nasa.gov/lesson/634)).\n**Check:** Characterize the burn-wire driver through power-on, brownout and reset, and confirm two independent actions are required before current can flow.\n\n### 2. Separation-switch transient latched as a valid \"ejected\" event\nSwitch bounce, vibration or handling can produce a momentary open that your timer logic accepts as separation. Mars Polar Lander's touchdown sensors were *known* to produce false momentary signals at leg deployment; the software treated one as a valid touchdown and shut the engines at 40 m. Neither the software requirements nor any test plan required verification of transient-signal immunity, so it was never verified ([LLIS 938: Probable Scenario for Mars Polar Lander Mission Loss (1998)](https://llis.nasa.gov/lesson/938)). The lesson: all known hardware characteristics, including transients and spurious signals, must appear in the software requirements and be verified by test.\n**Check:** Write a requirement for separation-switch debounce/persistence, and test it by injecting bounce on the actual switches.\n\n### 3. \"Heritage\" flight software assumed to be requalified\nGenesis's mishap was traced to deployment-initiating sensors in a modified heritage avionics design; the board found over-reliance on heritage in identifying essential tests led to test-as-you-fly violations, and recommended the test program fully encompass the effects of modifications to heritage designs and that peer review give special attention to each mission-critical function ([LLIS 1733: Genesis Sample Return Mishap (2004)](https://llis.nasa.gov/lesson/1733)). MPL's file adds that inheriting from a previous success warrants a critical, skeptical view of inherited flight systems.\n**Check:** List every difference between the old bus and this one that touches the deploy path, and get an outside reviewer to walk the deploy logic.\n\n### 4. One bench deployment is not the flight environment\nHistorically, some deployables have passed ground tests but failed in space: thermal gradients, zero gravity, outgassing, low moisture and ballooned blankets all change friction and torque, and handbook values do not apply in space ([LLIS 687: Spacecraft Deployed Appendage Design Guidelines](https://llis.nasa.gov/lesson/687)). MPL's board urged enforcing test-as-you-fly and, where violations are necessary, taking alternate measures such as independent validation, documenting the departure in the risk plan and reporting it at reviews ([LLIS 1196: Test as You Fly, Fly as You Test, and Demonstrate Margin (1998)](https://llis.nasa.gov/lesson/1196)). MPL also shows the rule that a test must be re-run after hardware or wiring changes.\n**Check:** Deploy after vibration and in thermal-vacuum if at all possible; if not, record the deviation as an accepted risk and re-run the bench deployment after any change to the restraint or wiring.\n\n### 5. Deployment telemetry that measures the wrong thing\nMagellan's panels deployed but the \"panels-latched\" indication never came: the microswitches sensed panel *position* rather than latch status, and a marginal actuation stroke plus zero-g kept them open ([LLIS 289: Magellan In-Flight Solar Array Deployment Indication](https://llis.nasa.gov/lesson/289)). Recommendations: mount transducers so the desired function, not a related one, is measured; allow for overtravel in microswitch strokes; and do an early FMECA with the designers.\n**Check:** Confirm your deployment (and separation) switches indicate the state you actually act on, with overtravel margin.\n\n*This is a research aid drawn from historical records, not a safety review.*",
+  "steps": [
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "separation switch spurious signal starts sequence timer prematurely after ejection"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "heritage software reused on new vehicle without requalification caused failure"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "deployable solar array failed to deploy on orbit mechanism not tested in flight-like thermal vacuum"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "test as you fly deviation deployment test limited number of ground tests"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "power-on transient inadvertently fired pyrotechnic deployment at startup FPGA logic state"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "inhibits prevent inadvertent deployment during ground handling stored energy release personnel injury"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-634"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1733"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "spurious sensor transient latched by flight software requirement not traced to software test",
+     "source": "lessons"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-321"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-938"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1196"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-687"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1308"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-289"
+    }
+   }
+  ],
+  "sources": {
+   "https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf#page=27": "Genesis Mishap Investigation Board Report, Volume I",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=131": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/404": "LLIS 404: Traveling Wave Tube Amplifier on Martian Surface: Failure Due to Corona (1976)",
+   "https://llis.nasa.gov/lesson/939": "LLIS 939: MPL Uplink Loss Timer Software/Test Errors (1998)",
+   "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=186": "Report of the Presidential Commission on the Space Shuttle Challenger Accident, Volume 1",
+   "https://llis.nasa.gov/lesson/251": "LLIS 251: Liquid Oxygen Spills",
+   "https://llis.nasa.gov/lesson/1582": "LLIS 1582: Altered Explosive Initiator Causes Damage - 4-8-05",
+   "https://llis.nasa.gov/lesson/776": "LLIS 776: Radiated Susceptibility System Verification",
+   "https://llis.nasa.gov/lesson/2158": "LLIS 2158: Reuse of Analysis Software",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf#page=63": "Genesis Mishap Investigation Board Report, Volume I",
+   "https://llis.nasa.gov/lesson/371": "LLIS 371: SEASAT Failure",
+   "https://llis.nasa.gov/lesson/346": "LLIS 346: Use of Heritage Designs on the Mars Observer",
+   "https://llis.nasa.gov/lesson/14701": "LLIS 14701: Engineering Design Processes Can Impact Verification and Validation Budget and Schedule",
+   "https://llis.nasa.gov/lesson/1308": "LLIS 1308: Heritage Hardware and Software",
+   "https://llis.nasa.gov/lesson/524": "LLIS 524: Torque Value on Screws After Repeated Applications of a Thread-locking Compound",
+   "https://llis.nasa.gov/llis_lib/pdf/1009464main1_0641-mr.pdf#page=25": "Mars Climate Orbiter Mishap Investigation Board Phase I Report",
+   "https://llis.nasa.gov/lesson/16501": "LLIS 16501: SMAP Reflector Deployment Test Anomaly (Design and Test of Large, Complex Deployables)",
+   "https://llis.nasa.gov/lesson/909": "LLIS 909: Satellite Deployments",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf#page=24": "Genesis Mishap Investigation Board Report, Volume I",
+   "https://llis.nasa.gov/llis_lib/pdf/1009462main1_0637-mr.pdf#page=16": "WIRE Mishap Investigation Board Report",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=73": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/695": "LLIS 695: Guidelines for Thermal Analysis of Spacecraft Hardware",
+   "https://llis.nasa.gov/lesson/1359": "LLIS 1359: Chandra Silverized Teflon/Multilayer Insulation (MLI) Degradation Analysis",
+   "https://llis.nasa.gov/lesson/289": "LLIS 289: Magellan In-Flight Solar Array Deployment Indication",
+   "https://llis.nasa.gov/lesson/1196": "LLIS 1196: Test as You Fly, Fly as You Test, and Demonstrate Margin (1998)",
+   "https://ntrs.nasa.gov/api/citations/20030093634/downloads/20030093634.pdf#page=53": "Columbia Accident Investigation Board Report, Volume 1",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf#page=180": "Genesis Mishap Investigation Board Report, Volume I",
+   "https://llis.nasa.gov/lesson/1733": "LLIS 1733: Genesis Sample Return Mishap (2004)",
+   "https://llis.nasa.gov/lesson/1210": "LLIS 1210: Procedural Control (Deviation from Approved Procedures)",
+   "https://llis.nasa.gov/lesson/1370": "LLIS 1370: Lessons Learned From Flights of ¿Off the Shelf¿ Aviation Navigation Units on the Space Shuttle, GPS",
+   "https://discovery.larc.nasa.gov/discovery/PDF_FILES/mars_climate_orbiter_phaseII.pdf#page=29": "Report on Project Management in NASA by the Mars Climate Orbiter Mishap Investigation Board",
+   "https://llis.nasa.gov/llis_lib/pdf/1009462main1_0637-mr.pdf#page=18": "WIRE Mishap Investigation Board Report",
+   "https://llis.nasa.gov/lesson/637": "LLIS 637: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board",
+   "https://llis.nasa.gov/lesson/634": "LLIS 634: Transient Start-up Performance of the WIRE Pyro Electronics (1999)",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=43": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/1799": "LLIS 1799: Erroneous Onboard Status Reporting Disabled IMAGE's Radio",
+   "https://llis.nasa.gov/lesson/1111": "LLIS 1111: International Space Station Program/Extravehicular Activity (EVA)/Pyrotechnic Initiators",
+   "https://llis.nasa.gov/lesson/1360": "LLIS 1360: Unrestrained Separation Nuts May Damage or Hinder Flight Hardware (2002)",
+   "https://llis.nasa.gov/lesson/321": "LLIS 321: Spring Actuated Deployables, Design Considerations",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=69": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/444": "LLIS 444: Electrical Connectors",
+   "https://llis.nasa.gov/lesson/687": "LLIS 687: Spacecraft Deployed Appendage Design Guidelines",
+   "https://llis.nasa.gov/lesson/1534": "LLIS 1534: Excessive Slack in the Retention Line of the Main Rocket Recovery Parachute",
+   "https://llis.nasa.gov/lesson/660": "LLIS 660: Flow Fuses for Elimination of Hazards in Pneumatic and Hydraulic Systems",
+   "https://llis.nasa.gov/lesson/868": "LLIS 868: Mishap At The Underground Air Storage Facility",
+   "https://llis.nasa.gov/lesson/685": "LLIS 685: Electrostatic Discharge Control in GSE",
+   "https://llis.nasa.gov/lesson/938": "LLIS 938: Probable Scenario for Mars Polar Lander Mission Loss (1998)",
+   "https://llis.nasa.gov/lesson/310": "LLIS 310: Mars Observer Inertial Reference Loss",
+   "https://llis.nasa.gov/lesson/1489": "LLIS 1489: Instrument Simulators/Engineering Models",
+   "https://llis.nasa.gov/lesson/1197": "LLIS 1197: Deep Space 2 Telecom Hardware-Software Interaction (1999)",
+   "https://llis.nasa.gov/lesson/584": "LLIS 584: Mars Global Surveyor (MGS) Aerobraking Extra Burn Anomaly (1997)",
+   "https://llis.nasa.gov/lesson/18802": "LLIS 18802: Software Traceability"
+  },
+  "model": "claude-opus-5",
+  "cost_usd": 0.3028,
+  "tool_calls": 15
+ },
+ {
+  "title": "Moving a satellite by crane",
+  "question": "A finished Earth-observation satellite has to be moved from the clean room to the vibration test facility next week. We will lift it by crane onto a transport dolly that another project in the building has been using, following the handling procedure from our last move. The same team has done this lift several times.",
+  "answer": "This scenario — borrowing another project's ground equipment and reusing a standing procedure for a routine-feeling lift — maps closely onto a known accident pattern in NASA's handling history, most of all the NOAA‑N Prime drop. The risks below are ordered by how directly they match your plan.\n\n**1. Borrowed cart not verified in your configuration**\nNOAA‑N Prime fell off a turnover cart shared between two co-located programs: the cart had been reconfigured for the other program and its adapter plate was left with 24 bolts missing, with no red tag or communication of the incomplete state. The investigation found MGSE was \"shared... and not configuration controlled,\" and that each user was simply trusted to verify fitness for their own use. [NOAA N-Prime Mishap Investigation Final Report](https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf#page=55)\nCheck: before the lift, physically/mechanically verify the dolly's current configuration and fastener count for your spacecraft's interface — don't rely on paperwork or on the other project's say-so that it's ready.\n\n**2. Equipment inherited from another program, not re-analyzed for this payload**\nTOPEX/POSEIDON's lifting spreader bar, inherited from the Galileo program, failed structurally mid-lift and the spacecraft rotated 135°, nearly dropping it. The lesson: \"reuse of a residual lifting fixture from previous programs is encouraged, but requires analysis by the current planned user for its application,\" including a rigorous stability analysis of the full lifted configuration and CG. [LLIS 267: TOPEX/POSEIDON Near-Drop Incident](https://llis.nasa.gov/lesson/267)\nCheck: even if the dolly has safely carried another spacecraft, confirm (don't assume) it's been analyzed for your spacecraft's mass, CG, and interface specifically.\n\n**3. Complacency from a routine, experienced, familiar team**\nThe NOAA‑N Prime board attributed the mishap directly to complacency: the lift was \"consistently characterized as routine and low risk, even though it involved moving the spacecraft,\" with hurried planning, waived safety presence, and procedure redlines misused. The board called for rigorous oversight and process safeguards specifically to counter overconfidence built up by routine, repeated operations. [NOAA N-Prime Mishap Investigation Final Report](https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf#page=23)\nCheck: treat this lift with the same safety presence, notification, and procedure discipline as a first-time operation, specifically because familiarity is what eroded rigor in the precedent case.\n\n**4. Procedure reused without a fresh fit-check or dry run**\nIn the related TOPEX/POSEIDON T/V lift incident, no precursor dry run with a high-fidelity mass simulation was performed for the actual lift configuration, and a GSE review of the fixture was repeatedly postponed. Recommendations: GSE should be reviewed by experienced designers before use, and release of drawings/analysis should allow adequate evaluation time before the operation. [LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final Report](https://llis.nasa.gov/lesson/1089)\nCheck: confirm your existing procedure actually covers this specific dolly/spacecraft pairing, rather than carrying over steps validated for different hardware.\n\nThis is a research aid drawn from historical NASA records, not a safety review.",
+  "steps": [
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "spacecraft dropped during crane lift ground handling"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "ground support equipment shared between programs not verified for new hardware"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "complacency repeated successful lift operation procedure not followed"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "lifting fixture or sling failure during spacecraft handling"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "report-noaa_n_prime#55"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "report-noaa_n_prime#23"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1580"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1089"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-267"
+    }
+   }
+  ],
+  "sources": {
+   "https://llis.nasa.gov/lesson/1089": "LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final Report of May 29, 1992",
+   "https://llis.nasa.gov/lesson/5796": "LLIS 5796: MSL Backshell Crane Incident",
+   "https://llis.nasa.gov/lesson/621": "LLIS 621: Post Mission Hardware Drop Incident (1998)",
+   "https://llis.nasa.gov/lesson/73": "LLIS 73: MLP 3 SRB Engine Service Platform Hoists",
+   "https://llis.nasa.gov/lesson/123": "LLIS 123: Loads Imposed on Stabilizing Frame During Mate/demate Operations",
+   "https://llis.nasa.gov/lesson/6216": "LLIS 6216: MSL Mobility Assembly Lift Mishap",
+   "https://llis.nasa.gov/lesson/937": "LLIS 937: Mobile Crane Mishap",
+   "https://llis.nasa.gov/lesson/5836": "LLIS 5836: Overturned Mobile Crane at Jay Jay Railroad Draw Bridge",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf#page=55": "NOAA N-Prime Mishap Investigation Final Report",
+   "https://llis.nasa.gov/lesson/1611": "LLIS 1611: Risk Management: Limited Value of Paper Studies and Projects Not Reaching Their Full Life Cycle",
+   "https://llis.nasa.gov/lesson/1580": "LLIS 1580: This document contains lessons learned from the NOAA-N Prime mishap which occurred at Lockheed Martin Space Systems Company in Sunnyvale, CA on September 6, 2003.",
+   "https://llis.nasa.gov/lesson/281": "LLIS 281: Galileo Attitude Control Power on Reset Problem",
+   "https://llis.nasa.gov/lesson/729": "LLIS 729: Integration and Test Practices to Eliminate Stresses on Electrical and Mechanical Components",
+   "https://llis.nasa.gov/lesson/4770": "LLIS 4770: Recurring Flight Project Problems Evince \"Common Threads\"",
+   "https://llis.nasa.gov/lesson/2956": "LLIS 2956: Local Design vs. COTS Implementation",
+   "https://llis.nasa.gov/lesson/1478": "LLIS 1478: Use of Hardware Beyond its Qualification and Certification Limits",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf#page=30": "NOAA N-Prime Mishap Investigation Final Report",
+   "https://llis.nasa.gov/lesson/6256": "LLIS 6256: Procedure Devolvement over Time in a Seriesed Spacecraft Program",
+   "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=188": "Report of Apollo 13 Review Board",
+   "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=226": "Report of the Presidential Commission on the Space Shuttle Challenger Accident, Volume 1",
+   "https://llis.nasa.gov/lesson/918": "LLIS 918: Evolution of Mission Requirements for Support Equipment",
+   "https://llis.nasa.gov/lesson/639": "LLIS 639: DS1 Ion Engine Shut-Down Anomaly (1998)",
+   "https://llis.nasa.gov/lesson/914": "LLIS 914: Genesis Canister Lift Incident (2000)",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/65776main_noaa_np_mishap.pdf#page=43": "NOAA N-Prime Mishap Investigation Final Report",
+   "https://llis.nasa.gov/lesson/267": "LLIS 267: TOPEX/POSEIDON Near-Drop Incident",
+   "https://llis.nasa.gov/lesson/92": "LLIS 92: Spent Booster Segment Handling Operation",
+   "https://llis.nasa.gov/lesson/85": "LLIS 85: Lifting Portable Purge Units",
+   "https://llis.nasa.gov/lesson/239": "LLIS 239: Lifting Slings for Cranes",
+   "https://llis.nasa.gov/lesson/3197": "LLIS 3197: Proof-Load Testing of Ground Support Equipment (GSE) Platforms, Slings, and Handling Fixtures Versus Rated Load Testing",
+   "https://llis.nasa.gov/lesson/11001": "LLIS 11001: Steel Pipe Handling Mishap"
+  },
+  "model": "claude-sonnet-5",
+  "cost_usd": 0.0756,
+  "tool_calls": 9
+ },
+ {
+  "title": "Software patch in orbit",
+  "question": "Our orbiting science spacecraft needs a flight software patch to work around a degraded reaction wheel. A small operations team will build the patch, test it on the ground simulator, and uplink it during a single ground station pass. Command files are prepared by hand and several older versions are kept in the same shared folder.",
+  "answer": "Good, I have everything needed. Writing the report now.\n\n## Pre-mortem: Reaction-Wheel Workaround Patch, Single-Pass Uplink\n\nThis is a small team doing a one-shot, time-critical software change against degraded hardware — the archive's recurring failure pattern here is version/configuration slips and simulator-fidelity gaps that only surface when the real spacecraft is exercised, combined with no slack to recover if the single pass goes wrong.\n\n**1. Wrong or old command file uplinked from the shared folder**\nWith several versions sitting in one folder and files prepared by hand, the risk is that an outdated file gets treated as current. In the Mars Odyssey case, the Navigation Team renamed an old light-time file for reuse; because its header still showed an old creation time, the automated script kept selecting the stale file over the correct one for months before anyone caught it. Investigators recommended configuration-management policy and procedures that preclude renaming/reusing old command or sequence files as \"new\" without oversight. **Check:** before the pass, verify the patch file's identity and creation metadata against a controlled baseline, not just its filename, and retire or clearly quarantine superseded versions rather than leaving them alongside the current one.\n[LLIS 1481: Take CM Measures to Control the Renaming and Reuse of Old Command Files](https://llis.nasa.gov/lesson/1481)\n\n**2. Ground simulator doesn't exercise the actual fault path**\nA late command-file change for Stardust/NExT was validated only on the system testbed, which did not simulate redundancy switching; the gap went undetected for years until an actual side-swap failed in flight. Investigators recommended that when only simulation is feasible, the testbed must support end-to-end verification of all affected flight-software functions including fault protection, and any known testbed fidelity shortfalls must be explicitly identified and compensated for. **Check:** confirm the ground simulator actually models the degraded wheel's fault-protection interactions, not just nominal attitude control, before trusting the test results.\n[LLIS 3716: Testbed Limitations May Impact End-to-End Flight System Testing](https://llis.nasa.gov/lesson/3716)\n\n**3. Patch is incomplete or mis-sequenced on uplink**\nOn another mission, an uplink omitted a software patch meant to fix a known timer defect; when the uncorrected bug triggered later, thrusters kept firing until too much fuel was lost. Contributing factors included inadequate operational configuration management and an understaffed software-repair function. Lesson: maintain rigorous software CM, verify in-flight updates in a testbed whenever possible. **Check:** independently confirm after uplink that every intended patch element was actually received and activated, not assumed from the send log.\n[LLIS 559: Redundant Verification of Critical Command Timing](https://llis.nasa.gov/lesson/559)\n\n**4. No recovery margin if the single pass goes wrong**\nLewis's operations crew, working under extreme time pressure during a critical low-altitude pass with only ~5-minute contacts, misaddressed two of three recovery commands; the spacecraft was lost before the next contact. The Board tied this to an unproven Safe Mode design relied on without adequate health monitoring. **Check:** rehearse the exact command sequence for this pass beforehand so execution isn't being worked out under time pressure during the only window available.\n[Lewis Spacecraft Mission Failure Investigation Board Report](https://llis.nasa.gov/llis_lib/pdf/1009461main1_0625-mr.pdf#page=10)\n\n**5. General command-error patterns at elevated operations tempo**\nA JPL review of command-file errors found rates rise during higher-tempo, first-time, nonstandard operations — exactly this patch's profile — driven by loss of rigor, loss of situational awareness, and team work overload. It recommended a thorough tabletop walkthrough before any uplink activity covering start/end spacecraft states, verification plans, and contingency commands. **Check:** run that tabletop review for this patch before the pass, explicitly covering what state the reaction-wheel workaround should leave the spacecraft in and what to do if it doesn't.\n[LLIS 8302: Reducing the Error Rate in Command Files Uplinked to the Spacecraft](https://llis.nasa.gov/lesson/8302)\n\n*This is a research aid drawn from historical records, not a safety review.*",
+  "steps": [
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "wrong version of command file uplinked from shared folder configuration control"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "flight software patch uplink error ground test simulator did not match spacecraft"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "single ground station pass no opportunity for recovery if anomaly during uplink"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "reaction wheel failure attitude control software workaround patch"
+    }
+   },
+   {
+    "tool": "search_archive",
+    "input": {
+     "query": "small operations team workload independent review software change before uplink"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-8302"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-3716"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-559"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "report-lewis#12"
+    }
+   },
+   {
+    "tool": "read_document",
+    "input": {
+     "id": "llis-1481"
+    }
+   }
+  ],
+  "sources": {
+   "https://llis.nasa.gov/lesson/1481": "LLIS 1481: Take CM Measures to Control the Renaming and Reuse of Old Command Files (2002)",
+   "https://llis.nasa.gov/lesson/8302": "LLIS 8302: Reducing the Error Rate in Command Files Uplinked to the Spacecraft",
+   "https://llis.nasa.gov/lesson/391": "LLIS 391: Galileo Spacecraft Safing Recovery Anomalies",
+   "https://llis.nasa.gov/lesson/3716": "LLIS 3716: Testbed Limitations May Impact End-to-End Flight System Testing",
+   "https://llis.nasa.gov/lesson/4579": "LLIS 4579: Ensure Official Data Repository Has All Needed Functionality",
+   "https://llis.nasa.gov/lesson/584": "LLIS 584: Mars Global Surveyor (MGS) Aerobraking Extra Burn Anomaly (1997)",
+   "https://llis.nasa.gov/lesson/737": "LLIS 737: Design Reliable Ceramic Components With Cares Code",
+   "https://www.nasa.gov/wp-content/uploads/2015/01/149414main_genesis_mib.pdf#page=93": "Genesis Mishap Investigation Board Report, Volume I",
+   "https://llis.nasa.gov/lesson/1489": "LLIS 1489: Instrument Simulators/Engineering Models",
+   "https://llis.nasa.gov/lesson/939": "LLIS 939: MPL Uplink Loss Timer Software/Test Errors (1998)",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=133": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/288": "LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration",
+   "https://llis.nasa.gov/lesson/310": "LLIS 310: Mars Observer Inertial Reference Loss",
+   "https://llis.nasa.gov/lesson/559": "LLIS 559: Redundant Verification of Critical Command Timing (1995)",
+   "https://ntrs.nasa.gov/api/citations/19990019501/downloads/19990019501.pdf#page=11": "SOHO Mission Interruption Joint NASA/ESA Investigation Board",
+   "https://llis.nasa.gov/lesson/1843": "LLIS 1843: Science Data Downlink Process Must Address Constraints Stemming from Fixed DSN Assets",
+   "https://llis.nasa.gov/llis_lib/pdf/1009461main1_0625-mr.pdf#page=10": "Lewis Spacecraft Mission Failure Investigation Board",
+   "https://llis.nasa.gov/llis_lib/pdf/1009462main1_0637-mr.pdf#page=12": "WIRE Mishap Investigation Board Report",
+   "https://llis.nasa.gov/lesson/1799": "LLIS 1799: Erroneous Onboard Status Reporting Disabled IMAGE's Radio",
+   "https://llis.nasa.gov/lesson/1531": "LLIS 1531: Indication of Post-Launch Degradation of the Downlink Signal due to Feedthrough (2003)",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=132": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/lesson/1598": "LLIS 1598: Manage Reaction Wheels as a Limited Spacecraft Resource (2002)",
+   "https://llis.nasa.gov/lesson/25503": "LLIS 25503: Highly Configurable Software Architecture Allows For Operations Flexibility At Low Cost",
+   "https://llis.nasa.gov/lesson/345": "LLIS 345: Mars Observer Attitude Control Fault Protection",
+   "https://ntrs.nasa.gov/api/citations/19990019501/downloads/19990019501.pdf#page=7": "SOHO Mission Interruption Joint NASA/ESA Investigation Board",
+   "https://llis.nasa.gov/lesson/692": "LLIS 692: Coordinate Systems for Attitude Determination and Control",
+   "https://llis.nasa.gov/lesson/1416": "LLIS 1416: Cassini RWA Flight Anomaly Due to Extended Use at Slow Speed (2001)",
+   "https://llis.nasa.gov/llis_lib/pdf/1009461main1_0625-mr.pdf#page=9": "Lewis Spacecraft Mission Failure Investigation Board",
+   "https://llis.nasa.gov/lesson/731": "LLIS 731: Spacecraft Data System (SDS) Hardware Design Practice",
+   "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=131": "Report on the Loss of the Mars Polar Lander and Deep Space 2 Missions",
+   "https://llis.nasa.gov/llis_lib/pdf/1009464main1_0641-mr.pdf#page=18": "Mars Climate Orbiter Mishap Investigation Board Phase I Report",
+   "https://discovery.larc.nasa.gov/discovery/PDF_FILES/mars_climate_orbiter_phaseII.pdf#page=80": "Report on Project Management in NASA by the Mars Climate Orbiter Mishap Investigation Board",
+   "https://llis.nasa.gov/lesson/740": "LLIS 740: Deficiencies in Mission Critical Software Development for Mars Climate Orbiter (1999)",
+   "https://www.nasa.gov/pdf/148072main_DART_mishap_overview.pdf#page=7": "Overview of the DART Mishap Investigation Results, For Public Release"
+  },
+  "model": "claude-sonnet-5",
+  "cost_usd": 0.0799,
+  "tool_calls": 10
+ }
+]

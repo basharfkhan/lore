@@ -23,7 +23,9 @@ from lore.agent.tools import TOOLS, run_tool
 from lore.llm import FALLBACK_BETA, client
 from lore.paths import DATA_DIR
 
-DEFAULT_MODEL = os.environ.get("LORE_AGENT_MODEL", "claude-opus-5")
+# Sonnet followed the report format and stayed within the sources at 40% of the Opus cost in
+# side-by-side runs; Haiku was cheapest but added advice the sources do not contain.
+DEFAULT_MODEL = os.environ.get("LORE_AGENT_MODEL", "claude-sonnet-5")
 MAX_TURNS = 10
 MAX_TOKENS = 8000
 RUNS_DIR = DATA_DIR / "interim" / "runs"
@@ -71,7 +73,10 @@ than filling the gap from memory.
 safety review.
 
 For follow-up questions, answer directly, searching again when needed. Write plainly for a \
-working engineer."""
+working engineer.
+
+You only do pre-mortems and questions about this archive. If asked for anything else, say so \
+in one sentence without calling tools."""
 
 
 @dataclass
@@ -132,9 +137,18 @@ def run(
     history: list[dict] | None = None,
     model: str = DEFAULT_MODEL,
     on_step: Callable[[dict], None] | None = None,
+    sources: dict[str, str] | None = None,
 ) -> Run:
-    """Answer one user turn. ``history`` is the ``messages`` of the previous Run, for follow-ups."""
-    out = Run(model=model, messages=[*(history or []), {"role": "user", "content": question}])
+    """Answer one user turn.
+
+    For a follow-up, pass the previous Run's ``messages`` as ``history`` and its ``sources``,
+    so a link to a document retrieved earlier in the conversation still counts as supported.
+    """
+    out = Run(
+        model=model,
+        messages=[*(history or []), {"role": "user", "content": question}],
+        sources=dict(sources or {}),
+    )
     totals: dict[str, int] = {}
     for turn in range(MAX_TURNS + 1):
         response = _request(model, out.messages, allow_tools=turn < MAX_TURNS)

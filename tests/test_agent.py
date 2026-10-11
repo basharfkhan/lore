@@ -47,3 +47,8 @@ def test_search_then_read_round_trip():
 def test_unknown_ids_and_tools_return_errors_not_exceptions():
     assert "error" in read_document("llis-0")
     assert "error" in run_tool("delete_everything", {})
+
+
+def test_follow_up_links_to_earlier_documents_are_supported():
+    earlier = {"https://llis.nasa.gov/lesson/1196": "LLIS 1196"}
+    assert check_links("As [LLIS 1196](https://llis.nasa.gov/lesson/1196) says.", earlier) == []

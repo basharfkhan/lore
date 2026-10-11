@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LORE: pre-mortems from NASA's lessons learned</title>
+<meta name="description" content="Describe a spacecraft system or operation and get the prior failures and NASA lessons most relevant to it, with citations.">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1b1d22; --muted: #5d6470; --line: #dcdad2;
+    --accent: #b4421f; --accent-ink: #ffffff; --soft: #efede6; --ok: #2f6b3f; --warn: #9a5b00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121418; --surface: #1a1d23; --ink: #e9e7e1; --muted: #9aa1ad; --line: #2c313a;
+      --accent: #e8794f; --accent-ink: #16181c; --soft: #20242b; --ok: #7cc592; --warn: #e2b05c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 780px; margin: 0 auto; padding: 40px 16px 64px; }
+  header h1 { font-size: 30px; letter-spacing: 0.06em; margin: 0; }
+  header h1 span { color: var(--muted); font-weight: 400; font-size: 15px; letter-spacing: 0; margin-left: 10px; }
+  header p { margin: 10px 0 0; color: var(--muted); max-width: 62ch; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-top: 22px; }
+  label { display: block; font-weight: 600; margin-bottom: 8px; }
+  textarea, input[type=text] {
+    width: 100%; font: inherit; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 8px; padding: 12px;
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  textarea:focus, input:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+  button {
+    font: inherit; cursor: pointer; border-radius: 8px; padding: 9px 16px;
+    border: 1px solid var(--line); background: var(--soft); color: var(--ink);
+  }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  button:disabled { opacity: 0.55; cursor: default; }
+  .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .examples button { font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+  .hint { color: var(--muted); font-size: 14px; }
+  .turn { margin-top: 22px; }
+  .question { font-weight: 600; white-space: pre-wrap; }
+  .steps { list-style: none; margin: 12px 0 0; padding: 0; font-size: 14px; color: var(--muted); }
+  .steps li { padding: 3px 0 3px 22px; position: relative; overflow-wrap: anywhere; }
+  .steps li::before { content: ""; position: absolute; left: 4px; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+  .steps li.search::before { background: var(--accent); }
+  .steps b { color: var(--ink); font-weight: 600; }
+  details.trace summary { cursor: pointer; color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .report { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 6px; overflow-wrap: anywhere; }
+  .report h1, .report h2, .report h3 { font-size: 17px; margin: 20px 0 6px; line-height: 1.35; }
+  .report p { margin: 8px 0; }
+  .report ul { padding-left: 20px; }
+  .report a { color: var(--accent); }
+  .report hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
+  .meta { margin-top: 14px; font-size: 13px; color: var(--muted); display: flex; gap: 6px 16px; flex-wrap: wrap; }
+  .meta .ok { color: var(--ok); } .meta .warn { color: var(--warn); }
+  .error { color: var(--warn); margin-top: 12px; }
+  .working { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .working::after { content: ""; display: inline-block; width: 1em; text-align: left; animation: dots 1.2s steps(4) infinite; }
+  @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+  @media (prefers-reduced-motion: reduce) { .working::after { animation: none; content: "..."; } }
+  section.about h2 { font-size: 17px; margin: 0 0 8px; }
+  section.about p, section.about li { color: var(--muted); font-size: 15px; }
+  section.about ul { padding-left: 20px; margin: 8px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 10px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 13px; }
+  footer a, section.about a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>LORE<span>Lessons and Outcomes Retrieval Engine</span></h1>
+    <p>Describe a spacecraft system, an operation or a design decision. LORE searches NASA's
+      lessons-learned archive and mishap investigation reports for failures of the same kind,
+      and tells you what happened and what the investigators recommended.</p>
+  </header>
+
+  <div class="card">
+    <form id="ask-form">
+      <label for="question">What are you about to build or do?</label>
+      <textarea id="question" maxlength="2000" placeholder="For example: we are reusing flight software from an earlier mission and plan to verify the new sensor interface by review rather than by test."></textarea>
+      <div class="row">
+        <button class="primary" type="submit" id="ask-button">Run pre-mortem</button>
+        <span class="hint" id="status-line"></span>
+      </div>
+    </form>
+    <div class="hint" style="margin-top:14px">Or open a finished example (instant, no cost):</div>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <div id="conversation" aria-live="polite"></div>
+
+  <div class="card" id="followup-card" hidden>
+    <form id="followup-form">
+      <label for="followup">Ask a follow-up</label>
+      <input type="text" id="followup" maxlength="2000" placeholder="For example: what did the board recommend about shared equipment?">
+      <div class="row">
+        <button class="primary" type="submit" id="followup-button">Ask</button>
+        <button type="button" id="new-button">Start over</button>
+        <span class="hint" id="turns-line"></span>
+      </div>
+    </form>
+  </div>
+
+  <section class="card about">
+    <h2>How it works</h2>
+    <ul>
+      <li>An AI agent (Claude) reads your description, thinks of the ways it could fail, and
+        searches the archive once per failure mode. It reads the promising documents in full
+        before writing.</li>
+      <li>The archive is 2,117 NASA lessons (1972 to 2025) and 17 mishap investigation reports
+        from Apollo 1 to Glory, about 1,900 pages, some recovered by OCR from scans.</li>
+      <li>Every link in an answer is checked against the documents the agent actually retrieved
+        in that run. Anything it could not have read is flagged.</li>
+    </ul>
+    <h2 style="margin-top:18px">Does searching by failure mode help?</h2>
+    <p>Tested on real incidents the model does not recognise, using only documents written
+      before each incident. The question is whether a lesson describing the same failure
+      mechanism appears in the top 30 results.</p>
+    <table>
+      <tr><th>Search method</th><th>All 7 incidents</th><th>The 4 hard ones</th></tr>
+      <tr><td>Keyword search</td><td>2 of 7</td><td>0 of 4</td></tr>
+      <tr><td>Meaning-based search</td><td>2 of 7</td><td>1 of 4</td></tr>
+      <tr><td>Failure hypotheses, then search</td><td><b>5 of 7</b></td><td><b>3 of 4</b></td></tr>
+    </table>
+    <p>Seven incidents is a small sample, so read this as a direction, not a proof. Method,
+      labels and limits are in the <a href="https://github.com/basharfkhan/lore#evaluation" target="_blank" rel="noopener">project README</a>.</p>
+  </section>
+
+  <footer>
+    A research aid drawn from historical records, not a safety review. Built by Bashar Khan.
+    Source: <a href="https://github.com/basharfkhan/lore" target="_blank" rel="noopener">github.com/basharfkhan/lore</a>.
+    Documents are public NASA material.
+  </footer>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const conversation = $("conversation");
+let sessionId = null;
+let busy = false;
+let liveAvailable = true;
+
+function renderMarkdown(text) {
+  const html = DOMPurify.sanitize(marked.parse(text));
+  const box = document.createElement("div");
+  box.className = "report";
+  box.innerHTML = html;
+  box.querySelectorAll("a").forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+  return box;
+}
+
+function stepItem(step) {
+  const li = document.createElement("li");
+  const label = document.createElement("b");
+  if (step.tool === "search_archive") {
+    li.className = "search";
+    label.textContent = "Searched: ";
+    li.append(label, step.input.query);
+  } else {
+    label.textContent = "Read: ";
+    li.append(label, step.input.id);
+  }
+  return li;
+}
+
+function newTurn(question) {
+  const turn = document.createElement("div");
+  turn.className = "card turn";
+  const q = document.createElement("div");
+  q.className = "question";
+  q.textContent = question;
+  const steps = document.createElement("ul");
+  steps.className = "steps";
+  turn.append(q, steps);
+  conversation.append(turn);
+  return { turn, steps };
+}
+
+function finishTurn(ui, data, isExample) {
+  ui.turn.querySelector(".working")?.remove();
+  // Fold the activity log away once the answer is there.
+  const trace = document.createElement("details");
+  trace.className = "trace";
+  const summary = document.createElement("summary");
+  const searches = [...ui.steps.children].filter((li) => li.className === "search").length;
+  summary.textContent = `${searches} searches, ${ui.steps.children.length - searches} documents read`;
+  ui.steps.replaceWith(trace);
+  trace.append(summary, ui.steps);
+  ui.turn.append(renderMarkdown(data.answer));
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  const links = document.createElement("span");
+  const bad = data.unsupported_links || [];
+  links.className = bad.length ? "warn" : "ok";
+  links.textContent = bad.length
+    ? `${bad.length} link(s) not found among retrieved documents`
+    : "All links verified against retrieved documents";
+  const cost = document.createElement("span");
+  cost.textContent = `${data.model}, $${Number(data.cost_usd).toFixed(2)}` + (isExample ? " (generated earlier)" : "");
+  meta.append(links, cost);
+  ui.turn.append(meta);
+}
+
+function showError(ui, message) {
+  ui.turn.querySelector(".working")?.remove();
+  const p = document.createElement("p");
+  p.className = "error";
+  p.textContent = message;
+  ui.turn.append(p);
+}
+
+function setBusy(state) {
+  busy = state;
+  for (const id of ["ask-button", "followup-button"]) $(id).disabled = state || !liveAvailable;
+  document.querySelectorAll("#examples button").forEach((b) => (b.disabled = state));
+}
+
+async function ask(question) {
+  if (busy) return;
+  setBusy(true);
+  const ui = newTurn(question);
+  const working = document.createElement("div");
+  working.className = "working";
+  working.textContent = "Working";
+  ui.turn.append(working);
+  ui.turn.scrollIntoView({ behavior: "smooth", block: "start" });
+  try {
+    const response = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, session_id: sessionId }),
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      const detail = Array.isArray(body.detail) ? "Please write at least a sentence." : null;
+      showError(ui, body.error || detail || "The request failed. Please try again.");
+      return;
+    }
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let answered = false;
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      let cut;
+      while ((cut = buffer.indexOf("\n\n")) >= 0) {
+        const block = buffer.slice(0, cut);
+        buffer = buffer.slice(cut + 2);
+        const name = (block.match(/^event: (.*)$/m) || [])[1];
+        const data = JSON.parse((block.match(/^data: (.*)$/m) || [, "{}"])[1]);
+        if (name === "step") ui.steps.append(stepItem(data));
+        if (name === "error") showError(ui, "Something went wrong while answering. Please try again.");
+        if (name === "answer") {
+          answered = true;
+          sessionId = data.session_id;
+          finishTurn(ui, data, false);
+          $("followup-card").hidden = false;
+          $("followup-button").hidden = data.turns_left <= 0;
+          $("followup").hidden = data.turns_left <= 0;
+          $("turns-line").textContent = data.turns_left > 0
+            ? `${data.turns_left} follow-up question(s) left in this conversation`
+            : "This conversation has reached its limit.";
+        }
+      }
+    }
+    if (!answered && !ui.turn.querySelector(".error")) showError(ui, "The connection closed early. Please try again.");
+  } catch (err) {
+    showError(ui, "Could not reach the server. Please try again.");
+  } finally {
+    setBusy(false);
+  }
+}
+
+function showExample(example) {
+  if (busy) return;
+  conversation.replaceChildren();
+  sessionId = null;
+  $("followup-card").hidden = true;
+  $("question").value = example.question;
+  const ui = newTurn(example.question);
+  example.steps.forEach((s) => ui.steps.append(stepItem(s)));
+  finishTurn(ui, { ...example, unsupported_links: [] }, true);
+  ui.turn.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+$("ask-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = $("question").value.trim();
+  if (question.length < 10) return $("question").focus();
+  conversation.replaceChildren();
+  sessionId = null;
+  $("followup-card").hidden = true;
+  ask(question);
+});
+
+$("followup-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = $("followup").value.trim();
+  if (question.length < 10) return $("followup").focus();
+  $("followup").value = "";
+  ask(question);
+});
+
+$("new-button").addEventListener("click", () => {
+  conversation.replaceChildren();
+  sessionId = null;
+  $("followup-card").hidden = true;
+  $("question").value = "";
+  $("question").focus();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+fetch("/api/examples").then((r) => r.json()).then((examples) => {
+  for (const example of examples) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = example.title;
+    button.addEventListener("click", () => showExample(example));
+    $("examples").append(button);
+  }
+});
+
+fetch("/api/status").then((r) => r.json()).then((s) => {
+  $("status-line").textContent = s.live_available
+    ? "Live answers take about 30 seconds."
+    : "Today's budget for live questions is used up. The examples below still work.";
+  liveAvailable = s.live_available;
+  setBusy(busy);
+});
+</script>
+</body>
+</html>
