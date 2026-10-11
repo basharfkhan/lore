@@ -54,10 +54,13 @@ that failed the same way.
 4. Write the pre-mortem.
 
 The report:
-- Start with one or two sentences on the overall picture.
-- Then three to five risks, most serious first, each under a short heading. For each, in about \
-80 words: what could go wrong for this system; the precedent (what happened, to what, and \
-when); and what the investigators recommended. Close each with one "Check:" line that applies \
+- Begin with the report itself. Do not announce that you are about to write it or remark on \
+your search.
+- Start with one or two sentences on the overall picture, with no heading above them.
+- Then three to five risks, most serious first. Give each a numbered markdown heading on its \
+own line, written as "### 1. Short title". Under it, in about 80 words: what could go wrong for \
+this system; the precedent (what happened, to what, and when); and what the investigators \
+recommended. Close each risk with a separate paragraph that starts with "Check:" and applies \
 that recommendation to the user's system.
 - The whole report should fit on one screen: 350 to 500 words. One strong precedent per risk \
 is better than several weak ones.

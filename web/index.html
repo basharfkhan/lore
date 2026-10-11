@@ -5,142 +5,280 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LORE: pre-mortems from NASA's lessons learned</title>
 <meta name="description" content="Describe a spacecraft system or operation and get the prior failures and NASA lessons most relevant to it, with citations.">
+<meta name="theme-color" content="#060a13">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060a13'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='10' fill='none' stroke='%23ffb454' stroke-width='3' transform='rotate(-28 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23e8ecf4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <style>
   :root {
-    --bg: #f6f5f1; --surface: #ffffff; --ink: #1b1d22; --muted: #5d6470; --line: #dcdad2;
-    --accent: #b4421f; --accent-ink: #ffffff; --soft: #efede6; --ok: #2f6b3f; --warn: #9a5b00;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121418; --surface: #1a1d23; --ink: #e9e7e1; --muted: #9aa1ad; --line: #2c313a;
-      --accent: #e8794f; --accent-ink: #16181c; --soft: #20242b; --ok: #7cc592; --warn: #e2b05c;
-    }
+    --void: #060a13; --panel: rgba(15, 21, 35, 0.86); --panel-solid: #0f1523; --line: #232e47;
+    --line-soft: #1a2338; --ink: #e8ecf4; --muted: #94a1ba; --dim: #8490ab;
+    --amber: #ffb454; --amber-deep: #e8912a; --cyan: #74d3ff; --green: #7ee0a1; --red: #ff8f73;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   }
   * { box-sizing: border-box; }
+  html { background: var(--void); }
   body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 0; color: var(--ink); font: 16px/1.62 var(--sans);
+    background:
+      radial-gradient(1100px 520px at 82% -8%, rgba(116, 211, 255, 0.13), transparent 62%),
+      radial-gradient(900px 480px at 6% 4%, rgba(255, 180, 84, 0.09), transparent 60%),
+      var(--void);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
-  main { max-width: 780px; margin: 0 auto; padding: 40px 16px 64px; }
-  header h1 { font-size: 30px; letter-spacing: 0.06em; margin: 0; }
-  header h1 span { color: var(--muted); font-weight: 400; font-size: 15px; letter-spacing: 0; margin-left: 10px; }
-  header p { margin: 10px 0 0; color: var(--muted); max-width: 62ch; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-top: 22px; }
-  label { display: block; font-weight: 600; margin-bottom: 8px; }
+  #stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 22px 18px 72px; }
+  a { color: var(--amber); }
+
+  /* ---- status bar ---- */
+  .statusbar {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center;
+    font: 500 11.5px/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dim); padding-bottom: 14px; border-bottom: 1px solid var(--line-soft);
+  }
+  .statusbar .live { color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(126, 224, 161, 0.16); }
+  .dot.off { background: var(--amber); box-shadow: 0 0 0 3px rgba(255, 180, 84, 0.16); }
+  .statusbar .spacer { flex: 1; }
+
+  /* ---- hero ---- */
+  header.hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 46px 0 30px; }
+  .eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin: 0 0 14px; }
+  .wordmark {
+    font-family: var(--display); font-weight: 600; font-size: clamp(64px, 15vw, 132px);
+    line-height: 0.86; letter-spacing: 0.035em; margin: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #dfe6f5 46%, #8f9fc0 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .expansion { font: 500 13px/1.5 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 18px 0 0; }
+  .expansion b { color: var(--amber); font-weight: 500; }
+  .lede { font-size: 18px; line-height: 1.6; color: #c9d2e3; max-width: 56ch; margin: 20px 0 0; }
+  .emblem { width: 190px; height: 190px; flex: none; }
+  .emblem .ring { fill: none; stroke: var(--line); stroke-width: 1; }
+  .emblem .orbit { fill: none; stroke: var(--amber); stroke-width: 1.4; opacity: 0.9; }
+  .emblem .orbit.b { stroke: var(--cyan); opacity: 0.55; }
+  .emblem .sat { fill: var(--amber); }
+  .emblem .satgroup { transform-origin: 100px 100px; animation: orbit 26s linear infinite; }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 12px; overflow: hidden; }
+  .fact { background: var(--panel-solid); padding: 14px 16px; }
+  .fact b { display: block; font: 600 24px/1.1 var(--display); color: var(--ink); }
+  .fact span { font: 500 10.5px/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+
+  /* ---- panels ---- */
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-top: 22px; backdrop-filter: blur(6px); }
+  .label { font: 500 11.5px/1.4 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+  .label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  label.prompt { display: block; font: 600 22px/1.3 var(--display); margin: 0 0 12px; }
   textarea, input[type=text] {
-    width: 100%; font: inherit; color: var(--ink); background: var(--bg);
-    border: 1px solid var(--line); border-radius: 8px; padding: 12px;
+    width: 100%; font: 15.5px/1.55 var(--sans); color: var(--ink); background: rgba(6, 10, 19, 0.75);
+    border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px;
   }
-  textarea { min-height: 120px; resize: vertical; }
-  textarea:focus, input:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
-  button {
-    font: inherit; cursor: pointer; border-radius: 8px; padding: 9px 16px;
-    border: 1px solid var(--line); background: var(--soft); color: var(--ink);
-  }
-  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
-  button:disabled { opacity: 0.55; cursor: default; }
-  .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .examples button { font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+  textarea { min-height: 124px; resize: vertical; }
+  textarea::placeholder, input::placeholder { color: var(--dim); }
+  textarea:focus, input:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(255, 180, 84, 0.18); }
+  button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  button { font: 500 14px/1 var(--sans); cursor: pointer; border-radius: 9px; padding: 11px 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); color: var(--ink); transition: border-color 0.15s, background 0.15s, transform 0.05s; }
+  button:hover:not(:disabled) { border-color: #3b4a6d; background: rgba(255, 255, 255, 0.07); }
+  button:active:not(:disabled) { transform: translateY(1px); }
+  button.primary { background: linear-gradient(180deg, var(--amber), var(--amber-deep)); color: #1a1205; border-color: transparent; font-weight: 600; padding: 12px 20px; }
+  button.primary:hover:not(:disabled) { background: linear-gradient(180deg, #ffc477, var(--amber)); }
+  button:disabled { opacity: 0.5; cursor: default; }
   .hint { color: var(--muted); font-size: 14px; }
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+  .cases button { text-align: left; padding: 13px 14px; line-height: 1.35; display: flex; flex-direction: column; gap: 6px; }
+  .cases button small { font: 500 10.5px/1.3 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); }
+
+  /* ---- a turn: question, flight log, report ---- */
   .turn { margin-top: 22px; }
-  .question { font-weight: 600; white-space: pre-wrap; }
-  .steps { list-style: none; margin: 12px 0 0; padding: 0; font-size: 14px; color: var(--muted); }
-  .steps li { padding: 3px 0 3px 22px; position: relative; overflow-wrap: anywhere; }
-  .steps li::before { content: ""; position: absolute; left: 4px; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
-  .steps li.search::before { background: var(--accent); }
-  .steps b { color: var(--ink); font-weight: 600; }
-  details.trace summary { cursor: pointer; color: var(--muted); font-size: 14px; margin-top: 12px; }
-  .report { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 6px; overflow-wrap: anywhere; }
-  .report h1, .report h2, .report h3 { font-size: 17px; margin: 20px 0 6px; line-height: 1.35; }
-  .report p { margin: 8px 0; }
-  .report ul { padding-left: 20px; }
-  .report a { color: var(--accent); }
-  .report hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
-  .meta { margin-top: 14px; font-size: 13px; color: var(--muted); display: flex; gap: 6px 16px; flex-wrap: wrap; }
-  .meta .ok { color: var(--ok); } .meta .warn { color: var(--warn); }
-  .error { color: var(--warn); margin-top: 12px; }
-  .working { color: var(--muted); font-size: 14px; margin-top: 12px; }
-  .working::after { content: ""; display: inline-block; width: 1em; text-align: left; animation: dots 1.2s steps(4) infinite; }
-  @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
-  @media (prefers-reduced-motion: reduce) { .working::after { animation: none; content: "..."; } }
-  section.about h2 { font-size: 17px; margin: 0 0 8px; }
-  section.about p, section.about li { color: var(--muted); font-size: 15px; }
-  section.about ul { padding-left: 20px; margin: 8px 0; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 10px; }
-  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
-  th { color: var(--muted); font-weight: 600; }
-  footer { margin-top: 28px; color: var(--muted); font-size: 13px; }
-  footer a, section.about a { color: var(--accent); }
+  .question { font-size: 16.5px; color: #d6deee; white-space: pre-wrap; border-left: 2px solid var(--line); padding-left: 14px; margin: 0; }
+  .log { list-style: none; margin: 16px 0 0; padding: 12px 14px; font: 13px/1.55 var(--mono); background: rgba(6, 10, 19, 0.7); border: 1px solid var(--line-soft); border-radius: 10px; max-height: 320px; overflow: auto; }
+  .log li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 2px 0; overflow-wrap: anywhere; color: #c3ccdf; }
+  .log .tag { color: var(--muted); letter-spacing: 0.08em; }
+  .log li.search .tag { color: var(--cyan); }
+  .log li.read .tag { color: var(--amber); }
+  details.trace { margin-top: 16px; }
+  details.trace summary { cursor: pointer; font: 500 11.5px/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); list-style: none; display: inline-flex; gap: 8px; align-items: center; }
+  details.trace summary::-webkit-details-marker { display: none; }
+  details.trace summary::before { content: "+"; color: var(--amber); font-size: 14px; }
+  details.trace[open] summary::before { content: "\2212"; }
+  details.trace .log { margin-top: 10px; }
+  .working { margin-top: 14px; font: 500 12px/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+  .working i { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); animation: pulse 1.1s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 0.25; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.15); } }
+
+  .report { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+  .report > :first-child { margin-top: 0; }
+  .report h1, .report h2, .report h3, .report h4 { font: 600 21px/1.3 var(--display); color: #ffffff; margin: 26px 0 8px; }
+  .report p { margin: 10px 0; color: #d2d9e8; }
+  .report strong { color: #ffffff; font-weight: 600; }
+  .report .risk { font: 600 21px/1.3 var(--display); color: #ffffff; margin: 28px 0 8px; padding-top: 20px; border-top: 1px solid var(--line-soft); }
+  .report .risk:first-child { border-top: 0; padding-top: 0; }
+  .report ul, .report ol { padding-left: 22px; color: #d2d9e8; }
+  .report li { margin: 5px 0; }
+  .report a { color: var(--amber); text-decoration-color: rgba(255, 180, 84, 0.45); text-underline-offset: 3px; }
+  .report a:hover { text-decoration-color: var(--amber); }
+  .report hr { border: 0; border-top: 1px solid var(--line-soft); margin: 20px 0; }
+  .report p.check { margin: 14px 0 6px; }
+  .report .check { background: rgba(116, 211, 255, 0.07); border: 1px solid rgba(116, 211, 255, 0.22); border-left: 3px solid var(--cyan); border-radius: 8px; padding: 10px 14px; color: #dbe9f7; }
+  .report .check strong { color: var(--cyan); font: 500 11.5px/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; margin-right: 6px; }
+  .report em { color: var(--muted); }
+
+  .sources { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .sources ol { list-style: none; counter-reset: src; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .sources li { counter-increment: src; display: grid; grid-template-columns: 30px 1fr; gap: 6px; font-size: 14.5px; line-height: 1.45; }
+  .sources li::before { content: counter(src, decimal-leading-zero); font: 500 12px/1.7 var(--mono); color: var(--dim); }
+  .sources a { color: #d6deee; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .sources a:hover { color: var(--amber); border-color: var(--amber); }
+  .sources small { color: var(--dim); font: 12px var(--mono); margin-left: 6px; }
+
+  .meta { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font: 500 11px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .badge.ok { color: var(--green); border-color: rgba(126, 224, 161, 0.35); background: rgba(126, 224, 161, 0.07); }
+  .badge.warn { color: var(--red); border-color: rgba(255, 143, 115, 0.4); background: rgba(255, 143, 115, 0.07); }
+  .error { color: var(--red); margin: 14px 0 0; }
+
+  /* ---- about ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { counter-increment: step; border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px; background: rgba(6, 10, 19, 0.5); color: #c4cde0; font-size: 14.5px; line-height: 1.55; }
+  .steps li::before { content: "0" counter(step); display: block; font: 600 26px/1 var(--display); color: var(--amber); margin-bottom: 10px; }
+  .steps b { color: #ffffff; font-weight: 600; display: block; margin-bottom: 4px; font-size: 15.5px; }
+  h2.section { font: 600 26px/1.25 var(--display); margin: 0 0 6px; color: #ffffff; }
+  .about p:not(.label) { color: var(--muted); margin: 6px 0 0; max-width: 68ch; }
+  .about .label + h2.section { margin-top: 4px; }
+  .bars { margin: 18px 0 4px; display: grid; gap: 12px; }
+  .bar { display: grid; grid-template-columns: minmax(150px, 230px) 1fr 62px; gap: 14px; align-items: center; font-size: 14.5px; color: #c9d2e3; }
+  .track { height: 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); overflow: hidden; }
+  .fill { height: 100%; border-radius: 999px; background: #55617d; }
+  .bar.win .fill { background: linear-gradient(90deg, var(--amber-deep), var(--amber)); }
+  .bar.win { color: #ffffff; font-weight: 500; }
+  .bar .val { font: 500 13px var(--mono); color: var(--muted); text-align: right; }
+  .bar.win .val { color: var(--amber); }
+  footer { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--dim); font-size: 13.5px; line-height: 1.6; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 720px) {
+    header.hero { grid-template-columns: 1fr; padding-top: 34px; }
+    .emblem { display: none; }
+    .facts { grid-template-columns: repeat(2, 1fr); }
+    .cases, .steps { grid-template-columns: 1fr; }
+    .bar { grid-template-columns: 1fr 52px; }
+    .bar .track { grid-column: 1 / -1; order: 3; }
+    .panel { padding: 18px; }
+    .lede { font-size: 17px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .emblem .satgroup, .working i { animation: none; }
+  }
 </style>
 </head>
 <body>
+<canvas id="stars" aria-hidden="true"></canvas>
 <main>
-  <header>
-    <h1>LORE<span>Lessons and Outcomes Retrieval Engine</span></h1>
-    <p>Describe a spacecraft system, an operation or a design decision. LORE searches NASA's
-      lessons-learned archive and mishap investigation reports for failures of the same kind,
-      and tells you what happened and what the investigators recommended.</p>
+  <div class="statusbar">
+    <span class="live"><i class="dot" id="status-dot"></i><span id="status-text">Archive online</span></span>
+    <span>2,117 lessons</span>
+    <span>17 mishap reports</span>
+    <span class="spacer"></span>
+    <span>Apollo 1 to Glory</span>
+  </div>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Pre-mortems from the record</p>
+      <h1 class="wordmark">LORE</h1>
+      <p class="expansion"><b>L</b>essons and <b>O</b>utcomes <b>R</b>etrieval <b>E</b>ngine</p>
+      <p class="lede">Every spaceflight mishap leaves a record of what went wrong and what the
+        investigators said to do about it. Describe what you are about to build or do, and LORE
+        finds the failures of the same kind before you repeat them.</p>
+    </div>
+    <svg class="emblem" viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="ring" cx="100" cy="100" r="92"/>
+      <circle class="ring" cx="100" cy="100" r="62"/>
+      <ellipse class="orbit" cx="100" cy="100" rx="88" ry="34" transform="rotate(-24 100 100)"/>
+      <ellipse class="orbit b" cx="100" cy="100" rx="88" ry="34" transform="rotate(38 100 100)"/>
+      <circle cx="100" cy="100" r="20" fill="#e8ecf4"/>
+      <circle cx="93" cy="94" r="5" fill="#c3ccdf"/>
+      <circle cx="108" cy="106" r="3.2" fill="#c3ccdf"/>
+      <g class="satgroup"><circle class="sat" cx="100" cy="8" r="4.5"/></g>
+    </svg>
   </header>
 
-  <div class="card">
+  <div class="facts" aria-label="What the archive holds">
+    <div class="fact"><b>2,117</b><span>NASA lessons</span></div>
+    <div class="fact"><b>17</b><span>Mishap reports</span></div>
+    <div class="fact"><b>1,925</b><span>Report pages read</span></div>
+    <div class="fact"><b>1967&ndash;2025</b><span>Years covered</span></div>
+  </div>
+
+  <div class="panel">
     <form id="ask-form">
-      <label for="question">What are you about to build or do?</label>
+      <p class="label">Mission brief</p>
+      <label class="prompt" for="question">What are you about to build or do?</label>
       <textarea id="question" maxlength="2000" placeholder="For example: we are reusing flight software from an earlier mission and plan to verify the new sensor interface by review rather than by test."></textarea>
       <div class="row">
         <button class="primary" type="submit" id="ask-button">Run pre-mortem</button>
         <span class="hint" id="status-line"></span>
       </div>
     </form>
-    <div class="hint" style="margin-top:14px">Or open a finished example (instant, no cost):</div>
-    <div class="examples" id="examples"></div>
+    <p class="label" style="margin-top:26px">Case files</p>
+    <p class="hint" style="margin:0 0 12px">Finished pre-mortems. They open instantly.</p>
+    <div class="cases" id="examples"></div>
   </div>
 
   <div id="conversation" aria-live="polite"></div>
 
-  <div class="card" id="followup-card" hidden>
+  <div class="panel" id="followup-card" hidden>
     <form id="followup-form">
-      <label for="followup">Ask a follow-up</label>
-      <input type="text" id="followup" maxlength="2000" placeholder="For example: what did the board recommend about shared equipment?">
+      <p class="label">Follow-up</p>
+      <input type="text" id="followup" maxlength="2000" aria-label="Ask a follow-up question" placeholder="For example: what did the board recommend about shared equipment?">
       <div class="row">
         <button class="primary" type="submit" id="followup-button">Ask</button>
-        <button type="button" id="new-button">Start over</button>
+        <button type="button" id="new-button">New pre-mortem</button>
         <span class="hint" id="turns-line"></span>
       </div>
     </form>
   </div>
 
-  <section class="card about">
-    <h2>How it works</h2>
-    <ul>
-      <li>An AI agent (Claude) reads your description, thinks of the ways it could fail, and
-        searches the archive once per failure mode. It reads the promising documents in full
-        before writing.</li>
-      <li>The archive is 2,117 NASA lessons (1972 to 2025) and 17 mishap investigation reports
-        from Apollo 1 to Glory, about 1,900 pages, some recovered by OCR from scans.</li>
-      <li>Every link in an answer is checked against the documents the agent actually retrieved
-        in that run. Anything it could not have read is flagged.</li>
-    </ul>
-    <h2 style="margin-top:18px">Does searching by failure mode help?</h2>
-    <p>Tested on real incidents the model does not recognise, using only documents written
-      before each incident. The question is whether a lesson describing the same failure
-      mechanism appears in the top 30 results.</p>
-    <table>
-      <tr><th>Search method</th><th>All 7 incidents</th><th>The 4 hard ones</th></tr>
-      <tr><td>Keyword search</td><td>2 of 7</td><td>0 of 4</td></tr>
-      <tr><td>Meaning-based search</td><td>2 of 7</td><td>1 of 4</td></tr>
-      <tr><td>Failure hypotheses, then search</td><td><b>5 of 7</b></td><td><b>3 of 4</b></td></tr>
-    </table>
-    <p>Seven incidents is a small sample, so read this as a direction, not a proof. Method,
-      labels and limits are in the <a href="https://github.com/basharfkhan/lore#evaluation" target="_blank" rel="noopener">project README</a>.</p>
+  <section class="panel about">
+    <p class="label">How it works</p>
+    <ol class="steps">
+      <li><b>It thinks about failure</b>An AI agent reads your brief and works out the distinct
+        ways the system could fail: design, software, testing, handling, schedule pressure.</li>
+      <li><b>It searches by mechanism</b>It searches the archive once per failure mode, then reads
+        the promising documents in full. The best precedent is usually about different hardware.</li>
+      <li><b>It shows its sources</b>Every link in the answer is checked against the documents
+        the agent actually retrieved. Anything it could not have read is flagged.</li>
+    </ol>
+  </section>
+
+  <section class="panel about">
+    <p class="label">Does it work?</p>
+    <h2 class="section">Tested on incidents the model cannot recall</h2>
+    <p>Seven real incidents, using only documents written before each one. The question is
+      whether a lesson describing the same failure mechanism appears in the top 30 results.</p>
+    <div class="bars" role="img" aria-label="Incidents with the right precedent found: keyword search 2 of 7, meaning-based search 2 of 7, failure hypotheses then search 5 of 7">
+      <div class="bar"><span>Keyword search</span><div class="track"><div class="fill" style="width:28.6%"></div></div><span class="val">2 of 7</span></div>
+      <div class="bar"><span>Meaning-based search</span><div class="track"><div class="fill" style="width:28.6%"></div></div><span class="val">2 of 7</span></div>
+      <div class="bar win"><span>Failure hypotheses, then search</span><div class="track"><div class="fill" style="width:71.4%"></div></div><span class="val">5 of 7</span></div>
+    </div>
+    <p>On the four hardest incidents it is 3 of 4 against 0 or 1. Seven is a small sample, so
+      read this as a direction, not a proof. Method, labels and limits are in the
+      <a href="https://github.com/basharfkhan/lore#evaluation" target="_blank" rel="noopener">project README</a>.</p>
   </section>
 
   <footer>
-    A research aid drawn from historical records, not a safety review. Built by Bashar Khan.
-    Source: <a href="https://github.com/basharfkhan/lore" target="_blank" rel="noopener">github.com/basharfkhan/lore</a>.
-    Documents are public NASA material.
+    A research aid drawn from historical records, not a safety review. Documents are public NASA
+    material. Built by Bashar Khan.
+    Source: <a href="https://github.com/basharfkhan/lore" target="_blank" rel="noopener">github.com/basharfkhan/lore</a>
   </footer>
 </main>
 
@@ -151,65 +289,163 @@ let sessionId = null;
 let busy = false;
 let liveAvailable = true;
 
-function renderMarkdown(text) {
-  const html = DOMPurify.sanitize(marked.parse(text));
+/* ---- starfield: drawn once, redrawn on resize, no animation ---- */
+function drawStars() {
+  const canvas = $("stars");
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const w = window.innerWidth, h = window.innerHeight;
+  canvas.width = w * ratio; canvas.height = h * ratio;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(ratio, ratio);
+  let seed = 20261011;
+  const rand = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
+  const count = Math.round((w * h) / 5200);
+  for (let i = 0; i < count; i++) {
+    const x = rand() * w, y = rand() * h, size = rand();
+    const radius = size > 0.985 ? 1.5 : size > 0.9 ? 1.05 : 0.6;
+    const tint = rand();
+    ctx.fillStyle = tint > 0.93 ? "#ffd9a3" : tint > 0.86 ? "#a9dcff" : "#ffffff";
+    ctx.globalAlpha = 0.18 + rand() * (radius > 1 ? 0.7 : 0.45);
+    ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+drawStars();
+let resizeTimer;
+window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawStars, 150); });
+
+/* ---- rendering ---- */
+function docLabel(id) {
+  const lesson = id.match(/^llis-(\d+)$/);
+  if (lesson) return `LLIS ${lesson[1]}`;
+  const report = id.match(/^report-([^#]+)/);
+  if (report) return `Mishap report: ${report[1].replace(/_/g, " ")}`;
+  return id;
+}
+
+function logItem(step) {
+  const li = document.createElement("li");
+  const tag = document.createElement("span");
+  tag.className = "tag";
+  const text = document.createElement("span");
+  if (step.tool === "search_archive") {
+    li.className = "search"; tag.textContent = "SEARCH"; text.textContent = step.input.query;
+  } else {
+    li.className = "read"; tag.textContent = "READ"; text.textContent = docLabel(step.input.id);
+  }
+  li.append(tag, text);
+  return li;
+}
+
+// Models write the same report in a few shapes: "### 1. Title" or a bold "**1. Title**" line,
+// and "Check:" on its own line or inline at the end of a paragraph. Bring them to one shape so
+// every report gets risk headings and check callouts.
+function normaliseReport(text) {
+  return text
+    .replace(/^[ \t]*\*\*(\d+\.\s[^\n]+?)\*\*[ \t]*$/gm, "### $1\n")
+    .replace(/(^|[ \t\n])(?:\*\*|__)?Check:(?:\*\*|__)?[ \t]*/g, "\n\nCheck: ");
+}
+
+function renderReport(text) {
   const box = document.createElement("div");
   box.className = "report";
-  box.innerHTML = html;
+  box.innerHTML = DOMPurify.sanitize(marked.parse(normaliseReport(text)));
   box.querySelectorAll("a").forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+  box.querySelectorAll("h1, h2, h3, h4").forEach((h) => {
+    if (/^\d+\./.test(h.textContent.trim())) h.classList.add("risk");
+  });
+  box.querySelectorAll("p").forEach((p) => {
+    const first = p.firstChild;
+    if (first && first.nodeType === Node.TEXT_NODE && /^\s*Check:/.test(first.textContent)) {
+      p.classList.add("check");
+      first.textContent = first.textContent.replace(/^\s*Check:\s*/, "");
+      const label = document.createElement("strong");
+      label.textContent = "Check";
+      p.prepend(label);
+    }
+  });
   return box;
 }
 
-function stepItem(step) {
-  const li = document.createElement("li");
-  const label = document.createElement("b");
-  if (step.tool === "search_archive") {
-    li.className = "search";
-    label.textContent = "Searched: ";
-    li.append(label, step.input.query);
-  } else {
-    label.textContent = "Read: ";
-    li.append(label, step.input.id);
+function renderSources(report) {
+  const seen = new Map();
+  report.querySelectorAll("a[href]").forEach((a) => { if (!seen.has(a.href)) seen.set(a.href, a.textContent.trim()); });
+  if (!seen.size) return null;
+  const wrap = document.createElement("div");
+  wrap.className = "sources";
+  const label = document.createElement("p");
+  label.className = "label";
+  label.textContent = `Sources cited (${seen.size})`;
+  const list = document.createElement("ol");
+  for (const [href, title] of seen) {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const a = document.createElement("a");
+    a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = title;
+    const host = document.createElement("small");
+    const page = href.match(/#page=(\d+)/);
+    host.textContent = new URL(href).hostname.replace(/^www\./, "") + (page ? `, p. ${page[1]}` : "");
+    span.append(a, host);
+    li.append(span);
+    list.append(li);
   }
-  return li;
+  wrap.append(label, list);
+  return wrap;
 }
 
 function newTurn(question) {
   const turn = document.createElement("div");
-  turn.className = "card turn";
-  const q = document.createElement("div");
+  turn.className = "panel turn";
+  const label = document.createElement("p");
+  label.className = "label";
+  label.textContent = "Brief";
+  const q = document.createElement("p");
   q.className = "question";
   q.textContent = question;
-  const steps = document.createElement("ul");
-  steps.className = "steps";
-  turn.append(q, steps);
+  const log = document.createElement("ul");
+  log.className = "log";
+  log.setAttribute("aria-label", "Agent activity");
+  turn.append(label, q, log);
   conversation.append(turn);
-  return { turn, steps };
+  return { turn, log };
+}
+
+function badge(text, kind) {
+  const b = document.createElement("span");
+  b.className = "badge" + (kind ? " " + kind : "");
+  b.textContent = text;
+  return b;
 }
 
 function finishTurn(ui, data, isExample) {
   ui.turn.querySelector(".working")?.remove();
-  // Fold the activity log away once the answer is there.
+  const searches = ui.log.querySelectorAll("li.search").length;
+  const reads = ui.log.children.length - searches;
   const trace = document.createElement("details");
   trace.className = "trace";
   const summary = document.createElement("summary");
-  const searches = [...ui.steps.children].filter((li) => li.className === "search").length;
-  summary.textContent = `${searches} searches, ${ui.steps.children.length - searches} documents read`;
-  ui.steps.replaceWith(trace);
-  trace.append(summary, ui.steps);
-  ui.turn.append(renderMarkdown(data.answer));
+  summary.textContent = `Flight log: ${searches} searches, ${reads} documents read`;
+  ui.log.replaceWith(trace);
+  trace.append(summary, ui.log);
+
+  const heading = document.createElement("p");
+  heading.className = "label";
+  heading.style.marginTop = "22px";
+  heading.textContent = "Pre-mortem report";
+  const report = renderReport(data.answer);
+  report.style.marginTop = "0"; report.style.borderTop = "0"; report.style.paddingTop = "0";
+  ui.turn.append(heading, report);
+  const sources = renderSources(report);
+  if (sources) ui.turn.append(sources);
 
   const meta = document.createElement("div");
   meta.className = "meta";
-  const links = document.createElement("span");
   const bad = data.unsupported_links || [];
-  links.className = bad.length ? "warn" : "ok";
-  links.textContent = bad.length
-    ? `${bad.length} link(s) not found among retrieved documents`
-    : "All links verified against retrieved documents";
-  const cost = document.createElement("span");
-  cost.textContent = `${data.model}, $${Number(data.cost_usd).toFixed(2)}` + (isExample ? " (generated earlier)" : "");
-  meta.append(links, cost);
+  meta.append(
+    bad.length ? badge(`${bad.length} link(s) not found in retrieved documents`, "warn") : badge("All links verified", "ok"),
+    badge(data.model),
+    badge(`$${Number(data.cost_usd).toFixed(2)}` + (isExample ? " when generated" : "")),
+  );
   ui.turn.append(meta);
 }
 
@@ -233,7 +469,7 @@ async function ask(question) {
   const ui = newTurn(question);
   const working = document.createElement("div");
   working.className = "working";
-  working.textContent = "Working";
+  working.append(document.createElement("i"), "Searching the archive");
   ui.turn.append(working);
   ui.turn.scrollIntoView({ behavior: "smooth", block: "start" });
   try {
@@ -262,7 +498,7 @@ async function ask(question) {
         buffer = buffer.slice(cut + 2);
         const name = (block.match(/^event: (.*)$/m) || [])[1];
         const data = JSON.parse((block.match(/^data: (.*)$/m) || [, "{}"])[1]);
-        if (name === "step") ui.steps.append(stepItem(data));
+        if (name === "step") { ui.log.append(logItem(data)); ui.log.scrollTop = ui.log.scrollHeight; }
         if (name === "error") showError(ui, "Something went wrong while answering. Please try again.");
         if (name === "answer") {
           answered = true;
@@ -292,7 +528,7 @@ function showExample(example) {
   $("followup-card").hidden = true;
   $("question").value = example.question;
   const ui = newTurn(example.question);
-  example.steps.forEach((s) => ui.steps.append(stepItem(s)));
+  example.steps.forEach((s) => ui.log.append(logItem(s)));
   finishTurn(ui, { ...example, unsupported_links: [] }, true);
   ui.turn.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -325,20 +561,26 @@ $("new-button").addEventListener("click", () => {
 });
 
 fetch("/api/examples").then((r) => r.json()).then((examples) => {
-  for (const example of examples) {
+  examples.forEach((example, i) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = example.title;
+    const tag = document.createElement("small");
+    tag.textContent = `Case ${String(i + 1).padStart(2, "0")}`;
+    button.append(tag, example.title);
     button.addEventListener("click", () => showExample(example));
     $("examples").append(button);
-  }
+  });
+  // ?case=2 opens that case file directly, so a finished pre-mortem can be linked to.
+  const wanted = Number(new URLSearchParams(location.search).get("case"));
+  if (wanted >= 1 && wanted <= examples.length) showExample(examples[wanted - 1]);
 });
 
 fetch("/api/status").then((r) => r.json()).then((s) => {
-  $("status-line").textContent = s.live_available
-    ? "Live answers take about 30 seconds."
-    : "Today's budget for live questions is used up. The examples below still work.";
   liveAvailable = s.live_available;
+  $("status-line").textContent = liveAvailable
+    ? "Live answers take about 40 seconds."
+    : "Today's budget for live questions is used up. The case files below still open.";
+  if (!liveAvailable) { $("status-dot").classList.add("off"); $("status-text").textContent = "Live questions paused"; }
   setBusy(busy);
 });
 </script>
