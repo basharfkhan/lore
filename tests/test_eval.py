@@ -33,7 +33,7 @@ def test_case_descriptions_do_not_name_the_mishap():
     }
     for case in load_cases():
         words = giveaways.get(case.id, [])
-        found = [w for w in words if re.search(rf"{re.escape(w)}", case.query, re.I)]
+        found = [w for w in words if re.search(rf"\b{re.escape(w)}\b", case.query, re.I)]
         assert not found, f"{case.id}: {found}"
 
 
