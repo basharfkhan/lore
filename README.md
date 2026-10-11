@@ -24,6 +24,8 @@ keyword, dense or hybrid search (details under Evaluation).
 ## The app
 
 A web page where you describe a system or an operation and get a cited pre-mortem back.
+**Live at [lore-yy66.onrender.com](https://lore-yy66.onrender.com)** (the free host sleeps when
+idle, so the first load can take up to a minute).
 
 - **An agent, not a fixed pipeline.** Claude is given two tools, `search_archive` and
   `read_document` ([lore/agent/tools.py](lore/agent/tools.py)), and decides what to look up.
@@ -206,6 +208,8 @@ the archive. For those 7:
 | Hybrid (reciprocal rank fusion) | 2 of 7 | 0.25 | 1 of 4 |
 | Hypotheses + BM25 | **5 of 7** | 0.31 | **3 of 4** |
 | Hypotheses + hybrid | **5 of 7** | **0.34** | **3 of 4** |
+
+![Held-out results: incidents with a direct precursor in the top 30, by retriever](docs/heldout-results.png)
 
 Searching by generated failure hypotheses found a direct precursor in three hard cases where
 keyword, dense and hybrid search all found none, and lost one case the other way. Seven cases
