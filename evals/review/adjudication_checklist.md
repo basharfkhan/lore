@@ -19,7 +19,7 @@ is graded the same way. Mishap reports are left out (the judge saw only one exce
 
 | lesson | A (y/n) | B (y/n) | your earlier grade |
 |---|---|---|---|
-| [llis-577: Verify CAD/CAM Software Compatibility Between Organizations Before Pro](https://llis.nasa.gov/lesson/577) | | | 1 |
+| [llis-577: Verify CAD/CAM Software Compatibility Between Organizations Before Pro](https://llis.nasa.gov/lesson/577) | y | n | 1 |
 
 ## Genesis sample return capsule parachutes failed to deploy
 
@@ -30,17 +30,17 @@ is graded the same way. Mishap reports are left out (the judge saw only one exce
 
 | lesson | A (y/n) | B (y/n) | your earlier grade |
 |---|---|---|---|
-| [llis-1197: Deep Space 2 Telecom Hardware-Software Interaction (1999)](https://llis.nasa.gov/lesson/1197) | | | 1 |
-| [llis-1398: SWIFT Power Control Board Harness Wire Reversal](https://llis.nasa.gov/lesson/1398) | | | 1 |
-| [llis-16: Reversed Installation of a Check Valve Spring (Main Propulsion), Subse](https://llis.nasa.gov/lesson/16) | | | 2 |
-| [llis-271: Mars Observer Pressure Modulator Infrared Radiometer (PMIRR) Cooler Fa](https://llis.nasa.gov/lesson/271) | | | 1 |
-| [llis-312: ACTS Pyro Separation Band Anomaly (Shuttle Orbiter)](https://llis.nasa.gov/lesson/312) | | | 0 |
-| [llis-342: Critical Hardware Functional Verification](https://llis.nasa.gov/lesson/342) | | | 0 |
-| [llis-346: Use of Heritage Designs on the Mars Observer](https://llis.nasa.gov/lesson/346) | | |  |
-| [llis-492: Galileo High Gain Antenna (HGA) Failure (1991)](https://llis.nasa.gov/lesson/492) | | |  |
-| [llis-634: Transient Start-up Performance of the WIRE Pyro Electronics (1999)](https://llis.nasa.gov/lesson/634) | | |  |
-| [llis-637: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board](https://llis.nasa.gov/lesson/637) | | |  |
-| [llis-938: Probable Scenario for Mars Polar Lander Mission Loss (1998)](https://llis.nasa.gov/lesson/938) | | |  |
+| [llis-1197: Deep Space 2 Telecom Hardware-Software Interaction (1999)](https://llis.nasa.gov/lesson/1197) | n | y | 1 |
+| [llis-1398: SWIFT Power Control Board Harness Wire Reversal](https://llis.nasa.gov/lesson/1398) | y | y | 2 |
+| [llis-16: Reversed Installation of a Check Valve Spring (Main Propulsion), Subse](https://llis.nasa.gov/lesson/16) | y | n | 1 |
+| [llis-271: Mars Observer Pressure Modulator Infrared Radiometer (PMIRR) Cooler Fa](https://llis.nasa.gov/lesson/271) | n | y | 1 |
+| [llis-312: ACTS Pyro Separation Band Anomaly (Shuttle Orbiter)](https://llis.nasa.gov/lesson/312) | n | n | 0 |
+| [llis-342: Critical Hardware Functional Verification](https://llis.nasa.gov/lesson/342) | n | n | 0 |
+| [llis-346: Use of Heritage Designs on the Mars Observer](https://llis.nasa.gov/lesson/346) | n | y | 1 |
+| [llis-492: Galileo High Gain Antenna (HGA) Failure (1991)](https://llis.nasa.gov/lesson/492) | n | y | 1 |
+| [llis-634: Transient Start-up Performance of the WIRE Pyro Electronics (1999)](https://llis.nasa.gov/lesson/634) | n |y | 1 |
+| [llis-637: Wide-Field Infrared Explorer (WIRE) Mishap Investigation Board](https://llis.nasa.gov/lesson/637) | n | y| 1 |
+| [llis-938: Probable Scenario for Mars Polar Lander Mission Loss (1998)](https://llis.nasa.gov/lesson/938) |n |y | 1 |
 
 ## NOAA N-Prime satellite fell off its turnover cart
 

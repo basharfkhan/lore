@@ -1,0 +1,23 @@
+# The two parts of each dev mishap's cause. A document is graded by whether it is about each
+# part: both = 2 (direct precursor), one = 1 (related), neither = 0. Used by the human
+# adjudication sheet and by the LLM judge, so both answer the same concrete questions.
+mco:
+  a: Data or quantities passed between two teams, organisations or pieces of software, where the
+    conventions did not match or the interface was never verified.
+  b: Small forces from thrusters or attitude control affecting the trajectory or navigation.
+genesis:
+  a: A part, sensor or connection that was designed, installed or wired backwards, inverted or in
+    the wrong orientation or polarity.
+  b: An error that escaped because a functional test was skipped or replaced by review or inspection,
+    or because an inherited design was trusted without being re-verified.
+noaa_n_prime:
+  a: Hardware or support equipment left in a changed or unsafe state by earlier work that was not
+    recorded or communicated.
+  b: The next team moved or operated it without checking its configuration first.
+columbia:
+  a: Debris or an object striking the vehicle's exterior or heat shield during launch or ascent.
+  b: A recurring problem accepted as normal, or engineers' concerns not reaching the people deciding.
+mpl:
+  a: A false, spurious or transient signal or input (often at a deployment, power-up or similar event).
+  b: Logic, software or a circuit that acted on an input it should have ignored, because it was not
+    filtered, inhibited or limited to the right mission phase.

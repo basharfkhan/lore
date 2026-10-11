@@ -86,3 +86,22 @@ def test_leak_check_matches_whole_words_only():
     assert leaked_terms("after the spacecraft was shipped", ["AFT"]) == []
     assert leaked_terms("its AFT limits were narrow", ["AFT"]) == ["AFT"]
     assert names_in_guess(["ATLO", "MER"], "an ATLO campaign for a Mars rover (MER)") == ["MER"]
+
+
+def test_checklist_answers_become_grades():
+    from lore.eval.adjudicate import read_sheet
+
+    sheet = "\n".join(
+        [
+            "## Some mishap",
+            "| lesson | A | B | earlier |",
+            "| [llis-1: both](u) | y | y | |",
+            "| [llis-2: one](u) | n | Y | 1 |",
+            "| [llis-3: none](u) | n | n | |",
+            "| [llis-4: unsure](u) | ? | n | |",
+            "| [llis-5: blank](u) | | | |",
+        ]
+    )
+    answers, unanswered = read_sheet(sheet, {"Some mishap": "x"})
+    assert answers == {("x", "llis-1"): 2, ("x", "llis-2"): 1, ("x", "llis-3"): 0}
+    assert unanswered == [("x", "llis-4"), ("x", "llis-5")]
