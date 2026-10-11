@@ -186,7 +186,7 @@ one is a 1, about neither is a 0.
 - The judge, asked the same two questions, agrees with those answers at weighted kappa 0.78,
   with precision and recall of 0.80 on direct precursors, and is never more than one grade away.
   These 22 are the disputed documents, so they are harder than a random sample.
-- The judge grades everything else, and the my answers override it where they exist.
+- The judge grades everything else, and my answers override it where they exist.
 
 Limits: the reviewer is only me, the judge is the same model family that generates the
 hypotheses, and the two-part criteria for held-out cases are generated from each hidden
