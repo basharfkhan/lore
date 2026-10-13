@@ -4,7 +4,8 @@ data/ is not tracked (it holds 250 MB of PDFs and intermediate files), but the t
 agent's tools read are only 6 MB compressed. ``export`` writes them to corpus/, which is
 tracked; ``ensure`` unpacks them on a fresh checkout such as the deployed container.
 
-    python -m lore.serve.corpus     # refresh corpus/ after rebuilding chunks
+    python -m lore.serve.corpus            # refresh corpus/ after rebuilding chunks
+    python -m lore.serve.corpus --ensure   # unpack corpus/ on a fresh checkout (used by CI)
 """
 
 from __future__ import annotations
@@ -43,4 +44,9 @@ def ensure() -> None:
 
 
 if __name__ == "__main__":
-    export()
+    import sys
+
+    if "--ensure" in sys.argv:
+        ensure()
+    else:
+        export()

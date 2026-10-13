@@ -1,5 +1,10 @@
 # LORE: Lessons and Outcomes Retrieval Engine
 
+[![CI](https://github.com/basharfkhan/lore/actions/workflows/ci.yml/badge.svg)](https://github.com/basharfkhan/lore/actions/workflows/ci.yml)
+**[Try it live](https://lore-yy66.onrender.com)**
+
+[![The LORE home page: describe what you are about to build, or open a finished case file](docs/screenshot-home.png)](https://lore-yy66.onrender.com)
+
 Aviation became the safest way to travel because every accident investigation feeds
 recommendations back to the people designing the next aircraft. Spaceflight has the same raw
 material (decades of mishap boards and NASA's Lessons Learned Information System) but lessons
@@ -26,6 +31,8 @@ keyword, dense or hybrid search (details under Evaluation).
 A web page where you describe a system or an operation and get a cited pre-mortem back.
 **Live at [lore-yy66.onrender.com](https://lore-yy66.onrender.com)** (the free host sleeps when
 idle, so the first load can take up to a minute).
+
+![A pre-mortem report: numbered risks, each with a cited precedent and a check](docs/screenshot-report.png)
 
 - **An agent, not a fixed pipeline.** Claude is given two tools, `search_archive` and
   `read_document` ([lore/agent/tools.py](lore/agent/tools.py)), and decides what to look up.
