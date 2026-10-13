@@ -74,8 +74,9 @@ def _lessons() -> dict[str, dict]:
         return {(x := json.loads(line))["id"]: x for line in f}
 
 
-def search_archive(query: str, source: str = "all") -> list[dict]:
-    hits = _retriever().search(query, 300)
+def search_archive(query: str, source: str = "all", before: str | None = None) -> list[dict]:
+    """``before`` (ISO date) hides anything not yet written, for the historical evaluations."""
+    hits = _retriever().search(query, 300, before)
     if source != "all":
         wanted = "llis" if source == "lessons" else "report"
         hits = [h for h in hits if h.chunk["source"] == wanted]
@@ -95,9 +96,12 @@ def search_archive(query: str, source: str = "all") -> list[dict]:
     return results
 
 
-def read_document(id: str) -> dict:
+def read_document(id: str, before: str | None = None) -> dict:
+    unknown = {"error": f"No document with id {id!r}. Use an id returned by search_archive."}
     lesson = _lessons().get(id)
     if lesson:
+        if before and not lesson["date"] < before:
+            return unknown
         parts = [
             ("What happened", lesson["driving_event"]),
             ("Lesson", lesson["lesson"]),
@@ -113,8 +117,8 @@ def read_document(id: str) -> dict:
         }
     chunks = _retriever().chunks
     index = next((i for i, c in enumerate(chunks) if c["id"] == id), None)
-    if index is None:
-        return {"error": f"No document with id {id!r}. Use an id returned by search_archive."}
+    if index is None or (before and not chunks[index]["available_from"] < before):
+        return unknown
     chunk = chunks[index]
     passages = [chunk["text"]]
     if index + 1 < len(chunks) and chunks[index + 1]["doc_id"] == chunk["doc_id"]:
@@ -130,9 +134,9 @@ def read_document(id: str) -> dict:
     }
 
 
-def run_tool(name: str, arguments: dict) -> dict | list:
+def run_tool(name: str, arguments: dict, before: str | None = None) -> dict | list:
     if name == "search_archive":
-        return search_archive(arguments["query"], arguments.get("source", "all"))
+        return search_archive(arguments["query"], arguments.get("source", "all"), before)
     if name == "read_document":
-        return read_document(arguments["id"])
+        return read_document(arguments["id"], before)
     return {"error": f"Unknown tool {name!r}."}

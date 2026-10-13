@@ -1,0 +1,165 @@
+{
+  "case": "llis559",
+  "cutoff": "1995-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "This vehicle's risk profile now centers on the software and ground-processes layer rather than new hardware failure modes: a small team, a single shared ground model, and long fault-response latencies create conditions where a subtle logic or validation gap — not a hardware break — is what has historically doomed similar spacecraft.\n\n### 1. Fault protection responds in a way that is more hazardous than the fault itself\nA postulated propulsion anomaly on Mars Observer would have put the spacecraft into a \"stable\" contingency mode that inhibited the radio amplifier and blocked autonomous recovery of downlink; ground commands were not sent until hours later because controllers trusted spacecraft autonomy, and by then batteries would likely have been depleted. Investigators found fault protection was built bottom-up with no RCS backup to reaction wheels and was never exercised on the flight unit before launch. [LLIS 343: Mars Observer Inappropriate Fault Protection Response Following Contingency Mode Entry](https://llis.nasa.gov/lesson/343); [LLIS 345: Mars Observer Attitude Control Fault Protection](https://llis.nasa.gov/lesson/345)\n\nCheck: confirm the enable/execute bounding logic and any safing response have been tested on flight (or flight-identical) hardware, that thrusters can stabilize the vehicle if wheels are unavailable, and that no terminal fault state can persist without autonomously restoring communications.\n\n### 2. An uplinked software patch introduces an unreviewed side effect\nMars Observer's flight computer flexibility let controllers quickly uplink a script widening star-identification tolerance after inertial reference losses — but that patch had no detailed code walk-through, and it acted as a catalyst for three further inertial-reference-loss incidents via a pre-existing algorithm error inherited from another program. Recovery took days each time. [LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310)\n\nCheck: require a detailed code walk-through for every incremental flight-software patch, especially inherited modules, before uplink — not just regression testing against the ground model.\n\n### 3. Sequences validated against a ground model that no longer matches onboard state\nGalileo's star-scanner calibration sequence was tested and cleared on the testbed, but an in-flight mode change (gyros off instead of on) before execution was judged inconsequential; the mismatch between simulated and actual onboard state triggered a hardware-swap cascade and safing, with a three-week recovery just weeks before Venus encounter. [LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration](https://llis.nasa.gov/lesson/288)\n\nCheck: since sequences and builds share one ground model, re-verify any queued sequence against current onboard state whenever an anomaly or mode change has occurred since the last simulation run, before uplink.\n\n### 4. Preloaded sequencing proves too rigid for real anomalies, and small-team/light-time constraints block timely correction\nVoyager's operations concept assumed minimal real-time commanding, with most activity preloaded; flight experience showed real-time intervention was needed far more than planned, and the end-to-end system was cumbersome for it. [LLIS 270: Planning for Spacecraft Real-Time Commanding](https://llis.nasa.gov/lesson/270)\n\nCheck: with round-trip light time and a lean staff limiting response to tens of minutes, verify the real-time command path remains flexible and rehearsed, not an afterthought behind the sequencing engine.\n\nThis is a research aid drawn from historical records, not a substitute for a formal safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "spacecraft lost due to ground command sequence error single simulation testbed"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "runaway thruster firing enable execute command logic propellant depletion"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "flight software patch uplink error loss of spacecraft fault protection timing logic"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "incorrect stored parameter command sequence loss of spacecraft attitude control battery depletion"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "extended mission small operations team workforce knowledge loss budget cuts"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single ground simulation testbed shared across projects inadequate verification"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "hydrazine thruster valve leak propellant loss extended mission monopropellant degradation"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "autonomous fault protection response time limited ground contact deep space mission"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-345"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-310"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-288"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-270"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-343"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "commanded maneuver duration error excessive propellant usage sequence logic unbounded"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "software code walkthrough not performed uplinked patch unintended side effect"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-312"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/270": "llis-270",
+    "https://llis.nasa.gov/lesson/288": "llis-288",
+    "https://llis.nasa.gov/lesson/284": "llis-284",
+    "https://llis.nasa.gov/lesson/833": "llis-833",
+    "https://llis.nasa.gov/lesson/343": "llis-343",
+    "https://llis.nasa.gov/lesson/278": "llis-278",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=103": "report-hubble_optics#77",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=158": "report-apollo1_as204#126",
+    "https://llis.nasa.gov/lesson/205": "llis-205",
+    "https://llis.nasa.gov/lesson/59": "llis-59",
+    "https://llis.nasa.gov/lesson/77": "llis-77",
+    "https://llis.nasa.gov/lesson/830": "llis-830",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=38": "report-challenger_rogers_v1#37",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=95": "report-apollo13#81",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=152": "report-apollo1_as204#113",
+    "https://llis.nasa.gov/lesson/310": "llis-310",
+    "https://llis.nasa.gov/lesson/345": "llis-345",
+    "https://llis.nasa.gov/lesson/879": "llis-879",
+    "https://llis.nasa.gov/lesson/878": "llis-878",
+    "https://llis.nasa.gov/lesson/838": "llis-838",
+    "https://llis.nasa.gov/lesson/346": "llis-346",
+    "https://llis.nasa.gov/lesson/839": "llis-839",
+    "https://llis.nasa.gov/lesson/53": "llis-53",
+    "https://llis.nasa.gov/lesson/444": "llis-444",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=205": "report-apollo13#159",
+    "https://llis.nasa.gov/lesson/307": "llis-307",
+    "https://llis.nasa.gov/lesson/305": "llis-305",
+    "https://llis.nasa.gov/lesson/159": "llis-159",
+    "https://llis.nasa.gov/lesson/128": "llis-128",
+    "https://llis.nasa.gov/lesson/319": "llis-319",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=145": "report-apollo13#116",
+    "https://llis.nasa.gov/lesson/29": "llis-29",
+    "https://llis.nasa.gov/lesson/88": "llis-88",
+    "https://llis.nasa.gov/lesson/272": "llis-272",
+    "https://llis.nasa.gov/lesson/114": "llis-114",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=92": "report-hubble_optics#70",
+    "https://llis.nasa.gov/lesson/841": "llis-841",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=175": "report-apollo13#130",
+    "https://llis.nasa.gov/lesson/518": "llis-518",
+    "https://llis.nasa.gov/lesson/349": "llis-349",
+    "https://llis.nasa.gov/lesson/148": "llis-148",
+    "https://llis.nasa.gov/lesson/99": "llis-99",
+    "https://llis.nasa.gov/lesson/34": "llis-34",
+    "https://llis.nasa.gov/lesson/108": "llis-108",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=152": "report-apollo13#122",
+    "https://llis.nasa.gov/lesson/82": "llis-82",
+    "https://llis.nasa.gov/lesson/870": "llis-870",
+    "https://llis.nasa.gov/lesson/265": "llis-265",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=104": "report-apollo13#89",
+    "https://llis.nasa.gov/lesson/206": "llis-206",
+    "https://llis.nasa.gov/lesson/445": "llis-445",
+    "https://llis.nasa.gov/lesson/35": "llis-35",
+    "https://llis.nasa.gov/lesson/54": "llis-54",
+    "https://llis.nasa.gov/lesson/312": "llis-312",
+    "https://llis.nasa.gov/lesson/195": "llis-195",
+    "https://llis.nasa.gov/lesson/1198": "llis-1198",
+    "https://llis.nasa.gov/lesson/33": "llis-33"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.1299
+}

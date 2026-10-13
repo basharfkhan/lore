@@ -1,0 +1,161 @@
+{
+  "case": "llis567",
+  "cutoff": "1997-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "---\n\nThis commissioning campaign packs deployments, power-up, RF checkout and deliberately induced attitude excursions into two weeks of scripted commanding from a shared, time-pressured control center — a profile that matches several past anomalies where ground procedure, inherited software, or heritage hardware broke under exactly this kind of first-unit, schedule-driven testing.\n\n### 1. Commanded perturbation interacts with an unverified fault-protection state\n\nDeliberately pushing the vehicle off reference to exercise rate sensors, wheels and thrusters means the test sequence must match the exact software/hardware state the spacecraft is actually in. On Galileo, a star-scanner calibration sequence was run after an unrelated mode change (inertial→cruise) that was judged harmless; the mismatch triggered a spin-bearing controller instability and drove the spacecraft into safing just before Venus encounter, with a three-week recovery. Investigators recommended verifying that simulated test states exactly match flight states, and rescrutinizing all planned activities after any anomaly changes spacecraft state. See [LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration](https://llis.nasa.gov/lesson/288).\n\nCheck: before each attitude-perturbation test, confirm the actual onboard mode/fault-protection configuration matches what the script assumes, especially if any prior anomaly or safing occurred during the campaign.\n\n### 2. Inherited flight software fault-logic error surfaces under in-flight conditions\n\nA production-line bus reuses attitude software across units; unverified algorithm defects can appear only under specific covariance or geometry conditions never hit in ground testing. Mars Observer repeatedly declared inertial-reference loss because gyro parameters were taken from optimistic in-house tests rather than vendor specs, and because an inherited algorithm error was never caught by a detailed code walk-through. A same-contractor spacecraft had already hit a related bug. Investigators recommended not trusting in-house hardware performance over manufacturer specs, performing detailed code walk-throughs of critical software and patches, and flagging inherited software for special scrutiny. See [LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310).\n\nCheck: verify that attitude/fault-protection software reused from earlier units of the product line has had a documented code walk-through for this unit's parameters, not just acceptance from prior flights.\n\n### 3. Fixed-price heritage bus treated as \"flight-proven\" without requalification\n\nA commercial, fixed-price delivery schedule creates pressure to accept subsystems as \"standard equipment.\" SEASAT's Agena bus was substantially modified but treated as flight-proven, so component failures went unreported, tests were waived, and a slip-ring short (a failure mode never considered in the FMECA) destroyed the mission. The review board recommended against uncritical acceptance of \"flight-proven\" hardware once modified, early heritage evaluation, and contractually defining the depth of review on fixed-price work. See [LLIS 371: SEASAT Failure](https://llis.nasa.gov/lesson/371).\n\nCheck: confirm that any subsystem carried over from earlier production units but modified for this spacecraft has been requalified and re-examined in the FMECA, not grandfathered on schedule grounds.\n\n### 4. Deployment telemetry confirms position, not the function that matters\n\nSolar array and reflector deployment checks depend on telemetry actually indicating the load-bearing event, not a proxy. On Magellan, microswitches indicated panel position rather than latch status; marginal stroke plus zero-g effects left the \"panels-latched\" signal absent even though deployment was visually confirmed. Investigators recommended siting telemetry transducers to measure the desired function itself, accounting for overtravel in microswitch actuation, and performing FMECA early with design engineers involved. See [LLIS 289: Magellan In-Flight Solar Array Deployment Indication](https://llis.nasa.gov/lesson/289).\n\nCheck: verify that solar array and reflector deployment telemetry on this bus measures latch/lock status directly, not just arm position, before treating an ambiguous indication as a deployment failure.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "spacecraft attitude control divergence during on-orbit checkout maneuver"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "solar array deployment anomaly geosynchronous satellite commissioning"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "ground command script error telemetry limit verification mishap"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "shared control center multiple spacecraft operator workload error"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure fixed price commercial satellite program corner cutting"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single ground station loss of contact during critical spacecraft maneuver"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "heritage design reused without requalification new mission environment failure"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "inadequate simulation testing before flight operations anomaly not caught"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-288"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-310"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-289"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-371"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "command sent to wrong spacecraft control center operator error multiple satellites"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-391"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=135": "report-apollo13#108",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=16": "report-challenger_rogers_v1#20",
+    "https://llis.nasa.gov/lesson/424": "llis-424",
+    "https://llis.nasa.gov/lesson/2376": "llis-2376",
+    "https://llis.nasa.gov/lesson/400": "llis-400",
+    "https://llis.nasa.gov/lesson/345": "llis-345",
+    "https://llis.nasa.gov/lesson/724": "llis-724",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=109": "report-apollo1_as204#80",
+    "https://llis.nasa.gov/lesson/387": "llis-387",
+    "https://llis.nasa.gov/lesson/289": "llis-289",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=12": "report-challenger_rogers_v1#11",
+    "https://llis.nasa.gov/lesson/358": "llis-358",
+    "https://llis.nasa.gov/lesson/566": "llis-566",
+    "https://llis.nasa.gov/lesson/273": "llis-273",
+    "https://llis.nasa.gov/lesson/206": "llis-206",
+    "https://llis.nasa.gov/lesson/421": "llis-421",
+    "https://llis.nasa.gov/lesson/310": "llis-310",
+    "https://llis.nasa.gov/lesson/391": "llis-391",
+    "https://llis.nasa.gov/lesson/380": "llis-380",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=57": "report-challenger_rogers_v1#59",
+    "https://llis.nasa.gov/lesson/405": "llis-405",
+    "https://llis.nasa.gov/lesson/379": "llis-379",
+    "https://llis.nasa.gov/lesson/307": "llis-307",
+    "https://llis.nasa.gov/lesson/418": "llis-418",
+    "https://llis.nasa.gov/lesson/1200": "llis-1200",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=43": "report-hubble_optics#30",
+    "https://llis.nasa.gov/lesson/274": "llis-274",
+    "https://llis.nasa.gov/lesson/495": "llis-495",
+    "https://llis.nasa.gov/lesson/196": "llis-196",
+    "https://llis.nasa.gov/lesson/137": "llis-137",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=201": "report-challenger_rogers_v1#305",
+    "https://llis.nasa.gov/lesson/849": "llis-849",
+    "https://llis.nasa.gov/lesson/1604": "llis-1604",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=106": "report-apollo1_as204#77",
+    "https://llis.nasa.gov/lesson/371": "llis-371",
+    "https://llis.nasa.gov/lesson/427": "llis-427",
+    "https://llis.nasa.gov/lesson/134": "llis-134",
+    "https://llis.nasa.gov/lesson/73": "llis-73",
+    "https://llis.nasa.gov/lesson/410": "llis-410",
+    "https://llis.nasa.gov/lesson/169": "llis-169",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=134": "report-apollo13#107",
+    "https://llis.nasa.gov/lesson/223": "llis-223",
+    "https://llis.nasa.gov/lesson/302": "llis-302",
+    "https://llis.nasa.gov/lesson/1090": "llis-1090",
+    "https://llis.nasa.gov/lesson/348": "llis-348",
+    "https://llis.nasa.gov/lesson/343": "llis-343",
+    "https://llis.nasa.gov/lesson/346": "llis-346",
+    "https://llis.nasa.gov/lesson/524": "llis-524",
+    "https://llis.nasa.gov/lesson/368": "llis-368",
+    "https://llis.nasa.gov/lesson/479": "llis-479",
+    "https://llis.nasa.gov/lesson/881": "llis-881",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=170": "report-apollo13#128",
+    "https://llis.nasa.gov/lesson/538": "llis-538",
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/491": "llis-491",
+    "https://llis.nasa.gov/lesson/288": "llis-288",
+    "https://llis.nasa.gov/lesson/395": "llis-395",
+    "https://llis.nasa.gov/lesson/373": "llis-373",
+    "https://llis.nasa.gov/lesson/399": "llis-399",
+    "https://llis.nasa.gov/lesson/413": "llis-413",
+    "https://llis.nasa.gov/lesson/353": "llis-353",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=4": "report-hubble_optics#1",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=100": "report-apollo13#85",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=154": "report-apollo1_as204#118",
+    "https://llis.nasa.gov/lesson/386": "llis-386"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.1114
+}

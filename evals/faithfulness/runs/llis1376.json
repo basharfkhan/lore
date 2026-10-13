@@ -1,0 +1,157 @@
+{
+  "case": "llis1376",
+  "cutoff": "2002-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "## Pre-mortem: Ambient-Pressure Thermal Cycling of Flight Avionics Module\n\nThe core hazards here are not the cold temperature itself but the gap between a subsystem-lab test and a qualified environmental test: the chamber may not represent flight conditions, the facility and procedures may not be mature enough to safely host sole-source flight hardware, and the schedule pressure around a one-of-a-kind backplane raises the cost of any shortcut.\n\n### 1. Ambient-pressure test gives false confidence (wrong margins, not just wrong fidelity)\nRunning thermal cycling in air rather than vacuum can pull 15–20°C or more off the actual piece-part/solder-joint temperatures relative to the heat-sink surface, because the gas conducts heat in parallel paths that don't exist in flight. This can turn a nominal cold-soak into a demonstration of zero or negative margin without anyone noticing, since the surface thermocouples will read close to the programmed profile while internal junctions run warmer (hot case) or the effective stress is simply lower than flight (cold case). JPL's reliability study on this exact substitution is documented in [LLIS 781: Thermal-Vacuum Versus Thermal-Atmospheric Tests of Electronic Assemblies](https://llis.nasa.gov/lesson/781), which recommends that any T/A-for-T/V substitution require a waiver backed by quantitative analysis of the temperature-delta effect on each affected part and solder joint.\n\nCheck: before relying on this test to clear the module for integration, get a quantitative estimate of how far surface-thermocouple readings diverge from internal junction/solder-joint temperatures in this specific chassis, and treat the result as a waiver-worthy deviation, not a routine substitution.\n\n### 2. Subsystem-lab facility not ready to host sole-source flight hardware\nMoving flight hardware into a lab chamber outside the main environmental test complex repeats a known pattern: idiosyncratic control circuits, unfamiliar safing behavior, and operators less experienced with flight-hardware alarms. In the Galileo NIMS case, a subsystem vacuum chamber (chosen, like here, to avoid disrupting a familiar process) suffered a line failure and then, during restart, exposed the flight instrument to a temperature below its qualification limit. See [LLIS 353: Facility Failure During Testing of the Galileo NIMS](https://llis.nasa.gov/lesson/353), which recommends that nonstandard facilities be critically examined for failure modes that could take hardware out of spec, with specification limits alarmed separately from control-system limits and clear safing procedures for operators.\n\nCheck: confirm this chamber has an independent alarm on the -55°C/profile limits (not just the controller's own setpoint), and that lab operators have a written safing procedure if an alarm fires during an unattended soak.\n\n### 3. Operator overrides a correctly functioning safety alarm\nEven validated facilities fail: during a Mars Observer PDS thermal-vacuum test, a temperature-controller fault tripped a fail-safe alarm correctly, but the chamber operator overrode it, trusting the (recently calibrated) controller instead, and the flight unit was driven to -47°C against a -20°C limit. [LLIS 274: Mars Observer PDS Exposure to Low Temperature](https://llis.nasa.gov/lesson/274) recommends that alarm/fail-safe circuits always be tied to properly located sensors, and that any override of a fail-safe require communication with, and approval from, the cognizant hardware engineer, not a unilateral operator call.\n\nCheck: write into the test procedure that no one may override an alarm or fail-safe without the responsible avionics engineer's concurrence, and verify the alarm sensors are on the hardware, not just the chamber air.\n\n### 4. Schedule pressure drives procedure shortcuts on the only flight unit\nWith a tight schedule and no spare backplane, informal handling creeps in. On Gravity Probe-B, a rushed, schedule-pressured move of flight hardware without a written procedure led to the wrong gas being connected, contaminating flight cryo hardware. The board's findings in [LLIS 1041: Gravity Probe-B Nitrogen Contamination Mishap Investigation](https://llis.nasa.gov/lesson/1041) call out that \"schedule pressure can cause even top performers to make mistakes,\" and recommend comprehensive written procedures for all flight-hardware operations plus review of manpower and schedule to prevent overworked staff.\n\nCheck: confirm the demate/inspection sequence, harness routing through the pass-through, and board handling all have written, reviewed procedures before the test, and that schedule pressure hasn't trimmed review time given there is no spare backplane to absorb an error.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "thermal vacuum chamber test damaged flight hardware facility error"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "thermocouple surface mounted temperature sensor error test control runaway"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "non-standard test facility used for flight hardware test readiness review inadequate"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "connector pin damage during thermal cycling electronics board backplane"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "temperature sensor placement not representative overtest undertest electronic box thermal test"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure single flight unit no spare test waiver skipped verification"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-781"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-274"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-353"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-622"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-275"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "cable feedthrough chamber wall pass-through harness pinched damaged seal"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure compressed test schedule corners cut mishap investigation recommendation"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-1041"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/274": "llis-274",
+    "https://llis.nasa.gov/lesson/670": "llis-670",
+    "https://llis.nasa.gov/lesson/353": "llis-353",
+    "https://llis.nasa.gov/lesson/583": "llis-583",
+    "https://llis.nasa.gov/lesson/267": "llis-267",
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/744": "llis-744",
+    "https://llis.nasa.gov/lesson/876": "llis-876",
+    "https://llis.nasa.gov/lesson/292": "llis-292",
+    "https://llis.nasa.gov/lesson/702": "llis-702",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=111": "report-apollo13#93",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=127": "report-mpl_ds2#208",
+    "https://llis.nasa.gov/lesson/826": "llis-826",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=108": "report-hubble_optics#78",
+    "https://llis.nasa.gov/lesson/768": "llis-768",
+    "https://llis.nasa.gov/lesson/63": "llis-63",
+    "https://llis.nasa.gov/lesson/622": "llis-622",
+    "https://llis.nasa.gov/lesson/1098": "llis-1098",
+    "https://llis.nasa.gov/lesson/668": "llis-668",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=89": "report-challenger_rogers_v1#96",
+    "https://llis.nasa.gov/lesson/1210": "llis-1210",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=26": "report-mpl_ds2#28",
+    "https://llis.nasa.gov/lesson/1216": "llis-1216",
+    "https://llis.nasa.gov/lesson/621": "llis-621",
+    "https://llis.nasa.gov/lesson/386": "llis-386",
+    "https://llis.nasa.gov/lesson/579": "llis-579",
+    "https://llis.nasa.gov/lesson/470": "llis-470",
+    "https://llis.nasa.gov/lesson/53": "llis-53",
+    "https://llis.nasa.gov/lesson/444": "llis-444",
+    "https://llis.nasa.gov/lesson/275": "llis-275",
+    "https://llis.nasa.gov/lesson/643": "llis-643",
+    "https://llis.nasa.gov/lesson/810": "llis-810",
+    "https://llis.nasa.gov/lesson/781": "llis-781",
+    "https://llis.nasa.gov/lesson/903": "llis-903",
+    "https://llis.nasa.gov/lesson/809": "llis-809",
+    "https://llis.nasa.gov/lesson/562": "llis-562",
+    "https://llis.nasa.gov/lesson/794": "llis-794",
+    "https://llis.nasa.gov/lesson/431": "llis-431",
+    "https://llis.nasa.gov/lesson/379": "llis-379",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=93": "report-mpl_ds2#144",
+    "https://llis.nasa.gov/lesson/479": "llis-479",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=199": "report-challenger_rogers_v1#301",
+    "https://llis.nasa.gov/lesson/197": "llis-197",
+    "https://llis.nasa.gov/lesson/594": "llis-594",
+    "https://llis.nasa.gov/lesson/1069": "llis-1069",
+    "https://llis.nasa.gov/lesson/601": "llis-601",
+    "https://llis.nasa.gov/lesson/17": "llis-17",
+    "https://llis.nasa.gov/lesson/729": "llis-729",
+    "https://llis.nasa.gov/lesson/302": "llis-302",
+    "https://llis.nasa.gov/lesson/701": "llis-701",
+    "https://llis.nasa.gov/lesson/418": "llis-418",
+    "https://llis.nasa.gov/lesson/750": "llis-750",
+    "https://llis.nasa.gov/lesson/645": "llis-645",
+    "https://llis.nasa.gov/lesson/978": "llis-978",
+    "https://llis.nasa.gov/lesson/687": "llis-687",
+    "https://llis.nasa.gov/lesson/1096": "llis-1096",
+    "https://discovery.larc.nasa.gov/discovery/PDF_FILES/mars_climate_orbiter_phaseII.pdf#page=116": "report-mco_phase2#130",
+    "https://llis.nasa.gov/lesson/944": "llis-944",
+    "https://llis.nasa.gov/lesson/587": "llis-587",
+    "https://llis.nasa.gov/lesson/1041": "llis-1041",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=77": "report-challenger_rogers_v1#90"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.1157
+}

@@ -1,0 +1,104 @@
+{
+  "case": "llis572",
+  "cutoff": "1997-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Several of the likeliest failure paths for a first-flight bipropellant GEO bus have already played out on earlier NTO/hydrazine spacecraft; the propellant and pressurization architecture described here matches the systems in these precedents closely.\n\n### 1. Oxidizer migration through check valves into the pressurization system\nA hypergolic bipropellant design that leaves the helium pressurization system connected to the propellant tanks for long, low-flow periods can let NTO vapor migrate upstream through the check valves and condense in cold tubing; when pressurization is later commanded, liquid oxidizer can mix with fuel vapor and detonate in the lines. This was identified as the most probable cause of the Mars Observer loss, an inherited Earth-orbital NTO/hydrazine design flown on a long-coast mission ([LLIS 485: Isolate the Propulsion Pressurization System from the Propellant Tanks](https://llis.nasa.gov/lesson/485)). Investigators recommended positively isolating the pressurization system from propellant tanks when high flow is not needed, or proving the effect of vapor migration is benign, and performing thermal analysis to find conditions where condensation could occur.\n\nCheck: confirm the isolation valve sequencing between apogee burns, and the latching-valve states during multi-day coast between burns, have been thermally analyzed for oxidizer vapor condensation, not just leak-rate tested.\n\n### 2. Regulator or valve rework degrading thrust and stranding the spacecraft in a bad orbit\nA reworked precision regulator in a booster engine's pressurization path caused thrust decay and left a Hughes satellite in an orbit the customer declared unusable, even though the engine \"functioned normally\" ([LLIS 463: Atlas Booster Engine Precision Regulator](https://llis.nasa.gov/lesson/463)). The cause was a set-screw rework performed without torque or inspection controls. Investigators recommended preventing undesired screw rotation, improving system margins, improving data evaluation, and tightening quality processing on reworked components.\n\nCheck: verify that any rework, repair, or deviation on regulators, latching valves, or thruster components carries documented torque/verification and quality sign-off, especially where supplier records are not fully visible to the program.\n\n### 3. Inherited flight software logic misbehaving under new mission conditions\nMars Observer suffered repeated inertial-reference-loss events from an algorithm error in flight software inherited from an Earth-orbiting program, compounded by a software patch uplinked without a full code walk-through ([LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310)). Recommendations: don't rely on better-than-spec hardware performance, perform detailed code walk-throughs of critical software and patches, and give special scrutiny to inherited software applied to new mission profiles.\n\nCheck: ensure the burn-termination and fault-protection logic, if inherited from a prior bus or heritage autocoded module, receives a dedicated code walk-through for this mission's burn sequence and sensor specifications, not just regression testing.\n\n### 4. Fixed-price contract structure limiting oversight of \"heritage\" hardware\nSEASAT's Agena bus was a fixed-price, \"flight-proven\" heritage design; JPL had no real oversight of it, modifications went unreported, tests were waived, and an unanalyzed slip-ring short ended the mission ([LLIS 371: SEASAT Failure](https://llis.nasa.gov/lesson/371)). The report recommends not uncritically accepting \"standard\" or \"flight-proven\" hardware, especially when modified, and contractually defining the depth of heritage evaluation on fixed-price contracts.\n\nCheck: for every subcontracted propulsion component claimed as heritage or qualified-by-similarity, confirm the contract requires disclosure of modifications and test waivers, not just acceptance paperwork.\n\nThis is a research aid drawn from historical NASA records, not a substitute for a formal safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "bipropellant apogee engine valve leak propellant depletion geostationary transfer orbit"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "helium pressurization system regulator failure spacecraft propulsion"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "software burn termination error inertial sensing premature shutdown thruster"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "propellant loading error mass properties mission analysis spacecraft"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "limited insight subcontractor test data supplier qualification commercial fixed price"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-485"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-463"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-310"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-371"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-362"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/484": "llis-484",
+    "https://llis.nasa.gov/lesson/965": "llis-965",
+    "https://llis.nasa.gov/lesson/420": "llis-420",
+    "https://llis.nasa.gov/lesson/205": "llis-205",
+    "https://llis.nasa.gov/lesson/485": "llis-485",
+    "https://llis.nasa.gov/lesson/962": "llis-962",
+    "https://llis.nasa.gov/lesson/463": "llis-463",
+    "https://llis.nasa.gov/lesson/34": "llis-34",
+    "https://llis.nasa.gov/lesson/1184": "llis-1184",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=201": "report-apollo13#156",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=224": "report-challenger_rogers_v1#335",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=184": "report-challenger_rogers_v1#271",
+    "https://llis.nasa.gov/lesson/310": "llis-310",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=134": "report-apollo13#107",
+    "https://llis.nasa.gov/lesson/422": "llis-422",
+    "https://llis.nasa.gov/lesson/50": "llis-50",
+    "https://llis.nasa.gov/lesson/290": "llis-290",
+    "https://llis.nasa.gov/lesson/849": "llis-849",
+    "https://llis.nasa.gov/lesson/291": "llis-291",
+    "https://llis.nasa.gov/lesson/217": "llis-217",
+    "https://llis.nasa.gov/lesson/883": "llis-883",
+    "https://llis.nasa.gov/lesson/462": "llis-462",
+    "https://llis.nasa.gov/lesson/25": "llis-25",
+    "https://llis.nasa.gov/lesson/344": "llis-344",
+    "https://llis.nasa.gov/lesson/364": "llis-364",
+    "https://llis.nasa.gov/lesson/351": "llis-351",
+    "https://llis.nasa.gov/lesson/371": "llis-371",
+    "https://llis.nasa.gov/lesson/362": "llis-362",
+    "https://llis.nasa.gov/lesson/831": "llis-831",
+    "https://llis.nasa.gov/lesson/272": "llis-272",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=56": "report-hubble_optics#39",
+    "https://llis.nasa.gov/lesson/724": "llis-724"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.0735
+}

@@ -1,0 +1,112 @@
+{
+  "case": "llis583",
+  "cutoff": "1996-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Across a continuous, multi-day round-the-clock TVAC campaign with minimal schedule margin, the greatest exposure is less the test environment itself than the human and procedural seams around it: crew handover, facility protection logic, GSE handling, and the temptation to trim verification against a fixed launch date.\n\n### 1. Protection-circuit override during an off-nominal reading\nA chamber operator can distrust a correctly-functioning alarm/fail-safe and continue the run, exposing hardware beyond qualification limits. In 1993, Mars Observer's flight Payload Data System was driven to -47°C (limit -20°C) when the chamber operator overrode alarm and fail-safe circuits, trusting a recently calibrated controller instead; a subsystem engineer on a separate data feed caught it and called for termination ([LLIS 274: Mars Observer Payload Data System (PDS) Exposure to Low Temperature](https://llis.nasa.gov/lesson/274)). Investigators recommended requiring hardware-engineering sign-off before any override of fail-safe devices, and continuous QA monitoring of environmental tests.\n\nCheck: confirm the abort procedure explicitly forbids a console operator from overriding a redline/fail-safe alone, and that cognizant subsystem engineers have an independent data feed and veto during every shift, not just day shift.\n\n### 2. Lifting/installation GSE instability going into the chamber\nMoving a flight vehicle with shrouding into a TVAC chamber on custom fixturing is itself a hazardous operation. TOPEX/POSEIDON's T/V fixture assembly rotated ~135° while being craned into the chamber in 1992 because the lifted configuration had never been stability-analyzed and the GSE design review had been repeatedly postponed ([LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final Report](https://llis.nasa.gov/lesson/1089)). Recommendations: no lifting equipment used without a full stability analysis of the complete loaded configuration, GSE drawings/analysis available 60 days before test, and a true precursor dry run with a representative mass mockup.\n\nCheck: verify the chamber-install lift fixture has a documented stability analysis for this spacecraft's as-built mass properties and that a full-fidelity dry run was actually performed, not substituted by a partial one.\n\n### 3. Contamination of cold, sensitive optics/sensors\nStandard outgassing material criteria can still allow contamination that cripples cold detectors. WF/PC-1's CCDs lost sensitivity during thermal-vacuum testing from contamination traced to the instrument itself, exposing that conventional ASTM E595 criteria are inadequate for instruments cold enough to trap films ([LLIS 352: Contamination Control for Susceptible Instruments](https://llis.nasa.gov/lesson/352)). Recommended: define instrument-specific sensitivity objectives and matching design/decontamination criteria rather than relying on generic material screening.\n\nCheck: confirm the payload has explicit, instrument-level contamination allowables for its coldest operating points, not just generic outgassing specs for the whole vehicle.\n\n### 4. Schedule pressure truncating the verification program\nFixed-window schedules can quietly cut test content. SEASAT's antenna shipped without full gain/pattern measurement due to schedule pressure, and the subsequent system test failed its primary objective with no pre-test baseline to diagnose why ([LLIS 365: Antenna Performance Specifications Not Met](https://llis.nasa.gov/lesson/365)). Recommendation: any reduction or deletion of test content must be documented with its risk and explicitly accepted by the project, not just the test team.\n\nCheck: any TVAC content trimmed to protect shipment date should be logged with a stated performance-verification gap and signed off above the test team.\n\nThis is a research aid drawn from historical NASA records, not a substitute for a formal safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "thermal vacuum chamber test anomaly damaged flight hardware spacecraft"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "shift handover communication failure during round-the-clock test operations"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "contamination control violation during long duration test sensitive optics"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure waived test requirement before launch window"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "propulsion pressurization ground support equipment valve failure test"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-274"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-1089"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-352"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-365"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-77"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/267": "llis-267",
+    "https://llis.nasa.gov/lesson/274": "llis-274",
+    "https://llis.nasa.gov/lesson/353": "llis-353",
+    "https://llis.nasa.gov/lesson/349": "llis-349",
+    "https://llis.nasa.gov/lesson/283": "llis-283",
+    "https://llis.nasa.gov/lesson/355": "llis-355",
+    "https://llis.nasa.gov/lesson/399": "llis-399",
+    "https://llis.nasa.gov/lesson/1200": "llis-1200",
+    "https://llis.nasa.gov/lesson/504": "llis-504",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=103": "report-challenger_rogers_v1#122",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=220": "report-apollo1_as204#139",
+    "https://llis.nasa.gov/lesson/193": "llis-193",
+    "https://llis.nasa.gov/lesson/1182": "llis-1182",
+    "https://llis.nasa.gov/lesson/183": "llis-183",
+    "https://llis.nasa.gov/lesson/390": "llis-390",
+    "https://llis.nasa.gov/lesson/352": "llis-352",
+    "https://llis.nasa.gov/lesson/354": "llis-354",
+    "https://llis.nasa.gov/lesson/305": "llis-305",
+    "https://llis.nasa.gov/lesson/881": "llis-881",
+    "https://llis.nasa.gov/lesson/366": "llis-366",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=21": "report-hubble_optics#15",
+    "https://llis.nasa.gov/lesson/286": "llis-286",
+    "https://llis.nasa.gov/lesson/379": "llis-379",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=22": "report-challenger_rogers_v1#26",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=151": "report-apollo1_as204#111",
+    "https://llis.nasa.gov/lesson/364": "llis-364",
+    "https://llis.nasa.gov/lesson/20": "llis-20",
+    "https://llis.nasa.gov/lesson/365": "llis-365",
+    "https://llis.nasa.gov/lesson/315": "llis-315",
+    "https://llis.nasa.gov/lesson/250": "llis-250",
+    "https://llis.nasa.gov/lesson/356": "llis-356",
+    "https://llis.nasa.gov/lesson/16": "llis-16",
+    "https://llis.nasa.gov/lesson/34": "llis-34",
+    "https://llis.nasa.gov/lesson/79": "llis-79",
+    "https://llis.nasa.gov/lesson/879": "llis-879",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=175": "report-apollo13#130",
+    "https://llis.nasa.gov/lesson/7": "llis-7",
+    "https://llis.nasa.gov/lesson/77": "llis-77",
+    "https://llis.nasa.gov/lesson/457": "llis-457"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.0749
+}

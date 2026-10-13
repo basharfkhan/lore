@@ -1,0 +1,141 @@
+{
+  "case": "llis497",
+  "cutoff": "1995-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Across this program the single biggest exposure is that the qualification article is being asked to stand in for seven years of flight life and for two different spacecraft, while flight units are already being built — so any late-discovered weakness in seat material, contamination control, or test coverage becomes a program-level problem, not a bench problem.\n\n### 1. Schedule pressure causes an unverified assumption to ride through qualification\nWhen cost and schedule favored reusing a flight-proven design rather than a custom one, a review board later found the inherited design had not been re-analyzed for a changed environment, and a flawed original stress assumption went undetected until a structural failure occurred in acceptance testing. See [LLIS 271: Mars Observer Pressure Modulator Infrared Radiometer (PMIRR) Cooler Failure During Vibration Testing](https://llis.nasa.gov/lesson/271). The board recommended a complete, thorough design review for any inherited design whenever the application or environment changes, including reanalysis and a dynamic test model before committing to flight build.\n\nCheck: confirm the valve's heritage basis (if any) was formally re-reviewed against this program's 4000 psi rating, 7-year life, and both spacecraft's duty cycles, not carried over by assumption because flight units are already in work.\n\n### 2. Polymer seat leaks develop only after the qualification unit has already \"passed\"\nA generic elastomer O-ring problem on Scout components caused leakage discovered only after initial acceptance testing; the cause was a short-duration \"set\" occurring after assembly, not the well-known permanent set. See [LLIS 445: O-Rings for Critical Seal Locations - Scout Program](https://llis.nasa.gov/lesson/445). Investigators recommended 100% inspection per MIL-STD-413B, a post-assembly soak period before testing dynamic/soft seats, and avoiding elastomers susceptible to compression set for long-term use.\n\nCheck: verify the poppet's polymer seat material is screened against compression-set susceptibility for multi-year dormancy, and that leak measurement at each thermal plateau is taken after an adequate post-assembly/post-cycle settling period, not immediately after actuation.\n\n### 3. A particle too small for leak check still defeats the seal later\nLimit-switch anomalies on shuttle missions were traced to metallic and non-metallic particles from fabrication (weld expulsion, glass, rubber, polymer debris) causing premature state changes or loss of indication. See [LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination](https://llis.nasa.gov/lesson/21). The recommendation was to impose PIND testing on all such components prior to delivery.\n\nCheck: confirm whether PIND or an equivalent contamination screen is applied to the latch valve internals before qualification, since a mass-spectrometer leak check at thermal plateaus may not catch a loose particle that later migrates onto the seat under vibration or shock.\n\n### 4. Seal material substitution slips through certification paperwork\nA quick-disconnect O-seal disintegrated in hydrazine because it was made of the wrong elastomer despite a distributor's certificate of conformance; the manufacturer could not even trace 40 of 500 seals in that lot. See [LLIS 451: Distributor Conformance Certification](https://llis.nasa.gov/lesson/451). The recommendation was to obtain the manufacturer's material lot certification in addition to the distributor's conformance certificate.\n\nCheck: for the polymer poppet seat material, confirm manufacturer-level lot traceability is on file, not just distributor paperwork, especially since flight units are already in fabrication from the same material lots as the qualification article.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "polymer seat valve leak rate degradation long duration mission life"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "latching solenoid valve failure to latch vibration"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "particle contamination valve seat leak helium pressurization system"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "qualification test program schedule pressure flight hardware fabrication concurrent"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "qualification test unit not representative of flight lot workmanship variability"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "combined environment test sequence omitted single stress qualification inadequate"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "titanium pressure vessel stress corrosion cracking helium long term exposure"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "propellant vapor migration check valve compatibility dual mode bipropellant"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-445"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-271"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-21"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-451"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/445": "llis-445",
+    "https://llis.nasa.gov/lesson/34": "llis-34",
+    "https://llis.nasa.gov/lesson/82": "llis-82",
+    "https://llis.nasa.gov/lesson/1183": "llis-1183",
+    "https://llis.nasa.gov/lesson/148": "llis-148",
+    "https://llis.nasa.gov/lesson/102": "llis-102",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=152": "report-apollo13#122",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=98": "report-apollo1_as204#70",
+    "https://llis.nasa.gov/lesson/187": "llis-187",
+    "https://llis.nasa.gov/lesson/132": "llis-132",
+    "https://llis.nasa.gov/lesson/130": "llis-130",
+    "https://llis.nasa.gov/lesson/226": "llis-226",
+    "https://llis.nasa.gov/lesson/507": "llis-507",
+    "https://llis.nasa.gov/lesson/289": "llis-289",
+    "https://llis.nasa.gov/lesson/845": "llis-845",
+    "https://llis.nasa.gov/lesson/79": "llis-79",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=201": "report-apollo13#156",
+    "https://llis.nasa.gov/lesson/39": "llis-39",
+    "https://llis.nasa.gov/lesson/108": "llis-108",
+    "https://llis.nasa.gov/lesson/21": "llis-21",
+    "https://llis.nasa.gov/lesson/66": "llis-66",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=51": "report-apollo13#44",
+    "https://llis.nasa.gov/lesson/350": "llis-350",
+    "https://llis.nasa.gov/lesson/353": "llis-353",
+    "https://llis.nasa.gov/lesson/1340": "llis-1340",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=5": "report-hubble_optics#3",
+    "https://llis.nasa.gov/lesson/176": "llis-176",
+    "https://llis.nasa.gov/lesson/301": "llis-301",
+    "https://llis.nasa.gov/lesson/271": "llis-271",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=221": "report-apollo1_as204#142",
+    "https://llis.nasa.gov/lesson/268": "llis-268",
+    "https://llis.nasa.gov/lesson/840": "llis-840",
+    "https://llis.nasa.gov/lesson/1186": "llis-1186",
+    "https://llis.nasa.gov/lesson/451": "llis-451",
+    "https://llis.nasa.gov/lesson/287": "llis-287",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=106": "report-challenger_rogers_v1#126",
+    "https://llis.nasa.gov/lesson/351": "llis-351",
+    "https://llis.nasa.gov/lesson/185": "llis-185",
+    "https://llis.nasa.gov/lesson/1199": "llis-1199",
+    "https://llis.nasa.gov/lesson/321": "llis-321",
+    "https://llis.nasa.gov/lesson/522": "llis-522",
+    "https://llis.nasa.gov/lesson/356": "llis-356",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=66": "report-challenger_rogers_v1#74",
+    "https://llis.nasa.gov/lesson/362": "llis-362",
+    "https://llis.nasa.gov/lesson/249": "llis-249",
+    "https://llis.nasa.gov/lesson/1184": "llis-1184",
+    "https://llis.nasa.gov/lesson/519": "llis-519",
+    "https://llis.nasa.gov/lesson/26": "llis-26",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=185": "report-apollo13#138",
+    "https://llis.nasa.gov/lesson/890": "llis-890",
+    "https://llis.nasa.gov/lesson/855": "llis-855",
+    "https://llis.nasa.gov/lesson/203": "llis-203",
+    "https://llis.nasa.gov/lesson/146": "llis-146",
+    "https://llis.nasa.gov/lesson/251": "llis-251",
+    "https://llis.nasa.gov/lesson/156": "llis-156",
+    "https://llis.nasa.gov/lesson/16": "llis-16",
+    "https://llis.nasa.gov/lesson/99": "llis-99"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.0959
+}

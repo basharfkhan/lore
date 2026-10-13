@@ -1,0 +1,97 @@
+{
+  "case": "llis1335",
+  "cutoff": "2002-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Qualifying a higher-power duplex UHF radio with a late-added, schedule-squeezed over-the-air test inside an in-house metal enclosure creates several independent ways a real RF problem could be missed or a good unit could be failed for the wrong reason.\n\n### 1. Metallic enclosure reflections corrupting the one over-the-air duplex test\nA shielded metal room reflects RF just as effectively as it blocks it; equipment and cranes inside such a facility produced RF level variations that confounded Voyager flight-radio/antenna measurements at the Air Force Eastern Test Range in 1995, even though prior tests in a different building had been repeatable. Investigators recommended running pathfinder tests whenever RF work moves to a new facility, and using highly directive probes and shielding the antenna from metallic surroundings that cause reflections. Check: before relying on the single late-campaign OTA duplex run, characterize the enclosure's multipath behavior with a pathfinder measurement, not just the flight unit itself. [LLIS 381: Antenna Test Difficulty at Air Force Eastern Test Range](https://llis.nasa.gov/lesson/381)\n\n### 2. Test article or geometry not representative of the real flight configuration\nGalileo's antenna pattern test used a tip sunshade model that had been changed from \"RF transparent\" to partly conductive without updating the test requirements document, so multipath interference from the real hardware went undetected until after a flyby. The board recommended concurrent engineering between requirements, design and test, and verification that test hardware \"properly simulates the characteristics of the flight hardware.\" Check: confirm the monopole, cabling, and enclosure geometry used in the OTA duplex test match the as-built flight configuration and current requirements, not an earlier assumption. [LLIS 350: Galileo Spacecraft Telemetry Degradation due to Antenna Multipath](https://llis.nasa.gov/lesson/350)\n\n### 3. Unverified duplex self-compatibility (self-lock, desense, spurious pushing)\nA NASA reliability practice warns that transmitters and receivers sharing a subsystem or antenna, if not explicitly characterized against each other, can self-lock, false-lock, desensitize, or shift frequency under their own interconnected signal. It recommends phased conducted testing of spurious emissions versus susceptibility at input and output ports, completed early enough to add filtering before integration. Check: verify this conducted self-compatibility characterization exists for the duplex mode independent of the single OTA run, since a chamber test alone won't isolate which port or mechanism is marginal. [LLIS 793: Characterization of RF Subsystem Susceptibility to Spurious Signals](https://llis.nasa.gov/lesson/793)\n\n### 4. Higher transmit power overloading or damaging the companion receiver\nViking's Lander-Orbiter relay pair found that raising transmitter output toward 30 W risked overloading the mated Orbiter receiver; prelaunch antenna-geometry tests were inadequate due to nonflight conditions, forcing an operational power de-rate instead of a design fix. The lesson: system engineers, not individual subsystem engineers, must anticipate cross-subsystem interactions as power or configuration changes. Check: confirm the ground support transceiver's receiver, and ultimately the orbiting relay asset's receiver, have margin verified against this unit's higher output, not just inherited from the heritage radio's rating. [LLIS 378: Untestable System Mode In Flight](https://llis.nasa.gov/lesson/378)\n\n### 5. Schedule and staffing pressure curtailing the newly added test\nISS program reviewers flagged that tight buildup schedules with no slack led to pressure to defer or curtail prelaunch testing, and recommended that test and verification plans not be compromised to meet launch dates or budgets. Check: treat the late-added OTA duplex test as a protected, fully-resourced activity rather than one absorbed into existing shared staffing, since it is exactly the kind of addition schedule pressure tends to erode. [LLIS 1014: International Space Station (ISS) Program/Ground Processing Schedule/Test and Verification](https://llis.nasa.gov/lesson/1014)\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "radiated RF test in shielded enclosure multipath reflections false result"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "transmitter receiver self-interference desensitization duplex same antenna"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "test like you fly gap hardline versus over the air end to end verification"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure late added test inadequate procedure review before launch"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-350"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-381"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-1014"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-793"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-378"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/350": "llis-350",
+    "https://llis.nasa.gov/lesson/381": "llis-381",
+    "https://llis.nasa.gov/lesson/653": "llis-653",
+    "https://llis.nasa.gov/lesson/773": "llis-773",
+    "https://llis.nasa.gov/lesson/708": "llis-708",
+    "https://llis.nasa.gov/lesson/797": "llis-797",
+    "https://llis.nasa.gov/lesson/770": "llis-770",
+    "https://llis.nasa.gov/lesson/793": "llis-793",
+    "https://llis.nasa.gov/lesson/378": "llis-378",
+    "https://llis.nasa.gov/lesson/411": "llis-411",
+    "https://llis.nasa.gov/lesson/878": "llis-878",
+    "https://llis.nasa.gov/lesson/410": "llis-410",
+    "https://llis.nasa.gov/lesson/798": "llis-798",
+    "https://llis.nasa.gov/lesson/881": "llis-881",
+    "https://llis.nasa.gov/lesson/436": "llis-436",
+    "https://discovery.larc.nasa.gov/discovery/PDF_FILES/mars_climate_orbiter_phaseII.pdf#page=29": "report-mco_phase2#36",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=165": "report-mpl_ds2#269",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=131": "report-apollo1_as204#103",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=27": "report-hubble_optics#19",
+    "https://llis.nasa.gov/lesson/499": "llis-499",
+    "https://llis.nasa.gov/lesson/149": "llis-149",
+    "https://llis.nasa.gov/lesson/777": "llis-777",
+    "https://llis.nasa.gov/lesson/842": "llis-842",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=181": "report-challenger_rogers_v1#264",
+    "https://llis.nasa.gov/lesson/1014": "llis-1014",
+    "https://llis.nasa.gov/lesson/364": "llis-364",
+    "https://llis.nasa.gov/lesson/609": "llis-609",
+    "https://llis.nasa.gov/lesson/1208": "llis-1208",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=220": "report-apollo1_as204#140",
+    "https://llis.nasa.gov/lesson/1184": "llis-1184",
+    "https://ntrs.nasa.gov/api/citations/19990019501/downloads/19990019501.pdf#page=10": "report-soho#16"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.0808
+}

@@ -76,3 +76,14 @@ def test_real_opening_lines_are_kept():
         "Your system has three linked single points of failure.\n\n### 1. Risk\nText.",
     ]:
         assert strip_preamble(answer) == answer
+
+
+@needs_corpus
+def test_cutoff_hides_later_documents_from_both_tools():
+    late = search_archive("touchdown sensor transient signal engine shutdown")
+    assert any(r["year"] >= "2000" for r in late)
+    early = search_archive("touchdown sensor transient signal engine shutdown", before="1999-12-03")
+    assert early and all(r["year"] <= "1999" for r in early)
+    newer = next(r for r in late if r["year"] >= "2000")
+    assert "error" in read_document(newer["id"], before="1999-12-03")
+    assert "text" in read_document(newer["id"])

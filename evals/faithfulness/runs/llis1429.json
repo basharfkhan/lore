@@ -1,0 +1,171 @@
+{
+  "case": "llis1429",
+  "cutoff": "2002-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Overall, this is a water-cooled, rotating-machinery plant where the leading dangers are off-design winter operation, slow degradation of fan/gearbox trains that isn't caught until it fails, and energy-isolation gaps during maintenance on elevated motor/fan assemblies — all sharpened by constrained staffing and aging towers; the archive has nothing specific on Legionella/biocide dosing failure, which is worth flagging as a gap.\n\n### 1. Winter off-design operation causing structural collapse\n\nA tower run outside its design flow/temperature envelope can freeze internally even while \"operating.\" In one precedent, valves were opened wider than normal to quiet noise from nearby workmen, and an extra pump was switched on; the resulting backpressure pushed water up the distribution riser into a standby cell with no heat load, where it froze. The ice load collapsed a large section of the structure. Investigators recommended written standards and operating procedures defining permitted deviations from normal operating conditions by season. [LLIS 231: Cooling Towers](https://llis.nasa.gov/lesson/231)\n\nCheck: confirm each cell has documented, season-specific limits on flow, standby operation, and valve positions, and that ad-hoc adjustments (noise complaints, pump swaps) go through that procedure rather than informal workarounds, especially given several towers are beyond mid-life.\n\n### 2. Gearbox/fan-train degradation reaching failure undetected\n\nFan, gearbox and motor trains degrade through imbalance, misalignment, bearing wear and gear wear long before an operator notices; annual calendar-based inspection can miss a train that degrades faster. The relevant practice note states roughly 80% of rotating-machinery problems are imbalance or misalignment, and recommends vibration monitoring to catch incipient failures before serious damage, citing KSC's program that cut failure rates and downtime once applied to fan/gearbox/motor trains. The companion RCM lesson likewise warns that maintenance without a structured task-selection process defaults to corrective (run-to-failure) maintenance. [LLIS 845: Vibration Analysis of Rotating Ground Support Machinery](https://llis.nasa.gov/lesson/845); [LLIS 891: Preventive Maintenance Strategies Using Reliability Centered Maintenance (RCM)](https://llis.nasa.gov/lesson/891)\n\nCheck: verify the site's criticality ranking actually drives condition-directed tasks (vibration, bearing condition) on the top-mounted fan/gearbox trains rather than a fixed annual-only schedule, particularly where budget pressure could turn \"annual planned\" into \"run until the annual visit.\"\n\n### 3. Maintenance personnel injury from inadvertent re-energization\n\nFan and motor maintenance is done at height, near a hot-water basin, often with controls and disconnects physically remote from the work point. Two precedents bear on this: displaced start/stop controls and breakers for HVAC pumps, located far from the equipment and not lockable, were flagged as a fatality risk if someone re-applied power while maintenance was in progress; separately, an electrician was shocked because an undocumented wiring modification wasn't reflected on the deenergization drawing and the circuit wasn't meter-verified before contact. Recommendations: provide local, lockable start/stop control at the equipment, keep facility drawings current, and enforce deenergization verification as part of lockout/tagout. [LLIS 32: Displaced Heating, Ventilating, Air Conditioning (HVAC) Controls](https://llis.nasa.gov/lesson/32); [LLIS 19: Erroneous Electrical System Drawings and Failure to Verify Deenergization Causing a Potentially Serious Electrical Shock Injury](https://llis.nasa.gov/lesson/19)\n\nCheck: confirm each fan/motor assembly has local, lockable disconnects, that facility drawings for tower power feeds are current against as-built modifications, and that meter-verification of deenergization is enforced before anyone works on the fan deck.\n\n### 4. Water chemistry failure (scale, corrosion, biological control)\n\nThis is a credible failure mode for plant loss (fouled fill, corroded basins) and for personnel exposure near walkways and parking, but the archive search returned no lesson or mishap report specifically addressing biocide dosing failure or aerosol biological hazard from a cooling tower. This gap should not be read as reassurance.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "cooling tower fire induced draft fiberglass"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "Legionella bacteria water treatment cooling tower"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "gearbox fan blade failure rotating machinery catastrophic"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "deferred maintenance aging infrastructure facility equipment failure"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "protective instrumentation bypassed undetected failure monitoring system"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "water basin overflow flooding facility equipment"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "personnel injury rotating equipment guard near walkway"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "reliability centered maintenance criticality ranking budget constrained staffing"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-231"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-845"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-891"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-32"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "lockout tagout energy isolation maintenance worker injury equipment restart"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "biocide dosing failure water quality corrosion scale control system"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-19"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/231": "llis-231",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=122": "report-apollo1_as204#96",
+    "https://llis.nasa.gov/lesson/994": "llis-994",
+    "https://llis.nasa.gov/lesson/739": "llis-739",
+    "https://llis.nasa.gov/lesson/643": "llis-643",
+    "https://llis.nasa.gov/lesson/881": "llis-881",
+    "https://llis.nasa.gov/lesson/750": "llis-750",
+    "https://llis.nasa.gov/lesson/578": "llis-578",
+    "https://llis.nasa.gov/lesson/944": "llis-944",
+    "https://llis.nasa.gov/lesson/883": "llis-883",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=90": "report-apollo13#77",
+    "https://llis.nasa.gov/lesson/879": "llis-879",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=135": "report-apollo1_as204#106",
+    "https://llis.nasa.gov/lesson/845": "llis-845",
+    "https://llis.nasa.gov/lesson/523": "llis-523",
+    "https://llis.nasa.gov/lesson/477": "llis-477",
+    "https://llis.nasa.gov/lesson/882": "llis-882",
+    "https://llis.nasa.gov/lesson/503": "llis-503",
+    "https://llis.nasa.gov/lesson/1027": "llis-1027",
+    "https://llis.nasa.gov/lesson/547": "llis-547",
+    "https://llis.nasa.gov/lesson/628": "llis-628",
+    "https://llis.nasa.gov/lesson/1164": "llis-1164",
+    "https://llis.nasa.gov/lesson/232": "llis-232",
+    "https://llis.nasa.gov/lesson/831": "llis-831",
+    "https://llis.nasa.gov/lesson/848": "llis-848",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=199": "report-challenger_rogers_v1#301",
+    "https://llis.nasa.gov/lesson/622": "llis-622",
+    "https://llis.nasa.gov/lesson/832": "llis-832",
+    "https://llis.nasa.gov/lesson/991": "llis-991",
+    "https://llis.nasa.gov/lesson/206": "llis-206",
+    "https://llis.nasa.gov/lesson/761": "llis-761",
+    "https://llis.nasa.gov/lesson/586": "llis-586",
+    "https://llis.nasa.gov/lesson/452": "llis-452",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=203": "report-apollo13#158",
+    "https://llis.nasa.gov/lesson/734": "llis-734",
+    "https://llis.nasa.gov/lesson/987": "llis-987",
+    "https://llis.nasa.gov/lesson/506": "llis-506",
+    "https://llis.nasa.gov/lesson/14": "llis-14",
+    "https://llis.nasa.gov/lesson/559": "llis-559",
+    "https://llis.nasa.gov/lesson/1183": "llis-1183",
+    "https://llis.nasa.gov/lesson/872": "llis-872",
+    "https://llis.nasa.gov/lesson/1198": "llis-1198",
+    "https://llis.nasa.gov/lesson/32": "llis-32",
+    "https://llis.nasa.gov/lesson/86": "llis-86",
+    "https://llis.nasa.gov/lesson/394": "llis-394",
+    "https://llis.nasa.gov/lesson/264": "llis-264",
+    "https://llis.nasa.gov/lesson/40": "llis-40",
+    "https://llis.nasa.gov/lesson/256": "llis-256",
+    "https://llis.nasa.gov/lesson/134": "llis-134",
+    "https://llis.nasa.gov/lesson/891": "llis-891",
+    "https://llis.nasa.gov/lesson/803": "llis-803",
+    "https://llis.nasa.gov/lesson/1256": "llis-1256",
+    "https://llis.nasa.gov/lesson/724": "llis-724",
+    "https://llis.nasa.gov/lesson/841": "llis-841",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=160": "report-challenger_rogers_v1#226",
+    "https://llis.nasa.gov/lesson/664": "llis-664",
+    "https://llis.nasa.gov/lesson/19": "llis-19",
+    "https://llis.nasa.gov/lesson/60": "llis-60",
+    "https://llis.nasa.gov/lesson/499": "llis-499",
+    "https://llis.nasa.gov/lesson/1034": "llis-1034",
+    "https://llis.nasa.gov/lesson/564": "llis-564",
+    "https://llis.nasa.gov/lesson/1096": "llis-1096",
+    "https://llis.nasa.gov/lesson/849": "llis-849",
+    "https://llis.nasa.gov/lesson/855": "llis-855",
+    "https://llis.nasa.gov/lesson/241": "llis-241",
+    "https://llis.nasa.gov/lesson/434": "llis-434",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=77": "report-mpl_ds2#111",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=118": "report-apollo1_as204#87",
+    "https://llis.nasa.gov/lesson/867": "llis-867"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.1139
+}

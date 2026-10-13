@@ -42,7 +42,8 @@ idle, so the first load can take up to a minute).
 - **Every link is audited.** After the agent answers, each link in the report is checked against
   the documents its tools returned during the conversation
   ([check_links](lore/agent/premortem.py)), and the page shows the result. A link the agent
-  could not have read is flagged.
+  could not have read is flagged. This catches invented sources, not a real source that is
+  misdescribed; that is measured separately under Evaluation.
 - **You can watch it work.** The page streams each search and each document read as it happens.
 - **Search is BM25 only.** On the held-out evaluation, hypothesis-driven search scored the same
   over BM25 as over the hybrid retriever, so the service runs without an embedding model, in
@@ -228,6 +229,56 @@ precursors under each hypothesis, which is why the comparison is made at 30.
 The other 6 held-out cases have no direct precursor in the archive at all. For those incidents
 no search method could have surfaced a warning, because none had been written down.
 
+### Do the reports say what their sources say?
+
+The link audit proves a cited document was retrieved. It does not prove the sentence beside the
+link is true to that document. `python -m lore.eval.faithfulness` checks that:
+
+1. The agent, running the model the live site uses (claude-sonnet-5), writes a pre-mortem for
+   each of the 13 held-out briefs, with its tools limited to documents written before that
+   incident. That gives 13 reports and 56 numbered risks.
+2. A different, stronger model (claude-opus-5) reads each risk beside the full text of the
+   documents it cites, and judges three things separately.
+
+| What was judged | supported | partly | unsupported |
+|---|---|---|---|
+| What the report says happened (55 cited risks) | 42 (76%) | 13 (24%) | 0 |
+| What it says the investigators recommended (54) | 51 (94%) | 2 (4%) | 1 (2%) |
+
+| The "Check" line (55) | |
+|---|---|
+| Applies a recommendation the documents make | 41 (75%) |
+| Adds a specific step or requirement the documents do not contain | 14 (25%) |
+| Has no basis in the documents | 0 |
+
+One risk of the 56 cited nothing and is not counted above.
+
+No precedent was invented, and every link passed the link audit. But about a quarter of the
+risks distort a detail, and some of those reverse the source:
+
+- A report says a TOPEX/Poseidon drive was "destroyed". The lesson says its housing was damaged,
+  it was reassembled without replacing major parts, and it passed flight acceptance tests.
+- A report says a wiring error "nearly" happened. The lesson says it did happen and was found
+  later.
+- A report says internal parts run warmer in an atmospheric thermal test. The lesson says the
+  opposite, which is why that test is less severe.
+- A report says a requirement called for "sign-off above the test team". The lesson says only
+  that the risk should be documented and communicated to the project.
+
+So a verified link is necessary and not sufficient. The fix this points to is a verification
+pass that re-reads each cited document against the draft before the report is shown; it is not
+built yet, and this evaluation is how its effect would be measured.
+
+The judge here is one model checking another, and its verdicts have not been checked by a person
+yet. A sheet of eleven of them is ready for that in
+[evals/review/faithfulness_check.md](evals/review/faithfulness_check.md).
+
+**End to end.** The same runs show how often the finished report cites a direct precursor: 3 of
+the 7 held-out incidents that have one (1 of the 4 hard ones). That is below the 5 of 7 the
+hypothesis retriever reaches in its top 30, because the agent reads eight results per search and
+keeps four or five risks. Retrieval finds the precedent more often than the report ends up using
+it.
+
 ### What the dev cases taught
 
 - **Dense retrieval matches topic, not failure mechanism.** Asked about a Mars lander it
@@ -247,8 +298,8 @@ the contamination above.
 
 ### Cost
 
-The LLM steps (hypotheses, case mining, contamination probes, judging) took about 540 calls to
-`claude-opus-5`, roughly $26 at list prices. Responses are cached on disk by request, so reruns
+The evaluation's LLM steps (hypotheses, case mining, contamination probes, judging, and the
+faithfulness check) took about 570 calls, roughly $29 at list prices. Responses are cached on disk by request, so reruns
 are free.
 
 ## Setup for development

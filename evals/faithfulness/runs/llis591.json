@@ -1,0 +1,161 @@
+{
+  "case": "llis591",
+  "cutoff": "1993-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "The subsystem's single biggest exposure is that its redundancy (two branches, parallel heaters) is managed through a thin telemetry pipe at exactly the time — post-separation priming and the acquisition burn — when an undetected fault would be hardest to recover from. Several precedents below involve components functionally identical to this design: pyrotechnic isolation valves, redundant tanks/branches, filters, and ground-commanded valve sequences.\n\n### 1. No way to see a flight-induced fault in the isolated branch\nWith both branches sealed by pyro valves until activation, ground and flight telemetry may only confirm the active branch's health, leaving the dormant one's leak or pressure status unknown until it is needed. This mirrors the IUS/TDRS propellant tank assemblies, where instrumentation monitored only one of two tanks during countdown, so a flight-induced anomaly in the other tank could not be detected. Investigators recommended individual pressure and temperature monitoring of each tank. [LLIS 206: Inertial Upper Stage (IUS) Propellant Tank Assemblies (PTA's)](https://llis.nasa.gov/lesson/206)\n\nCheck: confirm the pressure transducer and any heater/line temperature telemetry give independent, discriminable status for both branches, not just the one in use, within the early-orbit downlink budget.\n\n### 2. Internal valve defect invisible to proof and leak test\nA backwards-installed check-valve spring in the orbiter main propulsion system passed assembly and was only found because a flow test overstressed it; proof and leak testing alone would not have caught the reversed part. Investigators added X-ray inspection and a mandatory assembly inspection point for the spring. [LLIS 16: Reversed Installation of a Check Valve Spring (Main Propulsion), Subsequent Spring Failure and Uncontrollable Reverse Flow](https://llis.nasa.gov/lesson/16)\n\nCheck: for service valves, filters and any spring-loaded internals in the feed branches, verify an orientation/assembly inspection (X-ray or equivalent) exists beyond proof and leak test, since those tests do not confirm internal part orientation.\n\n### 3. Assembly lubricant particulates clogging filters\nTeflon particles shed from thread lubricant used during loop assembly clogged orbiter coolant filters, cutting flow below requirements. The corrective action was to find, clean and replace all contaminated filters and valves. [LLIS 9: Lubricant Particles Clogging Spacecraft System Filters](https://llis.nasa.gov/lesson/9)\n\nCheck: verify lubricants used on service valve threads, fittings and the pyro valve housings in this feed system are compatible with filter mesh size and propellant cleanliness requirements.\n\n### 4. Ground command sequence issued against stale system state\nAn engineer trusted a control-logic display that had not been reset for the current operation, commanded a valve open believing it closed, and overpressurized a line past its burst disk. The fix was a procedural step to reset control logic limits before each pressurization operation. [LLIS 77: OMS/RCS System Control Logic](https://llis.nasa.gov/lesson/77)\n\nCheck: confirm the ground priming and acquisition-burn command procedures require an explicit, freshly-verified valve/pressure state check immediately before each commanded step, not reliance on a prior display state.\n\n### 5. Inadvertent pyrotechnic firing from RF exposure\nNASA standard initiators, used in pyro valves, cannot be shielded against premature firing in excessive RF fields, risking damage or hazardous unintended isolation-valve actuation. The recommendation was to closely monitor and bound RF field levels during all pyrotechnic connection, test and safing operations. [LLIS 35: Unprotected NASA Standard Initiators (NSI)](https://llis.nasa.gov/lesson/35)\n\nCheck: verify RF exposure limits are enforced around the pyro isolation valves during integration, test and launch-site processing, including range/launch-vehicle transmitters.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "pyrotechnic valve failure to actuate propellant isolation"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "hydrazine thruster catalyst bed heater failure loss of thrust"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "titanium tank stress corrosion cracking hydrazine"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "propellant line contamination particulate clogging thruster valve"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-206"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-9"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "waterhammer pressure spike pyrotechnic valve firing propellant line"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "spacecraft anomaly limited telemetry ground command sequence fault diagnosis transfer orbit"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "hydrazine thruster catalyst bed cold start hard start ignition spike"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "qualification test development unit not representative of flight hardware workmanship escape"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-77"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single point failure pressure transducer propellant tank state knowledge spacecraft"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "explosive actuated valve debris fragment contamination downstream propulsion"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-16"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-35"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=201": "report-apollo13#156",
+    "https://llis.nasa.gov/lesson/102": "llis-102",
+    "https://llis.nasa.gov/lesson/99": "llis-99",
+    "https://llis.nasa.gov/lesson/206": "llis-206",
+    "https://llis.nasa.gov/lesson/163": "llis-163",
+    "https://llis.nasa.gov/lesson/146": "llis-146",
+    "https://llis.nasa.gov/lesson/108": "llis-108",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=224": "report-challenger_rogers_v1#334",
+    "https://llis.nasa.gov/lesson/59": "llis-59",
+    "https://llis.nasa.gov/lesson/17": "llis-17",
+    "https://llis.nasa.gov/lesson/148": "llis-148",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=88": "report-apollo13#75",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=186": "report-challenger_rogers_v1#274",
+    "https://llis.nasa.gov/lesson/94": "llis-94",
+    "https://llis.nasa.gov/lesson/14": "llis-14",
+    "https://llis.nasa.gov/lesson/120": "llis-120",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=183": "report-apollo13#137",
+    "https://llis.nasa.gov/lesson/13": "llis-13",
+    "https://llis.nasa.gov/lesson/96": "llis-96",
+    "https://llis.nasa.gov/lesson/72": "llis-72",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=15": "report-challenger_rogers_v1#18",
+    "https://llis.nasa.gov/lesson/1186": "llis-1186",
+    "https://llis.nasa.gov/lesson/79": "llis-79",
+    "https://llis.nasa.gov/lesson/8": "llis-8",
+    "https://llis.nasa.gov/lesson/129": "llis-129",
+    "https://llis.nasa.gov/lesson/9": "llis-9",
+    "https://llis.nasa.gov/lesson/82": "llis-82",
+    "https://llis.nasa.gov/lesson/1183": "llis-1183",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=53": "report-challenger_rogers_v1#52",
+    "https://llis.nasa.gov/lesson/49": "llis-49",
+    "https://llis.nasa.gov/lesson/77": "llis-77",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=57": "report-challenger_rogers_v1#59",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=103": "report-apollo13#88",
+    "https://llis.nasa.gov/lesson/2376": "llis-2376",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=98": "report-apollo1_as204#70",
+    "https://llis.nasa.gov/lesson/209": "llis-209",
+    "https://llis.nasa.gov/lesson/121": "llis-121",
+    "https://llis.nasa.gov/lesson/136": "llis-136",
+    "https://llis.nasa.gov/lesson/2816": "llis-2816",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=44": "report-challenger_rogers_v1#39",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=158": "report-apollo1_as204#125",
+    "https://llis.nasa.gov/lesson/35": "llis-35",
+    "https://llis.nasa.gov/lesson/32": "llis-32",
+    "https://llis.nasa.gov/lesson/198": "llis-198",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=82": "report-apollo13#70",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=221": "report-apollo1_as204#142",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=205": "report-challenger_rogers_v1#309",
+    "https://llis.nasa.gov/lesson/37": "llis-37",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=51": "report-apollo13#44",
+    "https://llis.nasa.gov/lesson/493": "llis-493",
+    "https://llis.nasa.gov/lesson/175": "llis-175",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=149": "report-apollo13#120",
+    "https://llis.nasa.gov/lesson/51": "llis-51",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=154": "report-apollo1_as204#117",
+    "https://llis.nasa.gov/lesson/205": "llis-205",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=184": "report-challenger_rogers_v1#271",
+    "https://llis.nasa.gov/lesson/1199": "llis-1199",
+    "https://llis.nasa.gov/lesson/16": "llis-16",
+    "https://llis.nasa.gov/lesson/34": "llis-34"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.1416
+}

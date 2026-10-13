@@ -1,0 +1,100 @@
+{
+  "case": "llis579",
+  "cutoff": "1996-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Integration and test of this EPS stacks several independent hazard types—energized mating errors, ground/flight interface noise, connector wear from repeated builds, and crane/handling moves between facilities—each of which has already destroyed or endangered flight hardware on past missions.\n\n### 1. Energized connector mismate during battery/harness mating\n\nBlind or limited-visibility mating of power connectors can short the bus or battery the instant pins touch, before alignment keys fully engage. On Magellan, a technician mating a battery connector to the wrong harness connector caused an electrical short that destroyed the test battery, the battery harness, the flight harness connector, and ignited the thermal blanket, costing over a week on an already tight schedule. Investigators found the connector design allowed pin contact before full keyway engagement and the mate point lacked direct visual access. Recommendations: mate batteries only in a fully discharged state, dress/tie cables so wrong-connector mating is physically impossible, use connectors where pins contact only after full key engagement, avoid blind-mate locations, and design umbilical/direct-access circuitry to tolerate a direct short without damage.\n\nCheck: for every battery and bus connector mated under the thermal blanket or in confined harness runs, confirm discharge state before mate, verify keying/visibility, and confirm GSE umbilical circuits are short-tolerant, per [LLIS 386: Magellan Battery Fire](https://llis.nasa.gov/lesson/386).\n\n### 2. Ground-to-flight ground-loop noise through the umbilical\n\nRunning functional tests through a facility umbilical couples GSE ground to flight ground; AC as well as DC paths can inject transients into sensitive circuits. On Galileo, a capacitive coupling path between flight and GSE grounds produced a 7V transient during power surges (e.g., TWTA turn-on) that intermittently triggered a power-on-reset in the attitude control subsystem, despite extensive investigation. Recommendation: verify AC ground paths are testable in system interface verification tests, and analyze interface circuits for AC coupling between independent ground trees.\n\nCheck: given the shunt regulator and remote power switches will see bus transients during umbilical-powered testing, verify AC ground-path behavior explicitly in interface tests rather than relying on DC continuity checks alone, per [LLIS 281: Galileo Attitude Control Power on Reset Problem](https://llis.nasa.gov/lesson/281).\n\n### 3. Pin damage from repeated harness build-up/rework cycling\n\nConnectors mated and demated repeatedly through rework accumulate bent pins, deformed sockets, and misalignment, sometimes going undetected if processing is skipped. Scout program experience (1960s–70s) found unmated or deformed-contact connectors traced to deviation from normal processing and missed visual checks. Recommendations: minimize connector cycling, visually re-inspect both halves before each mating, verify all connectors are mated before proceeding with test, and favor tapered-socket-entry designs.\n\nCheck: track mate/demate counts on EPS connectors through each harness reconfiguration, and require visual re-inspection and mate-verification sign-off before each functional test, per [LLIS 470: Electrical Connectors - Scout Program](https://llis.nasa.gov/lesson/470).\n\n### 4. Lift/move instability between test facilities\n\nMoving the assembled spacecraft between electrical, mass-properties, acoustic, and TV facilities on tight schedule can outrun proper handling-equipment review. On TOPEX/POSEIDON, a T/V lift fixture proved unstable and the suspended spacecraft rotated 135°, nearly falling, because no stability analysis of the full lifted configuration was done and a planned GSE review had been repeatedly postponed. Recommendations: review all handling GSE before use, perform a full stability analysis of the lifted configuration, and run a precursor dry run with a representative mass simulator.\n\nCheck: before each inter-facility move on this schedule-constrained flow, confirm GSE review and lift stability analysis are complete and not skipped for schedule, per [LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly](https://llis.nasa.gov/lesson/1089).\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "connector pin damage during mate demate ground test"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "inadvertent power application ground support equipment damaged flight hardware"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "battery mishandling during integration and test spacecraft"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "test schedule pressure shortcuts verification spacecraft integration"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-386"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-281"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-470"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "spacecraft transportation between test facilities handling damage schedule"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-1089"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/29": "llis-29",
+    "https://llis.nasa.gov/lesson/132": "llis-132",
+    "https://llis.nasa.gov/lesson/53": "llis-53",
+    "https://llis.nasa.gov/lesson/123": "llis-123",
+    "https://llis.nasa.gov/lesson/386": "llis-386",
+    "https://llis.nasa.gov/lesson/470": "llis-470",
+    "https://llis.nasa.gov/lesson/472": "llis-472",
+    "https://llis.nasa.gov/lesson/504": "llis-504",
+    "https://llis.nasa.gov/lesson/13": "llis-13",
+    "https://llis.nasa.gov/lesson/281": "llis-281",
+    "https://llis.nasa.gov/lesson/91": "llis-91",
+    "https://llis.nasa.gov/lesson/845": "llis-845",
+    "https://llis.nasa.gov/lesson/389": "llis-389",
+    "https://llis.nasa.gov/lesson/44": "llis-44",
+    "https://llis.nasa.gov/lesson/71": "llis-71",
+    "https://llis.nasa.gov/lesson/275": "llis-275",
+    "https://llis.nasa.gov/lesson/444": "llis-444",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=206": "report-apollo13#160",
+    "https://llis.nasa.gov/lesson/473": "llis-473",
+    "https://llis.nasa.gov/lesson/349": "llis-349",
+    "https://llis.nasa.gov/lesson/387": "llis-387",
+    "https://llis.nasa.gov/lesson/356": "llis-356",
+    "https://llis.nasa.gov/lesson/364": "llis-364",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=18": "report-hubble_optics#12",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=187": "report-apollo13#140",
+    "https://llis.nasa.gov/lesson/315": "llis-315",
+    "https://llis.nasa.gov/lesson/318": "llis-318",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=181": "report-challenger_rogers_v1#264",
+    "https://llis.nasa.gov/lesson/119": "llis-119",
+    "https://llis.nasa.gov/lesson/368": "llis-368",
+    "https://llis.nasa.gov/lesson/355": "llis-355",
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/366": "llis-366",
+    "https://llis.nasa.gov/lesson/353": "llis-353"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.069
+}

@@ -1,0 +1,270 @@
+{
+  "case": "llis439",
+  "cutoff": "1993-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "The biggest exposure here is that a single rotating mechanism design, qualified once and repeated across several programmes and both flight units, is being flown with almost no spares margin and under schedule pressure on a supplier-built unit — any defect that escapes acceptance testing is likely to be common to both strings and to sister missions.\n\n### 1. Common defect undetected because the qualification/verification method had no independent check\nTwo identical cross-strapped units built to one heritage standard and tested by one method share whatever blind spot that method has — redundancy only helps if the failure modes are independent. The precedent is the Hubble primary mirror, ground to a precise but wrong figure because the reflective null corrector used to verify it was never cross-checked by an independent technique; the error was reproduced on every measurement that used the same corrector. The Board stressed that a single, uncorroborated test method is not sufficient verification for a critical, unrepairable optical or mechanical figure. [The Hubble Space Telescope Optical Systems Failure Report](https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=31)\n\nCheck: confirm the prism figure, bearing preload setup, and encoder calibration were each verified by at least one method independent of the primary production test rig, for both flight units.\n\n### 2. Inadequate independent oversight of a supplier building to heritage standard\nWork done by a subcontractor on a critical, schedule-pressured item can proceed with QA effectively locked out — access restricted, paperwork not filed, discrepant data never escalated — so a flaw is only found after the hardware is on orbit. The investigators called for QA to have full, independent access from conception to delivery, authority to stop work, and a reporting path insulated from programme schedule pressure. [The Hubble Space Telescope Optical Systems Failure Report](https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=52)\n\nCheck: verify the horizon sensor supplier's QA has unrestricted access and documented sign-off on bearing preload, lubrication, and encoder alignment steps, independent of program cost/schedule pressure.\n\n### 3. Unrecertified material or process substitution under a heritage build standard\nA long-flying heritage design invites small vendor-level substitutions (lubricant, elastomer, potting compound) that are never flagged up the chain. In one case a vendor substituted a certified material in a flight battery relief valve; the substitute reacted with the electrolyte and the unit leaked. The recommendation was that material substitutions in critical applications require physical-properties testing before acceptance, not certification by inheritance. [LLIS 455: Nonmetallic Materials Certification](https://llis.nasa.gov/lesson/455)\n\nCheck: confirm the bearing lubricant, prism coatings, and thermopile potting materials on this build match the originally certified materials, with any substitution re-tested, not waved through on heritage.\n\n### 4. Particulate contamination causing erroneous encoder or switch state signals\nLoose metallic or non-metallic debris from manufacturing (weld spatter, glass, polymer) has repeatedly caused limit switches to give false state changes or lose contact. For a continuously rotating prism assembly with a position encoder and electrical contacts, the same debris source is plausible. The fix adopted was mandatory Particle Impact Noise Detection testing on all such switches before delivery. [LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination](https://llis.nasa.gov/lesson/21)\n\nCheck: confirm PIND or equivalent contamination screening was performed on the encoder and any electrical contacts in the scan assembly, not just on the bearing/motor housing.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "bearing lubrication degradation continuously rotating mechanism on-orbit life"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "ground life test not representative of on-orbit vacuum environment mechanism wear"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "common design flaw redundant units identical failure cross-strapped sensors"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "infrared horizon sensor earth sensor anomaly attitude determination failure"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "momentum wheel bearing lubricant failure spacecraft on-orbit"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "heritage hardware design flaw carried over to new program undetected"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "accelerated life test duration insufficient to reveal wear out mechanism"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single vendor parts obsolescence limited spares schedule cost pressure quality escape"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "reaction wheel bearing wear out failure spacecraft attitude control"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "supplier substituted part without notifying customer heritage design change"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "qualification test did not reveal failure found only after years in operation"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single point failure redundant sensor both units same root cause design defect"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-455"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-2376"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "life test ambient conditions not representative of thermal vacuum environment mechanism qualification"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "contamination outgassing bearing lubricant degradation spacecraft mechanism on orbit"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-214"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-21"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "report-hubble_optics#33"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "spacecraft mechanism bearing failure history gimbal despin motor lubricant breakdown"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "electromagnetic interference caused erroneous sensor output spacecraft electronics"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "report-hubble_optics#8"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "null corrector single test method no independent cross-check mirror figure error",
+        "source": "reports"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "report-hubble_optics#23"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "moving mechanical assembly wear out failure years into mission design life exceeded"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single test fixture used to verify both flight units common calibration error undetected"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/62": "llis-62",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=43": "report-apollo13#37",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=119": "report-apollo1_as204#88",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=198": "report-challenger_rogers_v1#298",
+    "https://llis.nasa.gov/lesson/132": "llis-132",
+    "https://llis.nasa.gov/lesson/500": "llis-500",
+    "https://llis.nasa.gov/lesson/113": "llis-113",
+    "https://llis.nasa.gov/lesson/187": "llis-187",
+    "https://llis.nasa.gov/lesson/449": "llis-449",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=193": "report-challenger_rogers_v1#288",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=13": "report-hubble_optics#8",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=101": "report-apollo13#86",
+    "https://llis.nasa.gov/lesson/234": "llis-234",
+    "https://llis.nasa.gov/lesson/191": "llis-191",
+    "https://llis.nasa.gov/lesson/85": "llis-85",
+    "https://llis.nasa.gov/lesson/111": "llis-111",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=133": "report-challenger_rogers_v1#172",
+    "https://llis.nasa.gov/lesson/1": "llis-1",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=96": "report-apollo13#82",
+    "https://llis.nasa.gov/lesson/78": "llis-78",
+    "https://llis.nasa.gov/lesson/174": "llis-174",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=78": "report-hubble_optics#57",
+    "https://llis.nasa.gov/lesson/63": "llis-63",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=198": "report-apollo13#153",
+    "https://llis.nasa.gov/lesson/2376": "llis-2376",
+    "https://llis.nasa.gov/lesson/452": "llis-452",
+    "https://llis.nasa.gov/lesson/72": "llis-72",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=16": "report-challenger_rogers_v1#19",
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/9": "llis-9",
+    "https://llis.nasa.gov/lesson/102": "llis-102",
+    "https://llis.nasa.gov/lesson/186": "llis-186",
+    "https://llis.nasa.gov/lesson/43": "llis-43",
+    "https://llis.nasa.gov/lesson/128": "llis-128",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=194": "report-challenger_rogers_v1#291",
+    "https://llis.nasa.gov/lesson/194": "llis-194",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=69": "report-hubble_optics#50",
+    "https://llis.nasa.gov/lesson/107": "llis-107",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=66": "report-challenger_rogers_v1#74",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=170": "report-apollo13#128",
+    "https://llis.nasa.gov/lesson/17": "llis-17",
+    "https://llis.nasa.gov/lesson/206": "llis-206",
+    "https://llis.nasa.gov/lesson/18": "llis-18",
+    "https://llis.nasa.gov/lesson/184": "llis-184",
+    "https://llis.nasa.gov/lesson/11": "llis-11",
+    "https://llis.nasa.gov/lesson/5": "llis-5",
+    "https://llis.nasa.gov/lesson/157": "llis-157",
+    "https://llis.nasa.gov/lesson/116": "llis-116",
+    "https://llis.nasa.gov/lesson/93": "llis-93",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=179": "report-challenger_rogers_v1#259",
+    "https://llis.nasa.gov/lesson/197": "llis-197",
+    "https://llis.nasa.gov/lesson/1199": "llis-1199",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=61": "report-hubble_optics#45",
+    "https://llis.nasa.gov/lesson/212": "llis-212",
+    "https://llis.nasa.gov/lesson/1182": "llis-1182",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=214": "report-apollo13#167",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=90": "report-apollo13#78",
+    "https://llis.nasa.gov/lesson/22": "llis-22",
+    "https://llis.nasa.gov/lesson/203": "llis-203",
+    "https://llis.nasa.gov/lesson/152": "llis-152",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=172": "report-challenger_rogers_v1#246",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=113": "report-apollo1_as204#84",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=191": "report-apollo13#144",
+    "https://llis.nasa.gov/lesson/455": "llis-455",
+    "https://llis.nasa.gov/lesson/180": "llis-180",
+    "https://llis.nasa.gov/lesson/1184": "llis-1184",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=52": "report-hubble_optics#33",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=182": "report-apollo13#136",
+    "https://llis.nasa.gov/lesson/1186": "llis-1186",
+    "https://llis.nasa.gov/lesson/82": "llis-82",
+    "https://llis.nasa.gov/lesson/1200": "llis-1200",
+    "https://llis.nasa.gov/lesson/143": "llis-143",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=91": "report-hubble_optics#68",
+    "https://llis.nasa.gov/lesson/214": "llis-214",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=50": "report-challenger_rogers_v1#48",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=35": "report-apollo1_as204#17",
+    "https://llis.nasa.gov/lesson/100": "llis-100",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=132": "report-apollo13#105",
+    "https://llis.nasa.gov/lesson/175": "llis-175",
+    "https://llis.nasa.gov/lesson/13": "llis-13",
+    "https://llis.nasa.gov/lesson/188": "llis-188",
+    "https://llis.nasa.gov/lesson/21": "llis-21",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=212": "report-apollo13#164",
+    "https://llis.nasa.gov/lesson/494": "llis-494",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=131": "report-apollo1_as204#103",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=46": "report-challenger_rogers_v1#42",
+    "https://ntrs.nasa.gov/api/citations/19820066930/downloads/19820066930.pdf#page=153": "report-apollo1_as204#116",
+    "https://llis.nasa.gov/lesson/142": "llis-142",
+    "https://llis.nasa.gov/lesson/35": "llis-35",
+    "https://llis.nasa.gov/lesson/71": "llis-71",
+    "https://llis.nasa.gov/lesson/1187": "llis-1187",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=31": "report-hubble_optics#23",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=151": "report-challenger_rogers_v1#206",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=82": "report-apollo13#70",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=196": "report-challenger_rogers_v1#294",
+    "https://llis.nasa.gov/lesson/54": "llis-54",
+    "https://llis.nasa.gov/lesson/88": "llis-88",
+    "https://llis.nasa.gov/lesson/183": "llis-183",
+    "https://llis.nasa.gov/lesson/121": "llis-121",
+    "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=102": "report-hubble_optics#76",
+    "https://llis.nasa.gov/lesson/101": "llis-101"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.2221
+}

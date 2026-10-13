@@ -1,0 +1,1221 @@
+{
+  "judge": "claude-opus-5",
+  "risks": 56,
+  "precedent": {
+    "partly": 13,
+    "supported": 42,
+    "uncited": 1
+  },
+  "recommendation": {
+    "unsupported": 1,
+    "supported": 51,
+    "partly": 2
+  },
+  "check": {
+    "extends": 14,
+    "grounded": 41
+  },
+  "cites_direct_precursor": [
+    {
+      "case": "llis497",
+      "difficulty": "hard",
+      "hit": false
+    },
+    {
+      "case": "llis579",
+      "difficulty": "easy",
+      "hit": true
+    },
+    {
+      "case": "llis583",
+      "difficulty": "hard",
+      "hit": false
+    },
+    {
+      "case": "llis621",
+      "difficulty": "hard",
+      "hit": true
+    },
+    {
+      "case": "llis1335",
+      "difficulty": "easy",
+      "hit": true
+    },
+    {
+      "case": "llis1376",
+      "difficulty": "easy",
+      "hit": false
+    },
+    {
+      "case": "llis1529",
+      "difficulty": "hard",
+      "hit": false
+    }
+  ],
+  "reports": [
+    {
+      "case": "llis439",
+      "difficulty": "easy",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.2221,
+      "tool_calls": 26,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Common defect undetected because the qualification/verification method had no independent check",
+          "body": "Two identical cross-strapped units built to one heritage standard and tested by one method share whatever blind spot that method has — redundancy only helps if the failure modes are independent. The precedent is the Hubble primary mirror, ground to a precise but wrong figure because the reflective null corrector used to verify it was never cross-checked by an independent technique; the error was reproduced on every measurement that used the same corrector. The Board stressed that a single, uncorroborated test method is not sufficient verification for a critical, unrepairable optical or mechanical figure. [The Hubble Space Telescope Optical Systems Failure Report](https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=31)",
+          "check": "extends",
+          "links": [
+            [
+              "The Hubble Space Telescope Optical Systems Failure Report",
+              "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=31"
+            ]
+          ],
+          "cited_ids": [
+            "report-hubble_optics#23"
+          ],
+          "precedent": "partly",
+          "recommendation": "unsupported",
+          "problem": "\"ground to a precise but wrong figure because the reflective null corrector used to verify it was never cross-checked by an independent technique\" distorts the cited page: the document states that independent checks did exist and did show spherical aberration (the RvNC vertex-radius test and the INC/RNC test), but the discrepancies were discounted without verification. The attributed conclusion \"The Board stressed that a single, uncorroborated test method is not sufficient verification for a critical, unrepairable optical or mechanical figure\" appears nowhere in the cited text, which contains no Board recommendation at all."
+        },
+        {
+          "number": 2,
+          "title": "Inadequate independent oversight of a supplier building to heritage standard",
+          "body": "Work done by a subcontractor on a critical, schedule-pressured item can proceed with QA effectively locked out — access restricted, paperwork not filed, discrepant data never escalated — so a flaw is only found after the hardware is on orbit. The investigators called for QA to have full, independent access from conception to delivery, authority to stop work, and a reporting path insulated from programme schedule pressure. [The Hubble Space Telescope Optical Systems Failure Report](https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=52)",
+          "check": "grounded",
+          "links": [
+            [
+              "The Hubble Space Telescope Optical Systems Failure Report",
+              "https://ntrs.nasa.gov/api/citations/19910003124/downloads/19910003124.pdf#page=52"
+            ]
+          ],
+          "cited_ids": [
+            "report-hubble_optics#33"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "Unrecertified material or process substitution under a heritage build standard",
+          "body": "A long-flying heritage design invites small vendor-level substitutions (lubricant, elastomer, potting compound) that are never flagged up the chain. In one case a vendor substituted a certified material in a flight battery relief valve; the substitute reacted with the electrolyte and the unit leaked. The recommendation was that material substitutions in critical applications require physical-properties testing before acceptance, not certification by inheritance. [LLIS 455: Nonmetallic Materials Certification](https://llis.nasa.gov/lesson/455)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 455: Nonmetallic Materials Certification",
+              "https://llis.nasa.gov/lesson/455"
+            ]
+          ],
+          "cited_ids": [
+            "llis-455"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Particulate contamination causing erroneous encoder or switch state signals",
+          "body": "Loose metallic or non-metallic debris from manufacturing (weld spatter, glass, polymer) has repeatedly caused limit switches to give false state changes or lose contact. For a continuously rotating prism assembly with a position encoder and electrical contacts, the same debris source is plausible. The fix adopted was mandatory Particle Impact Noise Detection testing on all such switches before delivery. [LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination](https://llis.nasa.gov/lesson/21)",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination",
+              "https://llis.nasa.gov/lesson/21"
+            ]
+          ],
+          "cited_ids": [
+            "llis-21"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "The document recommends PIND testing only for limit switches; applying it to a position encoder and other electrical contacts goes beyond the cited recommendation."
+        }
+      ]
+    },
+    {
+      "case": "llis497",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0959,
+      "tool_calls": 12,
+      "unsupported_links": [],
+      "cites_direct_precursor": false,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Schedule pressure causes an unverified assumption to ride through qualification",
+          "body": "When cost and schedule favored reusing a flight-proven design rather than a custom one, a review board later found the inherited design had not been re-analyzed for a changed environment, and a flawed original stress assumption went undetected until a structural failure occurred in acceptance testing. See [LLIS 271: Mars Observer Pressure Modulator Infrared Radiometer (PMIRR) Cooler Failure During Vibration Testing](https://llis.nasa.gov/lesson/271). The board recommended a complete, thorough design review for any inherited design whenever the application or environment changes, including reanalysis and a dynamic test model before committing to flight build.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 271: Mars Observer Pressure Modulator Infrared Radiometer (PMIRR) Cooler Failure During Vibration Testing",
+              "https://llis.nasa.gov/lesson/271"
+            ]
+          ],
+          "cited_ids": [
+            "llis-271"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Polymer seat leaks develop only after the qualification unit has already \"passed\"",
+          "body": "A generic elastomer O-ring problem on Scout components caused leakage discovered only after initial acceptance testing; the cause was a short-duration \"set\" occurring after assembly, not the well-known permanent set. See [LLIS 445: O-Rings for Critical Seal Locations - Scout Program](https://llis.nasa.gov/lesson/445). Investigators recommended 100% inspection per MIL-STD-413B, a post-assembly soak period before testing dynamic/soft seats, and avoiding elastomers susceptible to compression set for long-term use.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 445: O-Rings for Critical Seal Locations - Scout Program",
+              "https://llis.nasa.gov/lesson/445"
+            ]
+          ],
+          "cited_ids": [
+            "llis-445"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "The document recommends a settling period after assembly before testing; the Check adds a \"post-cycle settling period\" after actuation at each thermal plateau, which the document does not contain."
+        },
+        {
+          "number": 3,
+          "title": "A particle too small for leak check still defeats the seal later",
+          "body": "Limit-switch anomalies on shuttle missions were traced to metallic and non-metallic particles from fabrication (weld expulsion, glass, rubber, polymer debris) causing premature state changes or loss of indication. See [LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination](https://llis.nasa.gov/lesson/21). The recommendation was to impose PIND testing on all such components prior to delivery.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 21: Use of Particle Impact Noise Detection Test to Detect Contamination",
+              "https://llis.nasa.gov/lesson/21"
+            ]
+          ],
+          "cited_ids": [
+            "llis-21"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "The document recommends PIND testing on limit switches prior to delivery; extending it to latch valve internals (or an \"equivalent contamination screen\") is not a recommendation the document makes."
+        },
+        {
+          "number": 4,
+          "title": "Seal material substitution slips through certification paperwork",
+          "body": "A quick-disconnect O-seal disintegrated in hydrazine because it was made of the wrong elastomer despite a distributor's certificate of conformance; the manufacturer could not even trace 40 of 500 seals in that lot. See [LLIS 451: Distributor Conformance Certification](https://llis.nasa.gov/lesson/451). The recommendation was to obtain the manufacturer's material lot certification in addition to the distributor's conformance certificate.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 451: Distributor Conformance Certification",
+              "https://llis.nasa.gov/lesson/451"
+            ]
+          ],
+          "cited_ids": [
+            "llis-451"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        }
+      ]
+    },
+    {
+      "case": "llis559",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.1299,
+      "tool_calls": 16,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Fault protection responds in a way that is more hazardous than the fault itself",
+          "body": "A postulated propulsion anomaly on Mars Observer would have put the spacecraft into a \"stable\" contingency mode that inhibited the radio amplifier and blocked autonomous recovery of downlink; ground commands were not sent until hours later because controllers trusted spacecraft autonomy, and by then batteries would likely have been depleted. Investigators found fault protection was built bottom-up with no RCS backup to reaction wheels and was never exercised on the flight unit before launch. [LLIS 343: Mars Observer Inappropriate Fault Protection Response Following Contingency Mode Entry](https://llis.nasa.gov/lesson/343); [LLIS 345: Mars Observer Attitude Control Fault Protection](https://llis.nasa.gov/lesson/345)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 343: Mars Observer Inappropriate Fault Protection Response Following Contingency Mode Entry",
+              "https://llis.nasa.gov/lesson/343"
+            ],
+            [
+              "LLIS 345: Mars Observer Attitude Control Fault Protection",
+              "https://llis.nasa.gov/lesson/345"
+            ]
+          ],
+          "cited_ids": [
+            "llis-343",
+            "llis-345"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "An uplinked software patch introduces an unreviewed side effect",
+          "body": "Mars Observer's flight computer flexibility let controllers quickly uplink a script widening star-identification tolerance after inertial reference losses — but that patch had no detailed code walk-through, and it acted as a catalyst for three further inertial-reference-loss incidents via a pre-existing algorithm error inherited from another program. Recovery took days each time. [LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 310: Mars Observer Inertial Reference Loss",
+              "https://llis.nasa.gov/lesson/310"
+            ]
+          ],
+          "cited_ids": [
+            "llis-310"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "Sequences validated against a ground model that no longer matches onboard state",
+          "body": "Galileo's star-scanner calibration sequence was tested and cleared on the testbed, but an in-flight mode change (gyros off instead of on) before execution was judged inconsequential; the mismatch between simulated and actual onboard state triggered a hardware-swap cascade and safing, with a three-week recovery just weeks before Venus encounter. [LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration](https://llis.nasa.gov/lesson/288)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration",
+              "https://llis.nasa.gov/lesson/288"
+            ]
+          ],
+          "cited_ids": [
+            "llis-288"
+          ],
+          "precedent": "supported",
+          "recommendation": "none",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Preloaded sequencing proves too rigid for real anomalies, and small-team/light-time constraints block timely correction",
+          "body": "Voyager's operations concept assumed minimal real-time commanding, with most activity preloaded; flight experience showed real-time intervention was needed far more than planned, and the end-to-end system was cumbersome for it. [LLIS 270: Planning for Spacecraft Real-Time Commanding](https://llis.nasa.gov/lesson/270)",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 270: Planning for Spacecraft Real-Time Commanding",
+              "https://llis.nasa.gov/lesson/270"
+            ]
+          ],
+          "cited_ids": [
+            "llis-270"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "\"verify the real-time command path remains flexible and rehearsed\" — the document recommends capability and flexibility for continuous use, but says nothing about rehearsal/training of the backup command path."
+        }
+      ]
+    },
+    {
+      "case": "llis567",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.1114,
+      "tool_calls": 14,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Commanded perturbation interacts with an unverified fault-protection state",
+          "body": "Deliberately pushing the vehicle off reference to exercise rate sensors, wheels and thrusters means the test sequence must match the exact software/hardware state the spacecraft is actually in. On Galileo, a star-scanner calibration sequence was run after an unrelated mode change (inertial→cruise) that was judged harmless; the mismatch triggered a spin-bearing controller instability and drove the spacecraft into safing just before Venus encounter, with a three-week recovery. Investigators recommended verifying that simulated test states exactly match flight states, and rescrutinizing all planned activities after any anomaly changes spacecraft state. See [LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration](https://llis.nasa.gov/lesson/288).",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 288: Galileo Spacecraft Safing During Star Scanner Calibration",
+              "https://llis.nasa.gov/lesson/288"
+            ]
+          ],
+          "cited_ids": [
+            "llis-288"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Inherited flight software fault-logic error surfaces under in-flight conditions",
+          "body": "A production-line bus reuses attitude software across units; unverified algorithm defects can appear only under specific covariance or geometry conditions never hit in ground testing. Mars Observer repeatedly declared inertial-reference loss because gyro parameters were taken from optimistic in-house tests rather than vendor specs, and because an inherited algorithm error was never caught by a detailed code walk-through. A same-contractor spacecraft had already hit a related bug. Investigators recommended not trusting in-house hardware performance over manufacturer specs, performing detailed code walk-throughs of critical software and patches, and flagging inherited software for special scrutiny. See [LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310).",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 310: Mars Observer Inertial Reference Loss",
+              "https://llis.nasa.gov/lesson/310"
+            ]
+          ],
+          "cited_ids": [
+            "llis-310"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"an inherited algorithm error was never caught by a detailed code walk-through\" — the document states the missing detailed code walk-through concerned the uplinked software patch that widened star identification tolerance, not the inherited algorithm error itself; the inherited algorithm error is attributed to software reused from an earth-orbiting application (DMSP)."
+        },
+        {
+          "number": 3,
+          "title": "Fixed-price heritage bus treated as \"flight-proven\" without requalification",
+          "body": "A commercial, fixed-price delivery schedule creates pressure to accept subsystems as \"standard equipment.\" SEASAT's Agena bus was substantially modified but treated as flight-proven, so component failures went unreported, tests were waived, and a slip-ring short (a failure mode never considered in the FMECA) destroyed the mission. The review board recommended against uncritical acceptance of \"flight-proven\" hardware once modified, early heritage evaluation, and contractually defining the depth of review on fixed-price work. See [LLIS 371: SEASAT Failure](https://llis.nasa.gov/lesson/371).",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 371: SEASAT Failure",
+              "https://llis.nasa.gov/lesson/371"
+            ]
+          ],
+          "cited_ids": [
+            "llis-371"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Deployment telemetry confirms position, not the function that matters",
+          "body": "Solar array and reflector deployment checks depend on telemetry actually indicating the load-bearing event, not a proxy. On Magellan, microswitches indicated panel position rather than latch status; marginal stroke plus zero-g effects left the \"panels-latched\" signal absent even though deployment was visually confirmed. Investigators recommended siting telemetry transducers to measure the desired function itself, accounting for overtravel in microswitch actuation, and performing FMECA early with design engineers involved. See [LLIS 289: Magellan In-Flight Solar Array Deployment Indication](https://llis.nasa.gov/lesson/289).",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 289: Magellan In-Flight Solar Array Deployment Indication",
+              "https://llis.nasa.gov/lesson/289"
+            ]
+          ],
+          "cited_ids": [
+            "llis-289"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        }
+      ]
+    },
+    {
+      "case": "llis572",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0735,
+      "tool_calls": 10,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Oxidizer migration through check valves into the pressurization system",
+          "body": "A hypergolic bipropellant design that leaves the helium pressurization system connected to the propellant tanks for long, low-flow periods can let NTO vapor migrate upstream through the check valves and condense in cold tubing; when pressurization is later commanded, liquid oxidizer can mix with fuel vapor and detonate in the lines. This was identified as the most probable cause of the Mars Observer loss, an inherited Earth-orbital NTO/hydrazine design flown on a long-coast mission ([LLIS 485: Isolate the Propulsion Pressurization System from the Propellant Tanks](https://llis.nasa.gov/lesson/485)). Investigators recommended positively isolating the pressurization system from propellant tanks when high flow is not needed, or proving the effect of vapor migration is benign, and performing thermal analysis to find conditions where condensation could occur.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 485: Isolate the Propulsion Pressurization System from the Propellant Tanks",
+              "https://llis.nasa.gov/lesson/485"
+            ]
+          ],
+          "cited_ids": [
+            "llis-485"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Regulator or valve rework degrading thrust and stranding the spacecraft in a bad orbit",
+          "body": "A reworked precision regulator in a booster engine's pressurization path caused thrust decay and left a Hughes satellite in an orbit the customer declared unusable, even though the engine \"functioned normally\" ([LLIS 463: Atlas Booster Engine Precision Regulator](https://llis.nasa.gov/lesson/463)). The cause was a set-screw rework performed without torque or inspection controls. Investigators recommended preventing undesired screw rotation, improving system margins, improving data evaluation, and tightening quality processing on reworked components.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 463: Atlas Booster Engine Precision Regulator",
+              "https://llis.nasa.gov/lesson/463"
+            ]
+          ],
+          "cited_ids": [
+            "llis-463"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"even though the engine 'functioned normally'\" — the document says the *satellite* was functioning normally (\"Although functioning normally, the satellite was declared a loss by the Navy\"); the booster engine regulator in fact failed and caused thrust decay."
+        },
+        {
+          "number": 3,
+          "title": "Inherited flight software logic misbehaving under new mission conditions",
+          "body": "Mars Observer suffered repeated inertial-reference-loss events from an algorithm error in flight software inherited from an Earth-orbiting program, compounded by a software patch uplinked without a full code walk-through ([LLIS 310: Mars Observer Inertial Reference Loss](https://llis.nasa.gov/lesson/310)). Recommendations: don't rely on better-than-spec hardware performance, perform detailed code walk-throughs of critical software and patches, and give special scrutiny to inherited software applied to new mission profiles.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 310: Mars Observer Inertial Reference Loss",
+              "https://llis.nasa.gov/lesson/310"
+            ]
+          ],
+          "cited_ids": [
+            "llis-310"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Fixed-price contract structure limiting oversight of \"heritage\" hardware",
+          "body": "SEASAT's Agena bus was a fixed-price, \"flight-proven\" heritage design; JPL had no real oversight of it, modifications went unreported, tests were waived, and an unanalyzed slip-ring short ended the mission ([LLIS 371: SEASAT Failure](https://llis.nasa.gov/lesson/371)). The report recommends not uncritically accepting \"standard\" or \"flight-proven\" hardware, especially when modified, and contractually defining the depth of heritage evaluation on fixed-price contracts.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 371: SEASAT Failure",
+              "https://llis.nasa.gov/lesson/371"
+            ]
+          ],
+          "cited_ids": [
+            "llis-371"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"modifications went unreported\" — the document states the Agena subsystems were substantially modified but treated as closely similar designs, and that what went unreported were \"significant component failures\" (along with waived tests), not the modifications themselves. Check also adds a specific contractual requirement to disclose modifications and test waivers, where the document only recommends that the degree of heritage evaluation may have to be contractually defined."
+        }
+      ]
+    },
+    {
+      "case": "llis579",
+      "difficulty": "easy",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.069,
+      "tool_calls": 9,
+      "unsupported_links": [],
+      "cites_direct_precursor": true,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Energized connector mismate during battery/harness mating",
+          "body": "Blind or limited-visibility mating of power connectors can short the bus or battery the instant pins touch, before alignment keys fully engage. On Magellan, a technician mating a battery connector to the wrong harness connector caused an electrical short that destroyed the test battery, the battery harness, the flight harness connector, and ignited the thermal blanket, costing over a week on an already tight schedule. Investigators found the connector design allowed pin contact before full keyway engagement and the mate point lacked direct visual access. Recommendations: mate batteries only in a fully discharged state, dress/tie cables so wrong-connector mating is physically impossible, use connectors where pins contact only after full key engagement, avoid blind-mate locations, and design umbilical/direct-access circuitry to tolerate a direct short without damage.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 386: Magellan Battery Fire",
+              "https://llis.nasa.gov/lesson/386"
+            ]
+          ],
+          "cited_ids": [
+            "llis-386"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Ground-to-flight ground-loop noise through the umbilical",
+          "body": "Running functional tests through a facility umbilical couples GSE ground to flight ground; AC as well as DC paths can inject transients into sensitive circuits. On Galileo, a capacitive coupling path between flight and GSE grounds produced a 7V transient during power surges (e.g., TWTA turn-on) that intermittently triggered a power-on-reset in the attitude control subsystem, despite extensive investigation. Recommendation: verify AC ground paths are testable in system interface verification tests, and analyze interface circuits for AC coupling between independent ground trees.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 281: Galileo Attitude Control Power on Reset Problem",
+              "https://llis.nasa.gov/lesson/281"
+            ]
+          ],
+          "cited_ids": [
+            "llis-281"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "Pin damage from repeated harness build-up/rework cycling",
+          "body": "Connectors mated and demated repeatedly through rework accumulate bent pins, deformed sockets, and misalignment, sometimes going undetected if processing is skipped. Scout program experience (1960s–70s) found unmated or deformed-contact connectors traced to deviation from normal processing and missed visual checks. Recommendations: minimize connector cycling, visually re-inspect both halves before each mating, verify all connectors are mated before proceeding with test, and favor tapered-socket-entry designs.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 470: Electrical Connectors - Scout Program",
+              "https://llis.nasa.gov/lesson/470"
+            ]
+          ],
+          "cited_ids": [
+            "llis-470"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"Connectors mated and demated repeatedly through rework accumulate bent pins, deformed sockets, and misalignment\" and \"unmated or deformed-contact connectors traced to deviation from normal processing and missed visual checks\" - the document attributes unmated connectors to deviation from normal processing, but attributes deformed contacts to bent pins/misalignment at the time of mating, not to repeated mate/demate cycling through rework. The Check line's \"track mate/demate counts on EPS connectors\" is not a step the document contains (it only says \"minimize connector cycling\")."
+        },
+        {
+          "number": 4,
+          "title": "Lift/move instability between test facilities",
+          "body": "Moving the assembled spacecraft between electrical, mass-properties, acoustic, and TV facilities on tight schedule can outrun proper handling-equipment review. On TOPEX/POSEIDON, a T/V lift fixture proved unstable and the suspended spacecraft rotated 135°, nearly falling, because no stability analysis of the full lifted configuration was done and a planned GSE review had been repeatedly postponed. Recommendations: review all handling GSE before use, perform a full stability analysis of the lifted configuration, and run a precursor dry run with a representative mass simulator.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly",
+              "https://llis.nasa.gov/lesson/1089"
+            ]
+          ],
+          "cited_ids": [
+            "llis-1089"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        }
+      ]
+    },
+    {
+      "case": "llis583",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0749,
+      "tool_calls": 10,
+      "unsupported_links": [],
+      "cites_direct_precursor": false,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Protection-circuit override during an off-nominal reading",
+          "body": "A chamber operator can distrust a correctly-functioning alarm/fail-safe and continue the run, exposing hardware beyond qualification limits. In 1993, Mars Observer's flight Payload Data System was driven to -47°C (limit -20°C) when the chamber operator overrode alarm and fail-safe circuits, trusting a recently calibrated controller instead; a subsystem engineer on a separate data feed caught it and called for termination ([LLIS 274: Mars Observer Payload Data System (PDS) Exposure to Low Temperature](https://llis.nasa.gov/lesson/274)). Investigators recommended requiring hardware-engineering sign-off before any override of fail-safe devices, and continuous QA monitoring of environmental tests.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 274: Mars Observer Payload Data System (PDS) Exposure to Low Temperature",
+              "https://llis.nasa.gov/lesson/274"
+            ]
+          ],
+          "cited_ids": [
+            "llis-274"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "Check adds requirements not in the document: that cognizant engineers hold a formal \"veto\" and an independent data feed \"during every shift, not just day shift.\" The document recommends only that approval from cognizant hardware engineering be obtained prior to any fail-safe override (the separate data source is narrative, not a recommendation)."
+        },
+        {
+          "number": 2,
+          "title": "Lifting/installation GSE instability going into the chamber",
+          "body": "Moving a flight vehicle with shrouding into a TVAC chamber on custom fixturing is itself a hazardous operation. TOPEX/POSEIDON's T/V fixture assembly rotated ~135° while being craned into the chamber in 1992 because the lifted configuration had never been stability-analyzed and the GSE design review had been repeatedly postponed ([LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final Report](https://llis.nasa.gov/lesson/1089)). Recommendations: no lifting equipment used without a full stability analysis of the complete loaded configuration, GSE drawings/analysis available 60 days before test, and a true precursor dry run with a representative mass mockup.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 1089: TOPEX/POSEIDON Spacecraft Handling Anomaly Special Review Board Final Report",
+              "https://llis.nasa.gov/lesson/1089"
+            ]
+          ],
+          "cited_ids": [
+            "llis-1089"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "Contamination of cold, sensitive optics/sensors",
+          "body": "Standard outgassing material criteria can still allow contamination that cripples cold detectors. WF/PC-1's CCDs lost sensitivity during thermal-vacuum testing from contamination traced to the instrument itself, exposing that conventional ASTM E595 criteria are inadequate for instruments cold enough to trap films ([LLIS 352: Contamination Control for Susceptible Instruments](https://llis.nasa.gov/lesson/352)). Recommended: define instrument-specific sensitivity objectives and matching design/decontamination criteria rather than relying on generic material screening.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 352: Contamination Control for Susceptible Instruments",
+              "https://llis.nasa.gov/lesson/352"
+            ]
+          ],
+          "cited_ids": [
+            "llis-352"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Schedule pressure truncating the verification program",
+          "body": "Fixed-window schedules can quietly cut test content. SEASAT's antenna shipped without full gain/pattern measurement due to schedule pressure, and the subsequent system test failed its primary objective with no pre-test baseline to diagnose why ([LLIS 365: Antenna Performance Specifications Not Met](https://llis.nasa.gov/lesson/365)). Recommendation: any reduction or deletion of test content must be documented with its risk and explicitly accepted by the project, not just the test team.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 365: Antenna Performance Specifications Not Met",
+              "https://llis.nasa.gov/lesson/365"
+            ]
+          ],
+          "cited_ids": [
+            "llis-365"
+          ],
+          "precedent": "supported",
+          "recommendation": "partly",
+          "problem": "The document recommends that risks of any test reduction/deletion be \"clearly documented and communicated to the project,\" and that the project \"carefully consider\" them; it does not require explicit acceptance/sign-off by the project above the test team. The Check's \"signed off above the test team\" adds a step the document does not contain."
+        }
+      ]
+    },
+    {
+      "case": "llis591",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.1416,
+      "tool_calls": 15,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "No way to see a flight-induced fault in the isolated branch",
+          "body": "With both branches sealed by pyro valves until activation, ground and flight telemetry may only confirm the active branch's health, leaving the dormant one's leak or pressure status unknown until it is needed. This mirrors the IUS/TDRS propellant tank assemblies, where instrumentation monitored only one of two tanks during countdown, so a flight-induced anomaly in the other tank could not be detected. Investigators recommended individual pressure and temperature monitoring of each tank. [LLIS 206: Inertial Upper Stage (IUS) Propellant Tank Assemblies (PTA's)](https://llis.nasa.gov/lesson/206)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 206: Inertial Upper Stage (IUS) Propellant Tank Assemblies (PTA's)",
+              "https://llis.nasa.gov/lesson/206"
+            ]
+          ],
+          "cited_ids": [
+            "llis-206"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Internal valve defect invisible to proof and leak test",
+          "body": "A backwards-installed check-valve spring in the orbiter main propulsion system passed assembly and was only found because a flow test overstressed it; proof and leak testing alone would not have caught the reversed part. Investigators added X-ray inspection and a mandatory assembly inspection point for the spring. [LLIS 16: Reversed Installation of a Check Valve Spring (Main Propulsion), Subsequent Spring Failure and Uncontrollable Reverse Flow](https://llis.nasa.gov/lesson/16)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 16: Reversed Installation of a Check Valve Spring (Main Propulsion), Subsequent Spring Failure and Uncontrollable Reverse Flow",
+              "https://llis.nasa.gov/lesson/16"
+            ]
+          ],
+          "cited_ids": [
+            "llis-16"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"passed assembly and was only found because a flow test overstressed it; proof and leak testing alone would not have caught the reversed part\" — the document says the reversed spring was discovered upon removal of the check valve after an unexpected manifold pressurization (earlier flow tests only contributed added stress leading to the break); proof and leak testing are not mentioned anywhere in the document."
+        },
+        {
+          "number": 3,
+          "title": "Assembly lubricant particulates clogging filters",
+          "body": "Teflon particles shed from thread lubricant used during loop assembly clogged orbiter coolant filters, cutting flow below requirements. The corrective action was to find, clean and replace all contaminated filters and valves. [LLIS 9: Lubricant Particles Clogging Spacecraft System Filters](https://llis.nasa.gov/lesson/9)",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 9: Lubricant Particles Clogging Spacecraft System Filters",
+              "https://llis.nasa.gov/lesson/9"
+            ]
+          ],
+          "cited_ids": [
+            "llis-9"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "Check requires verifying lubricant \"compatible with filter mesh size and propellant cleanliness requirements\"; the document's recommendation is only to disassemble, clean and replace contaminated components, and no screening/compatibility criterion is stated."
+        },
+        {
+          "number": 4,
+          "title": "Ground command sequence issued against stale system state",
+          "body": "An engineer trusted a control-logic display that had not been reset for the current operation, commanded a valve open believing it closed, and overpressurized a line past its burst disk. The fix was a procedural step to reset control logic limits before each pressurization operation. [LLIS 77: OMS/RCS System Control Logic](https://llis.nasa.gov/lesson/77)",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 77: OMS/RCS System Control Logic",
+              "https://llis.nasa.gov/lesson/77"
+            ]
+          ],
+          "cited_ids": [
+            "llis-77"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "Check demands \"an explicit, freshly-verified valve/pressure state check immediately before each commanded step\"; the document only recommends adding a step to adjust/reset control logic limits prior to changing pressure."
+        },
+        {
+          "number": 5,
+          "title": "Inadvertent pyrotechnic firing from RF exposure",
+          "body": "NASA standard initiators, used in pyro valves, cannot be shielded against premature firing in excessive RF fields, risking damage or hazardous unintended isolation-valve actuation. The recommendation was to closely monitor and bound RF field levels during all pyrotechnic connection, test and safing operations. [LLIS 35: Unprotected NASA Standard Initiators (NSI)](https://llis.nasa.gov/lesson/35)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 35: Unprotected NASA Standard Initiators (NSI)",
+              "https://llis.nasa.gov/lesson/35"
+            ]
+          ],
+          "cited_ids": [
+            "llis-35"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"NASA standard initiators, used in pyro valves\" and \"hazardous unintended isolation-valve actuation\" — the document describes NSIs igniting boron potassium nitrate pellets in the SRB ignition sequence and cites personnel injury and hardware/GSE damage, not pyro valve or isolation-valve applications."
+        }
+      ]
+    },
+    {
+      "case": "llis621",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.068,
+      "tool_calls": 9,
+      "unsupported_links": [],
+      "cites_direct_precursor": true,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Shop-built handling fixture fails or destabilizes under load",
+          "body": "The probe assembly will be repeatedly lifted and moved between the dewar, support structure and storage container using a shop-built fixture whose stability for this specific load path may never have been formally analyzed. In 1993 a reused lifting fixture on TOPEX/POSEIDON rotated ~135° during a lift and nearly dropped the spacecraft; the fixture had been inherited from another program without re-analysis for the new configuration ([LLIS 267: TOPEX/POSEIDON Near-Drop Incident](https://llis.nasa.gov/lesson/267)). Investigators recommended rigorous analysis of the lift configuration's stability and center of gravity, and qualified, experienced personnel on site for critical lifts.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 267: TOPEX/POSEIDON Near-Drop Incident",
+              "https://llis.nasa.gov/lesson/267"
+            ]
+          ],
+          "cited_ids": [
+            "llis-267"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Untrained personnel manipulate hardware not secured in its fixture",
+          "body": "With only two graduate researchers and one engineer rotating tasks, someone may handle the probe in a fixture without realizing it isn't fastened down. A nearly identical event destroyed a TOPEX/POSEIDON Solar Array Drive: an employee unfamiliar with the hardware tilted an inspection fixture, not knowing the unit wasn't secured, and it fell 40 inches, causing two months of rework ([LLIS 273: TOPEX/POSEIDON Solar Array Drive (SAD) Drop](https://llis.nasa.gov/lesson/273)). The board recommended written, posted handling instructions, QA review of fixtures before use, and pairing inexperienced staff with experienced personnel until proficient.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 273: TOPEX/POSEIDON Solar Array Drive (SAD) Drop",
+              "https://llis.nasa.gov/lesson/273"
+            ]
+          ],
+          "cited_ids": [
+            "llis-273"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"A nearly identical event destroyed a TOPEX/POSEIDON Solar Array Drive\" — the document says the housing was damaged in two areas, no bearing damage was found, and the unit was reassembled without replacing major components and passed flight acceptance tests; it was not destroyed. Also the technician \"tilted the assembly\" (the SAD in its fixture), not \"an inspection fixture.\""
+        },
+        {
+          "number": 3,
+          "title": "Helium vent/purge line blockage overpressurizes the dewar",
+          "body": "Active boil-off and purge lines on an aging vacuum-jacketed dewar are a known rupture hazard: a liquid helium dewar serving payload experiments ruptured and damaged the room when air was ingested through a valve stem not rated for vacuum service, froze, and blocked the vent ([LLIS 66: Dewar Vent Plumbing](https://llis.nasa.gov/lesson/66)). The recommendation was to ensure every valve in a dewar's vent path is designed for vacuum-system service.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 66: Dewar Vent Plumbing",
+              "https://llis.nasa.gov/lesson/66"
+            ]
+          ],
+          "cited_ids": [
+            "llis-66"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Oxygen-deficient atmosphere from boil-off in a general-purpose bay",
+          "body": "A concrete-floored, general-purpose lab with continuous helium boil-off is exactly the setting where cryogen displaces breathable air unnoticed. Technicians transferring liquid nitrogen lost consciousness from oxygen deficiency while shutting down a vent in reduced visibility, rescued only because others were present ([LLIS 550: Oxygen-Deficient Atmospheres](https://llis.nasa.gov/lesson/550)). Recommendations included never working cryogenics alone, using portable oxygen monitors, and following confined-space procedures in unventilated areas.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 550: Oxygen-Deficient Atmospheres",
+              "https://llis.nasa.gov/lesson/550"
+            ]
+          ],
+          "cited_ids": [
+            "llis-550"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 5,
+          "title": "Unclear disassembly/reassembly procedures under schedule pressure",
+          "body": "A compressed timeline with thin staffing increases the chance that a connector, valve, or thermometry lead is reconnected incorrectly. At Magellan, unclear procedures and the absence of cognizant personnel nearly caused a Safe and Arm device to be misconnected, caught only because a technician double-checked ([LLIS 382: Magellan Solid Rocket Motor Safe and Arm Device](https://llis.nasa.gov/lesson/382)). Recommendations: cognizant, hands-on-qualified personnel present for critical steps, procedures reviewed for clarity in advance, and independent verification (e.g., photos) for connections that can't otherwise be checked.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 382: Magellan Solid Rocket Motor Safe and Arm Device",
+              "https://llis.nasa.gov/lesson/382"
+            ]
+          ],
+          "cited_ids": [
+            "llis-382"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"nearly caused a Safe and Arm device to be misconnected\" — the document states the ETA lines *were* incorrectly assembled to the inert ports; the error actually occurred and was later discovered when the technician checked the data package with knowledgeable engineering personnel at the manufacturing facility."
+        }
+      ]
+    },
+    {
+      "case": "llis1335",
+      "difficulty": "easy",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0808,
+      "tool_calls": 9,
+      "unsupported_links": [],
+      "cites_direct_precursor": true,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Metallic enclosure reflections corrupting the one over-the-air duplex test",
+          "body": "A shielded metal room reflects RF just as effectively as it blocks it; equipment and cranes inside such a facility produced RF level variations that confounded Voyager flight-radio/antenna measurements at the Air Force Eastern Test Range in 1995, even though prior tests in a different building had been repeatable. Investigators recommended running pathfinder tests whenever RF work moves to a new facility, and using highly directive probes and shielding the antenna from metallic surroundings that cause reflections.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 381: Antenna Test Difficulty at Air Force Eastern Test Range",
+              "https://llis.nasa.gov/lesson/381"
+            ]
+          ],
+          "cited_ids": [
+            "llis-381"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Test article or geometry not representative of the real flight configuration",
+          "body": "Galileo's antenna pattern test used a tip sunshade model that had been changed from \"RF transparent\" to partly conductive without updating the test requirements document, so multipath interference from the real hardware went undetected until after a flyby. The board recommended concurrent engineering between requirements, design and test, and verification that test hardware \"properly simulates the characteristics of the flight hardware.\"",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 350: Galileo Spacecraft Telemetry Degradation due to Antenna Multipath",
+              "https://llis.nasa.gov/lesson/350"
+            ]
+          ],
+          "cited_ids": [
+            "llis-350"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"Galileo's antenna pattern test used a tip sunshade model that had been changed from 'RF transparent' to partly conductive\" reverses the document: the LGA pattern test used a totally RF-transparent sunshade model, while the flight hardware had 9 conductive ribs; the requirements document (not the test model) was the item left un-updated."
+        },
+        {
+          "number": 3,
+          "title": "Unverified duplex self-compatibility (self-lock, desense, spurious pushing)",
+          "body": "A NASA reliability practice warns that transmitters and receivers sharing a subsystem or antenna, if not explicitly characterized against each other, can self-lock, false-lock, desensitize, or shift frequency under their own interconnected signal. It recommends phased conducted testing of spurious emissions versus susceptibility at input and output ports, completed early enough to add filtering before integration.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 793: Characterization of RF Subsystem Susceptibility to Spurious Signals",
+              "https://llis.nasa.gov/lesson/793"
+            ]
+          ],
+          "cited_ids": [
+            "llis-793"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Higher transmit power overloading or damaging the companion receiver",
+          "body": "Viking's Lander-Orbiter relay pair found that raising transmitter output toward 30 W risked overloading the mated Orbiter receiver; prelaunch antenna-geometry tests were inadequate due to nonflight conditions, forcing an operational power de-rate instead of a design fix. The lesson: system engineers, not individual subsystem engineers, must anticipate cross-subsystem interactions as power or configuration changes.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 378: Untestable System Mode In Flight",
+              "https://llis.nasa.gov/lesson/378"
+            ]
+          ],
+          "cited_ids": [
+            "llis-378"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "The document's recommendation is that system engineers be sensitive to system-test configurations; it does not call for verifying receiver overload margin against a higher output or address heritage-rating inheritance."
+        },
+        {
+          "number": 5,
+          "title": "Schedule and staffing pressure curtailing the newly added test",
+          "body": "ISS program reviewers flagged that tight buildup schedules with no slack led to pressure to defer or curtail prelaunch testing, and recommended that test and verification plans not be compromised to meet launch dates or budgets.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 1014: International Space Station (ISS) Program/Ground Processing Schedule/Test and Verification",
+              "https://llis.nasa.gov/lesson/1014"
+            ]
+          ],
+          "cited_ids": [
+            "llis-1014"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "\"protected, fully-resourced activity rather than one absorbed into existing shared staffing\" adds staffing/resourcing requirements not present in the document, which only says test plans should not be compromised to meet schedules or budgets."
+        }
+      ]
+    },
+    {
+      "case": "llis1376",
+      "difficulty": "easy",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.1157,
+      "tool_calls": 14,
+      "unsupported_links": [],
+      "cites_direct_precursor": false,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Ambient-pressure test gives false confidence (wrong margins, not just wrong fidelity)",
+          "body": "Running thermal cycling in air rather than vacuum can pull 15–20°C or more off the actual piece-part/solder-joint temperatures relative to the heat-sink surface, because the gas conducts heat in parallel paths that don't exist in flight. This can turn a nominal cold-soak into a demonstration of zero or negative margin without anyone noticing, since the surface thermocouples will read close to the programmed profile while internal junctions run warmer (hot case) or the effective stress is simply lower than flight (cold case). JPL's reliability study on this exact substitution is documented in [LLIS 781: Thermal-Vacuum Versus Thermal-Atmospheric Tests of Electronic Assemblies](https://llis.nasa.gov/lesson/781), which recommends that any T/A-for-T/V substitution require a waiver backed by quantitative analysis of the temperature-delta effect on each affected part and solder joint.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 781: Thermal-Vacuum Versus Thermal-Atmospheric Tests of Electronic Assemblies",
+              "https://llis.nasa.gov/lesson/781"
+            ]
+          ],
+          "cited_ids": [
+            "llis-781"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"internal junctions run warmer (hot case)\" reverses the document's finding: the DT effect reduces the temperature rise to internal elements, so \"hot testing becomes less severe\" (internal parts run cooler than flight), not warmer."
+        },
+        {
+          "number": 2,
+          "title": "Subsystem-lab facility not ready to host sole-source flight hardware",
+          "body": "Moving flight hardware into a lab chamber outside the main environmental test complex repeats a known pattern: idiosyncratic control circuits, unfamiliar safing behavior, and operators less experienced with flight-hardware alarms. In the Galileo NIMS case, a subsystem vacuum chamber (chosen, like here, to avoid disrupting a familiar process) suffered a line failure and then, during restart, exposed the flight instrument to a temperature below its qualification limit. See [LLIS 353: Facility Failure During Testing of the Galileo NIMS](https://llis.nasa.gov/lesson/353), which recommends that nonstandard facilities be critically examined for failure modes that could take hardware out of spec, with specification limits alarmed separately from control-system limits and clear safing procedures for operators.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 353: Facility Failure During Testing of the Galileo NIMS",
+              "https://llis.nasa.gov/lesson/353"
+            ]
+          ],
+          "cited_ids": [
+            "llis-353"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "Operator overrides a correctly functioning safety alarm",
+          "body": "Even validated facilities fail: during a Mars Observer PDS thermal-vacuum test, a temperature-controller fault tripped a fail-safe alarm correctly, but the chamber operator overrode it, trusting the (recently calibrated) controller instead, and the flight unit was driven to -47°C against a -20°C limit. [LLIS 274: Mars Observer PDS Exposure to Low Temperature](https://llis.nasa.gov/lesson/274) recommends that alarm/fail-safe circuits always be tied to properly located sensors, and that any override of a fail-safe require communication with, and approval from, the cognizant hardware engineer, not a unilateral operator call.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 274: Mars Observer PDS Exposure to Low Temperature",
+              "https://llis.nasa.gov/lesson/274"
+            ]
+          ],
+          "cited_ids": [
+            "llis-274"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Schedule pressure drives procedure shortcuts on the only flight unit",
+          "body": "With a tight schedule and no spare backplane, informal handling creeps in. On Gravity Probe-B, a rushed, schedule-pressured move of flight hardware without a written procedure led to the wrong gas being connected, contaminating flight cryo hardware. The board's findings in [LLIS 1041: Gravity Probe-B Nitrogen Contamination Mishap Investigation](https://llis.nasa.gov/lesson/1041) call out that \"schedule pressure can cause even top performers to make mistakes,\" and recommend comprehensive written procedures for all flight-hardware operations plus review of manpower and schedule to prevent overworked staff.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 1041: Gravity Probe-B Nitrogen Contamination Mishap Investigation",
+              "https://llis.nasa.gov/lesson/1041"
+            ]
+          ],
+          "cited_ids": [
+            "llis-1041"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        }
+      ]
+    },
+    {
+      "case": "llis1429",
+      "difficulty": "easy",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.1139,
+      "tool_calls": 15,
+      "unsupported_links": [],
+      "cites_direct_precursor": null,
+      "risks": [
+        {
+          "number": 1,
+          "title": "Winter off-design operation causing structural collapse",
+          "body": "A tower run outside its design flow/temperature envelope can freeze internally even while \"operating.\" In one precedent, valves were opened wider than normal to quiet noise from nearby workmen, and an extra pump was switched on; the resulting backpressure pushed water up the distribution riser into a standby cell with no heat load, where it froze. The ice load collapsed a large section of the structure. Investigators recommended written standards and operating procedures defining permitted deviations from normal operating conditions by season. [LLIS 231: Cooling Towers](https://llis.nasa.gov/lesson/231)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 231: Cooling Towers",
+              "https://llis.nasa.gov/lesson/231"
+            ]
+          ],
+          "cited_ids": [
+            "llis-231"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 2,
+          "title": "Gearbox/fan-train degradation reaching failure undetected",
+          "body": "Fan, gearbox and motor trains degrade through imbalance, misalignment, bearing wear and gear wear long before an operator notices; annual calendar-based inspection can miss a train that degrades faster. The relevant practice note states roughly 80% of rotating-machinery problems are imbalance or misalignment, and recommends vibration monitoring to catch incipient failures before serious damage, citing KSC's program that cut failure rates and downtime once applied to fan/gearbox/motor trains. The companion RCM lesson likewise warns that maintenance without a structured task-selection process defaults to corrective (run-to-failure) maintenance. [LLIS 845: Vibration Analysis of Rotating Ground Support Machinery](https://llis.nasa.gov/lesson/845); [LLIS 891: Preventive Maintenance Strategies Using Reliability Centered Maintenance (RCM)](https://llis.nasa.gov/lesson/891)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 845: Vibration Analysis of Rotating Ground Support Machinery",
+              "https://llis.nasa.gov/lesson/845"
+            ],
+            [
+              "LLIS 891: Preventive Maintenance Strategies Using Reliability Centered Maintenance (RCM)",
+              "https://llis.nasa.gov/lesson/891"
+            ]
+          ],
+          "cited_ids": [
+            "llis-845",
+            "llis-891"
+          ],
+          "precedent": "partly",
+          "recommendation": "partly",
+          "problem": "\"citing KSC's program that cut failure rates and downtime once applied to fan/gearbox/motor trains\" — the document attributes the reduction in failure rate and downtime to the Environmental Control System equipment and Orbiter Portable Purge Units monitored from 1988; the program was only later expanded to general machine-train components. Also \"The companion RCM lesson likewise warns that maintenance without a structured task-selection process defaults to corrective (run-to-failure) maintenance\" — LLIS 891 says most systems have long operated in corrective mode and that RCM directs what/where/when decisions, but does not state that absence of a task-selection process causes a default to run-to-failure."
+        },
+        {
+          "number": 3,
+          "title": "Maintenance personnel injury from inadvertent re-energization",
+          "body": "Fan and motor maintenance is done at height, near a hot-water basin, often with controls and disconnects physically remote from the work point. Two precedents bear on this: displaced start/stop controls and breakers for HVAC pumps, located far from the equipment and not lockable, were flagged as a fatality risk if someone re-applied power while maintenance was in progress; separately, an electrician was shocked because an undocumented wiring modification wasn't reflected on the deenergization drawing and the circuit wasn't meter-verified before contact. Recommendations: provide local, lockable start/stop control at the equipment, keep facility drawings current, and enforce deenergization verification as part of lockout/tagout. [LLIS 32: Displaced Heating, Ventilating, Air Conditioning (HVAC) Controls](https://llis.nasa.gov/lesson/32); [LLIS 19: Erroneous Electrical System Drawings and Failure to Verify Deenergization Causing a Potentially Serious Electrical Shock Injury](https://llis.nasa.gov/lesson/19)",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 32: Displaced Heating, Ventilating, Air Conditioning (HVAC) Controls",
+              "https://llis.nasa.gov/lesson/32"
+            ],
+            [
+              "LLIS 19: Erroneous Electrical System Drawings and Failure to Verify Deenergization Causing a Potentially Serious Electrical Shock Injury",
+              "https://llis.nasa.gov/lesson/19"
+            ]
+          ],
+          "cited_ids": [
+            "llis-32",
+            "llis-19"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Water chemistry failure (scale, corrosion, biological control)",
+          "body": "This is a credible failure mode for plant loss (fouled fill, corroded basins) and for personnel exposure near walkways and parking, but the archive search returned no lesson or mishap report specifically addressing biocide dosing failure or aerosol biological hazard from a cooling tower. This gap should not be read as reassurance.\n\nThis is a research aid drawn from historical records, not a safety review.",
+          "check": "none",
+          "links": [],
+          "cited_ids": [],
+          "precedent": "uncited",
+          "recommendation": "uncited",
+          "problem": ""
+        }
+      ]
+    },
+    {
+      "case": "llis1529",
+      "difficulty": "hard",
+      "model": "claude-sonnet-5",
+      "cost_usd": 0.0931,
+      "tool_calls": 12,
+      "unsupported_links": [],
+      "cites_direct_precursor": false,
+      "risks": [
+        {
+          "number": 1,
+          "title": "RF breakdown/corona during pump-down or dwell",
+          "body": "Powered RF and high-voltage hardware repeatedly broke down at critical pressure during JPL ground tests and flight (Mariner Mars '71 exciter, NSCAT TWTA transformer, Mars Observer TWTA, Galileo EUV supply), each causing damage or costly redesign late in the program, per [LLIS 598: Protect Against Corona Discharge and High Voltage Breakdown](https://llis.nasa.gov/lesson/598) and [LLIS 415: RF Breakdown in Mariner Mars '71 RFS Components](https://llis.nasa.gov/lesson/415). Recommendations: verify breakdown margin by test for every operating environment, and power down high-voltage/RF circuits before traversing critical pressure if margin can't be shown.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 598: Protect Against Corona Discharge and High Voltage Breakdown",
+              "https://llis.nasa.gov/lesson/598"
+            ],
+            [
+              "LLIS 415: RF Breakdown in Mariner Mars '71 RFS Components",
+              "https://llis.nasa.gov/lesson/415"
+            ]
+          ],
+          "cited_ids": [
+            "llis-598",
+            "llis-415"
+          ],
+          "precedent": "partly",
+          "recommendation": "supported",
+          "problem": "\"each causing damage or costly redesign late in the program\" — LLIS 598 records only that a corona discharge \"occurred\" for Mars Observer and that one was \"triggered\" for NSCAT; it states no resulting damage or redesign for those two cases (costly late design changes are attributed to Mariner Mars '71, and failure to the Galileo EUV supply)."
+        },
+        {
+          "number": 2,
+          "title": "Automated sequencer removes the operator's ability to abort",
+          "body": "A software test sequence drove the MPL antenna into an undeployed panel because the configuration wasn't rechecked and the abort command couldn't reach the vehicle while comms were being reconfigured, per [LLIS 885: Verify Configuration of Flight Hardware Prior to Test](https://llis.nasa.gov/lesson/885). Recommendation: a TRR covering commandability, emergency shutdown and restart, and never compromising the ability to command the article mid-test.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 885: Verify Configuration of Flight Hardware Prior to Test",
+              "https://llis.nasa.gov/lesson/885"
+            ]
+          ],
+          "cited_ids": [
+            "llis-885"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 3,
+          "title": "GSE and sensor trust gaps defeat the abort criteria",
+          "body": "During SIRTF cryostat testing, a clogged GSE filter, an unverified fitting, and distrust of a safety-critical sensor (blamed on past calibration problems) let an overpressure event proceed undetected, per [LLIS 991: Planning and Conduct of Hazardous Tests Require Extra Precautions](https://llis.nasa.gov/lesson/991). Recommendations: maintain and verify GSE before use, give safety-critical readouts clear/audible form, and have qualified personnel watching data in real time.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 991: Planning and Conduct of Hazardous Tests Require Extra Precautions",
+              "https://llis.nasa.gov/lesson/991"
+            ]
+          ],
+          "cited_ids": [
+            "llis-991"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 4,
+          "title": "Shared, aged facility not fully ready",
+          "body": "At Cassini ATLO, vibration facility equipment approaching end of life failed (board fires) once finally exercised, forcing schedule-impacting repairs, per [LLIS 622: Use of Obsolescent Test Facilities Pose Risk to Hardware](https://llis.nasa.gov/lesson/622). Recommendation: validate facility readiness with simulated hardware early, before flight hardware is at risk.",
+          "check": "grounded",
+          "links": [
+            [
+              "LLIS 622: Use of Obsolescent Test Facilities Pose Risk to Hardware",
+              "https://llis.nasa.gov/lesson/622"
+            ]
+          ],
+          "cited_ids": [
+            "llis-622"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": ""
+        },
+        {
+          "number": 5,
+          "title": "No spare for the TWTA",
+          "body": "Both Galileo and Deep Space 1 damaged power-subsystem hardware during ground test, with no guarantee of a replacement near launch, per [LLIS 601: Need for Power Subsystem Spares](https://llis.nasa.gov/lesson/601). Recommendation: sparing policy should assume unplanned consumption during test.",
+          "check": "extends",
+          "links": [
+            [
+              "LLIS 601: Need for Power Subsystem Spares",
+              "https://llis.nasa.gov/lesson/601"
+            ]
+          ],
+          "cited_ids": [
+            "llis-601"
+          ],
+          "precedent": "supported",
+          "recommendation": "supported",
+          "problem": "\"know in advance what recovery options exist if the unit is damaged\" — LLIS 601 recommends only that sparing policy allow for unplanned consumption; it prescribes no advance recovery/contingency planning step."
+        }
+      ]
+    }
+  ]
+}

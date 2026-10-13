@@ -1,0 +1,95 @@
+{
+  "case": "llis621",
+  "cutoff": "1998-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "Good hardware, modest staff, and a tight schedule is exactly the combination that has damaged valuable flight hardware during post-mission handling before. The main risks are not exotic software failures but mundane ground-handling and cryogenic-hazard errors magnified by limited personnel and a deadline.\n\n### 1. Shop-built handling fixture fails or destabilizes under load\n\nThe probe assembly will be repeatedly lifted and moved between the dewar, support structure and storage container using a shop-built fixture whose stability for this specific load path may never have been formally analyzed. In 1993 a reused lifting fixture on TOPEX/POSEIDON rotated ~135° during a lift and nearly dropped the spacecraft; the fixture had been inherited from another program without re-analysis for the new configuration ([LLIS 267: TOPEX/POSEIDON Near-Drop Incident](https://llis.nasa.gov/lesson/267)). Investigators recommended rigorous analysis of the lift configuration's stability and center of gravity, and qualified, experienced personnel on site for critical lifts.\n\nCheck: before the first probe transfer, verify and document the fixture's stability and CG analysis for every one of its planned handling configurations, not just the one it was originally built for.\n\n### 2. Untrained personnel manipulate hardware not secured in its fixture\n\nWith only two graduate researchers and one engineer rotating tasks, someone may handle the probe in a fixture without realizing it isn't fastened down. A nearly identical event destroyed a TOPEX/POSEIDON Solar Array Drive: an employee unfamiliar with the hardware tilted an inspection fixture, not knowing the unit wasn't secured, and it fell 40 inches, causing two months of rework ([LLIS 273: TOPEX/POSEIDON Solar Array Drive (SAD) Drop](https://llis.nasa.gov/lesson/273)). The board recommended written, posted handling instructions, QA review of fixtures before use, and pairing inexperienced staff with experienced personnel until proficient.\n\nCheck: write and post explicit handling steps for the probe/fixture interface, and ensure no graduate researcher handles the assembly solo until demonstrably trained on this specific setup.\n\n### 3. Helium vent/purge line blockage overpressurizes the dewar\n\nActive boil-off and purge lines on an aging vacuum-jacketed dewar are a known rupture hazard: a liquid helium dewar serving payload experiments ruptured and damaged the room when air was ingested through a valve stem not rated for vacuum service, froze, and blocked the vent ([LLIS 66: Dewar Vent Plumbing](https://llis.nasa.gov/lesson/66)). The recommendation was to ensure every valve in a dewar's vent path is designed for vacuum-system service.\n\nCheck: before re-pressurizing or purging the dewar in the lab, confirm every valve in the vent/purge tree is vacuum-rated, not just leak-checked at ambient.\n\n### 4. Oxygen-deficient atmosphere from boil-off in a general-purpose bay\n\nA concrete-floored, general-purpose lab with continuous helium boil-off is exactly the setting where cryogen displaces breathable air unnoticed. Technicians transferring liquid nitrogen lost consciousness from oxygen deficiency while shutting down a vent in reduced visibility, rescued only because others were present ([LLIS 550: Oxygen-Deficient Atmospheres](https://llis.nasa.gov/lesson/550)). Recommendations included never working cryogenics alone, using portable oxygen monitors, and following confined-space procedures in unventilated areas.\n\nCheck: with only two or three people present, enforce a buddy system and oxygen monitoring whenever boil-off or purge lines are open, especially if the bay has poor ventilation.\n\n### 5. Unclear disassembly/reassembly procedures under schedule pressure\n\nA compressed timeline with thin staffing increases the chance that a connector, valve, or thermometry lead is reconnected incorrectly. At Magellan, unclear procedures and the absence of cognizant personnel nearly caused a Safe and Arm device to be misconnected, caught only because a technician double-checked ([LLIS 382: Magellan Solid Rocket Motor Safe and Arm Device](https://llis.nasa.gov/lesson/382)). Recommendations: cognizant, hands-on-qualified personnel present for critical steps, procedures reviewed for clarity in advance, and independent verification (e.g., photos) for connections that can't otherwise be checked.\n\nCheck: before the grant-cycle crunch, have the experiment engineer review and sign off on disassembly/reassembly procedures, and photo-document critical connections (thermometry, valve tree) as an independent check.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "handling fixture failure dropped flight hardware"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "cryogenic dewar venting confined space oxygen deficiency hazard"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "shop fabricated fixture not stress analyzed used for critical lift"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "inadequate staffing lone worker hazardous operation oversight"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-267"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-273"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-66"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-550"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-382"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/267": "llis-267",
+    "https://llis.nasa.gov/lesson/1089": "llis-1089",
+    "https://llis.nasa.gov/lesson/273": "llis-273",
+    "https://llis.nasa.gov/lesson/182": "llis-182",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=127": "report-apollo13#99",
+    "https://llis.nasa.gov/lesson/576": "llis-576",
+    "https://llis.nasa.gov/lesson/93": "llis-93",
+    "https://llis.nasa.gov/lesson/385": "llis-385",
+    "https://llis.nasa.gov/lesson/550": "llis-550",
+    "https://llis.nasa.gov/lesson/254": "llis-254",
+    "https://llis.nasa.gov/lesson/66": "llis-66",
+    "https://ntrs.nasa.gov/api/citations/19700076776/downloads/19700076776.pdf#page=191": "report-apollo13#145",
+    "https://llis.nasa.gov/lesson/138": "llis-138",
+    "https://llis.nasa.gov/lesson/168": "llis-168",
+    "https://llis.nasa.gov/lesson/298": "llis-298",
+    "https://llis.nasa.gov/lesson/26": "llis-26",
+    "https://llis.nasa.gov/lesson/121": "llis-121",
+    "https://llis.nasa.gov/lesson/204": "llis-204",
+    "https://llis.nasa.gov/lesson/96": "llis-96",
+    "https://llis.nasa.gov/lesson/85": "llis-85",
+    "https://llis.nasa.gov/lesson/1088": "llis-1088",
+    "https://llis.nasa.gov/lesson/302": "llis-302",
+    "https://llis.nasa.gov/lesson/1198": "llis-1198",
+    "https://llis.nasa.gov/lesson/382": "llis-382",
+    "https://llis.nasa.gov/lesson/491": "llis-491",
+    "https://llis.nasa.gov/lesson/1096": "llis-1096",
+    "https://llis.nasa.gov/lesson/51": "llis-51",
+    "https://llis.nasa.gov/lesson/300": "llis-300",
+    "https://llis.nasa.gov/lesson/299": "llis-299"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.068
+}

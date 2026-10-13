@@ -1,0 +1,120 @@
+{
+  "case": "llis1529",
+  "cutoff": "2003-01-01",
+  "model": "claude-sonnet-5",
+  "answer": "The core hazard here is a powered RF test in a vacuum chamber passing through the pressure regime where multipaction and corona breakdown occur, run against a tight schedule, shared facility, and a single irreplaceable TWTA, with an automated test-control application standing between the operators and the hardware.\n\n### 1. RF breakdown/corona during pump-down or dwell\nPowered RF and high-voltage hardware repeatedly broke down at critical pressure during JPL ground tests and flight (Mariner Mars '71 exciter, NSCAT TWTA transformer, Mars Observer TWTA, Galileo EUV supply), each causing damage or costly redesign late in the program, per [LLIS 598: Protect Against Corona Discharge and High Voltage Breakdown](https://llis.nasa.gov/lesson/598) and [LLIS 415: RF Breakdown in Mariner Mars '71 RFS Components](https://llis.nasa.gov/lesson/415). Recommendations: verify breakdown margin by test for every operating environment, and power down high-voltage/RF circuits before traversing critical pressure if margin can't be shown.\n\nCheck: confirm the diplexer, waveguide and TWTA power converter have demonstrated breakdown margin at the exact pressure/drive profile the synthesizer will command, and that the test sequence can hold or remove RF drive while transiting critical pressure, not just rely on discharge detection to catch it after the fact.\n\n### 2. Automated sequencer removes the operator's ability to abort\nA software test sequence drove the MPL antenna into an undeployed panel because the configuration wasn't rechecked and the abort command couldn't reach the vehicle while comms were being reconfigured, per [LLIS 885: Verify Configuration of Flight Hardware Prior to Test](https://llis.nasa.gov/lesson/885). Recommendation: a TRR covering commandability, emergency shutdown and restart, and never compromising the ability to command the article mid-test.\n\nCheck: verify the commercial control app's abort path (drive level cutoff, pressure hold) stays live and tested through every phase of the dwell/pressure sequence, and that the pre-test readiness review explicitly walks the emergency-stop path, not just the nominal profile.\n\n### 3. GSE and sensor trust gaps defeat the abort criteria\nDuring SIRTF cryostat testing, a clogged GSE filter, an unverified fitting, and distrust of a safety-critical sensor (blamed on past calibration problems) let an overpressure event proceed undetected, per [LLIS 991: Planning and Conduct of Hazardous Tests Require Extra Precautions](https://llis.nasa.gov/lesson/991). Recommendations: maintain and verify GSE before use, give safety-critical readouts clear/audible form, and have qualified personnel watching data in real time.\n\nCheck: confirm pumping/bakeout GSE, power meters and thermocouples feeding the abort logic are freshly calibrated and leak/function-checked, and that discharge/VSWR/harmonic alarms are trusted and watched live, not just logged.\n\n### 4. Shared, aged facility not fully ready\nAt Cassini ATLO, vibration facility equipment approaching end of life failed (board fires) once finally exercised, forcing schedule-impacting repairs, per [LLIS 622: Use of Obsolescent Test Facilities Pose Risk to Hardware](https://llis.nasa.gov/lesson/622). Recommendation: validate facility readiness with simulated hardware early, before flight hardware is at risk.\n\nCheck: given shared chamber time, exercise the pumping/bakeout and RF GSE chain with non-flight loads before the flight TWTA/diplexer ever sees chamber pressure.\n\n### 5. No spare for the TWTA\nBoth Galileo and Deep Space 1 damaged power-subsystem hardware during ground test, with no guarantee of a replacement near launch, per [LLIS 601: Need for Power Subsystem Spares](https://llis.nasa.gov/lesson/601). Recommendation: sparing policy should assume unplanned consumption during test.\n\nCheck: with a single qualified TWTA and tight schedule, treat this test as the scenario that policy warns about, and know in advance what recovery options exist if the unit is damaged.\n\nThis is a research aid drawn from historical records, not a safety review.",
+  "steps": [
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "multipaction test high power RF discharge damage waveguide"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "traveling wave tube amplifier damage during thermal vacuum test"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "test control software automated sequence commanded unsafe configuration"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "single string flight hardware no spare damaged during ground test schedule pressure"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-415"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-885"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-601"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-993"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-598"
+      }
+    },
+    {
+      "tool": "search_archive",
+      "input": {
+        "query": "schedule pressure shared test facility corners cut readiness review bypassed"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-991"
+      }
+    },
+    {
+      "tool": "read_document",
+      "input": {
+        "id": "llis-622"
+      }
+    }
+  ],
+  "source_ids": {
+    "https://llis.nasa.gov/lesson/770": "llis-770",
+    "https://llis.nasa.gov/lesson/415": "llis-415",
+    "https://llis.nasa.gov/lesson/598": "llis-598",
+    "https://llis.nasa.gov/lesson/677": "llis-677",
+    "https://llis.nasa.gov/lesson/813": "llis-813",
+    "https://llis.nasa.gov/lesson/404": "llis-404",
+    "https://llis.nasa.gov/lesson/427": "llis-427",
+    "https://llis.nasa.gov/lesson/739": "llis-739",
+    "https://llis.nasa.gov/lesson/373": "llis-373",
+    "https://llis.nasa.gov/lesson/697": "llis-697",
+    "https://llis.nasa.gov/lesson/432": "llis-432",
+    "https://llis.nasa.gov/lesson/414": "llis-414",
+    "https://llis.nasa.gov/lesson/885": "llis-885",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=132": "report-mpl_ds2#215",
+    "https://llis.nasa.gov/lesson/584": "llis-584",
+    "https://ntrs.nasa.gov/api/citations/19990019501/downloads/19990019501.pdf#page=8": "report-soho#10",
+    "https://llis.nasa.gov/lesson/405": "llis-405",
+    "https://llis.nasa.gov/lesson/403": "llis-403",
+    "https://llis.nasa.gov/lesson/966": "llis-966",
+    "https://llis.nasa.gov/lesson/1219": "llis-1219",
+    "https://llis.nasa.gov/lesson/601": "llis-601",
+    "https://llis.nasa.gov/lesson/368": "llis-368",
+    "https://llis.nasa.gov/lesson/284": "llis-284",
+    "https://llis.nasa.gov/lesson/1195": "llis-1195",
+    "https://llis.nasa.gov/lesson/939": "llis-939",
+    "https://llis.nasa.gov/lesson/360": "llis-360",
+    "https://llis.nasa.gov/lesson/993": "llis-993",
+    "https://ntrs.nasa.gov/api/citations/20000061966/downloads/20000061966.pdf#page=128": "report-mpl_ds2#211",
+    "https://llis.nasa.gov/lesson/687": "llis-687",
+    "https://llis.nasa.gov/lesson/668": "llis-668",
+    "https://ntrs.nasa.gov/api/citations/19860015255/downloads/19860015255.pdf#page=152": "report-challenger_rogers_v1#209",
+    "https://llis.nasa.gov/lesson/1374": "llis-1374",
+    "https://llis.nasa.gov/lesson/944": "llis-944",
+    "https://llis.nasa.gov/lesson/991": "llis-991",
+    "https://llis.nasa.gov/lesson/1300": "llis-1300",
+    "https://llis.nasa.gov/lesson/622": "llis-622"
+  },
+  "unsupported_links": [],
+  "cost_usd": 0.0931
+}

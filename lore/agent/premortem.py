@@ -87,6 +87,7 @@ class Run:
     answer: str = ""
     steps: list[dict] = field(default_factory=list)
     sources: dict[str, str] = field(default_factory=dict)  # url -> title, from tool results
+    source_ids: dict[str, str] = field(default_factory=dict)  # url -> id read_document accepts
     unsupported_links: list[str] = field(default_factory=list)
     usage: dict[str, int] = field(default_factory=dict)
     cost_usd: float = 0.0
@@ -112,10 +113,12 @@ def _request(model: str, messages: list[dict], allow_tools: bool):
     return client().messages.create(**kwargs)
 
 
-def _collect_sources(result, sources: dict[str, str]) -> None:
+def _collect_sources(result, sources: dict[str, str], ids: dict[str, str]) -> None:
     for item in result if isinstance(result, list) else [result]:
         if isinstance(item, dict) and item.get("url"):
             sources[item["url"]] = item.get("title", "")
+            if item.get("id"):
+                ids[item["url"]] = item["id"]
 
 
 _CHATTER = re.compile(
@@ -161,11 +164,14 @@ def run(
     model: str = DEFAULT_MODEL,
     on_step: Callable[[dict], None] | None = None,
     sources: dict[str, str] | None = None,
+    before: str | None = None,
 ) -> Run:
     """Answer one user turn.
 
     For a follow-up, pass the previous Run's ``messages`` as ``history`` and its ``sources``,
     so a link to a document retrieved earlier in the conversation still counts as supported.
+    ``before`` (ISO date) limits the tools to documents written earlier, for evaluations that
+    replay a historical incident.
     """
     out = Run(
         model=model,
@@ -189,8 +195,8 @@ def run(
             break
         results = []
         for call in calls:
-            result = run_tool(call.name, call.input)
-            _collect_sources(result, out.sources)
+            result = run_tool(call.name, call.input, before)
+            _collect_sources(result, out.sources, out.source_ids)
             step = {"tool": call.name, "input": call.input}
             out.steps.append(step)
             if on_step:

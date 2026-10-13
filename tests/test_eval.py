@@ -105,3 +105,26 @@ def test_checklist_answers_become_grades():
     answers, unanswered = read_sheet(sheet, {"Some mishap": "x"})
     assert answers == {("x", "llis-1"): 2, ("x", "llis-2"): 1, ("x", "llis-3"): 0}
     assert unanswered == [("x", "llis-4"), ("x", "llis-5")]
+
+
+def test_reports_are_split_into_risks_whatever_the_heading_style():
+    from lore.eval.faithfulness import parse_risks
+
+    report = (
+        "Two risks stand out.\n\n"
+        "### 1. Borrowed fixture\n"
+        "The spreader bar failed ([LLIS 267: Near-Drop](https://llis.nasa.gov/lesson/267)).\n\n"
+        "**Check:** analyse the fixture for this load.\n\n"
+        "**2. Routine lift**\n"
+        "The board blamed complacency. [N-Prime report](https://x.gov/r.pdf#page=55) "
+        "Check: treat it as a first-time lift.\n\n"
+        "*This is a research aid drawn from historical records, not a safety review.*"
+    )
+    first, second = parse_risks(report)
+    assert (first.number, first.title) == (1, "Borrowed fixture")
+    assert first.check == "analyse the fixture for this load."
+    assert first.links == [("LLIS 267: Near-Drop", "https://llis.nasa.gov/lesson/267")]
+    assert "Check" not in first.body
+    assert (second.number, second.title) == (2, "Routine lift")
+    assert second.check == "treat it as a first-time lift."
+    assert second.links[0][1].endswith("#page=55")
